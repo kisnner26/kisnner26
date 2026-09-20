@@ -8,11 +8,13 @@ portfolio: **[kisnner26.github.io](https://kisnner26.github.io)**
 
 ## lo que más me representa
 
-- [**inventario-saas**](https://github.com/kisnner26/inventario-saas) — saas multi-tenant, una base de datos por cliente. laravel + next.js
-- [**2-player-web**](https://github.com/kisnner26/2-player-web) — 520 minijuegos para dos, un teclado, cero backend. [demo](https://kisnner26.github.io/2-player-web/)
+- [**girasol**](https://github.com/kisnner26/girasol) — app gratuita de salud para apple watch: uv, agua, calorías, sueño y juegos de muñeca. swiftui
 - [**wc26-studio**](https://github.com/kisnner26/wc26-studio) — simulador del mundial 2026 con monte carlo. [demo](https://kisnner26.github.io/wc26-studio/)
+- [**2-player-web**](https://github.com/kisnner26/2-player-web) — 520 minijuegos para dos, un teclado, cero backend. [demo](https://kisnner26.github.io/2-player-web/)
 - [**uam-class**](https://github.com/kisnner26/uam-class) — app nativa de macOS para el portal de la uam, token en keychain
-- [**prelo-ios**](https://github.com/kisnner26/prelo-ios) — pedidos de comida para el campus, swiftui
+- [**aula-abierta**](https://github.com/kisnner26/aula-abierta) — plataforma open source para academias de idiomas. laravel + react
+- [**lidless**](https://github.com/kisnner26/lidless) — app de barra de menú: mantiene el mac despierto con la tapa cerrada solo mientras claude code trabaja
+- [**tiktok-gesture-scroll**](https://github.com/kisnner26/tiktok-gesture-scroll) — extensión de chrome, edge y brave: pasa de video con un gesto de la mano frente a la webcam
 
 ## open source
 
