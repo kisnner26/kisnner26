@@ -1,7 +1,7 @@
 # Kisnner Obando
 
-**Ingeniero de software** · Managua, Nicaragua
-**Software engineer** · Managua, Nicaragua
+**Ingeniero en Sistemas de Información** · Managua, Nicaragua
+**Information Systems Engineer** · Managua, Nicaragua
 
 Estudio Ingeniería en Sistemas de Información Computacionales en la UAM. Construyo apps nativas para macOS, iOS y watchOS, backend transaccional y herramientas web, y contribuyo a open source.
 I study Computer Information Systems Engineering at UAM. I build native apps for macOS, iOS and watchOS, transactional backends and web tools, and contribute to open source.
