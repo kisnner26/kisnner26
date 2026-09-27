@@ -25,7 +25,7 @@ I study Computer Information Systems Engineering at UAM. I build native apps for
 - [**sonda**](https://github.com/kisnner26/sonda) — radio, red y sensores del iPhone en una caja de herramientas. / Radio, network and sensor toolbox for iPhone.
 - [**lidless**](https://github.com/kisnner26/lidless) — mantiene el Mac despierto con la tapa cerrada solo mientras Claude Code trabaja. / Keeps a MacBook awake only while Claude Code works.
 - [**uam-schedule**](https://github.com/kisnner26/uam-schedule) + [**uam-class-watch**](https://github.com/kisnner26/uam-class-watch) — el horario de la UAM en iPhone (widgets, Live Activity, Siri) y en el Apple Watch. / UAM class schedule on iPhone and Apple Watch.
-- [**prelo-ios**](https://github.com/kisnner26/prelo-ios) — pedidos de comida por adelantado para el campus de la UAM. / Pre-order food app for the UAM campus.
+- [**prelo-ios**](https://github.com/kisnner26/prelo-ios) — pedidos de comida por adelantado para el campus de la UAM, con su propia API (Node.js + Express + PostgreSQL, privada). / Full-stack pre-order food app for the UAM campus.
 
 **Web y 3D · Web and 3D**
 - [**godsized-orbital-modular**](https://github.com/kisnner26/godsized-orbital-modular) — mecánica orbital en 3D: pilotas una nave y la gravedad de Newton curva su trayectoria en tiempo real. / 3D orbital mechanics sandbox. [demo](https://kisnner26.github.io/godsized-orbital-modular/)
@@ -51,7 +51,7 @@ I study Computer Information Systems Engineering at UAM. I build native apps for
 ## Open source
 
 - [radare2](https://github.com/radareorg/radare2/pulls?q=is%3Apr+author%3Akisnner26) — 2 PRs mergeados / 2 merged PRs
-- [rizin](https://github.com/rizinorg/rizin/pull/6782), [swift-llm-kit](https://github.com/drewster99/swift-llm-kit/pull/27), [swift-nio](https://github.com/apple/swift-nio/pull/3744), [swift-nio-extras](https://github.com/apple/swift-nio-extras/pull/327), [swift-argument-parser](https://github.com/apple/swift-argument-parser/pull/972) — PRs abiertos / open PRs
+- [rizin](https://github.com/rizinorg/rizin/pull/6782), [swift-llm-kit](https://github.com/drewster99/swift-llm-kit/pull/27), [altserver-macos27-anisette-fix](https://github.com/kimziro/altserver-macos27-anisette-fix/pull/11), [swift-nio](https://github.com/apple/swift-nio/pull/3744), [swift-nio-extras](https://github.com/apple/swift-nio-extras/pull/327), [swift-argument-parser](https://github.com/apple/swift-argument-parser/pull/972) — PRs abiertos / open PRs
 
 ## Contacto · Contact
 
