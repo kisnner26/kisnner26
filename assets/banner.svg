@@ -1,59 +1,168 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="t d">
   <title id="t">Kisnner Obando</title>
-  <desc id="d">Ingeniero en sistemas de información de Managua, Nicaragua. Apps de Apple, backend e ingeniería inversa.</desc>
+  <desc id="d">Ingeniero en sistemas de información de Managua, Nicaragua. Apple apps, backend transaccional e ingeniería inversa. Banner animado en estilo risografía.</desc>
   <defs>
-    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-      <path d="M28 0H0V28" fill="none" stroke="#1a1208" stroke-opacity=".07" stroke-width="1"/>
+    <filter id="boil" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="1" result="n">
+        <animate attributeName="seed" values="1;2;3;4;5;6;7;8" dur="1s" calcMode="discrete" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/>
+      <feColorMatrix values="0 0 0 0 .16  0 0 0 0 .1  0 0 0 0 .04  0 0 0 1.1 -.42"/>
+    </filter>
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="2.4" fill="#3b46a8"/>
+      <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="24 12" dur="5s" repeatCount="indefinite"/>
     </pattern>
+    <pattern id="dotsO" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="4.5" cy="4.5" r="1.8" fill="#f0683a"/>
+      <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="-18 18" dur="6s" repeatCount="indefinite"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1200" height="420" rx="20"/></clipPath>
+    <clipPath id="wipe"><rect x="70" y="90" width="0" height="130"><animate attributeName="width" from="0" to="640" dur="1.3s" begin=".4s" fill="freeze" calcMode="spline" keySplines=".3 .1 .2 1" keyTimes="0;1"/></rect></clipPath>
     <style>
+      .m{mix-blend-mode:multiply}
       .ink{fill:none;stroke:#1a1208;stroke-linecap:round;stroke-linejoin:round}
-      .draw{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.6s ease-out forwards}
-      .d2{animation-delay:.5s}.d3{animation-delay:1s}.d4{animation-delay:1.5s}
-      .sway{transform-origin:150px 300px;animation:sway 6s ease-in-out 3s infinite}
-      .fade{opacity:0;animation:fade 1.2s ease-out forwards}
-      .f1{animation-delay:.6s}.f2{animation-delay:1.2s}.f3{animation-delay:1.8s}
-      .blink{animation:blink 1.1s steps(1) infinite}
-      @keyframes draw{to{stroke-dashoffset:0}}
-      @keyframes fade{to{opacity:1}}
-      @keyframes sway{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
+      .scene{animation:cut 18s linear infinite both}
+      .s2{animation-delay:6s}.s3{animation-delay:12s}
+      .zoom{animation:zoom 18s ease-out infinite both}
+      .s2 .zoom{animation-delay:6s}.s3 .zoom{animation-delay:12s}
+      @keyframes cut{0%{transform:translateX(1200px)}3.5%{transform:translateX(0)}30%{transform:translateX(0)}34%{transform:translateX(-1200px)}100%{transform:translateX(-1200px)}}
+      @keyframes zoom{0%{transform:scale(1.14) translateX(-26px)}33%{transform:scale(1) translateX(0)}100%{transform:scale(1)}}
+      .spin{transform-origin:900px 215px;animation:spin 24s linear infinite}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      .tw{animation:tw 2.4s ease-in-out infinite}
+      @keyframes tw{50%{opacity:.15}}
+      .bird{animation:fly 9s linear infinite}
+      @keyframes fly{from{transform:translateX(-120px)}to{transform:translateX(1300px)}}
+      .trace{stroke-dasharray:600;stroke-dashoffset:600;animation:trace 4.5s ease-in-out infinite}
+      @keyframes trace{0%{stroke-dashoffset:600}55%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-600}}
+      .pulse{animation:pulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      @keyframes pulse{50%{transform:scale(1.7)}}
+      .drift{animation:drift 12s linear infinite}
+      @keyframes drift{from{transform:translateY(0)}to{transform:translateY(-220px)}}
+      .win{animation:tw 3s ease-in-out infinite}
+      .bar{transform-box:fill-box;transform-origin:50% 100%;animation:bar .8s ease-in-out infinite alternate}
+      @keyframes bar{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+      .blink{animation:blink 1s steps(1) infinite}
       @keyframes blink{50%{opacity:0}}
-      @media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fade{animation:none;opacity:1}.sway,.blink{animation:none}}
+      .float{animation:float 7s ease-in-out infinite}
+      @keyframes float{50%{transform:translateY(-5px)}}
+      .l1{animation:line 9s infinite both}.l2{animation:line 9s 3s infinite both}.l3{animation:line 9s 6s infinite both}
+      @keyframes line{0%{opacity:0;transform:translateX(-14px)}4%,30%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateX(14px)}}
+      .in{opacity:0;animation:in .8s ease-out forwards}
+      @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+      .scrib{stroke-dasharray:720;stroke-dashoffset:720;animation:scrib 1.2s ease-out 1.5s forwards}
+      @keyframes scrib{to{stroke-dashoffset:0}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}.scene{transform:none}.s2,.s3{display:none}.in{opacity:1}.scrib{stroke-dashoffset:0}.l2,.l3{display:none}.l1{opacity:1}}
     </style>
   </defs>
-  <rect width="1200" height="340" rx="18" fill="#f5f0e8"/>
-  <rect width="1200" height="340" rx="18" fill="url(#grid)"/>
-  <rect x="1.5" y="1.5" width="1197" height="337" rx="17" fill="none" stroke="#1a1208" stroke-opacity=".18" stroke-width="3"/>
 
-  <!-- planta -->
-  <g class="sway">
-    <path class="ink draw" stroke-width="5" d="M150 305V120"/>
-    <path class="ink draw d2" stroke-width="5" d="M150 190C98 160 72 120 90 78c28 6 52 44 60 112"/>
-    <path class="ink draw d3" stroke-width="5" d="M150 230C202 200 228 160 210 118c-28 6-52 44-60 112"/>
-    <path class="ink draw d4" stroke-width="5" d="M150 150C132 118 134 88 150 62c16 26 18 56 0 88"/>
-    <path class="ink" stroke-width="3" opacity=".35" d="M70 308H230"/>
-  </g>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="420" fill="#f3ead8"/>
 
-  <!-- nombre -->
-  <text class="fade f1" x="300" y="148" font-family="Georgia,'Times New Roman',serif" font-size="78" font-style="italic" font-weight="700" fill="#1a1208">Kisnner Obando</text>
-  <path class="ink draw d3" stroke-width="3" d="M304 172C480 182 700 162 900 176" style="stroke-dasharray:700;stroke-dashoffset:700"/>
-  <text class="fade f2" x="302" y="214" font-family="Georgia,'Times New Roman',serif" font-size="28" fill="#1a1208" fill-opacity=".8">ingeniero en sistemas de información</text>
-  <text class="fade f3" x="302" y="252" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="20" fill="#1a1208" fill-opacity=".6">apple apps · backend · ingeniería inversa<tspan class="blink">_</tspan></text>
-  <text class="fade f3" x="302" y="292" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="16" fill="#1a1208" fill-opacity=".45">managua, nicaragua · kisnner26</text>
+    <!-- escenas que se cortan con paneo, como las tomas de lumora -->
+    <g filter="url(#boil)">
+      <g class="scene s1"><g class="zoom">
+        <circle class="m" cx="900" cy="215" r="124" fill="#f0683a" fill-opacity=".92"/>
+        <circle class="m" cx="900" cy="215" r="124" fill="url(#dots)" fill-opacity=".55"/>
+        <g class="spin ink" stroke="#f0683a" stroke-width="7" opacity=".9">
+          <path d="M900 52v-30M900 378v30M737 215h-30M1063 215h30M785 100l-22-22M1015 330l22 22M1015 100l22-22M785 330l-22 22"/>
+        </g>
+        <path class="m" d="M0 420V318Q180 238 380 306T760 298T1200 312V420Z" fill="#3b46a8" fill-opacity=".88"/>
+        <path class="m" d="M0 420V360Q260 300 520 352T1200 350V420Z" fill="#e8527c" fill-opacity=".8"/>
+        <g class="bird ink" stroke-width="4"><path d="M0 120q12-16 24 0q12-16 24 0"/></g>
+        <g class="bird ink" stroke-width="4" style="animation-delay:-4s"><path d="M0 170q9-12 18 0q9-12 18 0"/></g>
+      </g></g>
 
-  <!-- garabatos -->
-  <g class="fade f3" opacity="0">
-    <g transform="translate(1010 60)">
-      <rect class="ink" stroke-width="4" x="0" y="14" width="64" height="76" rx="20"/>
-      <path class="ink" stroke-width="4" d="M12 14l6-14h28l6 14M12 90l6 14h28l6-14"/>
-      <circle class="ink" stroke-width="3" cx="32" cy="52" r="3"/>
-      <path class="ink" stroke-width="3" d="M32 52V36M32 52l12 6"/>
+      <g class="scene s2"><g class="zoom">
+        <circle class="m" cx="930" cy="140" r="86" fill="#3b46a8" fill-opacity=".9"/>
+        <circle cx="962" cy="122" r="76" fill="#f3ead8"/>
+        <circle class="m" cx="930" cy="140" r="86" fill="url(#dotsO)" fill-opacity=".5"/>
+        <g class="ink" stroke-width="3" stroke="#3b46a8">
+          <path class="tw" d="M780 70v14M773 77h14"/><path class="tw" style="animation-delay:.6s" d="M1100 60v14M1093 67h14"/>
+          <path class="tw" style="animation-delay:1.2s" d="M1080 210v10M1075 215h10"/><path class="tw" style="animation-delay:.3s" d="M700 160v10M695 165h10"/>
+        </g>
+        <g class="m" fill="#3b46a8" fill-opacity=".9">
+          <rect x="560" y="280" width="90" height="140"/><rect x="660" y="230" width="70" height="190"/>
+          <rect x="740" y="300" width="110" height="120"/><rect x="860" y="250" width="80" height="170"/>
+          <rect x="950" y="310" width="100" height="110"/><rect x="1060" y="220" width="90" height="200"/>
+        </g>
+        <g fill="#f0683a">
+          <rect class="win" x="574" y="296" width="12" height="14"/><rect class="win" style="animation-delay:1s" x="610" y="330" width="12" height="14"/>
+          <rect class="win" style="animation-delay:.5s" x="676" y="250" width="12" height="14"/><rect class="win" style="animation-delay:1.7s" x="700" y="300" width="12" height="14"/>
+          <rect class="win" style="animation-delay:.8s" x="760" y="322" width="12" height="14"/><rect class="win" style="animation-delay:2.2s" x="810" y="350" width="12" height="14"/>
+          <rect class="win" style="animation-delay:1.3s" x="876" y="272" width="12" height="14"/><rect class="win" style="animation-delay:.2s" x="964" y="334" width="12" height="14"/>
+          <rect class="win" style="animation-delay:1.9s" x="1010" y="360" width="12" height="14"/><rect class="win" style="animation-delay:.9s" x="1076" y="244" width="12" height="14"/>
+          <rect class="win" style="animation-delay:2.5s" x="1112" y="300" width="12" height="14"/>
+        </g>
+      </g></g>
+
+      <g class="scene s3"><g class="zoom">
+        <g class="ink" stroke="#2a9d8f" stroke-width="5">
+          <path class="trace" d="M720 60H840V140H960V90H1120"/>
+          <path class="trace" style="animation-delay:.6s" d="M700 220H800V300H920V240H1060V330H1160"/>
+          <path class="trace" style="animation-delay:1.2s" d="M760 400V350H880V380H1010V300"/>
+        </g>
+        <g fill="#f0683a" class="m">
+          <circle class="pulse" cx="840" cy="140" r="9"/><circle class="pulse" style="animation-delay:.5s" cx="960" cy="90" r="9"/>
+          <circle class="pulse" style="animation-delay:1s" cx="920" cy="300" r="9"/><circle class="pulse" style="animation-delay:1.5s" cx="1060" cy="240" r="9"/>
+        </g>
+        <g class="ink" stroke="#3b46a8" stroke-width="7" opacity=".9">
+          <path d="M1060 120l-34 34 34 34M1120 120l34 34-34 34"/>
+        </g>
+        <g font-family="'SF Mono',Menlo,Consolas,monospace" font-size="18" fill="#3b46a8" fill-opacity=".75" class="m">
+          <g class="drift"><text x="1130" y="260">4F 8A</text><text x="1130" y="290">0x2C</text><text x="1130" y="320">C0 DE</text><text x="1130" y="350">7F 45</text><text x="1130" y="380">4C 46</text><text x="1130" y="410">DE AD</text><text x="1130" y="440">BE EF</text><text x="1130" y="470">90 90</text></g>
+        </g>
+      </g></g>
     </g>
-    <g transform="translate(900 210)">
-      <path class="ink" stroke-width="5" d="M22 8L0 36l22 28M78 8l22 28-22 28M58 0L42 72"/>
+
+    <!-- etiqueta de papel con el nombre (como la letra en lumora) -->
+    <g class="float"><g transform="rotate(-1.2 376 214)">
+      <rect x="64" y="72" width="640" height="300" rx="6" fill="#3b46a8" fill-opacity=".85" transform="translate(9 9)" class="m"/>
+      <rect x="64" y="72" width="640" height="300" rx="6" fill="#fbf6ea" stroke="#1a1208" stroke-width="3"/>
+      <rect x="64" y="72" width="640" height="300" rx="6" fill="url(#dotsO)" opacity=".18"/>
+      <rect x="350" y="52" width="110" height="34" fill="#f2b632" fill-opacity=".85" transform="rotate(-3 405 69)"/>
+      <rect x="640" y="354" width="90" height="30" fill="#f2b632" fill-opacity=".85" transform="rotate(8 685 369)"/>
+
+      <g clip-path="url(#wipe)">
+        <text x="90" y="178" font-family="Georgia,'Times New Roman',serif" font-size="66" font-style="italic" font-weight="700" fill="#1a1208">Kisnner Obando</text>
+      </g>
+      <path class="ink scrib" stroke="#f0683a" stroke-width="7" d="M92 196C210 210 330 186 470 202S620 194 668 200"/>
+      <text class="in" style="animation-delay:1.7s" x="92" y="244" font-family="Georgia,'Times New Roman',serif" font-size="27" fill="#1a1208" fill-opacity=".85">ingeniero en sistemas de información</text>
+
+      <g font-family="'SF Mono',Menlo,Consolas,monospace" font-size="24" fill="#3b46a8">
+        <text class="l1" x="92" y="296" font-weight="700">&gt; apple apps<tspan class="blink">_</tspan></text>
+        <text class="l2" x="92" y="296" font-weight="700">&gt; backend transaccional<tspan class="blink">_</tspan></text>
+        <text class="l3" x="92" y="296" font-weight="700">&gt; ingeniería inversa<tspan class="blink">_</tspan></text>
+      </g>
+      <text class="in" style="animation-delay:2.2s" x="92" y="346" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="16" fill="#1a1208" fill-opacity=".5">managua, nicaragua · kisnner26</text>
+    </g></g>
+
+    <!-- anotaciones -->
+    <g transform="rotate(3 1040 52)">
+      <rect x="926" y="30" width="226" height="46" rx="8" fill="#fbf6ea" stroke="#d6362f" stroke-width="3"/>
+      <circle class="blink" cx="956" cy="53" r="8" fill="#d6362f"/>
+      <text x="976" y="61" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#d6362f" letter-spacing="3">EN VIVO</text>
     </g>
-    <g transform="translate(1060 215)">
-      <circle class="ink" stroke-width="5" cx="30" cy="30" r="26"/>
-      <path class="ink" stroke-width="6" d="M49 49l32 32"/>
+    <g transform="rotate(-2.5 1040 360)">
+      <rect x="930" y="318" width="222" height="76" fill="#f2b632" fill-opacity=".92"/>
+      <g fill="#1a1208">
+        <rect class="bar" x="948" y="334" width="12" height="44" style="animation-duration:.7s"/>
+        <rect class="bar" x="966" y="334" width="12" height="44" style="animation-duration:.5s"/>
+        <rect class="bar" x="984" y="334" width="12" height="44" style="animation-duration:.9s"/>
+        <rect class="bar" x="1002" y="334" width="12" height="44" style="animation-duration:.6s"/>
+        <rect class="bar" x="1020" y="334" width="12" height="44" style="animation-duration:.8s"/>
+        <rect class="bar" x="1038" y="334" width="12" height="44" style="animation-duration:.55s"/>
+        <rect class="bar" x="1056" y="334" width="12" height="44" style="animation-duration:.95s"/>
+      </g>
+      <text x="1080" y="362" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="15" fill="#1a1208">hecho</text>
+      <text x="1080" y="380" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="15" fill="#1a1208">a mano</text>
     </g>
+
+    <rect width="1200" height="420" filter="url(#grain)" opacity=".5" style="mix-blend-mode:multiply"/>
+    <rect x="1.5" y="1.5" width="1197" height="417" rx="19" fill="none" stroke="#1a1208" stroke-opacity=".3" stroke-width="3"/>
   </g>
 </svg>

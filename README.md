@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Kisnner Obando — ingeniero en sistemas de información. Apple apps, backend e ingeniería inversa. Managua, Nicaragua." width="100%">
+  <img src="assets/banner.svg" alt="Kisnner Obando — ingeniero en sistemas de información. Apple apps, backend transaccional e ingeniería inversa. Managua, Nicaragua." width="100%">
 </p>
 
 estudio ingeniería en sistemas en la UAM y construyo apps nativas para macOS, iOS y watchOS, backend transaccional y herramientas web. contribuyo a open source: radare2, rizin y Apple.
@@ -18,8 +18,11 @@ estudio ingeniería en sistemas en la UAM y construyo apps nativas para macOS, i
   <a href="https://github.com/kisnner26/opti-hub">opti-hub</a>
 </p>
 
+<p align="center">
+  <img src="assets/marquee.svg" alt="Stack: Swift, SwiftUI, PHP y Laravel, JavaScript, Python, C#, Kotlin, C++, ingeniería inversa" width="100%">
+</p>
+
 **más** — [todos los proyectos](https://kisnner26.github.io) · [writeups de depuración](https://kisnner26.github.io/#writeups) (Sidecar -203, AltServer, emparejado del Watch)
 **open source** — [radare2](https://github.com/radareorg/radare2/pulls?q=is%3Apr+author%3Akisnner26) (2 PRs mergeados) · [rizin](https://github.com/rizinorg/rizin/pull/6782) · [swift-nio](https://github.com/apple/swift-nio/pull/3744) · [swift-argument-parser](https://github.com/apple/swift-argument-parser/pull/972)
-**stack** — Swift · SwiftUI · PHP/Laravel · JavaScript · Python · C# · Kotlin · C++
 
 [portafolio](https://kisnner26.github.io) · [LinkedIn](https://www.linkedin.com/in/kisnner-obando-16014029b/) · kisnnerobando7@gmail.com
