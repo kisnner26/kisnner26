@@ -1,27 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="t d">
   <title id="t">Proyectos destacados de Kisnner Obando</title>
-  <desc id="d">lumora, girasol, clavis, uam-class, inventario-saas y umbra.</desc>
+  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, EtlStudio y opti-hub.</desc>
   <defs>
     <style>
       .card{fill:#f5f0e8;stroke:#1a1208;stroke-opacity:.2;stroke-width:2}
       .ink{fill:none;stroke:#1a1208;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
       .n{font:700 30px Georgia,'Times New Roman',serif;font-style:italic;fill:#1a1208}
       .l{font:17px 'SF Mono',Menlo,Consolas,monospace;fill:#1a1208;fill-opacity:.7}
-      .tag{font:13px 'SF Mono',Menlo,Consolas,monospace;fill:#1a1208;fill-opacity:.45;letter-spacing:.06em}
+      .tag{font:13px 'SF Mono',Menlo,Consolas,monospace;fill:#1a1208;fill-opacity:.45;letter-spacing:.06em;text-anchor:end}
       .c{animation:rise .7s ease-out both}
       @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
       @media (prefers-reduced-motion:reduce){.c{animation:none}}
     </style>
   </defs>
-
-  <g><g class="c" style="animation-delay:0.0s">
+  <g transform="translate(0 0)"><g class="c" style="animation-delay:0.0s">
     <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
     <rect x="0" y="0" width="8" height="200" rx="4" fill="#d9a441"/>
     <path class="ink" d="M40 62v0M52 52v20M64 40v44M76 48v28M88 56v12M100 62v0"/><path class="ink" d="M112 50l22 12-22 12z"/>
     <text class="n" x="32" y="122">lumora</text>
     <text class="l" x="32" y="152">lyric videos en vivo,</text>
     <text class="l" x="32" y="174">dirigidos por Claude</text>
-    <text class="tag" x="296" y="40">MACOS</text>
+    <text class="tag" x="360" y="40">MACOS</text>
   </g></g>
   <g transform="translate(408 0)"><g class="c" style="animation-delay:0.1s">
     <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
@@ -30,42 +29,42 @@
     <text class="n" x="32" y="122">girasol</text>
     <text class="l" x="32" y="152">salud en el Apple Watch,</text>
     <text class="l" x="32" y="174">gratis y open source</text>
-    <text class="tag" x="288" y="40">WATCHOS</text>
+    <text class="tag" x="360" y="40">WATCHOS</text>
   </g></g>
   <g transform="translate(816 0)"><g class="c" style="animation-delay:0.2s">
     <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
     <rect x="0" y="0" width="8" height="200" rx="4" fill="#5b8c85"/>
-    <circle class="ink" cx="52" cy="62" r="14"/><path class="ink" d="M64 72l30 30M82 90l8-8M92 100l8-8"/>
-    <text class="n" x="32" y="122">clavis</text>
-    <text class="l" x="32" y="152">tu muñeca es la llave:</text>
-    <text class="l" x="32" y="174">llavero con Apple Watch</text>
-    <text class="tag" x="296" y="40">SEGURIDAD</text>
+    <rect class="ink" x="36" y="46" width="72" height="42" rx="21"/><path class="ink" d="M58 58v18M49 67h18"/><circle class="ink" cx="88" cy="62" r="3"/><circle class="ink" cx="97" cy="72" r="3"/>
+    <text class="n" x="32" y="122">2-player-web</text>
+    <text class="l" x="32" y="152">500 minijuegos para dos</text>
+    <text class="l" x="32" y="174">en un solo teclado</text>
+    <text class="tag" x="360" y="40">WEB</text>
   </g></g>
   <g transform="translate(0 230)"><g class="c" style="animation-delay:0.3s">
     <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
-    <rect x="0" y="0" width="8" height="200" rx="4" fill="#4f7cac"/>
-    <path class="ink" d="M36 62l30-18 30 18-30 18zM96 62v20c0 8-14 14-30 14s-30-6-30-14V62"/>
-    <text class="n" x="32" y="122">uam-class</text>
-    <text class="l" x="32" y="152">cliente nativo de macOS</text>
-    <text class="l" x="32" y="174">para el Moodle de la UAM</text>
-    <text class="tag" x="296" y="40">SWIFTUI</text>
-  </g></g>
-  <g transform="translate(408 230)"><g class="c" style="animation-delay:0.4s">
-    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
     <rect x="0" y="0" width="8" height="200" rx="4" fill="#b5654a"/>
-    <ellipse class="ink" cx="64" cy="48" rx="26" ry="9"/><path class="ink" d="M38 48v22c0 5 12 9 26 9s26-4 26-9V48M38 70v22c0 5 12 9 26 9s26-4 26-9V70"/>
+    <g transform="translate(0 -10)"><ellipse class="ink" cx="64" cy="48" rx="26" ry="9"/><path class="ink" d="M38 48v22c0 5 12 9 26 9s26-4 26-9V48M38 70v22c0 5 12 9 26 9s26-4 26-9V70"/></g>
     <text class="n" x="32" y="122">inventario-saas</text>
     <text class="l" x="32" y="152">POS multi-tenant,</text>
     <text class="l" x="32" y="174">Laravel + Next.js</text>
-    <text class="tag" x="300" y="40">BACKEND</text>
+    <text class="tag" x="360" y="40">BACKEND</text>
+  </g></g>
+  <g transform="translate(408 230)"><g class="c" style="animation-delay:0.4s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#4f7cac"/>
+    <ellipse class="ink" cx="48" cy="52" rx="16" ry="6"/><path class="ink" d="M32 52v22c0 4 7 6 16 6s16-2 16-6V52"/><path class="ink" d="M74 66h30M94 56l10 10-10 10"/><rect class="ink" x="112" y="48" width="24" height="36" rx="4"/>
+    <text class="n" x="32" y="122">EtlStudio</text>
+    <text class="l" x="32" y="152">data warehouse y SSIS</text>
+    <text class="l" x="32" y="174">desde Databricks</text>
+    <text class="tag" x="360" y="40">WPF</text>
   </g></g>
   <g transform="translate(816 230)"><g class="c" style="animation-delay:0.5s">
     <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
     <rect x="0" y="0" width="8" height="200" rx="4" fill="#7a6a9c"/>
-    <rect class="ink" x="36" y="40" width="60" height="50" rx="6"/><path class="ink" d="M36 76l16-14 14 12 12-10 18 14"/><circle class="ink" cx="76" cy="54" r="4"/>
-    <text class="n" x="32" y="122">umbra</text>
-    <text class="l" x="32" y="152">esteganografía en el</text>
-    <text class="l" x="32" y="174">navegador, con cifrado</text>
-    <text class="tag" x="316" y="40">WEB</text>
+    <path class="ink" d="M36 88a38 38 0 0176 0"/><path class="ink" d="M74 88l18-30"/><circle class="ink" cx="74" cy="88" r="4"/><path class="ink" d="M44 70l5 3M74 54v6M104 70l-5 3"/>
+    <text class="n" x="32" y="122">opti-hub</text>
+    <text class="l" x="32" y="152">optimizador de Windows 11,</text>
+    <text class="l" x="32" y="174">reversible, según tu hardware</text>
+    <text class="tag" x="360" y="40">WINDOWS</text>
   </g></g>
 </svg>
