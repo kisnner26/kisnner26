@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="t d">
+  <title id="t">Proyectos destacados de Kisnner Obando</title>
+  <desc id="d">lumora, girasol, clavis, uam-class, inventario-saas y umbra.</desc>
+  <defs>
+    <style>
+      .card{fill:#f5f0e8;stroke:#1a1208;stroke-opacity:.2;stroke-width:2}
+      .ink{fill:none;stroke:#1a1208;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .n{font:700 30px Georgia,'Times New Roman',serif;font-style:italic;fill:#1a1208}
+      .l{font:17px 'SF Mono',Menlo,Consolas,monospace;fill:#1a1208;fill-opacity:.7}
+      .tag{font:13px 'SF Mono',Menlo,Consolas,monospace;fill:#1a1208;fill-opacity:.45;letter-spacing:.06em}
+      .c{animation:rise .7s ease-out both}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+      @media (prefers-reduced-motion:reduce){.c{animation:none}}
+    </style>
+  </defs>
+
+  <g><g class="c" style="animation-delay:0.0s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#d9a441"/>
+    <path class="ink" d="M40 62v0M52 52v20M64 40v44M76 48v28M88 56v12M100 62v0"/><path class="ink" d="M112 50l22 12-22 12z"/>
+    <text class="n" x="32" y="122">lumora</text>
+    <text class="l" x="32" y="152">lyric videos en vivo,</text>
+    <text class="l" x="32" y="174">dirigidos por Claude</text>
+    <text class="tag" x="296" y="40">MACOS</text>
+  </g></g>
+  <g transform="translate(408 0)"><g class="c" style="animation-delay:0.1s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#e0b13a"/>
+    <circle class="ink" cx="64" cy="62" r="12"/><path class="ink" d="M64 36v-8M64 96v-8M38 62h-8M98 62h-8M46 44l-6-6M88 86l-6-6M82 44l6-6M46 80l-6 6"/>
+    <text class="n" x="32" y="122">girasol</text>
+    <text class="l" x="32" y="152">salud en el Apple Watch,</text>
+    <text class="l" x="32" y="174">gratis y open source</text>
+    <text class="tag" x="288" y="40">WATCHOS</text>
+  </g></g>
+  <g transform="translate(816 0)"><g class="c" style="animation-delay:0.2s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#5b8c85"/>
+    <circle class="ink" cx="52" cy="62" r="14"/><path class="ink" d="M64 72l30 30M82 90l8-8M92 100l8-8"/>
+    <text class="n" x="32" y="122">clavis</text>
+    <text class="l" x="32" y="152">tu muñeca es la llave:</text>
+    <text class="l" x="32" y="174">llavero con Apple Watch</text>
+    <text class="tag" x="296" y="40">SEGURIDAD</text>
+  </g></g>
+  <g transform="translate(0 230)"><g class="c" style="animation-delay:0.3s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#4f7cac"/>
+    <path class="ink" d="M36 62l30-18 30 18-30 18zM96 62v20c0 8-14 14-30 14s-30-6-30-14V62"/>
+    <text class="n" x="32" y="122">uam-class</text>
+    <text class="l" x="32" y="152">cliente nativo de macOS</text>
+    <text class="l" x="32" y="174">para el Moodle de la UAM</text>
+    <text class="tag" x="296" y="40">SWIFTUI</text>
+  </g></g>
+  <g transform="translate(408 230)"><g class="c" style="animation-delay:0.4s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#b5654a"/>
+    <ellipse class="ink" cx="64" cy="48" rx="26" ry="9"/><path class="ink" d="M38 48v22c0 5 12 9 26 9s26-4 26-9V48M38 70v22c0 5 12 9 26 9s26-4 26-9V70"/>
+    <text class="n" x="32" y="122">inventario-saas</text>
+    <text class="l" x="32" y="152">POS multi-tenant,</text>
+    <text class="l" x="32" y="174">Laravel + Next.js</text>
+    <text class="tag" x="300" y="40">BACKEND</text>
+  </g></g>
+  <g transform="translate(816 230)"><g class="c" style="animation-delay:0.5s">
+    <rect class="card" x="0" y="0" width="384" height="200" rx="16"/>
+    <rect x="0" y="0" width="8" height="200" rx="4" fill="#7a6a9c"/>
+    <rect class="ink" x="36" y="40" width="60" height="50" rx="6"/><path class="ink" d="M36 76l16-14 14 12 12-10 18 14"/><circle class="ink" cx="76" cy="54" r="4"/>
+    <text class="n" x="32" y="122">umbra</text>
+    <text class="l" x="32" y="152">esteganografía en el</text>
+    <text class="l" x="32" y="174">navegador, con cifrado</text>
+    <text class="tag" x="316" y="40">WEB</text>
+  </g></g>
+</svg>
