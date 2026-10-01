@@ -6,7 +6,7 @@ estudio ingeniería en sistemas en la UAM y construyo apps nativas para macOS, i
 <br><sub>i study information systems engineering at UAM, build native Apple apps and transactional backends, and contribute to open source.</sub>
 
 <p align="center">
-  <img src="assets/projects.svg" alt="Proyectos destacados: lumora, girasol, 2-player-web, inventario-saas y opti-hub" width="100%">
+  <img src="assets/projects.svg" alt="Proyectos destacados: lumora, girasol, 2-player-web, inventario-saas, EtlStudio y opti-hub" width="100%">
 </p>
 
 <p align="center">
@@ -14,6 +14,7 @@ estudio ingeniería en sistemas en la UAM y construyo apps nativas para macOS, i
   <a href="https://github.com/kisnner26/girasol">girasol</a> ·
   <a href="https://github.com/kisnner26/2-player-web">2-player-web</a> ·
   <a href="https://github.com/kisnner26/inventario-saas">inventario-saas</a> ·
+  <a href="https://github.com/kisnner26/EtlStudio">EtlStudio</a> ·
   <a href="https://github.com/kisnner26/opti-hub">opti-hub</a>
 </p>
 
