@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 462" role="img" aria-labelledby="t d">
   <title id="t">Proyectos destacados de Kisnner Obando</title>
-  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, nexo y opti-hub, con íconos animados.</desc>
+  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, nexo y zarcillo, con íconos animados.</desc>
   <defs>
     <pattern id="ht" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.7" fill="#1a1208"/></pattern>
     <style>
@@ -25,6 +25,8 @@
       @keyframes scan{0%{opacity:0;transform:translateY(0)}20%{opacity:.85}100%{opacity:0;transform:translateY(44px)}}
       .flow{stroke-dasharray:4 9;animation:flow .8s linear infinite}
       @keyframes flow{to{stroke-dashoffset:-13}}
+      .cur{animation:cur 3s ease-in-out infinite}
+      @keyframes cur{0%,100%{transform:translate(0,0)}35%{transform:translate(18px,10px)}70%{transform:translate(8px,-6px)}}
       .needle{animation:needle 3.2s ease-in-out infinite}
       @keyframes needle{0%,100%{transform:rotate(-55deg)}50%{transform:rotate(55deg)}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -90,10 +92,10 @@
     <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
     <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
     <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
-    <path class="ink" d="M36 88a38 38 0 0176 0"/><g class="needle" style="transform-origin:74px 88px"><path class="ink" d="M74 88l0-30"/></g><circle class="ink" cx="74" cy="88" r="4"/><path class="ink" d="M44 70l5 3M74 52v6M104 70l-5 3"/>
-    <text class="n" x="32" y="130">opti-hub</text>
-    <text class="l" x="32" y="160">optimizador de Windows 11,</text>
-    <text class="l" x="32" y="182">reversible, según tu hardware</text>
-    <text class="tag" x="362" y="42">WINDOWS</text>
+    <rect class="ink" x="34" y="34" width="30" height="54" rx="7"/><path class="ink" d="M44 80h10"/><g class="cur"><path class="ink" d="M82 44l0 24 7-6 5 12 6-3-5-11 9-1z"/></g><path class="ink flow" d="M66 56q6-6 12 0"/><path class="ink flow" style="animation-delay:.3s" d="M66 66q10-10 20 0"/>
+    <text class="n" x="32" y="130">zarcillo</text>
+    <text class="l" x="32" y="160">tu iPhone como control</text>
+    <text class="l" x="32" y="182">remoto del Mac, sin servidores</text>
+    <text class="tag" x="362" y="42">IOS</text>
   </g></g></g>
 </svg>
