@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 462" role="img" aria-labelledby="t d">
   <title id="t">Proyectos destacados de Kisnner Obando</title>
-  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, EtlStudio y opti-hub, con íconos animados.</desc>
+  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, nexo y opti-hub, con íconos animados.</desc>
   <defs>
     <pattern id="ht" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.7" fill="#1a1208"/></pattern>
     <style>
@@ -79,11 +79,11 @@
     <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
     <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
     <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
-    <ellipse class="ink" cx="48" cy="52" rx="16" ry="6"/><path class="ink" d="M32 52v22c0 4 7 6 16 6s16-2 16-6V52"/><path class="ink flow" d="M74 66h30"/><path class="ink" d="M94 56l10 10-10 10"/><rect class="ink" x="112" y="48" width="24" height="36" rx="4"/>
-    <text class="n" x="32" y="130">EtlStudio</text>
-    <text class="l" x="32" y="160">data warehouse y SSIS</text>
-    <text class="l" x="32" y="182">desde Databricks</text>
-    <text class="tag" x="362" y="42">WPF</text>
+    <rect class="ink" x="30" y="48" width="34" height="22" rx="3"/><path class="ink" d="M24 78h46"/><path class="ink flow" d="M72 62h12"/><rect class="ink" x="88" y="44" width="16" height="30" rx="4"/><path class="ink flow" d="M108 60h10"/><rect class="ink" x="122" y="52" width="14" height="18" rx="5"/><circle class="beat" cx="129" cy="61" r="2.4" fill="#f0683a"/>
+    <text class="n" x="32" y="130">nexo</text>
+    <text class="l" x="32" y="160">controla tu Mac desde</text>
+    <text class="l" x="32" y="182">el iPhone y el Watch</text>
+    <text class="tag" x="362" y="42">APPLE</text>
   </g></g></g>
   <g transform="translate(822 244) rotate(0.6 192 100)"><g class="enter" style="animation-delay:0.60s"><g class="fl" style="animation-delay:-5.5s">
     <rect x="8" y="8" width="384" height="200" rx="14" fill="#7a64a8" fill-opacity=".9"/>
