@@ -6,16 +6,15 @@ estudio ingeniería en sistemas en la UAM y construyo apps nativas para macOS, i
 <br><sub>i study information systems engineering at UAM, build native Apple apps and transactional backends, and contribute to open source.</sub>
 
 <p align="center">
-  <img src="assets/projects.svg" alt="Proyectos destacados: lumora, girasol, 2-player-web, inventario-saas, nexo y zarcillo" width="100%">
+  <img src="assets/projects.svg" alt="proyectos destacados: lumora, anaquel, claude-pet, nexo y 2-player-web" width="100%">
 </p>
 
 <p align="center">
   <a href="https://github.com/kisnner26/lumora">lumora</a> ·
-  <a href="https://github.com/kisnner26/girasol">girasol</a> ·
-  <a href="https://github.com/kisnner26/2-player-web">2-player-web</a> ·
-  <a href="https://github.com/kisnner26/inventario-saas">inventario-saas</a> ·
+  <a href="https://github.com/kisnner26/inventario-saas">anaquel</a> ·
+  <a href="https://github.com/kisnner26/claude-pet">claude-pet</a> ·
   <a href="https://github.com/kisnner26/nexo">nexo</a> ·
-  <a href="https://github.com/kisnner26/zarcillo">zarcillo</a>
+  <a href="https://github.com/kisnner26/2-player-web">2-player-web</a>
 </p>
 
 <p align="center">
