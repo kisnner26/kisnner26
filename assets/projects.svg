@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 462" role="img" aria-labelledby="t d">
   <title id="t">Proyectos destacados de Kisnner Obando</title>
-  <desc id="d">lumora, girasol, 2-player-web, inventario-saas, nexo y zarcillo, con íconos animados.</desc>
+  <desc id="d">lumora, anaquel, claude-pet, nexo y 2-player-web, con íconos animados.</desc>
   <defs>
     <pattern id="ht" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.7" fill="#1a1208"/></pattern>
     <style>
@@ -43,40 +43,29 @@
     <text class="l" x="32" y="182">dirigidos por Claude</text>
     <text class="tag" x="362" y="42">MACOS</text>
   </g></g></g>
-  <g transform="translate(414 8) rotate(0.5 192 100)"><g class="enter" style="animation-delay:0.12s"><g class="fl" style="animation-delay:-1.1s">
-    <rect x="8" y="8" width="384" height="200" rx="14" fill="#e0b13a" fill-opacity=".9"/>
-    <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
-    <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
-    <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
-    <g class="spin" style="transform-origin:64px 62px"><path class="ink" d="M64 34v-8M64 98v-8M36 62h-8M100 62h-8M44 42l-6-6M90 88l-6-6M84 42l6-6M44 82l-6 6"/></g><circle class="ink beat" cx="64" cy="62" r="12"/>
-    <text class="n" x="32" y="130">girasol</text>
-    <text class="l" x="32" y="160">salud en el Apple Watch,</text>
-    <text class="l" x="32" y="182">gratis y open source</text>
-    <text class="tag" x="362" y="42">WATCHOS</text>
-  </g></g></g>
-  <g transform="translate(822 8) rotate(-0.4 192 100)"><g class="enter" style="animation-delay:0.24s"><g class="fl" style="animation-delay:-2.2s">
-    <rect x="8" y="8" width="384" height="200" rx="14" fill="#3f8f86" fill-opacity=".9"/>
-    <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
-    <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
-    <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
-    <rect class="ink" x="36" y="46" width="72" height="42" rx="21"/><path class="ink" d="M58 58v18M49 67h18"/><circle class="ink btn" cx="88" cy="62" r="3.5"/><circle class="ink btn" style="animation-delay:.45s" cx="97" cy="72" r="3.5"/>
-    <text class="n" x="32" y="130">2-player-web</text>
-    <text class="l" x="32" y="160">500 minijuegos para dos</text>
-    <text class="l" x="32" y="182">en un solo teclado</text>
-    <text class="tag" x="362" y="42">WEB</text>
-  </g></g></g>
-  <g transform="translate(6 244) rotate(0.4 192 100)"><g class="enter" style="animation-delay:0.36s"><g class="fl" style="animation-delay:-3.3s">
+  <g transform="translate(414 8) rotate(0.4 192 100)"><g class="enter" style="animation-delay:0.12s"><g class="fl" style="animation-delay:-3.3s">
     <rect x="8" y="8" width="384" height="200" rx="14" fill="#c0583d" fill-opacity=".9"/>
     <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
     <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
     <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
     <g transform="translate(0 -10)"><ellipse class="ink" cx="64" cy="48" rx="26" ry="9"/><path class="ink" d="M38 48v22c0 5 12 9 26 9s26-4 26-9V48M38 70v22c0 5 12 9 26 9s26-4 26-9V70"/><ellipse class="scan" cx="64" cy="48" rx="26" ry="9" fill="#f0683a"/></g>
-    <text class="n" x="32" y="130">inventario-saas</text>
-    <text class="l" x="32" y="160">POS multi-tenant,</text>
-    <text class="l" x="32" y="182">Laravel + Next.js</text>
+    <text class="n" x="32" y="130">anaquel</text>
+    <text class="l" x="32" y="160">pos multi-tenant,</text>
+    <text class="l" x="32" y="182">laravel + next.js</text>
     <text class="tag" x="362" y="42">BACKEND</text>
   </g></g></g>
-  <g transform="translate(414 244) rotate(-0.5 192 100)"><g class="enter" style="animation-delay:0.48s"><g class="fl" style="animation-delay:-4.4s">
+  <g transform="translate(822 8) rotate(0.6 192 100)"><g class="enter" style="animation-delay:0.24s"><g class="fl" style="animation-delay:-5.5s">
+    <rect x="8" y="8" width="384" height="200" rx="14" fill="#7a64a8" fill-opacity=".9"/>
+    <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
+    <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
+    <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
+    <g class="ink"><path d="M44 42h44v10h10v28H34V52h10zM44 80v10M88 80v10M34 62H24M98 62h10"/><path d="M54 58v8M78 58v8M56 74h20"/></g>
+    <text class="n" x="32" y="130">claude-pet</text>
+    <text class="l" x="32" y="160">mascotas de claude code</text>
+    <text class="l" x="32" y="182">y codex en tiempo real</text>
+    <text class="tag" x="362" y="42">MACOS / WINDOWS</text>
+  </g></g></g>
+  <g transform="translate(210 244) rotate(-0.5 192 100)"><g class="enter" style="animation-delay:0.36s"><g class="fl" style="animation-delay:-4.4s">
     <rect x="8" y="8" width="384" height="200" rx="14" fill="#4a6fb0" fill-opacity=".9"/>
     <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
     <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
@@ -87,15 +76,15 @@
     <text class="l" x="32" y="182">el iPhone y el Watch</text>
     <text class="tag" x="362" y="42">APPLE</text>
   </g></g></g>
-  <g transform="translate(822 244) rotate(0.6 192 100)"><g class="enter" style="animation-delay:0.60s"><g class="fl" style="animation-delay:-5.5s">
-    <rect x="8" y="8" width="384" height="200" rx="14" fill="#7a64a8" fill-opacity=".9"/>
+  <g transform="translate(618 244) rotate(-0.4 192 100)"><g class="enter" style="animation-delay:0.48s"><g class="fl" style="animation-delay:-2.2s">
+    <rect x="8" y="8" width="384" height="200" rx="14" fill="#3f8f86" fill-opacity=".9"/>
     <rect class="card" x="0" y="0" width="384" height="200" rx="14"/>
     <rect x="260" y="0" width="124" height="70" rx="14" fill="url(#ht)" opacity=".1"/>
     <rect x="150" y="-9" width="84" height="22" fill="#f2b632" fill-opacity=".85" transform="rotate(-2 192 2)"/>
-    <rect class="ink" x="34" y="34" width="30" height="54" rx="7"/><path class="ink" d="M44 80h10"/><g class="cur"><path class="ink" d="M82 44l0 24 7-6 5 12 6-3-5-11 9-1z"/></g><path class="ink flow" d="M66 56q6-6 12 0"/><path class="ink flow" style="animation-delay:.3s" d="M66 66q10-10 20 0"/>
-    <text class="n" x="32" y="130">zarcillo</text>
-    <text class="l" x="32" y="160">tu iPhone como control</text>
-    <text class="l" x="32" y="182">remoto del Mac, sin servidores</text>
-    <text class="tag" x="362" y="42">IOS</text>
+    <rect class="ink" x="36" y="46" width="72" height="42" rx="21"/><path class="ink" d="M58 58v18M49 67h18"/><circle class="ink btn" cx="88" cy="62" r="3.5"/><circle class="ink btn" style="animation-delay:.45s" cx="97" cy="72" r="3.5"/>
+    <text class="n" x="32" y="130">2-player-web</text>
+    <text class="l" x="32" y="160">500 minijuegos para dos</text>
+    <text class="l" x="32" y="182">en un solo teclado</text>
+    <text class="tag" x="362" y="42">WEB</text>
   </g></g></g>
 </svg>
