@@ -1,0 +1,1 @@
+los logos de `icons.json` vienen de [simple-icons](https://github.com/simple-icons/simple-icons) 16.34.0, licencia CC0-1.0. las marcas pertenecen a sus dueños y se usan solo para indicar tecnologías. csharp y linkedin ya no existen en simple-icons, por eso esos dos se dibujan a mano en `generate.py`.
