@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 262" role="img" aria-labelledby="t d">
+  <title id="t">swift-nio</title>
+  <desc id="d">swift-nio: 0 pull requests mergeados, 1 abiertos</desc>
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .16  0 0 0 0 .1  0 0 0 0 .04  0 0 0 1.1 -.42"/></filter>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.8" fill="#1a1208" fill-opacity=".16"/></pattern>
+    <style>
+      .m{mix-blend-mode:multiply}
+      .pop{transform-box:fill-box;transform-origin:center;animation:pop .6s cubic-bezier(.2,.9,.3,1.3) backwards}
+      @keyframes pop{0%{opacity:0;transform:scale(1.5) rotate(-5deg)}100%{opacity:1;transform:none}}
+      .rise{animation:rise .7s ease-out backwards}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+      .bob{animation:bob 4s ease-in-out infinite}
+      @keyframes bob{50%{transform:translateY(-5px)}}
+      .tw{animation:tw 2.6s ease-in-out infinite}
+      @keyframes tw{50%{opacity:.25}}
+      
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+<g transform="rotate(-0.6 150.0 131.0)"><rect x="24" y="34" width="268" height="210" rx="14" fill="#7a64a8"/><rect x="16" y="26" width="268" height="210" rx="14" fill="#f3ead8" stroke="#1a1208" stroke-width="3"/><rect x="16" y="26" width="268" height="210" rx="14" fill="url(#dots)" opacity=".6"/><rect x="16" y="26" width="268" height="210" rx="14" filter="url(#grain)" class="m" opacity=".22"/><rect x="110.0" y="16" width="80" height="24" fill="#f2b632" opacity=".92" transform="rotate(-2 150.0 26)"/></g>
+<text x="40" y="70" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#1a1208" text-anchor="start" letter-spacing="1" opacity=".55">apple /</text>
+<text x="40" y="110" font-family="Georgia,'Times New Roman',serif" font-size="32" font-weight="700" fill="#1a1208" text-anchor="start" font-style="italic" >swift-nio</text>
+<g class="pop" style="animation-delay:0.6s"><text x="40" y="182" font-family="Georgia,'Times New Roman',serif" font-size="60" font-weight="700" fill="#7a64a8" text-anchor="start" font-style="italic" >1</text></g>
+<text x="104" y="182" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="22" font-weight="700" fill="#1a1208" text-anchor="start" opacity=".7">PR</text>
+<g class="pop" style="animation-delay:0.8999999999999999s" transform="rotate(-7 224 146)"><rect x="168" y="130" width="106" height="32" rx="6" fill="#fbf6ea" fill-opacity=".85" stroke="#3b46a8" stroke-width="3"/><text x="221" y="152" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#3b46a8" text-anchor="middle" letter-spacing="1.2" >en revisión</text></g>
+<text x="40" y="222" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#1a1208" text-anchor="start" opacity=".55">NIOFileSystem: add FileInfo.o…</text>
+</svg>
