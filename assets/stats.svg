@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 330" role="img" aria-labelledby="t d">
   <title id="t">contribuciones en GitHub</title>
-  <desc id="d">1153 contribuciones en 12 meses: 639 commits, 47 pull requests, 11 issues; racha actual 4 días, mejor racha 10</desc>
+  <desc id="d">1153 contribuciones en 12 meses: 639 commits, 47 pull requests, 11 issues; racha actual 0 días, mejor racha 10</desc>
   <defs>
     <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .16  0 0 0 0 .1  0 0 0 0 .04  0 0 0 1.1 -.42"/></filter>
     <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.8" fill="#1a1208" fill-opacity=".16"/></pattern>
@@ -41,7 +41,7 @@
 <text x="524" y="274" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#1a1208" text-anchor="start" letter-spacing="1.5" opacity=".65">repos públicos</text>
 </g>
 <g class="rise" style="animation-delay:0.55s"><g transform="rotate(0.6 839.0 232.0)"><rect x="740" y="178" width="214" height="124" rx="14" fill="#f0683a"/><rect x="732" y="170" width="214" height="124" rx="14" fill="#f3ead8" stroke="#1a1208" stroke-width="3"/><rect x="732" y="170" width="214" height="124" rx="14" fill="url(#dots)" opacity=".6"/><rect x="732" y="170" width="214" height="124" rx="14" filter="url(#grain)" class="m" opacity=".22"/></g>
-<g class="pop" style="animation-delay:0.7s"><text x="754" y="244" font-family="Georgia,'Times New Roman',serif" font-size="54" font-weight="700" fill="#f0683a" text-anchor="start" font-style="italic" >4 d</text></g>
+<g class="pop" style="animation-delay:0.7s"><text x="754" y="244" font-family="Georgia,'Times New Roman',serif" font-size="54" font-weight="700" fill="#f0683a" text-anchor="start" font-style="italic" >0 d</text></g>
 <text x="756" y="274" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#1a1208" text-anchor="start" letter-spacing="1.5" opacity=".65">racha actual</text>
 </g>
 <g class="rise" style="animation-delay:0.65s"><g transform="rotate(-0.4 1071.0 232.0)"><rect x="972" y="178" width="214" height="124" rx="14" fill="#f2b632"/><rect x="964" y="170" width="214" height="124" rx="14" fill="#f3ead8" stroke="#1a1208" stroke-width="3"/><rect x="964" y="170" width="214" height="124" rx="14" fill="url(#dots)" opacity=".6"/><rect x="964" y="170" width="214" height="124" rx="14" filter="url(#grain)" class="m" opacity=".22"/></g>

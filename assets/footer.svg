@@ -23,6 +23,6 @@
   <g clip-path="url(#f)"><g style="animation:sway 14s ease-in-out infinite alternate"><path d="M-80 60 C 140 20, 300 100, 520 58 S 900 16, 1280 64 V 160 H-80z" fill="#3b46a8" opacity="0.9"/></g><g style="animation:sway 18s ease-in-out infinite alternate"><path d="M-80 74 C 140 34, 300 114, 520 72 S 900 30, 1280 78 V 160 H-80z" fill="#7a64a8" opacity="0.72"/></g><g style="animation:sway 22s ease-in-out infinite alternate"><path d="M-80 88 C 140 48, 300 128, 520 86 S 900 44, 1280 92 V 160 H-80z" fill="#f0683a" opacity="0.54"/></g>
     <rect x="320" y="70" width="560" height="56" rx="12" fill="#fbf6ea" stroke="#1a1208" stroke-width="3"/>
     <text x="600" y="96" font-family="Georgia,'Times New Roman',serif" font-size="22" font-weight="700" fill="#1a1208" text-anchor="middle" font-style="italic" >hecho a mano en managua</text>
-    <text x="600" y="116" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="400" fill="#1a1208" text-anchor="middle" opacity=".6">actualizado 2026-10-08 · datos de la api de github</text>
+    <text x="600" y="116" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="400" fill="#1a1208" text-anchor="middle" opacity=".6">actualizado 2026-10-09 · datos de la api de github</text>
   </g>
 </svg>
