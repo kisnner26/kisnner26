@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 SNAPSHOT = ROOT / "data" / "snapshot.json"
 LOGIN = "kisnner26"
+START = date(2026, 6, 1)  # cuando empezaron mis contribuciones reales
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 ICONS = json.loads((Path(__file__).parent / "icons.json").read_text(encoding="utf-8"))
 
 # paleta risografía, la misma del banner y las tarjetas
@@ -72,15 +74,17 @@ def rest(path):
     return json.loads(subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True).stdout)
 
 
-QUERY = """query($login:String!){ user(login:$login){ followers{totalCount}
+QUERY = """query($login:String!,$from:DateTime!){ user(login:$login){ followers{totalCount}
  repositories(ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC,first:100){ totalCount nodes{ name languages(first:8,orderBy:{field:SIZE,direction:DESC}){ edges{ size node{name} } } } }
- contributionsCollection{ totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions
+ contributionsCollection(from:$from){ totalCommitContributions totalPullRequestContributions totalIssueContributions totalPullRequestReviewContributions
   contributionCalendar{ totalContributions weeks{ contributionDays{ date contributionCount } } } } } }"""
 
 
 def collect():
-    user = graphql(QUERY, {"login": LOGIN})["user"]
-    collection = user["contributionsCollection"]
+    year_start = (datetime.now(timezone.utc) - timedelta(days=364)).strftime("%Y-%m-%dT00:00:00Z")
+    user = graphql(QUERY, {"login": LOGIN, "from": year_start})["user"]
+    year = user["contributionsCollection"]
+    collection = graphql(QUERY, {"login": LOGIN, "from": START.strftime("%Y-%m-%dT00:00:00Z")})["user"]["contributionsCollection"]
     languages = Counter()
     for repo in user["repositories"]["nodes"]:
         for edge in repo["languages"]["edges"]:
@@ -94,15 +98,17 @@ def collect():
         oss.append(dict(owner=owner, name=name, link=link, merged=merged, open=opened, total=len(found), latest=latest))
     external = rest(f"search/issues?q=author:{LOGIN}+type:pr+is:merged+-user:{LOGIN}&per_page=100")["items"]
     projects = sorted({item["repository_url"].rsplit("/", 1)[-1] for item in external})
-    days = [day for week in collection["contributionCalendar"]["weeks"] for day in week["contributionDays"]]
+    days = [day for week in year["contributionCalendar"]["weeks"] for day in week["contributionDays"]]
     return dict(
         generated=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         total=collection["contributionCalendar"]["totalContributions"],
         commits=collection["totalCommitContributions"], prs=collection["totalPullRequestContributions"],
         issues=collection["totalIssueContributions"], reviews=collection["totalPullRequestReviewContributions"],
         repos=user["repositories"]["totalCount"], followers=user["followers"]["totalCount"],
-        weeks=[[day["contributionCount"] for day in week["contributionDays"]] for week in collection["contributionCalendar"]["weeks"]],
-        dates=[[day["date"] for day in week["contributionDays"]] for week in collection["contributionCalendar"]["weeks"]],
+        since=START.isoformat(),
+        since_weeks=[[day["contributionCount"] for day in week["contributionDays"] if day["date"] >= START.isoformat()] for week in collection["contributionCalendar"]["weeks"]],
+        weeks=[[day["contributionCount"] for day in week["contributionDays"]] for week in year["contributionCalendar"]["weeks"]],
+        dates=[[day["date"] for day in week["contributionDays"]] for week in year["contributionCalendar"]["weeks"]],
         languages=languages.most_common(8), oss=oss,
         merged_external=len(external), merged_projects=projects, last_day=days[-1]["date"] if days else "")
 
@@ -225,12 +231,15 @@ def about():
 
 
 def stats(d):
-    current, best = streaks(d["weeks"])
-    weekly = [sum(w) for w in d["weeks"]]
+    since = date.fromisoformat(d.get("since", START.isoformat()))
+    weeks = [w for w in d.get("since_weeks", d["weeks"]) if w]
+    current, best = streaks(weeks)
+    weekly = [sum(w) for w in weeks]
+    since_label = f"desde {MESES[since.month - 1]} de {since.year}"
     body = [card(24, 28, 450, 270, ORANGE, rot=-.3)]
     body.append(text(52, 78, "contribuciones", 15, INK, "mono", 700, spacing=3, extra='opacity=".6"'))
     body.append(f'<g class="pop">{text(50, 168, d["total"], 96, BLUE)}</g>')
-    body.append(text(54, 198, "en los últimos 12 meses", 17, INK, "mono", 400, extra='opacity=".7"'))
+    body.append(text(54, 198, since_label, 17, INK, "mono", 400, extra='opacity=".7"'))
     top = max(weekly) or 1
     pts = [(58 + i * (392 / max(len(weekly) - 1, 1)), 278 - (v / top) * 58) for i, v in enumerate(weekly)]
     path = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts)
@@ -246,7 +255,7 @@ def stats(d):
         body.append(f'<g class="pop" style="animation-delay:{.3 + i * .1}s">{text(x + 22, y + 74, value, 54, color if color != GOLD else INK)}</g>')
         body.append(text(x + 24, y + 104, label, 14, INK, "mono", 700, spacing=1.5, extra='opacity=".65"'))
         body.append("</g>")
-    return svg(1200, 330, "contribuciones en GitHub", f"{d['total']} contribuciones en 12 meses: {d['commits']} commits, {d['prs']} pull requests, {d['issues']} issues; racha actual {current} días, mejor racha {best}",
+    return svg(1200, 330, "contribuciones en GitHub", f"{d['total']} contribuciones {since_label}: {d['commits']} commits, {d['prs']} pull requests, {d['issues']} issues; racha actual {current} días, mejor racha {best}",
                "\n".join(body), "@keyframes draw{to{stroke-dashoffset:0}}")
 
 
@@ -282,7 +291,7 @@ def heatmap(d):
         body.append(f'<rect x="{lx + 54 + i * 26}" y="232" width="16" height="16" rx="4" fill="{color}" stroke="{INK}" stroke-opacity=".35"/>')
     body.append(text(lx + 54 + 5 * 26 + 6, 244, "más", 12, INK, "mono", 400, extra='opacity=".6"'))
     style = f"@keyframes scan{{from{{transform:translateX(0)}}to{{transform:translateX({53 * pitch}px)}}}} .m{{mix-blend-mode:multiply}}"
-    return svg(1200, 290, "mapa de contribuciones", "calendario de contribuciones de los últimos 12 meses, un cuadro por día", "\n".join(body), style)
+    return svg(1200, 290, "mapa de contribuciones", "calendario de contribuciones del último año, un cuadro por día", "\n".join(body), style)
 
 
 def languages(d):

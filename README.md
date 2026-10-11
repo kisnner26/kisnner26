@@ -23,7 +23,7 @@
 <p align="center"><img src="assets/h-contribuciones.svg" alt="02 contribuciones" width="100%"></p>
 
 <p align="center">
-  <img src="assets/stats.svg" alt="contribuciones en los últimos 12 meses: commits, pull requests, issues, repos y rachas" width="100%">
+  <img src="assets/stats.svg" alt="contribuciones desde junio de 2026: commits, pull requests, issues, repos y rachas" width="100%">
   <img src="assets/heatmap.svg" alt="mapa de calor de contribuciones, un cuadro por día" width="100%">
   <img src="assets/langs.svg" alt="lenguajes más usados en mis repositorios públicos" width="100%">
 </p>
