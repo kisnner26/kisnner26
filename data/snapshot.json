@@ -1,12 +1,12 @@
 {
- "generated": "2026-10-12",
- "total": 1436,
- "commits": 800,
- "prs": 48,
+ "generated": "2026-10-13",
+ "total": 1625,
+ "commits": 944,
+ "prs": 52,
  "issues": 11,
  "reviews": 0,
- "repos": 40,
- "followers": 3,
+ "repos": 44,
+ "followers": 4,
  "since": "2026-06-01",
  "since_weeks": [
   [
@@ -173,7 +173,7 @@
   [
    10,
    26,
-   587,
+   601,
    25,
    56,
    42,
@@ -181,8 +181,8 @@
   ],
   [
    49,
-   0,
-   0,
+   145,
+   30,
    0,
    0,
    0,
@@ -486,7 +486,6 @@
   [
    0,
    0,
-   0,
    1,
    0,
    0
@@ -944,7 +943,7 @@
   [
    10,
    26,
-   587,
+   601,
    25,
    56,
    42,
@@ -952,13 +951,13 @@
   ],
   [
    49,
-   0,
+   145,
+   30,
    0
   ]
  ],
  "dates": [
   [
-   "2025-10-13",
    "2025-10-14",
    "2025-10-15",
    "2025-10-16",
@@ -1427,29 +1426,30 @@
   [
    "2026-10-11",
    "2026-10-12",
-   "2026-10-13"
+   "2026-10-13",
+   "2026-10-14"
   ]
  ],
  "languages": [
   [
    "JavaScript",
-   5799138
+   5958968
   ],
   [
    "Swift",
-   5175587
+   5236968
   ],
   [
    "TypeScript",
    756843
   ],
   [
-   "PHP",
-   577754
+   "HTML",
+   652596
   ],
   [
-   "HTML",
-   462964
+   "PHP",
+   577754
   ],
   [
    "C#",
@@ -1461,7 +1461,7 @@
   ],
   [
    "CSS",
-   245918
+   294863
   ]
  ],
  "oss": [
@@ -1479,9 +1479,9 @@
    "name": "rizin",
    "link": "https://github.com/rizinorg/rizin/pulls?q=is%3Apr+author%3Akisnner26",
    "merged": 0,
-   "open": 1,
-   "total": 7,
-   "latest": "`rz-find`: fix string truncation in `-Z` mode"
+   "open": 3,
+   "total": 9,
+   "latest": "doc(om): clarify default physical offset"
   },
   {
    "owner": "apple",
@@ -1510,5 +1510,5 @@
   "radare2",
   "swift-llm-kit"
  ],
- "last_day": "2026-10-13"
+ "last_day": "2026-10-14"
 }
