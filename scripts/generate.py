@@ -24,9 +24,10 @@ BLACK, INK, WHITE = "#000000", "#0b0b0c", "#ffffff"
 FONT = "font-family=\"-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif\""
 MONO = "font-family=\"'SF Mono',Menlo,Consolas,monospace\""
 
+MANAGUA = (12.13, -86.25)
 ROLES = ["Apps nativas para Apple.", "Backend transaccional.", "Ingeniería inversa.", "Open source."]
 
-# (etiqueta, titular, subtítulo, meta, color de la animación)
+# (etiqueta, titular, subtítulo, meta)
 TILES = [
     ("ALTSERVER", ["Vuelve a iniciar", "sesión."], ["Arreglo propuesto para AltServer", "en macOS 27."], "PR abierto en AltStore"),
     ("RELEVO", ["Reparte el", "trabajo."], ["Servicio en Node con worker threads", "y balanceador propio."], "REST · GraphQL · WebSocket · 36 pruebas"),
@@ -81,87 +82,176 @@ def text(x, y, s, size, fill=WHITE, weight=400, anchor="start", opacity=1, spaci
     return f'<text x="{x}" y="{y}" {family} font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{ls}{op} {extra}>{escape(str(s))}</text>'
 
 
+def rnd(i, salt):
+    return (math.sin(i * 12.9898 + salt * 78.233) * 43758.5453) % 1
+
+
+# ---------------------------------------------------------------- el globo
+def globe(cx, cy, radius, period=30, frames=36, points=380, tilt=-0.38):
+    """un globo de puntos que gira. cada punto se anima con smil entre posiciones precalculadas;
+    los de atrás se apagan y achican para que se lea la profundidad."""
+
+    def project(lat, lon, angle):
+        la, lo = math.radians(lat), math.radians(lon) + angle
+        x, y, z = math.cos(la) * math.sin(lo), math.sin(la), math.cos(la) * math.cos(lo)
+        y, z = y * math.cos(tilt) - z * math.sin(tilt), y * math.sin(tilt) + z * math.cos(tilt)
+        return cx + radius * x, cy - radius * y, z
+
+    angles = [2 * math.pi * f / frames for f in range(frames + 1)]
+    out = []
+    # paralelos: girar sobre el eje no los cambia, así que son elipses quietas
+    for lat in (-60, -30, 0, 30, 60):
+        la = math.radians(lat)
+        ry = radius * math.cos(la) * abs(math.sin(tilt))
+        out.append(f'<ellipse cx="{cx}" cy="{cy - radius * math.sin(la) * math.cos(tilt):.1f}" rx="{radius * math.cos(la):.1f}" ry="{ry:.1f}" '
+                   f'fill="none" stroke="{WHITE}" stroke-opacity="{.16 if lat == 0 else .07}" stroke-width="1"/>')
+    out.append(f'<circle cx="{cx}" cy="{cy}" r="{radius}" fill="none" stroke="{WHITE}" stroke-opacity=".22" stroke-width="1.2"/>')
+
+    golden = math.pi * (3 - math.sqrt(5))
+    for i in range(points):
+        y = 1 - 2 * (i + .5) / points
+        lat = math.degrees(math.asin(y))
+        lon = math.degrees((i * golden) % (2 * math.pi))
+        xs, ys, os_ = [], [], []
+        for a in angles:
+            px, py, z = project(lat, lon, a)
+            xs.append(f"{px:.1f}")
+            ys.append(f"{py:.1f}")
+            os_.append(f"{max(.06, ((z + 1) / 2) ** 2.2):.2f}")
+        size = 1.4 + 1.4 * rnd(i, 3)
+        out.append(f'<circle r="{size:.1f}" fill="{WHITE}">'
+                   f'<animate attributeName="cx" values="{";".join(xs)}" dur="{period}s" repeatCount="indefinite"/>'
+                   f'<animate attributeName="cy" values="{";".join(ys)}" dur="{period}s" repeatCount="indefinite"/>'
+                   f'<animate attributeName="opacity" values="{";".join(os_)}" dur="{period}s" repeatCount="indefinite"/></circle>')
+
+    # managua: un punto con un anillo que late y su coordenada, visibles solo de frente
+    xs, ys, os_ = [], [], []
+    for a in angles:
+        px, py, z = project(*MANAGUA, a)
+        xs.append(f"{px:.1f}")
+        ys.append(f"{py:.1f}")
+        os_.append("1" if z > .15 else f"{max(0, z + .15) * 4:.2f}" if z > -.1 else "0")
+    motion = (f'<animate attributeName="cx" values="{";".join(xs)}" dur="{period}s" repeatCount="indefinite"/>'
+              f'<animate attributeName="cy" values="{";".join(ys)}" dur="{period}s" repeatCount="indefinite"/>')
+    fade = f'<animate attributeName="opacity" values="{";".join(os_)}" dur="{period}s" repeatCount="indefinite"/>'
+    ring = (f'<circle r="6" fill="none" stroke="{WHITE}" stroke-width="1.6">{motion}'
+            f'<animate attributeName="r" values="6;30" dur="2.2s" repeatCount="indefinite"/>'
+            f'<animate attributeName="stroke-opacity" values=".9;0" dur="2.2s" repeatCount="indefinite"/></circle>')
+    dot = f'<circle r="5.5" fill="{WHITE}">{motion}</circle>'
+    label_x = ";".join(f"{float(x) + 14:.1f}" for x in xs)
+    label_y = ";".join(f"{float(y) - 12:.1f}" for y in ys)
+    label = (f'<text {MONO} font-size="13" font-weight="600" fill="{WHITE}" letter-spacing="1">MANAGUA'
+             f'<animate attributeName="x" values="{label_x}" dur="{period}s" repeatCount="indefinite"/>'
+             f'<animate attributeName="y" values="{label_y}" dur="{period}s" repeatCount="indefinite"/></text>')
+    out.append(f'<g>{fade}{ring}{dot}{label}</g>')
+    return "\n  ".join(out)
+
+
 def hero():
-    # barras que laten como un ecualizador, más altas al centro y desvanecidas en los bordes
-    bars, count, cy = [], 64, 506
-    for i in range(count):
-        envelope = math.exp(-(((i - (count - 1) / 2) / 17) ** 2))
-        height = 26 + 112 * envelope + 12 * math.sin(i * 1.7)
-        x = 30 + i * 17.8
-        duration = 1.1 + (math.sin(i * 12.9898) * 43758.5453 % 1) * 1.5
-        delay = -(math.sin(i * 78.233) * 43758.5453 % 1) * duration
-        bars.append(f'<rect class="bar" x="{x:.1f}" y="{cy - height / 2:.1f}" width="7" height="{height:.1f}" rx="3.5" style="animation-duration:{duration:.2f}s;animation-delay:{delay:.2f}s"/>')
+    stars = "".join(
+        f'<circle cx="{40 + rnd(i, 1) * 1120:.0f}" cy="{30 + rnd(i, 2) * 580:.0f}" r="{.6 + rnd(i, 4) * .9:.1f}" fill="{WHITE}" class="star" '
+        f'style="animation-duration:{2.5 + rnd(i, 5) * 4:.1f}s;animation-delay:-{rnd(i, 6) * 6:.1f}s"/>' for i in range(46))
     roles = "".join(f'<g class="role{" first" if i == 0 else ""}" style="animation-delay:{i * 3.2}s">'
-                    f'{text(600, 330, role, 46, WHITE, 600, "middle", spacing=-1)}</g>' for i, role in enumerate(ROLES))
-    defs = """    <linearGradient id="name" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#8e8e93"/></linearGradient>
-    <radialGradient id="glow" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-    <linearGradient id="edge" x1="0" x2="1"><stop offset="0" stop-color="#000"/><stop offset=".22" stop-color="#fff"/><stop offset=".78" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
-    <mask id="fade"><rect width="1200" height="640" fill="url(#edge)"/></mask>
-    <filter id="focus" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="0"><animate attributeName="stdDeviation" from="22" to="0" dur="1.6s" begin="0s" fill="freeze" calcMode="spline" keySplines=".2 .8 .2 1" keyTimes="0;1"/></feGaussianBlur></filter>"""
-    body = f"""  <rect width="1200" height="640" rx="32" fill="{BLACK}"/>
-  <rect width="1200" height="640" rx="32" fill="url(#glow)" class="glow"/>
-  {text(600, 118, "MANAGUA, NICARAGUA", 17, WHITE, 500, "middle", .5, 5)}
-  <g filter="url(#focus)"><g class="name">{text(600, 244, "Kisnner Obando", 112, "url(#name)", 700, "middle", spacing=-5)}</g></g>
+                    f'{text(76, 470, role, 34, WHITE, 500, spacing=-.6, opacity=.82)}</g>' for i, role in enumerate(ROLES))
+    defs = """    <linearGradient id="silver" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1400" y2="0" spreadMethod="reflect">
+      <stop offset="0" stop-color="#8e8e93"/><stop offset=".42" stop-color="#d8d8dc"/><stop offset=".5" stop-color="#ffffff"/><stop offset=".58" stop-color="#d8d8dc"/><stop offset="1" stop-color="#8e8e93"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-700 0;700 0" dur="6s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="880" cy="320" r="360" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".13"/><stop offset=".55" stop-color="#fff" stop-opacity=".03"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <clipPath id="wipe"><rect x="0" y="120" width="0" height="300"><animate attributeName="width" from="0" to="760" dur="1.6s" begin=".2s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".25 .8 .25 1"/></rect></clipPath>
+    <clipPath id="card"><rect width="1200" height="640" rx="32"/></clipPath>"""
+    body = f"""  <g clip-path="url(#card)">
+  <rect width="1200" height="640" fill="{BLACK}"/>
+  {stars}
+  <rect width="1200" height="640" fill="url(#halo)" class="breathe"/>
+  <g transform="rotate(-16 880 320)"><path d="M570 320 A310 74 0 0 1 1190 320" fill="none" stroke="{WHITE}" stroke-opacity=".10" stroke-width="1.2"/></g>
+  {globe(880, 320, 236)}
+  <g transform="rotate(-16 880 320)">
+    <path d="M1190 320 A310 74 0 0 1 570 320" fill="none" stroke="{WHITE}" stroke-opacity=".28" stroke-width="1.2"/>
+    <circle r="5" fill="{WHITE}"><animateMotion dur="9s" repeatCount="indefinite" path="M570 320 A310 74 0 0 1 1190 320 A310 74 0 0 1 570 320"/><animate attributeName="opacity" values=".18;1" keyTimes="0;.5" calcMode="discrete" dur="9s" repeatCount="indefinite"/></circle>
+  </g>
+  {text(76, 150, "MANAGUA, NICARAGUA · 12.13°N 86.25°W", 14, WHITE, 500, opacity=.5, spacing=2.4, kind="mono")}
+  <g clip-path="url(#wipe)">
+    {text(70, 284, "Kisnner", 132, "url(#silver)", 700, spacing=-6)}
+    {text(70, 404, "Obando.", 132, "url(#silver)", 700, spacing=-6)}
+  </g>
   {roles}
-  <g mask="url(#fade)" fill="{WHITE}">{"".join(bars)}</g>"""
-    style = """.name{animation:rise 1.4s cubic-bezier(.2,.8,.2,1) backwards}
-      @keyframes rise{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
-      .glow{animation:glow 6s ease-in-out infinite alternate}
-      @keyframes glow{from{opacity:.55}to{opacity:1}}
-      .bar{transform-box:fill-box;transform-origin:center;animation:eq 1.6s ease-in-out infinite;transform:scaleY(.25)}
-      @keyframes eq{0%,100%{transform:scaleY(.22)}50%{transform:scaleY(1)}}
+  {text(76, 560, "kisnner26", 14, WHITE, 500, opacity=.35, spacing=2, kind="mono")}
+  </g>"""
+    style = """.star{animation:twinkle 4s ease-in-out infinite}
+      @keyframes twinkle{0%,100%{opacity:.08}50%{opacity:.55}}
+      .breathe{animation:breathe 7s ease-in-out infinite alternate}
+      @keyframes breathe{from{opacity:.6}to{opacity:1}}
       .role{opacity:0;animation:role 12.8s infinite}
-      @keyframes role{0%{opacity:0;transform:translateY(14px)}4%{opacity:1;transform:none}22%{opacity:1;transform:none}26%{opacity:0;transform:translateY(-14px)}100%{opacity:0}}
-      @media (prefers-reduced-motion:reduce){.role{opacity:0}.role.first{opacity:1}.bar{transform:scaleY(.6)}}"""
+      @keyframes role{0%{opacity:0;transform:translateY(16px)}4%{opacity:1;transform:none}22%{opacity:1;transform:none}26%{opacity:0;transform:translateY(-16px)}100%{opacity:0}}
+      @media (prefers-reduced-motion:reduce){.role{opacity:0}.role.first{opacity:1}}"""
     return svg(1200, 640, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua.", body, style, defs)
 
 
+# ---------------------------------------------------------------- tarjetas
+def reveal(cid, x, y, w, h, times, values):
+    return (f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="0" height="{h}">'
+            f'<animate attributeName="width" values="{values}" keyTimes="{times}" dur="8s" repeatCount="indefinite"/></rect></clipPath>')
+
+
 def tile_visual(index):
-    if index == 0:  # un círculo que se cierra y se confirma: el inicio de sesión
-        return f"""  <g transform="translate(192 272)">
-    <circle r="46" fill="none" stroke="{WHITE}" stroke-opacity=".14" stroke-width="2"/>
-    <circle class="ring" r="46" fill="none" stroke="{WHITE}" stroke-width="3" stroke-linecap="round" transform="rotate(-90)"/>
-    <path class="tick" d="M-14 2 -4 12 15 -10" fill="none" stroke="{WHITE}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>""", """.ring{stroke-dasharray:290;animation:ring 5s cubic-bezier(.4,0,.2,1) infinite}
-      @keyframes ring{0%{stroke-dashoffset:290}42%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
-      .tick{stroke-dasharray:50;animation:tick 5s ease-out infinite}
-      @keyframes tick{0%,40%{stroke-dashoffset:50;opacity:1}58%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{opacity:0}}"""
-    if index == 1:  # carriles con trabajos que avanzan a distinta velocidad
-        lanes, dots = "", ""
-        for lane, (y, duration) in enumerate(((246, 2.3), (264, 3.1), (282, 2.0), (300, 3.7))):
-            lanes += f'<rect x="56" y="{y}" width="300" height="2" rx="1" fill="{WHITE}" fill-opacity=".14"/>'
+    if index == 0:  # una terminal: primero el 503, tachado; después el 200
+        defs = (reveal("l1", 32, 228, 320, 22, "0;.12;.92;1", "0;320;320;0")
+                + reveal("l2", 32, 254, 320, 22, "0;.16;.28;.92;1", "0;0;320;320;0")
+                + reveal("l3", 32, 280, 320, 22, "0;.36;.46;.92;1", "0;0;320;320;0"))
+        body = f"""  <rect x="22" y="216" width="340" height="96" rx="14" fill="{WHITE}" fill-opacity=".04" stroke="{WHITE}" stroke-opacity=".08"/>
+  <g clip-path="url(#l1)">{text(36, 244, "$ altserver --sign-in", 13, WHITE, 500, opacity=.75, kind="mono")}</g>
+  <g clip-path="url(#l2)">{text(36, 270, "← 503  Service Unavailable", 13, WHITE, 400, opacity=.4, kind="mono")}</g>
+  <path d="M36 266h214" stroke="{WHITE}" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="214"><animate attributeName="stroke-dashoffset" values="214;214;0;0;214" keyTimes="0;.3;.34;.92;1" dur="8s" repeatCount="indefinite"/></path>
+  <g clip-path="url(#l3)">{text(36, 296, "← 200  OK · signed in", 13, WHITE, 700, kind="mono")}<rect x="212" y="285" width="8" height="14" fill="{WHITE}" class="caret"/></g>"""
+        return defs, body, ".caret{animation:caret 1s steps(1) infinite}\n      @keyframes caret{50%{opacity:0}}"
+    if index == 1:  # carriles con trabajos que avanzan, cada uno con su estela
+        lanes, jobs = "", ""
+        for lane, (y, duration) in enumerate(((240, 2.3), (260, 3.1), (280, 2.0), (300, 3.7))):
+            lanes += f'<rect x="56" y="{y}" width="300" height="1.5" rx="1" fill="{WHITE}" fill-opacity=".12"/>'
             for k in range(2):
-                dots += (f'<circle class="job" cx="62" cy="{y + 1}" r="4.5" fill="{WHITE}" '
-                         f'style="animation-duration:{duration}s;animation-delay:-{k * duration / 2:.2f}s"/>')
-        return f"""  {lanes}
-  <rect x="34" y="236" width="8" height="76" rx="4" fill="{WHITE}"/>
-  {dots}""", ".job{animation:job 2.5s linear infinite}\n      @keyframes job{from{transform:translateX(0);opacity:0}12%{opacity:1}88%{opacity:1}to{transform:translateX(284px);opacity:0}}"
-    # tres versos y el que suena, resaltado
-    lines = ""
-    for i, (y, w) in enumerate(((246, 262), (270, 196), (294, 232))):
-        lines += f'<rect class="verse" x="34" y="{y}" width="{w}" height="12" rx="6" fill="{WHITE}" style="animation-delay:{i * 2}s"/>'
-    return f"  {lines}", ".verse{opacity:.2;animation:verse 6s ease-in-out infinite}\n      @keyframes verse{0%,4%{opacity:.2}10%,30%{opacity:1}36%,100%{opacity:.2}}"
+                jobs += (f'<g class="job" style="animation-duration:{duration}s;animation-delay:-{k * duration / 2:.2f}s">'
+                         f'<rect x="28" y="{y - 1.5}" width="34" height="4.5" rx="2.2" fill="url(#tail)"/>'
+                         f'<circle cx="62" cy="{y + .7}" r="4.5" fill="{WHITE}"/></g>')
+        defs = '<linearGradient id="tail"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient>'
+        body = f"""  {lanes}
+  <rect x="34" y="230" width="7" height="80" rx="3.5" fill="{WHITE}" class="beat"/>
+  {jobs}"""
+        style = (".job{animation:job 2.5s linear infinite}\n      @keyframes job{from{transform:translateX(0);opacity:0}10%{opacity:1}88%{opacity:1}to{transform:translateX(286px);opacity:0}}"
+                 "\n      .beat{transform-box:fill-box;transform-origin:center;animation:beat 1.2s ease-in-out infinite}\n      @keyframes beat{50%{transform:scaleY(.82)}}")
+        return defs, body, style
+    # karaoke: cada verso se llena de blanco mientras "suena"
+    defs, body = "", ""
+    for i, (y, w) in enumerate(((240, 280), (266, 210), (292, 248))):
+        start, end = .02 + i * .3, .02 + i * .3 + .26
+        defs += (f'<clipPath id="v{i}"><rect x="32" y="{y}" width="0" height="12">'
+                 f'<animate attributeName="width" values="0;0;{w};{w};0" keyTimes="0;{start:.2f};{end:.2f};.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>')
+        body += (f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{WHITE}" fill-opacity=".14"/>'
+                 f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{WHITE}" clip-path="url(#v{i})"/>')
+    return defs, "  " + body, ""
 
 
 def tile(index, label, headline, sub, meta, downloads):
     if index == 0 and downloads:
         meta = f"{downloads} descargas · PR abierto"
-    visual, style = tile_visual(index)
+    defs, visual, style = tile_visual(index)
     body = f"""  <rect width="384" height="360" rx="28" fill="{INK}"/>
+  <rect width="384" height="360" rx="28" fill="url(#lift)"/>
   <rect x=".5" y=".5" width="383" height="359" rx="27.5" fill="none" stroke="{WHITE}" stroke-opacity=".12"/>
   <g class="in" style="animation-delay:{index * .12}s">
     {text(32, 52, label, 13, WHITE, 600, spacing=2.4, opacity=.5)}
     {text(32, 100, headline[0], 34, WHITE, 700, spacing=-1)}
     {text(32, 138, headline[1], 34, WHITE, 700, spacing=-1)}
-    {text(32, 180, sub[0], 15.5, WHITE, 400, opacity=.6)}
-    {text(32, 202, sub[1], 15.5, WHITE, 400, opacity=.6)}
+    {text(32, 178, sub[0], 15.5, WHITE, 400, opacity=.6)}
+    {text(32, 199, sub[1], 15.5, WHITE, 400, opacity=.6)}
   </g>
 {visual}
   {text(32, 340, meta, 12.5, WHITE, 400, opacity=.45, kind="mono")}"""
+    defs += '<radialGradient id="lift" cx=".2" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'
     style = f""".in{{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}}
       @keyframes rise{{from{{opacity:0;transform:translateY(14px)}}to{{opacity:1;transform:none}}}}
       {style}"""
-    return svg(384, 360, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, style)
+    return svg(384, 360, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, style, defs)
 
 
 def strip(d):
