@@ -48,6 +48,15 @@
   <a href="https://github.com/apple/swift-argument-parser/pulls?q=is%3Apr+author%3Akisnner26"><img src="assets/oss-swift-argument-parser.svg" alt="swift-argument-parser: 0 PRs mergeados, 1 abiertos" width="24%"></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/altstoreio/AltStore/pull/1834"><img src="assets/oss-AltStore.svg" alt="AltStore: arreglo del inicio de sesión de AltServer en macOS 27, 1 PR abierto" width="24%"></a>
+  <a href="https://github.com/rileytestut/AltSign/pull/61"><img src="assets/oss-AltSign.svg" alt="AltSign: 1 PR abierto" width="24%"></a>
+</p>
+
+<p align="center">
+  <sub>el arreglo de AltServer en macOS 27: <a href="https://kisnner26.github.io/altserver-80045/">informe de campo</a> · <a href="https://github.com/kisnner26/AltStore/releases/tag/v1.8-windows-anisette-unofficial">build no oficial</a></sub>
+</p>
+
 <p align="center"><img src="assets/h-contacto.svg" alt="05 contacto" width="100%"></p>
 
 <p align="center">
