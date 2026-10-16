@@ -33,7 +33,9 @@ MONO = "font-family=\"'SF Mono',Menlo,Consolas,monospace\""
 OSS = [("radareorg", "radare2", "https://github.com/radareorg/radare2/pulls?q=is%3Apr+author%3A" + LOGIN),
        ("rizinorg", "rizin", "https://github.com/rizinorg/rizin/pulls?q=is%3Apr+author%3A" + LOGIN),
        ("apple", "swift-nio", "https://github.com/apple/swift-nio/pulls?q=is%3Apr+author%3A" + LOGIN),
-       ("apple", "swift-argument-parser", "https://github.com/apple/swift-argument-parser/pulls?q=is%3Apr+author%3A" + LOGIN)]
+       ("apple", "swift-argument-parser", "https://github.com/apple/swift-argument-parser/pulls?q=is%3Apr+author%3A" + LOGIN),
+       ("altstoreio", "AltStore", "https://github.com/altstoreio/AltStore/pulls?q=is%3Apr+author%3A" + LOGIN),
+       ("rileytestut", "AltSign", "https://github.com/rileytestut/AltSign/pulls?q=is%3Apr+author%3A" + LOGIN)]
 PROJECTS = [("lumora", "https://github.com/kisnner26/lumora", ORANGE), ("anaquel", "https://github.com/kisnner26/inventario-saas", PINK),
             ("claude-pet", "https://github.com/kisnner26/claude-pet", PURPLE), ("nexo", "https://github.com/kisnner26/nexo", BLUE),
             ("2-player-web", "https://github.com/kisnner26/2-player-web", TEAL)]
