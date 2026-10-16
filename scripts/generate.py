@@ -46,6 +46,28 @@ def rest(path):
     return json.loads(subprocess.run(["gh", "api", path], check=True, capture_output=True, text=True).stdout)
 
 
+def graphql(query, variables):
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        request = urllib.request.Request("https://api.github.com/graphql",
+                                         data=json.dumps({"query": query, "variables": variables}).encode(),
+                                         headers={"Authorization": f"bearer {token}", "User-Agent": "profile-generator"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            result = json.load(response)
+    else:
+        arguments = ["gh", "api", "graphql", "-f", f"query={query}"]
+        for key, value in variables.items():
+            arguments += ["-f", f"{key}={value}"]
+        result = json.loads(subprocess.run(arguments, check=True, capture_output=True, text=True).stdout)
+    if "errors" in result:
+        raise RuntimeError(result["errors"])
+    return result["data"]
+
+
+CALENDAR = """query($login:String!){ user(login:$login){ contributionsCollection{ contributionCalendar{
+ totalContributions weeks{ contributionDays{ date contributionCount } } } } } }"""
+
+
 def collect():
     merged = rest(f"search/issues?q=author:{LOGIN}+type:pr+is:merged+-user:{LOGIN}&per_page=100")["items"]
     projects = sorted({item["repository_url"].rsplit("/", 1)[-1] for item in merged})
@@ -55,7 +77,16 @@ def collect():
         downloads = sum(asset["download_count"] for release in releases[:1] for asset in release["assets"][:1])
     except Exception:  # el número es un adorno: si falla, se conserva el anterior
         pass
-    return dict(generated=datetime.now(timezone.utc).strftime("%Y-%m-%d"), merged=len(merged), projects=projects, downloads=downloads)
+    calendar = graphql(CALENDAR, {"login": LOGIN})["user"]["contributionsCollection"]["contributionCalendar"]
+    days = [day["contributionCount"] for week in calendar["weeks"] for day in week["contributionDays"]]
+    weeks = [sum(day["contributionCount"] for day in week["contributionDays"]) for week in calendar["weeks"]]
+    first = calendar["weeks"][0]["contributionDays"][0]["date"]
+    streak = best = 0
+    for count in days:
+        streak = streak + 1 if count else 0
+        best = max(best, streak)
+    return dict(generated=datetime.now(timezone.utc).strftime("%Y-%m-%d"), merged=len(merged), projects=projects, downloads=downloads,
+                total=calendar["totalContributions"], weeks=weeks, first=first, streak=best, best_day=max(days or [0]))
 
 
 # ---------------------------------------------------------------- piezas
@@ -254,14 +285,69 @@ def tile(index, label, headline, sub, meta, downloads):
     return svg(384, 360, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, style, defs)
 
 
-def strip(d):
-    names = " · ".join(d["projects"])
-    body = f"""  <rect width="1200" height="84" rx="22" fill="{INK}"/>
-  <rect x=".5" y=".5" width="1199" height="83" rx="21.5" fill="none" stroke="{WHITE}" stroke-opacity=".12"/>
-  {text(40, 54, str(d["merged"]), 40, WHITE, 700, spacing=-1.5)}
-  {text(40 + 26 * len(str(d["merged"])) + 18, 53, "pull requests mergeados", 21, WHITE, 500, opacity=.9)}
-  {text(1160, 51, names, 14, WHITE, 400, "end", .45, kind="mono")}"""
-    return svg(1200, 84, "Open source", f"{d['merged']} pull requests mergeados en proyectos ajenos: {', '.join(d['projects'])}", body)
+MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+
+
+def odometer(x, y, number, size):
+    """cada cifra es una columna 0-9 que rueda hasta su valor; la animación solo define el inicio,
+    así que sin movimiento queda directamente en el número correcto."""
+    digits, out, cx, step = f"{number:,}", [], x, size * 1.0
+    width = size * .6
+    for i, ch in enumerate(digits):
+        if not ch.isdigit():
+            out.append(text(cx, y, ch, size, WHITE, 700))
+            cx += size * .3
+            continue
+        d = int(ch)
+        column = "".join(text(cx, y + k * step, k, size, WHITE, 700, extra='style="font-variant-numeric:tabular-nums"') for k in range(10))
+        out.append(f'<g clip-path="url(#window)"><g class="roll" style="transform:translateY(-{d * step:.0f}px);animation-delay:{.15 + i * .12:.2f}s">{column}</g></g>')
+        cx += width
+    return "".join(out), cx
+
+
+def contributions(d):
+    size, y0 = 112, 196
+    digits, end_x = odometer(64, y0, d["total"], size)
+    # desde junio de 2026, cuando empezaron mis contribuciones reales; antes casi todo es cero
+    first = datetime.strptime(d["first"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    skip = max(0, int((datetime(2026, 5, 31, tzinfo=timezone.utc) - first).days // 7))
+    weeks = d["weeks"][skip:]
+    first = datetime.fromtimestamp(first.timestamp() + skip * 7 * 86400, timezone.utc)
+    peak = max(weeks) or 1
+    left, right, base, top = 560, 1150, 250, 70
+    gap = (right - left) / len(weeks)
+    bars = ""
+    for i, count in enumerate(weeks):
+        h = max(4, (base - top) * (count / peak) ** .5)
+        last = i == len(weeks) - 1
+        bars += (f'<rect class="grow" x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .31:.1f}" '
+                 f'fill="{WHITE}" fill-opacity="{1 if last else .38}" style="animation-delay:{.4 + i * .025:.2f}s"/>')
+    lx = left + (len(weeks) - 1) * gap + gap * .31
+    months = ""
+    for i in range(len(weeks)):
+        dt = first.timestamp() + i * 7 * 86400
+        m = datetime.fromtimestamp(dt, timezone.utc)
+        if m.day <= 7 and i % 1 == 0:
+            months += text(left + i * gap, base + 26, MESES[m.month - 1], 12, WHITE, 400, opacity=.4, kind="mono")
+    stats = f"racha más larga {d['streak']} días   ·   {d['merged']} pull requests mergeados en proyectos ajenos"
+    defs = f'<clipPath id="window"><rect x="0" y="{y0 - size * .82:.0f}" width="1200" height="{size * 1.05:.0f}"/></clipPath>'
+    body = f"""  <rect width="1200" height="330" rx="28" fill="{INK}"/>
+  <rect x=".5" y=".5" width="1199" height="329" rx="27.5" fill="none" stroke="{WHITE}" stroke-opacity=".12"/>
+  {text(64, 66, "CONTRIBUCIONES · ÚLTIMO AÑO", 13, WHITE, 600, opacity=.5, spacing=2.4)}
+  {digits}
+  {text(66, 246, "commits, pull requests, issues y revisiones", 17, WHITE, 400, opacity=.55)}
+  {bars}
+  <circle cx="{lx:.1f}" cy="{base - max(4, (base - top) * (weeks[-1] / peak) ** .5) - 14:.1f}" r="4" fill="{WHITE}" class="now"/>
+  {months}
+  <line x1="64" y1="282" x2="1136" y2="282" stroke="{WHITE}" stroke-opacity=".1"/>
+  {text(64, 310, stats, 13.5, WHITE, 400, opacity=.6, kind="mono")}"""
+    style = """.roll{animation:roll 1.8s cubic-bezier(.16,.84,.24,1) backwards}
+      @keyframes roll{from{transform:translateY(0)}}
+      .grow{transform-box:fill-box;transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) backwards}
+      @keyframes grow{from{transform:scaleY(0)}}
+      .now{animation:now 1.6s ease-in-out infinite}
+      @keyframes now{50%{opacity:.2}}"""
+    return svg(1200, 330, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, defs)
 
 
 def pill(label, width, primary):
@@ -292,7 +378,7 @@ def main():
     write("hero.svg", hero())
     for index, (label, headline, sub, meta) in enumerate(TILES):
         write(f"tile-{label.lower()}.svg", tile(index, label, headline, sub, meta, data.get("downloads")))
-    write("strip.svg", strip(data))
+    write("contributions.svg", contributions(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))
     print("listo:", len(list(ASSETS.glob("*.svg"))), "svg")
