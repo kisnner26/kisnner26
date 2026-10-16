@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 360" role="img" aria-labelledby="t d">
+  <title id="t">Relevo</title>
+  <desc id="d">Reparte el trabajo. Servicio en Node con worker threads y balanceador propio. REST · GraphQL · WebSocket · 36 pruebas</desc>
+  <defs>
+
+    <style>
+      .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+      .job{animation:job 2.5s linear infinite}
+      @keyframes job{from{transform:translateX(0);opacity:0}12%{opacity:1}88%{opacity:1}to{transform:translateX(284px);opacity:0}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+  <rect width="384" height="360" rx="28" fill="#0b0b0c"/>
+  <rect x=".5" y=".5" width="383" height="359" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
+  <g class="in" style="animation-delay:0.12s">
+    <text x="32" y="52" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="start" letter-spacing="2.4" opacity="0.5" >RELEVO</text>
+    <text x="32" y="100" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >Reparte el</text>
+    <text x="32" y="138" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >trabajo.</text>
+    <text x="32" y="180" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Servicio en Node con worker threads</text>
+    <text x="32" y="202" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >y balanceador propio.</text>
+  </g>
+  <rect x="56" y="246" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="264" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="282" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="300" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/>
+  <rect x="34" y="236" width="8" height="76" rx="4" fill="#ffffff"/>
+  <circle class="job" cx="62" cy="247" r="4.5" fill="#ffffff" style="animation-duration:2.3s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="247" r="4.5" fill="#ffffff" style="animation-duration:2.3s;animation-delay:-1.15s"/><circle class="job" cx="62" cy="265" r="4.5" fill="#ffffff" style="animation-duration:3.1s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="265" r="4.5" fill="#ffffff" style="animation-duration:3.1s;animation-delay:-1.55s"/><circle class="job" cx="62" cy="283" r="4.5" fill="#ffffff" style="animation-duration:2.0s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="283" r="4.5" fill="#ffffff" style="animation-duration:2.0s;animation-delay:-1.00s"/><circle class="job" cx="62" cy="301" r="4.5" fill="#ffffff" style="animation-duration:3.7s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="301" r="4.5" fill="#ffffff" style="animation-duration:3.7s;animation-delay:-1.85s"/>
+  <text x="32" y="340" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.45" >REST · GraphQL · WebSocket · 36 pruebas</text>
+</svg>
