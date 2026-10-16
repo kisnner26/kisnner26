@@ -2,24 +2,24 @@
   <title id="t">Lumora</title>
   <desc id="d">La letra, en escena. Lyric videos en vivo con un director local que no usa internet. Canvas 2D · Mac y navegador</desc>
   <defs>
-
+<clipPath id="v0"><rect x="32" y="240" width="0" height="12"><animate attributeName="width" values="0;0;280;280;0" keyTimes="0;0.02;0.28;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="v1"><rect x="32" y="266" width="0" height="12"><animate attributeName="width" values="0;0;210;210;0" keyTimes="0;0.32;0.58;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="v2"><rect x="32" y="292" width="0" height="12"><animate attributeName="width" values="0;0;248;248;0" keyTimes="0;0.62;0.88;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><radialGradient id="lift" cx=".2" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
     <style>
       .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
       @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-      .verse{opacity:.2;animation:verse 6s ease-in-out infinite}
-      @keyframes verse{0%,4%{opacity:.2}10%,30%{opacity:1}36%,100%{opacity:.2}}
+      
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
   <rect width="384" height="360" rx="28" fill="#0b0b0c"/>
+  <rect width="384" height="360" rx="28" fill="url(#lift)"/>
   <rect x=".5" y=".5" width="383" height="359" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
   <g class="in" style="animation-delay:0.24s">
     <text x="32" y="52" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="start" letter-spacing="2.4" opacity="0.5" >LUMORA</text>
     <text x="32" y="100" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >La letra,</text>
     <text x="32" y="138" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >en escena.</text>
-    <text x="32" y="180" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Lyric videos en vivo con un director</text>
-    <text x="32" y="202" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >local que no usa internet.</text>
+    <text x="32" y="178" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Lyric videos en vivo con un director</text>
+    <text x="32" y="199" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >local que no usa internet.</text>
   </g>
-  <rect class="verse" x="34" y="246" width="262" height="12" rx="6" fill="#ffffff" style="animation-delay:0s"/><rect class="verse" x="34" y="270" width="196" height="12" rx="6" fill="#ffffff" style="animation-delay:2s"/><rect class="verse" x="34" y="294" width="232" height="12" rx="6" fill="#ffffff" style="animation-delay:4s"/>
+  <rect x="32" y="240" width="280" height="12" rx="6" fill="#ffffff" fill-opacity=".14"/><rect x="32" y="240" width="280" height="12" rx="6" fill="#ffffff" clip-path="url(#v0)"/><rect x="32" y="266" width="210" height="12" rx="6" fill="#ffffff" fill-opacity=".14"/><rect x="32" y="266" width="210" height="12" rx="6" fill="#ffffff" clip-path="url(#v1)"/><rect x="32" y="292" width="248" height="12" rx="6" fill="#ffffff" fill-opacity=".14"/><rect x="32" y="292" width="248" height="12" rx="6" fill="#ffffff" clip-path="url(#v2)"/>
   <text x="32" y="340" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.45" >Canvas 2D · Mac y navegador</text>
 </svg>

@@ -2,30 +2,29 @@
   <title id="t">Altserver</title>
   <desc id="d">Vuelve a iniciar sesión. Arreglo propuesto para AltServer en macOS 27. 276 descargas · PR abierto</desc>
   <defs>
-
+<clipPath id="l1"><rect x="32" y="228" width="0" height="22"><animate attributeName="width" values="0;320;320;0" keyTimes="0;.12;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="l2"><rect x="32" y="254" width="0" height="22"><animate attributeName="width" values="0;0;320;320;0" keyTimes="0;.16;.28;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="l3"><rect x="32" y="280" width="0" height="22"><animate attributeName="width" values="0;0;320;320;0" keyTimes="0;.36;.46;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><radialGradient id="lift" cx=".2" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
     <style>
       .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
       @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-      .ring{stroke-dasharray:290;animation:ring 5s cubic-bezier(.4,0,.2,1) infinite}
-      @keyframes ring{0%{stroke-dashoffset:290}42%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
-      .tick{stroke-dasharray:50;animation:tick 5s ease-out infinite}
-      @keyframes tick{0%,40%{stroke-dashoffset:50;opacity:1}58%{stroke-dashoffset:0}88%{stroke-dashoffset:0;opacity:1}100%{opacity:0}}
+      .caret{animation:caret 1s steps(1) infinite}
+      @keyframes caret{50%{opacity:0}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
   <rect width="384" height="360" rx="28" fill="#0b0b0c"/>
+  <rect width="384" height="360" rx="28" fill="url(#lift)"/>
   <rect x=".5" y=".5" width="383" height="359" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
   <g class="in" style="animation-delay:0.0s">
     <text x="32" y="52" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="start" letter-spacing="2.4" opacity="0.5" >ALTSERVER</text>
     <text x="32" y="100" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >Vuelve a iniciar</text>
     <text x="32" y="138" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >sesión.</text>
-    <text x="32" y="180" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Arreglo propuesto para AltServer</text>
-    <text x="32" y="202" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >en macOS 27.</text>
+    <text x="32" y="178" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Arreglo propuesto para AltServer</text>
+    <text x="32" y="199" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >en macOS 27.</text>
   </g>
-  <g transform="translate(192 272)">
-    <circle r="46" fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="2"/>
-    <circle class="ring" r="46" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" transform="rotate(-90)"/>
-    <path class="tick" d="M-14 2 -4 12 15 -10" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
+  <rect x="22" y="216" width="340" height="96" rx="14" fill="#ffffff" fill-opacity=".04" stroke="#ffffff" stroke-opacity=".08"/>
+  <g clip-path="url(#l1)"><text x="36" y="244" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="500" fill="#ffffff" text-anchor="start" opacity="0.75" >$ altserver --sign-in</text></g>
+  <g clip-path="url(#l2)"><text x="36" y="270" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.4" >← 503  Service Unavailable</text></g>
+  <path d="M36 266h214" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="214"><animate attributeName="stroke-dashoffset" values="214;214;0;0;214" keyTimes="0;.3;.34;.92;1" dur="8s" repeatCount="indefinite"/></path>
+  <g clip-path="url(#l3)"><text x="36" y="296" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start" >← 200  OK · signed in</text><rect x="212" y="285" width="8" height="14" fill="#ffffff" class="caret"/></g>
   <text x="32" y="340" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.45" >276 descargas · PR abierto</text>
 </svg>

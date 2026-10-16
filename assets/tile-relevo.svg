@@ -2,26 +2,29 @@
   <title id="t">Relevo</title>
   <desc id="d">Reparte el trabajo. Servicio en Node con worker threads y balanceador propio. REST · GraphQL · WebSocket · 36 pruebas</desc>
   <defs>
-
+<linearGradient id="tail"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient><radialGradient id="lift" cx=".2" cy="0" r="1"><stop offset="0" stop-color="#fff" stop-opacity=".07"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
     <style>
       .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
       @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
       .job{animation:job 2.5s linear infinite}
-      @keyframes job{from{transform:translateX(0);opacity:0}12%{opacity:1}88%{opacity:1}to{transform:translateX(284px);opacity:0}}
+      @keyframes job{from{transform:translateX(0);opacity:0}10%{opacity:1}88%{opacity:1}to{transform:translateX(286px);opacity:0}}
+      .beat{transform-box:fill-box;transform-origin:center;animation:beat 1.2s ease-in-out infinite}
+      @keyframes beat{50%{transform:scaleY(.82)}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
   <rect width="384" height="360" rx="28" fill="#0b0b0c"/>
+  <rect width="384" height="360" rx="28" fill="url(#lift)"/>
   <rect x=".5" y=".5" width="383" height="359" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity=".12"/>
   <g class="in" style="animation-delay:0.12s">
     <text x="32" y="52" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#ffffff" text-anchor="start" letter-spacing="2.4" opacity="0.5" >RELEVO</text>
     <text x="32" y="100" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >Reparte el</text>
     <text x="32" y="138" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="-1" >trabajo.</text>
-    <text x="32" y="180" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Servicio en Node con worker threads</text>
-    <text x="32" y="202" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >y balanceador propio.</text>
+    <text x="32" y="178" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >Servicio en Node con worker threads</text>
+    <text x="32" y="199" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.6" >y balanceador propio.</text>
   </g>
-  <rect x="56" y="246" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="264" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="282" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/><rect x="56" y="300" width="300" height="2" rx="1" fill="#ffffff" fill-opacity=".14"/>
-  <rect x="34" y="236" width="8" height="76" rx="4" fill="#ffffff"/>
-  <circle class="job" cx="62" cy="247" r="4.5" fill="#ffffff" style="animation-duration:2.3s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="247" r="4.5" fill="#ffffff" style="animation-duration:2.3s;animation-delay:-1.15s"/><circle class="job" cx="62" cy="265" r="4.5" fill="#ffffff" style="animation-duration:3.1s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="265" r="4.5" fill="#ffffff" style="animation-duration:3.1s;animation-delay:-1.55s"/><circle class="job" cx="62" cy="283" r="4.5" fill="#ffffff" style="animation-duration:2.0s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="283" r="4.5" fill="#ffffff" style="animation-duration:2.0s;animation-delay:-1.00s"/><circle class="job" cx="62" cy="301" r="4.5" fill="#ffffff" style="animation-duration:3.7s;animation-delay:-0.00s"/><circle class="job" cx="62" cy="301" r="4.5" fill="#ffffff" style="animation-duration:3.7s;animation-delay:-1.85s"/>
+  <rect x="56" y="240" width="300" height="1.5" rx="1" fill="#ffffff" fill-opacity=".12"/><rect x="56" y="260" width="300" height="1.5" rx="1" fill="#ffffff" fill-opacity=".12"/><rect x="56" y="280" width="300" height="1.5" rx="1" fill="#ffffff" fill-opacity=".12"/><rect x="56" y="300" width="300" height="1.5" rx="1" fill="#ffffff" fill-opacity=".12"/>
+  <rect x="34" y="230" width="7" height="80" rx="3.5" fill="#ffffff" class="beat"/>
+  <g class="job" style="animation-duration:2.3s;animation-delay:-0.00s"><rect x="28" y="238.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="240.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:2.3s;animation-delay:-1.15s"><rect x="28" y="238.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="240.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:3.1s;animation-delay:-0.00s"><rect x="28" y="258.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="260.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:3.1s;animation-delay:-1.55s"><rect x="28" y="258.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="260.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:2.0s;animation-delay:-0.00s"><rect x="28" y="278.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="280.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:2.0s;animation-delay:-1.00s"><rect x="28" y="278.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="280.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:3.7s;animation-delay:-0.00s"><rect x="28" y="298.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="300.7" r="4.5" fill="#ffffff"/></g><g class="job" style="animation-duration:3.7s;animation-delay:-1.85s"><rect x="28" y="298.5" width="34" height="4.5" rx="2.2" fill="url(#tail)"/><circle cx="62" cy="300.7" r="4.5" fill="#ffffff"/></g>
   <text x="32" y="340" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="400" fill="#ffffff" text-anchor="start" opacity="0.45" >REST · GraphQL · WebSocket · 36 pruebas</text>
 </svg>
