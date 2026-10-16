@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/pulls?q=is%3Apr+author%3Akisnner26+is%3Amerged+-user%3Akisnner26"><img src="assets/strip.svg" alt="pull requests mergeados en proyectos ajenos" width="100%"></a>
+  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 
 <p align="center">
