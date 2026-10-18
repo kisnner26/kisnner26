@@ -384,11 +384,31 @@ body.game{cursor:crosshair}
 .toast .x{position:absolute;right:10px;top:6px;font-size:16px;color:var(--mid);font-weight:800}
 @media (max-width:700px){#toasts{bottom:100px}}
 
+/* login de la época con la foto de GitHub del visitante */
+.tile .k{display:grid;place-items:center}.tile .k svg{width:62%;height:62%;filter:drop-shadow(0 3px 6px rgba(4,60,100,.45))}
+#uimg,#wimg{opacity:0;transition:opacity .6s}.tile.ok #uimg,.tile.has #wimg{opacity:1}.tile.ok .k,.tile.has .k{opacity:0;transition:opacity .6s}
+.tile.loading::before{content:"";position:absolute;inset:0;z-index:3;background:conic-gradient(from 0deg,transparent 0 60%,rgba(255,255,255,.85));border-radius:inherit;-webkit-mask:radial-gradient(circle,transparent 58%,#000 60%);mask:radial-gradient(circle,transparent 58%,#000 60%);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tile.bad{border-color:#ffd2b8;box-shadow:0 24px 54px rgba(120,30,0,.4),0 0 0 10px rgba(255,160,120,.25),0 0 0 11px rgba(255,200,170,.8)}
+.tile.sm{width:clamp(92px,12vw,120px);border-radius:26px;cursor:default;animation:none}
+.uf{display:flex;align-items:center;gap:8px;width:min(370px,86vw)}
+.uf input{flex:1;min-width:0;height:44px;padding:0 14px;border-radius:6px;border:1px solid #fff;background:linear-gradient(180deg,#fff,#e6f2fa);font:600 17px var(--font);color:#0a3a5c;outline:none;
+  box-shadow:inset 0 1px 3px rgba(0,60,110,.4),0 0 0 2px rgba(255,255,255,.35),0 8px 18px rgba(4,80,127,.25);transition:box-shadow .2s}
+.uf input:focus{box-shadow:inset 0 1px 3px rgba(0,60,110,.4),0 0 0 3px rgba(92,200,255,.9),0 8px 18px rgba(4,80,127,.25)}
+.uf input::placeholder{color:#7aa9c4;font-weight:600}
+.uf.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.ualt a{color:#fff;font-weight:700;font-size:14px;text-shadow:0 1px 10px rgba(4,80,127,.8);text-decoration:underline;text-underline-offset:4px}
+.usw{display:none;margin-top:30px;height:34px;padding:0 22px;border-radius:7px;font-weight:700;font-size:14px;color:#fff;text-shadow:0 1px 2px rgba(4,50,100,.7);border:1px solid rgba(255,255,255,.9);
+  background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.12) 50%,rgba(20,100,170,.35) 52%,rgba(60,150,220,.3));box-shadow:0 4px 12px rgba(4,60,110,.4)}
+.usw:hover{filter:brightness(1.15)}
+#splash.saved .usw{display:inline-block}
+
 /* inicio: pantalla de sesión de la época */
 #splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;transition:opacity 1.2s ease,visibility 1.2s}
 #splash.out{opacity:0;visibility:hidden}
 #splash::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,rgba(6,74,115,.5),rgba(6,74,115,0) 58%);pointer-events:none}
-.stage{grid-area:1/1;position:relative;display:grid;justify-items:center;gap:16px;padding:0 20px;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
+.sstage{grid-area:1/1;position:relative;display:grid;justify-items:center;gap:16px;padding:0 20px;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
 #splash.go .logon{opacity:0;transform:scale(1.12) translateY(-24px);pointer-events:none}
 .welcome{opacity:0;transform:scale(.92);pointer-events:none}
 #splash.go .welcome{opacity:1;transform:none;transition-delay:.55s}
@@ -573,15 +593,20 @@ body.game{cursor:crosshair}
 <div id="cur" aria-hidden="true"></div>
 
 <div id="splash">
-  <div class="stage logon">
-    <div class="tile"><span class="k">K</span><img src="https://github.com/kisnner26.png?size=300" alt="" onerror="this.remove()"></div>
-    <div class="who">Kisnner Obando</div>
-    <div class="pw glassy"><span class="pwdots" id="pwdots"></span><button class="gobtn" id="go" aria-label="Iniciar sesión"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button></div>
-    <div class="hintl">PULSA LA FLECHA O ENTER</div>
+  <div class="sstage logon">
+    <div class="tile" id="utile"><span class="k"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bfe6fb"/></linearGradient></defs><circle cx="50" cy="36" r="17" fill="url(#sg)"/><path d="M16 92c2-24 16-34 34-34s32 10 34 34z" fill="url(#sg)"/></svg></span><img id="uimg" alt=""></div>
+    <div class="who" id="uname">¿quién eres?</div>
+    <form class="uf" id="uform" autocomplete="off">
+      <input id="uin" type="text" inputmode="text" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="39" placeholder="tu usuario de GitHub" aria-label="Tu usuario de GitHub">
+      <button class="gobtn" id="go" type="submit" aria-label="Iniciar sesión"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <div class="ualt"><a href="#" id="uguest">entrar como invitado</a></div>
+    <button class="usw" id="uswitch" type="button">Cambiar de usuario</button>
   </div>
-  <div class="stage welcome">
+  <div class="sstage welcome">
+    <div class="tile sm" id="wtile"><span class="k"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bfe6fb"/></linearGradient></defs><circle cx="50" cy="36" r="17" fill="url(#sg)"/><path d="M16 92c2-24 16-34 34-34s32 10 34 34z" fill="url(#sg)"/></svg></span><img id="wimg" alt=""></div>
+    <div class="who" id="wlc">Bienvenido</div>
     <div class="orbit"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i></div>
-    <div class="who">Bienvenido</div>
     <div class="hintl" id="phrase">PREPARANDO EL AGUA</div>
   </div>
 </div>
@@ -928,6 +953,7 @@ setInterval(()=>{
 /* enviar: con una clave de web3forms llega directo a tu correo; sin ella abre el correo del visitante con el mensaje listo */
 const CONTACT={key:'',to:'kisnnerobando7@gmail.com'};
 const sstat=document.getElementById('sstat');
+const whoSig=()=>visitor.login?`\n\n— ${visitor.name} (github.com/${visitor.login})`:'';
 function say(t,good){ sstat.textContent=t; sstat.classList.toggle('good',!!good); }
 async function send(){
   const msg=F.mensaje.t.trim(), mail=F.correo.t.trim();
@@ -939,11 +965,11 @@ async function send(){
   if(CONTACT.key){
     try{
       const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({access_key:CONTACT.key,subject:'mensaje desde kisnner26.github.io',from_name:'kisnner26.github.io',email:mail||undefined,message:msg})});
+        body:JSON.stringify({access_key:CONTACT.key,subject:'mensaje desde kisnner26.github.io',from_name:'kisnner26.github.io',email:mail||undefined,message:msg+whoSig()})});
       const j=await r.json(); if(!j.success) throw new Error(); say('enviado. gracias por escribir.',true); celebrate();
     }catch(e){ say('no se pudo enviar. prueba por correo directo.'); }
   } else {
-    location.href=`mailto:${CONTACT.to}?subject=${encodeURIComponent('hola desde tu sitio')}&body=${encodeURIComponent(msg+(mail?'\n\n'+mail:''))}`;
+    location.href=`mailto:${CONTACT.to}?subject=${encodeURIComponent('hola desde tu sitio')}&body=${encodeURIComponent(msg+(mail?'\n\n'+mail:'')+whoSig())}`;
     say('se abrió tu correo con el mensaje listo.',true); celebrate();
   }
   setTimeout(()=>{ btn.disabled=false; },1200);
@@ -1374,22 +1400,51 @@ function scheduleTips(){
 
 /* ---------- arranque: inicio de sesión -> bienvenido -> escritorio ---------- */
 const splash=$('splash'), PH=['PREPARANDO EL AGUA','INFLANDO BURBUJAS','CALENTANDO EL SOL','AFINANDO LAS TECLAS'];
-let dots=0;
-setTimeout(function t(){ if(splash.classList.contains('go')) return; if(dots<9){ dots++; $('pwdots').textContent='•'.repeat(dots); setTimeout(t,120+Math.random()*100); } else $('go').classList.add('ready'); },1000);
+const visitor={login:'',name:'Invitado',ok:false,guest:true};
+const UIN=$('uin'), UIMG=$('uimg'), UTILE=$('utile');
+const validUser=u=>/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(u);
+let ut=0, ureq=0;
+function resetUser(label){ ++ureq; UTILE.classList.remove('ok','bad','loading'); UIMG.removeAttribute('src'); visitor.ok=false; visitor.login=''; $('go').classList.remove('ready'); $('uname').textContent=label||'¿quién eres?'; }
+function setAvatar(login){
+  const my=++ureq; UTILE.classList.remove('ok','bad'); UTILE.classList.add('loading'); $('uname').textContent=login;
+  const im=new Image();
+  im.onload=()=>{ if(my!==ureq) return; UIMG.src=im.src; UTILE.classList.remove('loading'); UTILE.classList.add('ok'); Object.assign(visitor,{login,name:login,ok:true,guest:false}); $('go').classList.add('ready'); $('uname').textContent=login;
+    fetch('https://api.github.com/users/'+encodeURIComponent(login)).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.name&&my===ureq){ visitor.name=j.name; $('uname').textContent=j.name; } }).catch(()=>{}); };
+  im.onerror=()=>{ if(my!==ureq) return; UTILE.classList.remove('loading'); UTILE.classList.add('bad'); visitor.ok=false; $('go').classList.remove('ready'); $('uname').textContent='no encuentro ese usuario'; };
+  im.src='https://github.com/'+encodeURIComponent(login)+'.png?size=300';
+}
+UIN.addEventListener('input',()=>{
+  clearTimeout(ut); const v=UIN.value.trim().replace(/^@/,'');
+  if(!v){ resetUser(); return; } if(!validUser(v)){ resetUser('ese usuario no es válido'); UTILE.classList.add('bad'); return; }
+  ut=setTimeout(()=>setAvatar(v),420);
+});
+function shake(){ const f=$('uform'); f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); }
+function submit(){
+  if(visitor.ok){ begin(); return; }
+  const v=UIN.value.trim().replace(/^@/,''); if(v&&validUser(v)&&!UTILE.classList.contains('bad')){ clearTimeout(ut); setAvatar(v); return; }
+  shake(); UIN.focus();
+}
+$('uform').addEventListener('submit',e=>{ e.preventDefault(); submit(); });
+$('uguest').addEventListener('click',e=>{ e.preventDefault(); Object.assign(visitor,{login:'',name:'Invitado',ok:false,guest:true}); begin(); });
+UTILE.addEventListener('click',()=>UIN.focus());
+$('uswitch').addEventListener('click',()=>{ store.set('kisnner-visitor',''); splash.classList.remove('saved'); UIN.value=''; resetUser(); UIN.focus(); });
+const savedUser=store.get('kisnner-visitor','');
+if(savedUser&&validUser(savedUser)){ UIN.value=savedUser; splash.classList.add('saved'); setAvatar(savedUser); }
+setTimeout(()=>{ if(!matchMedia('(pointer:coarse)').matches) UIN.focus(); },900);
 function begin(){
   if(splash.classList.contains('go')) return; splash.classList.add('go');
+  const first=(visitor.guest?'':(visitor.name||visitor.login)).split(' ')[0];
+  $('wlc').textContent=first?'Bienvenido, '+first:'Bienvenido';
+  if(!visitor.guest){ $('wimg').src=UIMG.src; $('wtile').classList.add('has'); store.set('kisnner-visitor',visitor.login); }
   initAudio(); if(ac&&ac.state==='suspended') ac.resume(); chime(); startMusic();
   let i=0; const ph=setInterval(()=>{ i=(i+1)%PH.length; $('phrase').textContent=PH[i]; },750);
   setTimeout(()=>{ clearInterval(ph); enter(); },3000);
 }
 function enter(){
-  splash.classList.add('out'); started=true; lastInput=performance.now(); document.body.classList.add('in'); whoosh(true,.1); scheduleTips();
+  splash.classList.add('out'); started=true; lastInput=performance.now(); document.body.classList.add('in'); whoosh(true,.1); scheduleTips(); if(!visitor.guest) setTimeout(()=>toast('Sesión iniciada',((visitor.name||visitor.login).split(' ')[0])+', bienvenido a mi escritorio. Gracias por pasar.','good'),1600);
   for(let i=0;i<12;i++) setTimeout(()=>spawnBubble(Math.random()*innerWidth,innerHeight+30,10+Math.random()*30),i*120);
   setTimeout(()=>ripple(innerWidth*.5,innerHeight*.78),500);
 }
-$('go').addEventListener('click',begin);
-splash.querySelector('.tile').addEventListener('click',begin);
-addEventListener('keydown',e=>{ if(!started&&(e.key==='Enter'||e.key===' ')){e.preventDefault();begin();} });
 addEventListener('resize',resize);
 resize(); requestAnimationFrame(frame);
 setTimeout(()=>ripple(innerWidth*.3,innerHeight*.75),400); setTimeout(()=>ripple(innerWidth*.7,innerHeight*.8),1300);
