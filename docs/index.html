@@ -14,7 +14,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.35' cy='.3' r='.85'%3E%3Cstop offset='0' stop-color='%23d8fbff'/%3E%3Cstop offset='.5' stop-color='%232ba9ee'/%3E%3Cstop offset='1' stop-color='%230a5fa5'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3Cellipse cx='12' cy='9' rx='6' ry='3' fill='%23fff' opacity='.75'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=JetBrains+Mono:wght@500&family=VT323&display=swap" rel="stylesheet">
 <style>
 :root{
   --deep:#064a73; --mid:#2b7ea6; --lime:#b8ff6a; --aqua:#5cc8ff;
@@ -26,7 +26,7 @@
 html,body{height:100%;overflow:hidden;background:#52b7f2;color:var(--deep);font-family:var(--font);-webkit-font-smoothing:antialiased}
 canvas#gl,canvas#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
 canvas#fx{pointer-events:none;z-index:50;transition:opacity .5s}
-body.open canvas#fx{opacity:.42}
+body.open canvas#fx{opacity:.3}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 a{color:inherit}
@@ -240,7 +240,7 @@ body.in #bar{opacity:1}
 .xl{position:relative;flex:1;height:1px;margin:0 2cqw;background:rgba(255,255,255,.35)}
 .xl i{position:absolute;top:-1.3cqw;width:2.6cqw;height:2.6cqw;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#ffd27f 50%,#ff9a4a);animation:pkt 1.6s linear infinite;animation-delay:calc(var(--n) * -.4s)}
 @keyframes pkt{from{left:0;opacity:0}15%{opacity:1}85%{opacity:1}to{left:100%;opacity:0}}
-.ok{position:absolute;right:5cqw;bottom:4cqw;font:800 3.4cqw var(--mono);color:#b8ff6a}
+.vok{position:absolute;right:5cqw;bottom:4cqw;font:800 3.4cqw var(--mono);color:#b8ff6a}
 
 /* reproductor de medios */
 .side{grid-area:side;display:grid;grid-template-rows:auto 1fr;gap:12px;min-width:0}
@@ -408,8 +408,8 @@ body.game{cursor:crosshair}
 @keyframes spin{to{transform:rotate(360deg)}}
 .tile.bad{border-color:#ffd2b8;box-shadow:0 24px 54px rgba(120,30,0,.4),0 0 0 10px rgba(255,160,120,.25),0 0 0 11px rgba(255,200,170,.8)}
 .tile.sm{width:clamp(92px,12vw,120px);border-radius:26px;cursor:default;animation:none}
-.uf{display:flex;align-items:center;gap:8px;width:min(370px,86vw)}
-.uf input{flex:1;min-width:0;height:44px;padding:0 14px;border-radius:6px;border:1px solid #fff;background:linear-gradient(180deg,#fff,#e6f2fa);font:600 17px var(--font);color:#0a3a5c;outline:none;
+.uf{position:relative;display:block;width:min(320px,66vw)}
+.uf input{display:block;width:100%;box-sizing:border-box;height:44px;padding:0 14px;border-radius:6px;border:1px solid #fff;background:linear-gradient(180deg,#fff,#e6f2fa);font:600 17px var(--font);color:#0a3a5c;outline:none;
   box-shadow:inset 0 1px 3px rgba(0,60,110,.4),0 0 0 2px rgba(255,255,255,.35),0 8px 18px rgba(4,80,127,.25);transition:box-shadow .2s}
 .uf input:focus{box-shadow:inset 0 1px 3px rgba(0,60,110,.4),0 0 0 3px rgba(92,200,255,.9),0 8px 18px rgba(4,80,127,.25)}
 .uf input::placeholder{color:#7aa9c4;font-weight:600}
@@ -506,11 +506,11 @@ body.game #burbi{opacity:0!important}
 #splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;transition:opacity 1.2s ease,visibility 1.2s}
 #splash.out{opacity:0;visibility:hidden}
 #splash::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,rgba(6,74,115,.5),rgba(6,74,115,0) 58%);pointer-events:none}
-.sstage{grid-area:1/1;position:relative;display:grid;justify-items:center;gap:16px;padding:0 20px;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
+.sstage{grid-area:1/1;position:relative;display:flex;flex-direction:column;align-items:center;justify-self:center;width:min(440px,100vw);gap:16px;padding:0 20px;box-sizing:border-box;text-align:center;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.9,.2,1)}
 #splash.go .logon{opacity:0;transform:scale(1.12) translateY(-24px);pointer-events:none}
 .welcome{opacity:0;transform:scale(.92);pointer-events:none}
 #splash.go .welcome{opacity:1;transform:none;transition-delay:.55s}
-.tile{position:relative;width:clamp(124px,17vw,176px);aspect-ratio:1;border-radius:32px;border:3px solid #fff;overflow:hidden;cursor:pointer;
+.tile{position:relative;width:clamp(124px,17vw,176px);aspect-ratio:1;border-radius:32px;border:3px solid #fff;overflow:hidden;cursor:pointer;align-self:center;flex:none;
   background:radial-gradient(circle at 50% 118%,#d6f6ff 0,#2ba9ee 55%,#0a5fa5 100%);
   box-shadow:0 24px 54px rgba(4,80,127,.55),0 0 0 10px rgba(255,255,255,.18),0 0 0 11px rgba(255,255,255,.65);animation:bob 4.6s ease-in-out infinite}
 .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -520,7 +520,7 @@ body.game #burbi{opacity:0!important}
 .pw{display:flex;align-items:center;gap:8px;width:min(350px,82vw);height:56px;padding:0 7px 0 22px;border-radius:28px;text-align:left}
 .pwdots{flex:1;font:800 28px var(--font);letter-spacing:.22em;color:var(--deep);white-space:nowrap;overflow:hidden;line-height:56px}
 .pwdots:empty::before{content:"contraseña";font:600 17px var(--font);letter-spacing:0;color:#7aa9c4}
-.gobtn{flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;position:relative;display:grid;place-items:center;
+.gobtn{position:absolute;left:calc(100% + 10px);top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;position:relative;display:grid;place-items:center;
   background:radial-gradient(circle at 50% 120%,#c8fff0 0,#2ba9ee 55%,#0a5fa5 100%);box-shadow:0 4px 12px rgba(4,80,127,.45);transition:transform .2s}
 .gobtn::after{content:"";position:absolute;left:6px;right:6px;top:3px;height:19px;border-radius:50%;background:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.08))}
 .gobtn svg{position:relative;z-index:1;width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
@@ -569,6 +569,60 @@ body.game #burbi{opacity:0!important}
 }
 @media (max-height:640px){ .lead{display:none} }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* ---------- pulido de interfaz: ritmo, simetría y proporciones ---------- */
+:root{--panel-top:clamp(66px,8vh,92px);--dock:122px}
+#hero{left:0;right:0;width:min(940px,92vw);max-width:none;margin:0 auto;text-align:center;top:clamp(58px,10vh,130px)}
+.role span{left:0;right:0;text-align:center}
+.lead{margin-left:auto;margin-right:auto;max-width:52ch}
+#panel{top:var(--panel-top);max-height:calc(100dvh - var(--panel-top) - var(--dock))}
+#buoys{transition:bottom .6s cubic-bezier(.2,.9,.2,1),gap .5s}
+.sphere{transition:width .5s cubic-bezier(.2,.9,.2,1),height .5s cubic-bezier(.2,.9,.2,1),box-shadow .3s,filter .3s}
+body.open #buoys{bottom:34px;gap:clamp(12px,2.6vw,30px)}
+body.open .sphere{width:clamp(42px,5vw,54px)!important;height:clamp(42px,5vw,54px)!important;box-shadow:0 8px 16px rgba(4,80,127,.4),0 0 0 4px rgba(255,255,255,.14)}
+body.open .buoy .lbl{display:none}
+body.open .buoy.act .lbl{display:block;position:absolute;margin-top:calc(clamp(42px,5vw,54px) + 8px)}
+body.open .buoy{gap:0}
+#bar{top:12px;right:12px;gap:10px}
+.np{max-width:min(250px,34vw)}
+#gadgets{top:84px}
+.stat{text-align:center}.stats{justify-items:center}
+.tools{justify-content:center}.tools .pill{margin-left:0}
+.wk{justify-content:center;text-align:center}.chips{justify-content:center}
+.showcase{align-items:stretch}.side{display:flex;flex-direction:column;min-height:0}.plist{flex:1;overflow:auto;min-height:0;padding:2px 2px 4px}
+.info{text-align:left}
+#ks-tocar,#ks-hablemos{max-width:900px;margin-left:auto;margin-right:auto}
+.hint{text-align:center;max-width:70ch;margin-left:auto;margin-right:auto}
+.sendrow{justify-content:space-between;gap:10px 12px}.sendrow .sp{display:none}
+.pill{height:44px}.pill.sm{height:38px}
+.field{max-width:900px;margin-left:auto;margin-right:auto}
+.msn-head,.msn-log{max-width:900px;margin-left:auto;margin-right:auto}
+
+/* burbi: cuadro de diálogo retro */
+#burbi{bottom:clamp(120px,19vh,210px)}
+.bsb{pointer-events:auto;cursor:pointer;background:#fff;padding:4px;min-width:min(250px,62vw);max-width:min(330px,72vw);margin-bottom:34px;border-radius:0;box-shadow:none;border:0;
+  clip-path:polygon(0 6px,3px 6px,3px 3px,6px 3px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 3px,calc(100% - 3px) 3px,calc(100% - 3px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 3px) calc(100% - 6px),calc(100% - 3px) calc(100% - 3px),calc(100% - 6px) calc(100% - 3px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 3px),3px calc(100% - 3px),3px calc(100% - 6px),0 calc(100% - 6px))}
+.bsb .bin{position:relative;background:#0a1a3a;padding:10px 26px 14px 16px;color:#fff;font:400 21px/1.12 'VT323',ui-monospace,monospace;letter-spacing:.03em;min-height:64px;
+  clip-path:polygon(0 4px,2px 4px,2px 2px,4px 2px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 2px,calc(100% - 2px) 2px,calc(100% - 2px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 2px) calc(100% - 4px),calc(100% - 2px) calc(100% - 2px),calc(100% - 4px) calc(100% - 2px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 2px),2px calc(100% - 2px),2px calc(100% - 4px),0 calc(100% - 4px))}
+.bname{display:block;color:#ffd23a;font-size:17px;letter-spacing:.14em;margin-bottom:2px}
+.bsb p{margin:0;min-height:1.12em;white-space:pre-wrap;word-break:break-word}
+.bnext{position:absolute;right:10px;bottom:6px;font-style:normal;font-size:16px;color:#fff;visibility:hidden;animation:bl .6s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.bfish.talking{animation:talk .16s steps(2) infinite}
+@keyframes talk{50%{transform:translateY(-4px) scaleY(.95)}}
+@media (max-width:700px){.bsb .bin{font-size:19px}}
+
+/* pantallas bajas: todo cabe sin recortar el teclado */
+@media (max-height:820px){
+  .ph{padding:10px 18px 2px 24px}.pbody{padding:2px 24px 16px}
+  .msn-head{padding:0 4px 8px;margin-bottom:2px}.mtile{width:46px;height:46px;border-radius:12px}.mwho b{font-size:16px}
+  .msn-log{height:clamp(52px,9vh,80px);margin:4px auto 8px;padding:6px 12px;font-size:13px}
+  .field{height:38px;margin-top:2px;margin-bottom:8px;font-size:17px}.field.area{height:clamp(52px,9vh,84px);padding-top:9px;font-size:15px}
+  .kk{height:clamp(24px,min(4.6vw,4.4vh),54px)!important}#kbd{padding:10px;gap:4px}.krow{gap:4px}
+  .sendrow{margin-top:10px}.hint{font-size:13px;margin-top:10px!important}
+  .stage{height:clamp(190px,34vh,350px)}.stat strong{font-size:clamp(26px,4vw,44px)}#tide{height:clamp(130px,26vh,230px)}
+}
+body.open canvas#fx{opacity:.25}
 </style>
 </head>
 <body>
@@ -698,7 +752,7 @@ body.game #burbi{opacity:0!important}
 <div id="cur" aria-hidden="true"></div>
 
 <div id="dolphin" aria-hidden="true"></div>
-<div id="burbi" aria-live="polite"><div class="bsb glassy" id="bsb"></div><button class="bfish" id="bfish" aria-label="Burbi, el asistente"></button></div>
+<div id="burbi"><div class="bsb" id="bsb" role="status"><div class="bin"><span class="bname">BURBI</span><p id="btext"></p><i class="bnext" id="bnext">▼</i></div></div><button class="bfish" id="bfish" aria-label="Burbi, el pez. Haz clic para que hable"></button></div>
 
 <div id="wmp" class="glassy" aria-label="Reproductor">
   <div class="wh" id="wmph"><span>REPRODUCTOR</span><button class="dot" id="wmpx" aria-label="cerrar"></button></div>
@@ -1103,7 +1157,7 @@ const whoSig=()=>visitor.login?`\n\n— ${visitor.name} (github.com/${visitor.lo
 function say(t,good){ sstat.textContent=t; sstat.classList.toggle('good',!!good); }
 async function send(){
   const msg=F.mensaje.t.trim(), mail=F.correo.t.trim();
-  if(msg.length<5){ say('escribe un mensaje un poco más largo'); setActive('mensaje'); toast('Falta el mensaje','Escribe unas palabras antes de enviar.','bad'); return; }
+  if(msg.length<5){ say('escribe un mensaje un poco más largo'); setActive('mensaje'); sfxError(); return; }
   const btn=document.getElementById('send'); btn.disabled=true; say('enviando...'); msnYou(msg);
   const celebrate=()=>{ [523.25,659.25,783.99,987.77,1318.5].forEach((q,i)=>bell(q,i*.09,.2,2.6)); whoosh(true,.1);
     F.mensaje.el.classList.add('sent'); for(let i=0;i<14;i++) setTimeout(()=>spawnBubble(innerWidth*(.3+Math.random()*.4),innerHeight*.6,8+Math.random()*20),i*60);
@@ -1233,7 +1287,7 @@ const SCR={
  lyr:()=>`<div class="scr">${barHtml('lumora · director local')}<div class="lyr"><b style="--dl:0s">la letra,</b><b style="--dl:-2s">en escena,</b><b style="--dl:-4s">sin internet.</b></div></div>`,
  piano:()=>`<div class="scr">${barHtml('tonada · audio a piano')}<div class="wave">${Array.from({length:22},(_,i)=>`<i style="--n:${i};--h:${30+Math.abs(Math.sin(i*1.7))*70}%"></i>`).join('')}</div><div class="keys2">${Array.from({length:14},(_,i)=>`<i style="--n:${i}"></i>`).join('')}</div></div>`,
  pet:()=>`<div class="scr petscr">${barHtml('claude-pet')}<div class="pshadow"></div><svg class="pet" viewBox="0 0 12 6" shape-rendering="crispEdges"><rect x="2" y="0" width="8" height="3" fill="#e07a50"/><rect x="2" y="3" width="8" height="1" fill="#bf5a38"/><rect x="0" y="1" width="2" height="1" fill="#e07a50"/><rect x="0" y="2" width="2" height="1" fill="#bf5a38"/><rect x="10" y="1" width="2" height="1" fill="#e07a50"/><rect x="10" y="2" width="2" height="1" fill="#bf5a38"/><g class="eyes"><rect x="4" y="1" width="1" height="2" fill="#2a160e"/><rect x="7" y="1" width="1" height="2" fill="#2a160e"/></g><g class="la" fill="#bf5a38"><rect x="2" y="4" width="1" height="2"/><rect x="4" y="4" width="1" height="2"/><rect x="7" y="4" width="1" height="2"/><rect x="9" y="4" width="1" height="2"/></g><g class="lb" fill="#bf5a38"><rect x="3" y="4" width="1" height="2"/><rect x="5" y="4" width="1" height="2"/><rect x="6" y="4" width="1" height="2"/><rect x="8" y="4" width="1" height="2"/></g></svg><div class="petmsg"><span>✻ pensando...</span><span>✻ leyendo archivos...</span><span>✻ escribiendo código...</span></div></div>`,
- xfer:()=>`<div class="scr">${barHtml('geode-transfer')}<div class="xfer"><div class="dev p"></div><div class="xl"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i></div><div class="dev m"></div><div class="xl"><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i></div><div class="dev t"></div></div><div class="ok">verificado</div></div>`
+ xfer:()=>`<div class="scr">${barHtml('geode-transfer')}<div class="xfer"><div class="dev p"></div><div class="xl"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i></div><div class="dev m"></div><div class="xl"><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i></div><div class="dev t"></div></div><div class="vok">verificado</div></div>`
 };
 const PROJ=[
  {n:'AltServer en macOS 27',s:'altserver',d:'arreglo para el inicio de sesión de altserver en macos 27 (-80045): primero un 503, después el análisis y el arreglo. hay un pull request abierto en altstore.',tags:['macOS 27','AltStore','ingeniería inversa','-80045'],links:[['ver informe','https://kisnner26.github.io/altserver-80045/'],['repositorio','https://github.com/kisnner26/altserver-80045']],ic:'key',c:['#d6f6ff','#2ba9ee','#0a5fa5'],scr:'term'},
@@ -1361,6 +1415,7 @@ function toast(title,msg,kind='',ms=7000){
   const el=document.createElement('div'); el.className='toast '+kind;
   el.innerHTML=`<span class="ti">${kind==='bad'?'!':kind==='good'?'✓':'i'}</span><div><b>${title}</b><span>${msg}</span></div><button class="x" aria-label="cerrar">×</button>`;
   const close=()=>{ el.classList.add('out'); setTimeout(()=>el.remove(),500); };
+  [...$('toasts').children].forEach(o=>o.remove());
   el.querySelector('.x').addEventListener('click',close); $('toasts').appendChild(el); kind==='bad'?sfxError():sfxNotify(); setTimeout(close,ms);
   while($('toasts').children.length>3) $('toasts').firstChild.remove();
 }
@@ -1424,7 +1479,7 @@ function endGame(){
   if(!game.run&&game.over) return; game.run=false; game.over=true; game.list=[];
   const best=game.score>game.best; if(best){ game.best=game.score; store.set('kisnner-best',game.best); $('gbest').textContent=game.best; }
   const [name,msg]=rankOf(game.score); $('ge-rank').textContent=name; $('ge-score').textContent=game.score; $('ge-best').textContent=game.best; $('ge-combo').textContent=game.maxCombo;
-  $('ge-msg').textContent=best&&game.score>0?'nuevo récord. '+msg:msg; burbiSay(msg); $('gend').classList.add('show'); [523.25,659.25,783.99,1046.5].forEach((f,i)=>bell(f,i*.09,.2,2.4));
+  $('ge-msg').textContent=best&&game.score>0?'nuevo récord. '+msg:msg; $('gend').classList.add('show'); [523.25,659.25,783.99,1046.5].forEach((f,i)=>bell(f,i*.09,.2,2.4));
   if(best&&game.score>0) setTimeout(()=>toast('Nuevo récord',game.score+' puntos en burbujas al compás','good'),600);
 }
 function exitGame(){ game.on=false; game.run=false; game.over=false; game.list=[]; document.body.classList.remove('game'); $('gend').classList.remove('show'); }
@@ -1540,11 +1595,7 @@ function curFrame(){ if(cur._x===undefined) return; cx+=(cur._x-cx)*.25; cy+=(cu
 /* =====================================================================
    avisos de bienvenida
    ===================================================================== */
-function scheduleTips(){
-  setTimeout(()=>burbiSay('pulsa tab para abrir la vista flip 3d.'),9000);
-  setTimeout(()=>burbiSay('haz doble clic sobre el agua. quizá salte un delfín.'),60000);
-  setTimeout(()=>burbiSay('¿un juego? la quinta boya: burbujas al compás.'),130000);
-}
+function scheduleTips(){}
 
 /* =====================================================================
    mundo vivo: hora del día, delfín, medusas, luciérnagas, mensajería,
@@ -1559,7 +1610,7 @@ function todFor(h){
 }
 let todH=realHour(), todTarget=todH, todOver=false, todMin=-1, presetI=0;
 const PRESETS=[['la hora real',null],['mediodía',12],['atardecer',18.2],['noche',23.5]];
-function setTime(h,name){ todOver=h!==null; todTarget=h===null?realHour():h; burbiSay('ahora es '+name+'.',4200); }
+function setTime(h,name){ todOver=h!==null; todTarget=h===null?realHour():h; }
 function cycleTime(){ initAudio(); presetI=(presetI+1)%PRESETS.length; const [n,h]=PRESETS[presetI]; setTime(h,n); whoosh(true,.06); }
 function todFrame(dt){
   const m=Math.floor(Date.now()/60000); if(m!==todMin){ todMin=m; if(!todOver) todTarget=realHour(); }
@@ -1615,7 +1666,7 @@ function jumpDolphin(xc){
   if(DL.on) return; const W=innerWidth,H=innerHeight, span=Math.min(W*.5,540);
   DL.dir=xc!==undefined?(xc<W/2?1:-1):(Math.random()<.5?1:-1); DL.x0=xc!==undefined?xc-DL.dir*span/2:(DL.dir>0?W*(.05+Math.random()*.25):W*(.95-Math.random()*.25));
   DL.dx=DL.dir*span; DL.y0=H*(.6+Math.random()*.1); DL.h=H*(.22+Math.random()*.1); DL.t=0; DL.dur=1.8; DL.on=true; dol.style.opacity=1;
-  splashAt(DL.x0,DL.y0); sfxSplash(); chirp(); burbiSay('¡un delfín!',3200);
+  splashAt(DL.x0,DL.y0); sfxSplash(); chirp();
 }
 function dolphinStep(dt){
   if(!DL.on) return; DL.t+=dt/DL.dur; const t=Math.min(1,DL.t), x=DL.x0+DL.dx*t, y=DL.y0-4*DL.h*t*(1-t), vy=-4*DL.h*(1-2*t), ang=Math.atan2(vy,Math.abs(DL.dx))*57.3;
@@ -1683,16 +1734,35 @@ function wmpFrame(){
 /* =====================================================================
    burbi, el asistente
    ===================================================================== */
-const burbi=$('burbi'), bsb=$('bsb'); $('bfish').innerHTML=FISH.tang.replace(/@/g,'b'+(fishUid++)); let btype=0, btimer=0;
-function burbiSay(txt,ms=6500){
-  if(!started) return; if(document.body.classList.contains('open')&&innerWidth<=1250){ toast('Burbi',txt); return; }
-  burbi.classList.add('here','talk'); clearInterval(btype); let i=0; bsb.textContent=''; btype=setInterval(()=>{ bsb.textContent=txt.slice(0,++i); if(i>=txt.length) clearInterval(btype); },20);
-  clearTimeout(btimer); btimer=setTimeout(()=>burbi.classList.remove('talk'),ms+txt.length*20); bloop(700+Math.random()*300,.06,true);
+const burbi=$('burbi'), bsb=$('bsb'), btext=$('btext'), bnext=$('bnext'), bfish=$('bfish'); bfish.innerHTML=FISH.tang.replace(/@/g,'b'+(fishUid++));
+let bq=[], btyping=false, bTimer=0, bAuto=0, lastSay=0;
+/* voz: un pitido corto por letra, sin idioma, como en las consolas antiguas */
+function burbiBlip(ch){
+  if(!ok()||/[\s.,!?¿¡:;"'-]/.test(ch)) return; const t=ac.currentTime, f=240+((ch.toLowerCase().charCodeAt(0)*53)%17)*34, o=ac.createOscillator(), g=ac.createGain();
+  o.type='square'; o.frequency.setValueAtTime(f,t); o.frequency.exponentialRampToValueAtTime(f*(1.06+Math.random()*.14),t+.05);
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.04,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.07); o.connect(g); g.connect(master); o.start(t); o.stop(t+.08);
 }
-const BTIPS=['pulsa tab para abrir la vista flip 3d.','escribe "aero" para que caiga la noche.','prueba el código konami. los peces lo agradecen.','haz doble clic sobre el agua. quizá salte un delfín.','la hora del cielo es la tuya. toca el reloj para cambiarla.','en la marea puedes escuchar el año entero.','las medusas siguen tu cursor.','el botón de los audífonos abre el reproductor con visualizador.'];
-$('bfish').addEventListener('click',()=>{ initAudio(); burbiSay(BTIPS[Math.floor(Math.random()*BTIPS.length)]); });
+function burbiType(txt){
+  clearTimeout(bTimer); clearTimeout(bAuto); btyping=true; burbi.classList.add('here','talk'); bfish.classList.add('talking'); bnext.style.visibility='hidden'; btext.textContent=''; let i=0;
+  (function step(){ if(i>=txt.length){ btyping=false; bfish.classList.remove('talking'); bnext.style.visibility='visible'; bAuto=setTimeout(burbiNext,bq.length?2600:4200); return; }
+    const ch=txt[i++]; btext.textContent=txt.slice(0,i); burbiBlip(ch); bTimer=setTimeout(step,/[.!?]/.test(ch)?240:/[,:;]/.test(ch)?150:48); })();
+}
+function burbiNext(){
+  clearTimeout(bAuto);
+  if(btyping){ clearTimeout(bTimer); const full=burbiNext._cur||''; btext.textContent=full; btyping=false; bfish.classList.remove('talking'); bnext.style.visibility='visible'; bAuto=setTimeout(burbiNext,2600); return; }
+  if(!bq.length){ burbi.classList.remove('talk'); return; }
+  const l=bq.shift(); burbiNext._cur=l; burbiType(l);
+}
+function burbiTalk(lines,force=false){
+  if(!started) return; if(!force&&(document.body.classList.contains('open')||Date.now()-lastSay<60000)) return; lastSay=Date.now();
+  initAudio(); bq=lines.slice(); burbiNext();
+}
+const burbiSay=(txt,ms,force)=>burbiTalk([txt],force);
+const BCHAT=[['¿sabías que...','si haces doble clic en el agua,','quizá salte un delfín?'],['pulsa tab y verás','las secciones en flip 3d.'],['escribe "aero"','y caerá la noche.'],['el reproductor tiene visualizador.','busca los audífonos.'],['las medusas siguen tu cursor.','no te tienen miedo.'],['en la marea puedes escuchar','el año entero.'],['prueba el código konami.','los peces lo agradecen.']];
+bsb.addEventListener('click',burbiNext);
+bfish.addEventListener('click',()=>{ initAudio(); if(burbi.classList.contains('talk')&&(btyping||bq.length)){ burbiNext(); return; } burbiTalk(BCHAT[Math.floor(Math.random()*BCHAT.length)],true); });
 const seenSec={}, BSEC={proyectos:'ese monitor muestra cada proyecto. usa la lista o la barra de tiempo.',marea:'prueba "escuchar el año": cada semana suena como una nota.',tocar:'cada tecla es una nota. si no escribes, se escribe sola.',hablemos:'tu mensaje le llega por correo. el zumbido es solo por diversión.'};
-function burbiSection(name){ if(seenSec[name]||!BSEC[name]) return; seenSec[name]=1; setTimeout(()=>burbiSay(BSEC[name]),900); }
+function burbiSection(name){}
 
 /* =====================================================================
    huevos de pascua
@@ -1753,7 +1823,7 @@ function begin(){
   setTimeout(()=>{ clearInterval(ph); enter(); },3000);
 }
 function enter(){
-  splash.classList.add('out'); setTimeout(()=>splash.remove(),1700); started=true; lastInput=performance.now(); document.body.classList.add('in'); whoosh(true,.1); updVis(); startWeather(); scheduleTips(); if(!RM) setTimeout(nextDolphin,16000); setTimeout(()=>{ const f=visitor.guest?'':(visitor.name||visitor.login).split(' ')[0]; burbiSay((f?'hola, '+f+'. ':'hola. ')+'soy burbi. toca una boya para empezar.'); },2300); if(!visitor.guest) setTimeout(()=>toast('Sesión iniciada',((visitor.name||visitor.login).split(' ')[0])+', bienvenido a mi escritorio. Gracias por pasar.','good'),1600);
+  splash.classList.add('out'); setTimeout(()=>splash.remove(),1700); started=true; lastInput=performance.now(); document.body.classList.add('in'); whoosh(true,.1); updVis(); startWeather(); scheduleTips(); if(!RM) setTimeout(nextDolphin,16000); setTimeout(()=>{ const f=visitor.guest?'':(visitor.name||visitor.login).split(' ')[0]; burbiTalk([f?'¡hola, '+f+'!':'¡hola!','soy burbi. no hablo ningún idioma,','pero tú me entiendes. toca una boya.']); },2300);
   for(let i=0;i<12;i++) setTimeout(()=>spawnBubble(Math.random()*innerWidth,innerHeight+30,10+Math.random()*30),i*120);
   setTimeout(()=>ripple(innerWidth*.5,innerHeight*.78),500);
 }
