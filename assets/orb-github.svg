@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" role="img" aria-labelledby="t d">
+  <title id="t">github</title>
+  <desc id="d">enlace: github</desc>
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b78b8"/><stop offset="1" stop-color="#064a73"/></linearGradient>
+    <filter id="emboss" x="-5%" y="-10%" width="110%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="0" flood-color="#ffffff" flood-opacity=".9"/></filter>
+    <radialGradient id="bub" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".3" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity=".02"/></radialGradient>
+    <radialGradient id="o" cx=".5" cy=".88" r=".9"><stop offset="0" stop-color="#cfe0ff"/><stop offset=".5" stop-color="#3f6fe0"/><stop offset="1" stop-color="#14308f"/></radialGradient>
+    <linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+    <filter id="ts" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="#000" flood-opacity=".4"/></filter>
+    <radialGradient id="sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#05508a" stop-opacity=".35"/><stop offset="1" stop-color="#05508a" stop-opacity="0"/></radialGradient>
+    <style>
+      .float{animation:float 4.2s ease-in-out infinite}
+      @keyframes float{50%{transform:translateY(-7px)}}
+      .shade{animation:shade 4.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+      @keyframes shade{50%{transform:scale(.82);opacity:.7}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+  <ellipse cx="60" cy="132" rx="38" ry="7" fill="url(#sh)" class="shade"/>
+  <g class="float" style="animation-delay:-1.8s">
+    <g transform="translate(10 6)">
+      <circle cx="50" cy="50" r="46" fill="url(#o)" stroke="#fff" stroke-width="2.5"/>
+      <g filter="url(#ts)"><path d="M40 36L24 50l16 14M60 36l16 14-16 14M54 30L46 70" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <ellipse cx="50" cy="27" rx="33" ry="19" fill="url(#hl)"/>
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#fff" stroke-opacity=".35"/>
+    </g>
+  </g>
+  <rect x="18" y="132" width="83" height="24" rx="12" fill="#fff" fill-opacity=".92"/>
+  <text x="60" y="149" font-family="Frutiger,'Segoe UI','Nunito','SF Pro Rounded','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="800" fill="#064a73" text-anchor="middle" >github</text>
+</svg>
