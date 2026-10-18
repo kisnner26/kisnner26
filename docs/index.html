@@ -215,10 +215,19 @@ body.in #bar{opacity:1}
 .keys2{display:flex;gap:.6cqw;margin-top:3cqw;height:17cqw}
 .keys2 i{flex:1;border-radius:0 0 1cqw 1cqw;background:linear-gradient(#fff,#cfe9f7);animation:hit 3s ease-in-out infinite;animation-delay:calc(var(--n) * .22s)}
 @keyframes hit{0%,12%,100%{background:linear-gradient(#fff,#cfe9f7)}4%{background:linear-gradient(#b8ff6a,#4fc23a);transform:translateY(.8cqw)}}
-.pet{position:absolute;left:50%;top:44%;width:8px;height:8px;transform:translate(-50%,-50%) scale(var(--px,4));image-rendering:pixelated;animation:petbob 1.4s steps(2) infinite}
-@keyframes petbob{50%{margin-top:-4px}}
-.pet::before{content:"";position:absolute;left:0;top:0;width:1px;height:1px;box-shadow:2px 1px #fff,3px 1px #fff,4px 1px #fff,5px 1px #fff,1px 2px #fff,2px 2px #fff,3px 2px #fff,4px 2px #fff,5px 2px #fff,6px 2px #fff,1px 3px #fff,2px 3px #2b2b2b,3px 3px #fff,4px 3px #fff,5px 3px #2b2b2b,6px 3px #fff,1px 4px #fff,2px 4px #fff,3px 4px #fff,4px 4px #fff,5px 4px #fff,6px 4px #fff,2px 5px #fff,3px 5px #f69,4px 5px #f69,5px 5px #fff,2px 6px #fff,5px 6px #fff;transform:scale(1);image-rendering:pixelated}
-.petmsg{position:absolute;left:0;right:0;bottom:5cqw;text-align:center;font:600 3.4cqw var(--mono);color:#b8ff6a;animation:blink 1.2s steps(1) infinite}
+.pet{position:absolute;left:50%;top:40%;width:40cqw;transform:translate(-50%,-50%);animation:petbob 1.2s steps(1) infinite;overflow:visible}
+@keyframes petbob{50%{margin-top:-1.4cqw}}
+.pet .la{animation:lega .6s steps(1) infinite}.pet .lb{animation:lega .6s steps(1) infinite reverse;opacity:0}
+@keyframes lega{0%{opacity:1}50%{opacity:0}}
+.pet .lb{animation-name:legb}@keyframes legb{0%{opacity:0}50%{opacity:1}}
+.pet .eyes{transform-box:fill-box;transform-origin:50% 50%;animation:eyeb 3.6s steps(1) infinite}
+@keyframes eyeb{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.25)}}
+.pshadow{position:absolute;left:50%;top:67%;width:34cqw;height:3cqw;margin-left:-17cqw;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(1px)}
+.petscr{background:linear-gradient(180deg,#2e1d15,#140c08)!important}
+.petmsg{position:absolute;left:0;right:0;bottom:6cqw;height:4.6cqw;text-align:center;font:600 3.5cqw var(--mono);color:#e07a50}
+.petmsg span{position:absolute;left:0;right:0;opacity:0;animation:pmsg 6s infinite}
+.petmsg span:nth-child(2){animation-delay:2s}.petmsg span:nth-child(3){animation-delay:4s}
+@keyframes pmsg{0%{opacity:0;transform:translateY(1cqw)}6%,30%{opacity:1;transform:none}36%,100%{opacity:0}}
 @keyframes blink{50%{opacity:.35}}
 .xfer{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-around;padding:0 8cqw}
 .dev{width:15cqw;border-radius:2.4cqw;background:linear-gradient(180deg,#e9f6ff,#8fbfe0);border:.5cqw solid #fff;box-shadow:0 1cqw 2cqw rgba(0,0,0,.4);position:relative}
@@ -1086,7 +1095,7 @@ const SCR={
  lanes:()=>`<div class="scr">${barHtml('relevo · balanceador')}<div class="hub"></div><div class="lanes" style="margin-left:7cqw">${[2.4,3.1,2,3.6].map(d=>`<div class="lane"><i style="--d:${d}s;--dl:-${(d*.3).toFixed(1)}s"></i><i style="--d:${d}s;--dl:-${(d*.8).toFixed(1)}s"></i></div>`).join('')}</div></div>`,
  lyr:()=>`<div class="scr">${barHtml('lumora · director local')}<div class="lyr"><b style="--dl:0s">la letra,</b><b style="--dl:-2s">en escena,</b><b style="--dl:-4s">sin internet.</b></div></div>`,
  piano:()=>`<div class="scr">${barHtml('tonada · audio a piano')}<div class="wave">${Array.from({length:22},(_,i)=>`<i style="--n:${i};--h:${30+Math.abs(Math.sin(i*1.7))*70}%"></i>`).join('')}</div><div class="keys2">${Array.from({length:14},(_,i)=>`<i style="--n:${i}"></i>`).join('')}</div></div>`,
- pet:()=>`<div class="scr">${barHtml('claude-pet')}<div class="pet" style="--px:7"></div><div class="petmsg">pensando...</div></div>`,
+ pet:()=>`<div class="scr petscr">${barHtml('claude-pet')}<div class="pshadow"></div><svg class="pet" viewBox="0 0 12 6" shape-rendering="crispEdges"><rect x="2" y="0" width="8" height="3" fill="#e07a50"/><rect x="2" y="3" width="8" height="1" fill="#bf5a38"/><rect x="0" y="1" width="2" height="1" fill="#e07a50"/><rect x="0" y="2" width="2" height="1" fill="#bf5a38"/><rect x="10" y="1" width="2" height="1" fill="#e07a50"/><rect x="10" y="2" width="2" height="1" fill="#bf5a38"/><g class="eyes"><rect x="4" y="1" width="1" height="2" fill="#2a160e"/><rect x="7" y="1" width="1" height="2" fill="#2a160e"/></g><g class="la" fill="#bf5a38"><rect x="2" y="4" width="1" height="2"/><rect x="4" y="4" width="1" height="2"/><rect x="7" y="4" width="1" height="2"/><rect x="9" y="4" width="1" height="2"/></g><g class="lb" fill="#bf5a38"><rect x="3" y="4" width="1" height="2"/><rect x="5" y="4" width="1" height="2"/><rect x="6" y="4" width="1" height="2"/><rect x="8" y="4" width="1" height="2"/></g></svg><div class="petmsg"><span>✻ pensando...</span><span>✻ leyendo archivos...</span><span>✻ escribiendo código...</span></div></div>`,
  xfer:()=>`<div class="scr">${barHtml('geode-transfer')}<div class="xfer"><div class="dev p"></div><div class="xl"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i></div><div class="dev m"></div><div class="xl"><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i></div><div class="dev t"></div></div><div class="ok">verificado</div></div>`
 };
 const PROJ=[
