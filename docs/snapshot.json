@@ -1,16 +1,17 @@
 {
- "generated": "2026-10-19",
- "merged": 8,
+ "generated": "2026-10-20",
+ "merged": 9,
  "projects": [
   "ClaudeHub",
   "PeerBeam",
+  "bindings",
   "node",
   "pyelftools",
   "radare2",
   "swift-llm-kit"
  ],
- "downloads": 846,
- "total": 2013,
+ "downloads": 978,
+ "total": 2081,
  "weeks": [
   0,
   0,
@@ -64,9 +65,9 @@
   91,
   841,
   514,
-  98
+  166
  ],
  "first": "2025-10-19",
- "streak": 15,
+ "streak": 17,
  "best_day": 601
 }
