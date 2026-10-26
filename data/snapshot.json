@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-25",
+ "generated": "2026-10-26",
  "merged": 9,
  "projects": [
   "ClaudeHub",
@@ -10,8 +10,8 @@
   "radare2",
   "swift-llm-kit"
  ],
- "downloads": 1271,
- "total": 2226,
+ "downloads": 1305,
+ "total": 2388,
  "weeks": [
   0,
   0,
@@ -64,10 +64,10 @@
   91,
   841,
   514,
-  311,
-  0
+  317,
+  156
  ],
  "first": "2025-10-26",
- "streak": 21,
+ "streak": 23,
  "best_day": 601
 }
