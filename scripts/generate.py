@@ -168,37 +168,45 @@ def clippy(cx, cy, scale=1.0, blink_delay=0):
     carita que asoma por el hueco de arriba, ojos que parpadean y miran."""
     s = scale
     return f"""<g transform="translate({cx},{cy}) scale({s})">
-    <g transform="rotate(-4)">
+    <g class="pad" style="transform-origin:0px -40px;transform:rotate(-4deg)">
       <rect x="-54" y="-156" width="108" height="168" rx="6" fill="{PAD_YELLOW}" stroke="#c9ad3f" stroke-width="2"/>
       {"".join(f'<line x1="-44" y1="{y}" x2="44" y2="{y}" stroke="#d8c268" stroke-width="1.5"/>' for y in range(-134, 2, 14))}
     </g>
-    <g fill="none" stroke-linecap="round">
+    <g class="wire" fill="none" stroke-linecap="round" style="transform-origin:0px -40px">
       <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#7d828e" stroke-width="10"/>
       <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
       <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#7d828e" stroke-width="9"/>
       <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
     </g>
     <g class="eyes">
-      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:{blink_delay}s"/>
-      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:{blink_delay + .08}s"/>
-      <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
-      <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
-      <circle cx="-18.5" cy="-116.5" r="1.2" fill="{WHITE}"/>
-      <circle cx="5.5" cy="-118.5" r="1.2" fill="{WHITE}"/>
+      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye eye-l" style="animation-delay:{blink_delay}s"/>
+      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye eye-r" style="animation-delay:{blink_delay + .08}s"/>
+      <g class="pupils">
+        <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
+        <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
+        <circle cx="-18.5" cy="-116.5" r="1.2" fill="{WHITE}"/>
+        <circle cx="5.5" cy="-118.5" r="1.2" fill="{WHITE}"/>
+      </g>
     </g>
-    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round" class="brows">
-      <path d="M-30 -134 q11 -8 21 -3"/>
-      <path d="M-6 -138 q11 -6 21 1"/>
+    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round">
+      <path class="brow-l" d="M-30 -134 q11 -8 21 -3" style="transform-origin:-20px -136px"/>
+      <path class="brow-r" d="M-6 -138 q11 -6 21 1" style="transform-origin:4px -140px"/>
     </g>
   </g>"""
 
 
 CLIPPY_STYLE = """.eye{animation:blink 4.6s ease-in-out infinite}
-      @keyframes blink{0%,92%,100%{ry:12}95%{ry:1}}
-      .pupil{animation:look 7s ease-in-out infinite}
-      @keyframes look{0%,100%{transform:translate(0,0)}30%{transform:translate(2px,-1px)}60%{transform:translate(-2px,1px)}}
-      .brows{animation:brow 5.4s ease-in-out infinite}
-      @keyframes brow{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}"""
+      @keyframes blink{0%,88%,100%{ry:12}91%{ry:1}}
+      .pupils{animation:look 8s ease-in-out infinite}
+      @keyframes look{0%,100%{transform:translate(0,0)}15%{transform:translate(3px,-2px)}35%{transform:translate(3px,-2px)}50%{transform:translate(-3px,1.5px)}70%{transform:translate(-3px,1.5px)}85%{transform:translate(0,-2.5px)}}
+      .brow-l{animation:browl 5.4s ease-in-out infinite}
+      .brow-r{animation:browr 5.4s ease-in-out infinite}
+      @keyframes browl{0%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-3px) rotate(-6deg)}50%{transform:translateY(0) rotate(0)}76%{transform:translateY(-1.5px) rotate(2deg)}}
+      @keyframes browr{0%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-1px) rotate(2deg)}50%{transform:translateY(0) rotate(0)}76%{transform:translateY(-3.5px) rotate(-7deg)}}
+      .wire{animation:wire 6s ease-in-out infinite}
+      @keyframes wire{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-1.6deg) scale(1.015)}}
+      .pad{animation:pad 6s ease-in-out infinite}
+      @keyframes pad{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-2deg)}}"""
 
 
 def speech_bubble(x, y, w, h, lines_html, pointer_x):

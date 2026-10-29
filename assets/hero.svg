@@ -16,11 +16,17 @@
     <clipPath id="card"><rect width="1200" height="520" rx="14"/></clipPath>
     <style>
       .eye{animation:blink 4.6s ease-in-out infinite}
-      @keyframes blink{0%,92%,100%{ry:12}95%{ry:1}}
-      .pupil{animation:look 7s ease-in-out infinite}
-      @keyframes look{0%,100%{transform:translate(0,0)}30%{transform:translate(2px,-1px)}60%{transform:translate(-2px,1px)}}
-      .brows{animation:brow 5.4s ease-in-out infinite}
-      @keyframes brow{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+      @keyframes blink{0%,88%,100%{ry:12}91%{ry:1}}
+      .pupils{animation:look 8s ease-in-out infinite}
+      @keyframes look{0%,100%{transform:translate(0,0)}15%{transform:translate(3px,-2px)}35%{transform:translate(3px,-2px)}50%{transform:translate(-3px,1.5px)}70%{transform:translate(-3px,1.5px)}85%{transform:translate(0,-2.5px)}}
+      .brow-l{animation:browl 5.4s ease-in-out infinite}
+      .brow-r{animation:browr 5.4s ease-in-out infinite}
+      @keyframes browl{0%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-3px) rotate(-6deg)}50%{transform:translateY(0) rotate(0)}76%{transform:translateY(-1.5px) rotate(2deg)}}
+      @keyframes browr{0%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-1px) rotate(2deg)}50%{transform:translateY(0) rotate(0)}76%{transform:translateY(-3.5px) rotate(-7deg)}}
+      .wire{animation:wire 6s ease-in-out infinite}
+      @keyframes wire{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-1.6deg) scale(1.015)}}
+      .pad{animation:pad 6s ease-in-out infinite}
+      @keyframes pad{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-2deg)}}
       .float{animation:float 4.5s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -43,27 +49,29 @@
       <path d="M53 4l10 8m0-8l-10 8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
     </g>
   <g transform="translate(600,424)"><g class="float"><g transform="translate(0,0) scale(2.4)">
-    <g transform="rotate(-4)">
+    <g class="pad" style="transform-origin:0px -40px;transform:rotate(-4deg)">
       <rect x="-54" y="-156" width="108" height="168" rx="6" fill="#f6e79c" stroke="#c9ad3f" stroke-width="2"/>
       <line x1="-44" y1="-134" x2="44" y2="-134" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-120" x2="44" y2="-120" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-106" x2="44" y2="-106" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-92" x2="44" y2="-92" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-78" x2="44" y2="-78" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-64" x2="44" y2="-64" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-50" x2="44" y2="-50" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-36" x2="44" y2="-36" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-22" x2="44" y2="-22" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-8" x2="44" y2="-8" stroke="#d8c268" stroke-width="1.5"/>
     </g>
-    <g fill="none" stroke-linecap="round">
+    <g class="wire" fill="none" stroke-linecap="round" style="transform-origin:0px -40px">
       <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#7d828e" stroke-width="10"/>
       <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
       <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#7d828e" stroke-width="9"/>
       <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
     </g>
     <g class="eyes">
-      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="#ffffff" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:0s"/>
-      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="#ffffff" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:0.08s"/>
-      <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
-      <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
-      <circle cx="-18.5" cy="-116.5" r="1.2" fill="#ffffff"/>
-      <circle cx="5.5" cy="-118.5" r="1.2" fill="#ffffff"/>
+      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="#ffffff" stroke="#20242c" stroke-width="2.2" class="eye eye-l" style="animation-delay:0s"/>
+      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="#ffffff" stroke="#20242c" stroke-width="2.2" class="eye eye-r" style="animation-delay:0.08s"/>
+      <g class="pupils">
+        <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
+        <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
+        <circle cx="-18.5" cy="-116.5" r="1.2" fill="#ffffff"/>
+        <circle cx="5.5" cy="-118.5" r="1.2" fill="#ffffff"/>
+      </g>
     </g>
-    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round" class="brows">
-      <path d="M-30 -134 q11 -8 21 -3"/>
-      <path d="M-6 -138 q11 -6 21 1"/>
+    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round">
+      <path class="brow-l" d="M-30 -134 q11 -8 21 -3" style="transform-origin:-20px -136px"/>
+      <path class="brow-r" d="M-6 -138 q11 -6 21 1" style="transform-origin:4px -140px"/>
     </g>
   </g></g></g>
   <text x="600" y="500" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="500" fill="#ffffff" text-anchor="middle" letter-spacing="1" opacity="0.55" >kisnner26 · Managua, Nicaragua</text>
