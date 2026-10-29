@@ -2,14 +2,23 @@
   <title id="t">Correo</title>
   <desc id="d">enlace: Correo</desc>
   <defs>
-
+    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b7ce0"/><stop offset=".5" stop-color="#0a246a"/><stop offset="1" stop-color="#0a246a"/>
+    </linearGradient>
+    <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3938a"/><stop offset="1" stop-color="#d6341f"/>
+    </linearGradient>
+    <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
+    </linearGradient>
     <style>
       .go{animation:go 2.2s ease-in-out infinite}
       @keyframes go{50%{transform:translateX(3px)}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
-  <rect x="1" y="1" width="132" height="46" rx="23" fill="#000000" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
-  <text x="59.0" y="30" font-family="-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle" >Correo</text>
-  <path class="go" d="M98 24h11m-5-5 5 5-5 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1" y="1" width="132" height="46" rx="7" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
+  <rect x="3" y="3" width="128" height="21" rx="5" fill="#ffffff" fill-opacity=".25"/>
+  <text x="59.0" y="29.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#0a1d3a" text-anchor="middle" >Correo</text>
+  <path class="go" d="M98 22h11m-5-5 5 5-5 5" fill="none" stroke="#0a1d3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
