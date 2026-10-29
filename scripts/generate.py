@@ -172,28 +172,31 @@ def xp_window(w, h, title, inner, theme_fill=XP_PANEL, title_h=30):
 
 # ---------------------------------------------------------------- Clippy
 def clippy(cx, cy, scale=1.0, blink_delay=0):
-    """un clippy esquemático: libreta amarilla detrás, dos aros de clip plateados, ojos que parpadean."""
+    """clippy: libreta amarilla detrás, dos aros de alambre anidados (como el clip real) y una
+    carita que asoma por el hueco de arriba, ojos que parpadean y miran."""
     s = scale
     return f"""<g transform="translate({cx},{cy}) scale({s})">
-    <g transform="rotate(-5)">
-      <rect x="-50" y="-96" width="100" height="150" rx="6" fill="{PAD_YELLOW}" stroke="#c9ad3f" stroke-width="2"/>
-      {"".join(f'<line x1="-40" y1="{y}" x2="40" y2="{y}" stroke="#d8c268" stroke-width="1.5"/>' for y in range(-74, 44, 14))}
+    <g transform="rotate(-4)">
+      <rect x="-54" y="-156" width="108" height="168" rx="6" fill="{PAD_YELLOW}" stroke="#c9ad3f" stroke-width="2"/>
+      {"".join(f'<line x1="-44" y1="{y}" x2="44" y2="{y}" stroke="#d8c268" stroke-width="1.5"/>' for y in range(-134, 2, 14))}
     </g>
     <g fill="none" stroke-linecap="round">
-      <ellipse cx="0" cy="-42" rx="25" ry="34" stroke="#9aa0ae" stroke-width="11"/>
-      <ellipse cx="0" cy="-42" rx="25" ry="34" stroke="#d8dbe2" stroke-width="3.5" opacity=".8"/>
-      <ellipse cx="0" cy="-2" rx="14" ry="22" stroke="#9aa0ae" stroke-width="10"/>
-      <ellipse cx="0" cy="-2" rx="14" ry="22" stroke="#d8dbe2" stroke-width="3" opacity=".8"/>
+      <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#7d828e" stroke-width="10"/>
+      <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
+      <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#7d828e" stroke-width="9"/>
+      <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
     </g>
     <g class="eyes">
-      <ellipse cx="-10" cy="-48" rx="8" ry="10.5" fill="{WHITE}" stroke="#20242c" stroke-width="2" class="eye" style="animation-delay:{blink_delay}s"/>
-      <ellipse cx="11" cy="-48" rx="8" ry="10.5" fill="{WHITE}" stroke="#20242c" stroke-width="2" class="eye" style="animation-delay:{blink_delay + .08}s"/>
-      <circle cx="-8" cy="-45" r="3.4" fill="#15171c" class="pupil"/>
-      <circle cx="13" cy="-45" r="3.4" fill="#15171c" class="pupil"/>
+      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:{blink_delay}s"/>
+      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye" style="animation-delay:{blink_delay + .08}s"/>
+      <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
+      <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
+      <circle cx="-18.5" cy="-116.5" r="1.2" fill="{WHITE}"/>
+      <circle cx="5.5" cy="-118.5" r="1.2" fill="{WHITE}"/>
     </g>
-    <g stroke="#15171c" stroke-width="2.4" stroke-linecap="round" class="brows">
-      <path d="M-19 -63 q9 -6 17 -1"/>
-      <path d="M2 -64 q9 -5 17 1"/>
+    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round" class="brows">
+      <path d="M-30 -134 q11 -8 21 -3"/>
+      <path d="M-6 -138 q11 -6 21 1"/>
     </g>
   </g>"""
 
@@ -240,170 +243,110 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
 
 # ---------------------------------------------------------------- hero
 def hero():
-    role_lines = "".join(
-        f'<g class="role{" first" if i == 0 else ""}" style="animation-delay:{i * 3.4}s">{text(0, 20 + k * 19, line, 15.5, "#1b1b1b", 400)}</g>'
-        for i, role in enumerate(ROLES) for k, line in enumerate([role])
-    )
-    bubble = speech_bubble(290, 170, 460, 70, role_lines, 50)
-    clip = clippy(165, 400, 1.5)
-    taskbar = f"""<rect y="{640 - 40}" width="1200" height="40" fill="url(#tbar)"/>
-    <rect x="10" y="{640 - 34}" width="118" height="28" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
-    {text(26, 640 - 15, "inicio", 14, WHITE, 700)}
-    {text(1190, 640 - 15, "MANAGUA · 12.13°N 86.25°W", 12.5, WHITE, 500, "end", .85, 1, "mono")}"""
+    tagline = text(0, 22, "Parece que estás viendo el perfil de Kisnner.", 16.5, "#1b1b1b", 500)
+    bubble = speech_bubble(372, 150, 420, 56, tagline, 44)
+    clip = clippy(150, 330, 1.18)
+    taskbar = f"""<rect y="{440 - 36}" width="1200" height="36" fill="url(#tbar)"/>
+    <rect x="10" y="{440 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
+    {text(24, 440 - 13, "inicio", 13.5, WHITE, 700)}
+    {text(1190, 440 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
     body = f"""  <g clip-path="url(#card)">
-  {fiberglass_bg(1200, 640)}
-  <g transform="translate(40,40)">
-    {xp_window(1120, 540, "Propiedades de Kisnner Obando.exe", "")}
+  {fiberglass_bg(1200, 440)}
+  <g transform="translate(36,30)">
+    {xp_window(1128, 374, "Propiedades de Kisnner Obando.exe", "")}
   </g>
-  <g transform="translate(40,70)">
-    <rect width="1120" height="510" fill="{XP_PANEL}"/>
-    {text(56, 86, "Kisnner Obando.", 58, INK, 700, spacing=-1)}
-    {text(56, 122, "apps nativas para Apple · backend transaccional · ingeniería inversa · open source", 15, "#3a3a3a", 500)}
+  <g transform="translate(36,60)">
+    <rect width="1128" height="344" fill="{XP_PANEL}"/>
+    {text(260, 78, "Kisnner Obando.", 46, INK, 700, spacing=-1)}
+    {text(260, 108, "apps nativas para Apple · backend transaccional · ingeniería inversa · open source", 14, "#3a3a3a", 500)}
     {clip}
     {bubble}
-    {text(56, 470, "kisnner26 · Managua, Nicaragua", 13.5, "#555", 500, opacity=.9, kind="mono")}
+    {text(260, 300, "kisnner26 · Managua, Nicaragua", 13, "#555", 500, opacity=.9, kind="mono")}
   </g>
   {taskbar}
   </g>"""
-    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="640" rx="14"/></clipPath>'
-    style = CLIPPY_STYLE + """
-      .role{opacity:0;animation:role 13.6s infinite}
-      @keyframes role{0%{opacity:0;transform:translateY(10px)}4%{opacity:1;transform:none}22%{opacity:1;transform:none}26%{opacity:0;transform:translateY(-10px)}100%{opacity:0}}
-      @media (prefers-reduced-motion:reduce){.role{opacity:0}.role.first{opacity:1}}"""
-    return svg(1200, 640, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua.", body, style, defs)
+    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="440" rx="14"/></clipPath>'
+    return svg(1200, 440, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, CLIPPY_STYLE, defs)
 
 
-# ---------------------------------------------------------------- tarjetas
-def reveal(cid, x, y, w, h, times, values):
-    return (f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="0" height="{h}">'
-            f'<animate attributeName="width" values="{values}" keyTimes="{times}" dur="8s" repeatCount="indefinite"/></rect></clipPath>')
-
-
+# ---------------------------------------------------------------- tarjetas (estáticas, sin animación)
 def tile_visual(index):
-    if index == 0:  # una terminal estilo s.cmd: primero el 503, tachado; después el 200
-        defs = (reveal("l1", 0, 16, 320, 22, "0;.12;.92;1", "0;320;320;0")
-                + reveal("l2", 0, 42, 320, 22, "0;.16;.28;.92;1", "0;0;320;320;0")
-                + reveal("l3", 0, 68, 320, 22, "0;.36;.46;.92;1", "0;0;320;320;0"))
-        body = f"""  <g transform="translate(22,186)">
+    if index == 0:  # una terminal estilo s.cmd, con el resultado final ya escrito
+        body = f"""  <g transform="translate(22,184)">
   <rect width="340" height="96" rx="4" fill="#0a0a0a" stroke="{XP_TITLE_A}" stroke-width="1.5"/>
   {xp_titlebar(340, "s.cmd", buttons=False, h=18, grad_id="tbar")}
   <g transform="translate(0,18)">
-  <g clip-path="url(#l1)">{text(14, 32, "$ altserver --sign-in", 13, "#6cff6c", 500, kind="mono")}</g>
-  <g clip-path="url(#l2)">{text(14, 58, "← 503  Service Unavailable", 13, "#ff6c6c", 400, kind="mono")}</g>
-  <path d="M14 54h214" stroke="#ff6c6c" stroke-width="1.5" stroke-dasharray="214"><animate attributeName="stroke-dashoffset" values="214;214;0;0;214" keyTimes="0;.3;.34;.92;1" dur="8s" repeatCount="indefinite"/></path>
-  <g clip-path="url(#l3)">{text(14, 84, "← 200  OK · signed in", 13, "#6cff6c", 700, kind="mono")}<rect x="190" y="73" width="8" height="14" fill="#6cff6c" class="caret"/></g>
+  {text(14, 32, "$ altserver --sign-in", 13, "#6cff6c", 500, kind="mono")}
+  <g opacity=".55">{text(14, 58, "← 503  Service Unavailable", 13, "#ff6c6c", 400, kind="mono")}<line x1="14" y1="54" x2="228" y2="54" stroke="#ff6c6c" stroke-width="1.5"/></g>
+  {text(14, 84, "← 200  OK · signed in", 13, "#6cff6c", 700, kind="mono")}
   </g>
   </g>"""
-        return defs, body, ".caret{animation:caret 1s steps(1) infinite}\n      @keyframes caret{50%{opacity:0}}"
-    if index == 1:  # carriles con trabajos que avanzan, cada uno con su estela
-        lanes, jobs = "", ""
-        for lane, (y, duration) in enumerate(((210, 2.3), (230, 3.1), (250, 2.0), (270, 3.7))):
-            lanes += f'<rect x="56" y="{y}" width="300" height="2" rx="1" fill="{INK}" fill-opacity=".18"/>'
-            for k in range(2):
-                jobs += (f'<g class="job" style="animation-duration:{duration}s;animation-delay:-{k * duration / 2:.2f}s">'
-                         f'<rect x="28" y="{y - 1.5}" width="34" height="5" rx="2.5" fill="url(#tail)"/>'
-                         f'<circle cx="62" cy="{y + .7}" r="5" fill="{XP_TITLE_A}"/></g>')
-        defs = f'<linearGradient id="tail"><stop offset="0" stop-color="{XP_TITLE_A}" stop-opacity="0"/><stop offset="1" stop-color="{XP_TITLE_A}" stop-opacity=".7"/></linearGradient>'
-        body = f"""  {lanes}
-  <rect x="34" y="200" width="7" height="80" rx="3.5" fill="{XP_TITLE_A}" class="beat"/>
-  {jobs}"""
-        style = (".job{animation:job 2.5s linear infinite}\n      @keyframes job{from{transform:translateX(0);opacity:0}10%{opacity:1}88%{opacity:1}to{transform:translateX(286px);opacity:0}}"
-                 "\n      .beat{transform-box:fill-box;transform-origin:center;animation:beat 1.2s ease-in-out infinite}\n      @keyframes beat{50%{transform:scaleY(.82)}}")
-        return defs, body, style
-    # karaoke: cada verso se llena de azul mientras "suena"
-    defs, body = "", ""
-    for i, (y, w) in enumerate(((210, 280), (236, 210), (262, 248))):
-        start, end = .02 + i * .3, .02 + i * .3 + .26
-        defs += (f'<clipPath id="v{i}"><rect x="32" y="{y}" width="0" height="12">'
-                 f'<animate attributeName="width" values="0;0;{w};{w};0" keyTimes="0;{start:.2f};{end:.2f};.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>')
-        body += (f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{INK}" fill-opacity=".14"/>'
-                 f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{XP_TITLE_A}" clip-path="url(#v{i})"/>')
-    return defs, "  " + body, ""
+        return body
+    if index == 1:  # cuatro carriles con un trabajo ya posicionado en cada uno
+        lanes = ""
+        for y, pos in ((184, .78), (204, .42), (224, .64), (244, .3)):
+            lanes += (f'<rect x="56" y="{y}" width="300" height="2" rx="1" fill="{INK}" fill-opacity=".18"/>'
+                      f'<circle cx="{56 + 300 * pos:.0f}" cy="{y + .7}" r="5" fill="{XP_TITLE_A}"/>')
+        return f"""  <rect x="34" y="174" width="7" height="80" rx="3.5" fill="{XP_TITLE_A}"/>
+  {lanes}"""
+    # karaoke: tres versos, cada uno ya resaltado
+    body = ""
+    for y, w in ((184, 280), (210, 210), (236, 248)):
+        body += f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{XP_TITLE_A}"/>'
+    return "  " + body
 
 
 def tile(index, label, headline, sub, meta, downloads):
     if index == 0 and downloads:
         meta = f"{downloads} descargas · PR abierto"
-    defs, visual, style = tile_visual(index)
-    inner = f"""  <rect width="384" height="326" fill="{XP_PANEL}"/>
-  <g class="in" style="animation-delay:{index * .12}s">
+    inner = f"""  <rect width="384" height="324" fill="{XP_PANEL}"/>
     {text(32, 42, label, 12.5, "#5a5a5a", 700, spacing=2)}
-    {text(32, 86, headline[0], 30, INK, 700, spacing=-.6)}
-    {text(32, 120, headline[1], 30, INK, 700, spacing=-.6)}
-    {text(32, 154, sub[0], 14.5, "#3a3a3a", 400)}
-    {text(32, 174, sub[1], 14.5, "#3a3a3a", 400)}
-  </g>
-{visual}
-  {text(32, 308, meta, 12, "#555", 500, kind="mono")}"""
-    full_defs = defs + XP_DEFS
-    body = xp_window(384, 356, label.title(), inner)
-    style = f""".in{{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}}
-      @keyframes rise{{from{{opacity:0;transform:translateY(14px)}}to{{opacity:1;transform:none}}}}
-      {style}"""
-    return svg(384, 356, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, style, full_defs)
+    {text(32, 82, headline[0], 28, INK, 700, spacing=-.6)}
+    {text(32, 114, headline[1], 28, INK, 700, spacing=-.6)}
+    {text(32, 146, sub[0], 14, "#3a3a3a", 400)}
+    {text(32, 165, sub[1], 14, "#3a3a3a", 400)}
+{tile_visual(index)}
+  {text(32, 306, meta, 12, "#555", 500, kind="mono")}"""
+    body = xp_window(384, 354, label.title(), inner)
+    return svg(384, 354, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, "", XP_DEFS)
 
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 
 
-def odometer(x, y, number, size, fill=INK):
-    digits, out, cx, step = f"{number:,}", [], x, size * 1.0
-    width = size * .6
-    for i, ch in enumerate(digits):
-        if not ch.isdigit():
-            out.append(text(cx, y, ch, size, fill, 700))
-            cx += size * .3
-            continue
-        d = int(ch)
-        column = "".join(text(cx, y + k * step, k, size, fill, 700, extra='style="font-variant-numeric:tabular-nums"') for k in range(10))
-        out.append(f'<g clip-path="url(#window)"><g class="roll" style="transform:translateY(-{d * step:.0f}px);animation-delay:{.15 + i * .12:.2f}s">{column}</g></g>')
-        cx += width
-    return "".join(out), cx
-
-
 def contributions(d):
-    size, y0 = 100, 170
-    digits, end_x = odometer(64, y0, d["total"], size, fill="#6cff6c")
+    y0 = 140
     # desde junio de 2026, cuando empezaron mis contribuciones reales; antes casi todo es cero
     first = datetime.strptime(d["first"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
     skip = max(0, int((datetime(2026, 5, 31, tzinfo=timezone.utc) - first).days // 7))
     weeks = d["weeks"][skip:]
     first = datetime.fromtimestamp(first.timestamp() + skip * 7 * 86400, timezone.utc)
     peak = max(weeks) or 1
-    left, right, base, top = 560, 1150, 232, 60
+    left, right, base, top = 560, 1150, 180, 50
     gap = (right - left) / len(weeks)
     bars = ""
     for i, count in enumerate(weeks):
         h = max(4, (base - top) * (count / peak) ** .5)
         last = i == len(weeks) - 1
-        bars += (f'<rect class="grow" x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .18:.1f}" '
-                 f'fill="#6cff6c" fill-opacity="{1 if last else .4}" style="animation-delay:{.4 + i * .025:.2f}s"/>')
-    lx = left + (len(weeks) - 1) * gap + gap * .31
+        bars += (f'<rect x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .18:.1f}" '
+                 f'fill="#6cff6c" fill-opacity="{1 if last else .4}"/>')
     months = ""
     for i in range(len(weeks)):
         dt = first.timestamp() + i * 7 * 86400
         m = datetime.fromtimestamp(dt, timezone.utc)
         if m.day <= 7:
-            months += text(left + i * gap, base + 24, MESES[m.month - 1], 11, "#8fb8ff", 400, kind="mono")
+            months += text(left + i * gap, base + 22, MESES[m.month - 1], 11, "#8fb8ff", 400, kind="mono")
     stats = f"racha más larga {d['streak']} días   ·   {d['merged']} pull requests mergeados en proyectos ajenos"
-    defs = f'<clipPath id="window"><rect x="0" y="{y0 - size * .82:.0f}" width="1200" height="{size * 1.05:.0f}"/></clipPath>' + XP_DEFS
-    inner = f"""  <rect width="1200" height="300" fill="#05070d"/>
-  {text(64, 48, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#8fb8ff", 700, spacing=2.2, kind="mono")}
-  {digits}
-  {text(66, 220, "commits, pull requests, issues y revisiones", 15.5, "#cfe3ff", 400)}
+    inner = f"""  <rect width="1200" height="230" fill="#05070d"/>
+  {text(64, 40, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#8fb8ff", 700, spacing=2.2, kind="mono")}
+  {text(64, y0, f"{d['total']:,}", 64, "#6cff6c", 700)}
+  {text(66, y0 + 26, "commits, pull requests, issues y revisiones", 14.5, "#cfe3ff", 400)}
   {bars}
-  <circle cx="{lx:.1f}" cy="{base - max(4, (base - top) * (weeks[-1] / peak) ** .5) - 12:.1f}" r="4" fill="#6cff6c" class="now"/>
   {months}
-  <line x1="64" y1="256" x2="1136" y2="256" stroke="{WHITE}" stroke-opacity=".12"/>
-  {text(64, 282, stats, 13, "#8fb8ff", 500, kind="mono")}"""
-    body = xp_window(1200, 330, "contribuciones.exe", inner)
-    style = """.roll{animation:roll 1.8s cubic-bezier(.16,.84,.24,1) backwards}
-      @keyframes roll{from{transform:translateY(0)}}
-      .grow{transform-box:fill-box;transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) backwards}
-      @keyframes grow{from{transform:scaleY(0)}}
-      .now{animation:now 1.6s ease-in-out infinite}
-      @keyframes now{50%{opacity:.2}}"""
-    return svg(1200, 330, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, defs)
+  <line x1="64" y1="204" x2="1136" y2="204" stroke="{WHITE}" stroke-opacity=".12"/>
+  {text(64, 222, stats, 12.5, "#8fb8ff", 500, kind="mono")}"""
+    body = xp_window(1200, 260, "contribuciones.exe", inner)
+    return svg(1200, 260, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, "", XP_DEFS)
 
 
 def pill(label, width, primary):
@@ -414,10 +357,8 @@ def pill(label, width, primary):
     body = f"""  <rect x="1" y="1" width="{width - 2}" height="{h}" rx="7" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>
   <rect x="3" y="3" width="{width - 6}" height="{h / 2 - 2:.0f}" rx="5" fill="{WHITE}" fill-opacity=".25"/>
   {text(width / 2 - 8, h / 2 + 6, label, 16, ink, 700, "middle")}
-  <path class="go" d="M{width - 36} {h / 2 - 1:.0f}h11m-5-5 5 5-5 5" fill="none" stroke="{ink}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>"""
-    defs = XP_DEFS
-    style = ".go{animation:go 2.2s ease-in-out infinite}\n      @keyframes go{50%{transform:translateX(3px)}}"
-    return svg(width, h + 2, label, f"enlace: {label}", body, style, defs)
+  <path d="M{width - 36} {h / 2 - 1:.0f}h11m-5-5 5 5-5 5" fill="none" stroke="{ink}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>"""
+    return svg(width, h + 2, label, f"enlace: {label}", body, "", XP_DEFS)
 
 
 # ---------------------------------------------------------------- orquestación

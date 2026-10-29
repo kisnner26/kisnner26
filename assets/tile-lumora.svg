@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 356" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 354" role="img" aria-labelledby="t d">
   <title id="t">Lumora</title>
   <desc id="d">La letra, en escena. Lyric videos en vivo con un director local que no usa internet. Canvas 2D · Mac y navegador</desc>
   <defs>
-<clipPath id="v0"><rect x="32" y="210" width="0" height="12"><animate attributeName="width" values="0;0;280;280;0" keyTimes="0;0.02;0.28;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="v1"><rect x="32" y="236" width="0" height="12"><animate attributeName="width" values="0;0;210;210;0" keyTimes="0;0.32;0.58;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="v2"><rect x="32" y="262" width="0" height="12"><animate attributeName="width" values="0;0;248;248;0" keyTimes="0;0.62;0.88;.94;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#3b7ce0"/><stop offset=".5" stop-color="#0a246a"/><stop offset="1" stop-color="#0a246a"/>
     </linearGradient>
     <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
@@ -12,14 +12,12 @@
       <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
     </linearGradient>
     <style>
-      .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
-      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
       
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
 <g>
-  <rect width="384" height="356" rx="9" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
+  <rect width="384" height="354" rx="9" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
   <rect width="384" height="30" rx="8" fill="url(#tbar)"/>
   <rect y="22" width="384" height="8" fill="url(#tbar)"/>
   <rect x="6" y="8" width="14" height="14" rx="3" fill="#ffffff" fill-opacity=".85"/>
@@ -32,15 +30,13 @@
       <rect x="48" y="0" width="20" height="16" rx="2" fill="url(#closegrad)" stroke="#8c1a10" stroke-width="1"/>
       <path d="M53 4l10 8m0-8l-10 8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
     </g>
-  <g transform="translate(0,30)">  <rect width="384" height="326" fill="#ece9d8"/>
-  <g class="in" style="animation-delay:0.24s">
+  <g transform="translate(0,30)">  <rect width="384" height="324" fill="#ece9d8"/>
     <text x="32" y="42" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#5a5a5a" text-anchor="start" letter-spacing="2" >LUMORA</text>
-    <text x="32" y="86" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >La letra,</text>
-    <text x="32" y="120" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >en escena.</text>
-    <text x="32" y="154" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#3a3a3a" text-anchor="start" >Lyric videos en vivo con un director</text>
-    <text x="32" y="174" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#3a3a3a" text-anchor="start" >local que no usa internet.</text>
-  </g>
-  <rect x="32" y="210" width="280" height="12" rx="6" fill="#0a1d3a" fill-opacity=".14"/><rect x="32" y="210" width="280" height="12" rx="6" fill="#0a246a" clip-path="url(#v0)"/><rect x="32" y="236" width="210" height="12" rx="6" fill="#0a1d3a" fill-opacity=".14"/><rect x="32" y="236" width="210" height="12" rx="6" fill="#0a246a" clip-path="url(#v1)"/><rect x="32" y="262" width="248" height="12" rx="6" fill="#0a1d3a" fill-opacity=".14"/><rect x="32" y="262" width="248" height="12" rx="6" fill="#0a246a" clip-path="url(#v2)"/>
-  <text x="32" y="308" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="500" fill="#555" text-anchor="start" >Canvas 2D · Mac y navegador</text></g>
+    <text x="32" y="82" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="28" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >La letra,</text>
+    <text x="32" y="114" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="28" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >en escena.</text>
+    <text x="32" y="146" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="400" fill="#3a3a3a" text-anchor="start" >Lyric videos en vivo con un director</text>
+    <text x="32" y="165" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="400" fill="#3a3a3a" text-anchor="start" >local que no usa internet.</text>
+  <rect x="32" y="184" width="280" height="12" rx="6" fill="#0a246a"/><rect x="32" y="210" width="210" height="12" rx="6" fill="#0a246a"/><rect x="32" y="236" width="248" height="12" rx="6" fill="#0a246a"/>
+  <text x="32" y="306" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="500" fill="#555" text-anchor="start" >Canvas 2D · Mac y navegador</text></g>
   </g>
 </svg>

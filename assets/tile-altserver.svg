@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 356" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 354" role="img" aria-labelledby="t d">
   <title id="t">Altserver</title>
   <desc id="d">Vuelve a iniciar sesión. Arreglo propuesto para AltServer en macOS 27. 637 descargas · PR abierto</desc>
   <defs>
-<clipPath id="l1"><rect x="0" y="16" width="0" height="22"><animate attributeName="width" values="0;320;320;0" keyTimes="0;.12;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="l2"><rect x="0" y="42" width="0" height="22"><animate attributeName="width" values="0;0;320;320;0" keyTimes="0;.16;.28;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath><clipPath id="l3"><rect x="0" y="68" width="0" height="22"><animate attributeName="width" values="0;0;320;320;0" keyTimes="0;.36;.46;.92;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#3b7ce0"/><stop offset=".5" stop-color="#0a246a"/><stop offset="1" stop-color="#0a246a"/>
     </linearGradient>
     <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
@@ -12,15 +12,12 @@
       <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
     </linearGradient>
     <style>
-      .in{animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards}
-      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-      .caret{animation:caret 1s steps(1) infinite}
-      @keyframes caret{50%{opacity:0}}
+      
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
 <g>
-  <rect width="384" height="356" rx="9" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
+  <rect width="384" height="354" rx="9" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
   <rect width="384" height="30" rx="8" fill="url(#tbar)"/>
   <rect y="22" width="384" height="8" fill="url(#tbar)"/>
   <rect x="6" y="8" width="14" height="14" rx="3" fill="#ffffff" fill-opacity=".85"/>
@@ -33,27 +30,24 @@
       <rect x="48" y="0" width="20" height="16" rx="2" fill="url(#closegrad)" stroke="#8c1a10" stroke-width="1"/>
       <path d="M53 4l10 8m0-8l-10 8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
     </g>
-  <g transform="translate(0,30)">  <rect width="384" height="326" fill="#ece9d8"/>
-  <g class="in" style="animation-delay:0.0s">
+  <g transform="translate(0,30)">  <rect width="384" height="324" fill="#ece9d8"/>
     <text x="32" y="42" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#5a5a5a" text-anchor="start" letter-spacing="2" >ALTSERVER</text>
-    <text x="32" y="86" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >Vuelve a iniciar</text>
-    <text x="32" y="120" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >sesión.</text>
-    <text x="32" y="154" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#3a3a3a" text-anchor="start" >Arreglo propuesto para AltServer</text>
-    <text x="32" y="174" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#3a3a3a" text-anchor="start" >en macOS 27.</text>
-  </g>
-  <g transform="translate(22,186)">
+    <text x="32" y="82" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="28" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >Vuelve a iniciar</text>
+    <text x="32" y="114" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="28" font-weight="700" fill="#0a1d3a" text-anchor="start" letter-spacing="-0.6" >sesión.</text>
+    <text x="32" y="146" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="400" fill="#3a3a3a" text-anchor="start" >Arreglo propuesto para AltServer</text>
+    <text x="32" y="165" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="400" fill="#3a3a3a" text-anchor="start" >en macOS 27.</text>
+  <g transform="translate(22,184)">
   <rect width="340" height="96" rx="4" fill="#0a0a0a" stroke="#0a246a" stroke-width="1.5"/>
   <rect width="340" height="18" rx="8" fill="url(#tbar)"/>
   <rect y="10" width="340" height="8" fill="url(#tbar)"/>
   <rect x="6" y="2" width="14" height="14" rx="3" fill="#ffffff" fill-opacity=".85"/>
   <text x="26" y="14.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="0.2" >s.cmd</text>
   <g transform="translate(0,18)">
-  <g clip-path="url(#l1)"><text x="14" y="32" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="500" fill="#6cff6c" text-anchor="start" >$ altserver --sign-in</text></g>
-  <g clip-path="url(#l2)"><text x="14" y="58" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="400" fill="#ff6c6c" text-anchor="start" >← 503  Service Unavailable</text></g>
-  <path d="M14 54h214" stroke="#ff6c6c" stroke-width="1.5" stroke-dasharray="214"><animate attributeName="stroke-dashoffset" values="214;214;0;0;214" keyTimes="0;.3;.34;.92;1" dur="8s" repeatCount="indefinite"/></path>
-  <g clip-path="url(#l3)"><text x="14" y="84" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#6cff6c" text-anchor="start" >← 200  OK · signed in</text><rect x="190" y="73" width="8" height="14" fill="#6cff6c" class="caret"/></g>
+  <text x="14" y="32" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="500" fill="#6cff6c" text-anchor="start" >$ altserver --sign-in</text>
+  <g opacity=".55"><text x="14" y="58" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="400" fill="#ff6c6c" text-anchor="start" >← 503  Service Unavailable</text><line x1="14" y1="54" x2="228" y2="54" stroke="#ff6c6c" stroke-width="1.5"/></g>
+  <text x="14" y="84" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#6cff6c" text-anchor="start" >← 200  OK · signed in</text>
   </g>
   </g>
-  <text x="32" y="308" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="500" fill="#555" text-anchor="start" >637 descargas · PR abierto</text></g>
+  <text x="32" y="306" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="500" fill="#555" text-anchor="start" >637 descargas · PR abierto</text></g>
   </g>
 </svg>

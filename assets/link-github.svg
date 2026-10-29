@@ -12,13 +12,12 @@
       <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
     </linearGradient>
     <style>
-      .go{animation:go 2.2s ease-in-out infinite}
-      @keyframes go{50%{transform:translateX(3px)}}
+      
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
   <rect x="1" y="1" width="138" height="46" rx="7" fill="#ece9d8" stroke="#0a246a" stroke-width="1.5"/>
   <rect x="3" y="3" width="134" height="21" rx="5" fill="#ffffff" fill-opacity=".25"/>
   <text x="62.0" y="29.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#0a1d3a" text-anchor="middle" >GitHub</text>
-  <path class="go" d="M104 22h11m-5-5 5 5-5 5" fill="none" stroke="#0a1d3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M104 22h11m-5-5 5 5-5 5" fill="none" stroke="#0a1d3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
