@@ -258,6 +258,15 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
 GD_LAVENDER_A, GD_LAVENDER_B = "#8f94d9", "#5a5fae"
 GD_PANEL = "#b9bce3"
 PALETTE = ["#f5903a", "#cfe23a", "#36cf3a", "#17c97a", "#2f9fe0", "#7b4fe4", "#e034a0", "#171a33", "#8686a0", "#ffffff"]
+GD_DEFS = f'<linearGradient id="gdbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{GD_LAVENDER_A}"/><stop offset="1" stop-color="{GD_LAVENDER_B}"/></linearGradient>'
+
+
+def gd_window(w, h, title, inner, title_h=42):
+    return f"""<g>
+  <rect width="{w}" height="{h}" rx="9" fill="{GD_PANEL}" stroke="{GD_LAVENDER_B}" stroke-width="1.5"/>
+  {gd_titlebar(w, title, title_h)}
+  <g transform="translate(0,{title_h})">{inner}</g>
+  </g>"""
 
 
 def gd_titlebar(w, title, h=42):
@@ -312,14 +321,13 @@ def hero():
   <g clip-path="url(#viewport)">
     <g transform="translate({view_x},{view_y})">
       {fiberglass_bg(view_w, view_h)}
-      <g transform="translate({view_w / 2:.0f},{view_h - 68:.0f})"><g class="float">{clippy(0, 0, 2.0)}</g></g>
+      <g transform="translate({view_w / 2:.0f},{view_h - 96:.0f})"><g class="float">{clippy(0, 0, 1.9)}</g></g>
       {text(view_w / 2, view_h - 16, "kisnner26 · Managua, Nicaragua", 13, WHITE, 500, "middle", .6, 1, "mono")}
     </g>
   </g>
   {color_palette(view_x + 20, H - pal_h / 2 - 18, view_w - 40, 36)}
   </g>"""
-    defs = (XP_DEFS + FIBERGLASS_DEFS
-            + f'\n    <linearGradient id="gdbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{GD_LAVENDER_A}"/><stop offset="1" stop-color="{GD_LAVENDER_B}"/></linearGradient>'
+    defs = (XP_DEFS + FIBERGLASS_DEFS + GD_DEFS
             + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="14"/></clipPath>'
             + f'\n    <clipPath id="viewport"><rect x="{view_x}" y="{view_y}" width="{view_w}" height="{view_h}" rx="6"/></clipPath>')
     style = CLIPPY_STYLE + """
@@ -362,8 +370,8 @@ def contributions(d):
   {months}
   <line x1="64" y1="204" x2="1136" y2="204" stroke="{WHITE}" stroke-opacity=".12"/>
   {text(64, 222, stats, 12.5, "#8fb8ff", 500, kind="mono")}"""
-    body = xp_window(1200, 260, "contribuciones.exe", inner)
-    return svg(1200, 260, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, "", XP_DEFS)
+    body = gd_window(1200, 272, "KISNNER26 / CONTRIBUCIONES.GMD", inner)
+    return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, "", XP_DEFS + GD_DEFS)
 
 
 def pill(label, width, primary):
