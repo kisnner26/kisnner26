@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://kisnner26.github.io"><img src="assets/hero.svg?v=20261029b" alt="Kisnner Obando. Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io" width="100%"></a>
+  <a href="https://kisnner26.github.io"><img src="assets/hero.svg?v=20261029c" alt="Kisnner Obando. Secuencia animada estilo escritorio que presenta sus áreas de trabajo: apps para Apple, backend y herramientas web. Managua, Nicaragua." width="100%"></a>
 </p>
 
 <p align="center">

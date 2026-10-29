@@ -433,6 +433,77 @@ def stack():
 def hero():
     W, H = 1200, 560
     body = f"""  <g clip-path="url(#card)">
+  <g class="intro-scene">
+    <rect width="{W}" height="{H}" fill="#cdd7dc"/>
+    <rect y="524" width="{W}" height="36" fill="url(#tbar)"/>
+    <rect x="12" y="529" width="72" height="25" fill="#34a33a" stroke="#1d6e24"/>
+    {text(48, 547, "start", 12, WHITE, 700, "middle", kind="mono")}
+    <g transform="translate(74,74)">
+      <rect width="30" height="36" fill="#efe4a2" stroke="#7d7353"/>
+      <path d="M0 8h30" stroke="#7d7353"/>
+      {text(15, 53, "work", 10, EDITORIAL_DARK, 600, "middle", kind="mono")}
+    </g>
+    <g transform="translate(1080,62)">
+      <rect width="29" height="34" fill="{EDITORIAL_BLUE}" stroke="{EDITORIAL_DARK}"/>
+      <rect x="6" y="7" width="7" height="7" fill="#ff6b7a"/><rect x="16" y="7" width="7" height="7" fill="#78dbff"/>
+      <rect x="6" y="18" width="7" height="7" fill="#b3f16d"/><rect x="16" y="18" width="7" height="7" fill="#ffe36b"/>
+      {text(14, 50, "profile", 10, EDITORIAL_DARK, 600, "middle", kind="mono")}
+    </g>
+    <g transform="translate(412,118)">
+      <g class="boot-window">
+        <rect x="-10" y="12" width="396" height="280" fill="{EDITORIAL_BLUE}" opacity=".2"/>
+        <rect width="376" height="280" fill="#f2f3ef" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+        {xp_titlebar(376, "profile.exe", h=32)}
+        <rect x="14" y="48" width="348" height="214" fill="url(#editorialgrid)"/>
+        <circle cx="174" cy="150" r="72" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="1.5" stroke-dasharray="6 7"/>
+        {text(174, 142, "KISNNER26", 30, EDITORIAL_BLUE, 800, "middle", spacing=-1)}
+        {text(174, 173, "loading profile...", 12, EDITORIAL_DARK, 600, "middle", spacing=1, kind="mono")}
+      </g>
+    </g>
+  </g>
+
+  <g class="type-scene">
+    {editorial_bg(W, H)}
+    <rect x="34" y="30" width="1132" height="500" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+    <g transform="translate(104,106)"><g class="type-left">
+      <rect width="360" height="78" fill="{EDITORIAL_BLUE}"/>
+      {text(180, 56, "BUILD SYSTEMS", 39, WHITE, 800, "middle", spacing=-1)}
+      {text(0, 126, "NO. 01", 12, EDITORIAL_DARK, 700, spacing=1.3, kind="mono")}
+      {text(0, 155, "Think about it.", 17, EDITORIAL_DARK, 400)}
+    </g></g>
+    <g transform="translate(678,126)"><g class="type-right">
+      <rect width="390" height="82" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+      {text(195, 57, "DIG DEEPER", 44, EDITORIAL_BLUE, 800, "middle", spacing=-1)}
+      {text(390, 126, "NO. 02", 12, EDITORIAL_DARK, 700, "end", spacing=1.3, kind="mono")}
+    </g></g>
+    <g transform="translate(196,316)"><g class="word-columns">
+      {text(0, 0, "swift", 58, EDITORIAL_BLUE, 800, spacing=-2)}
+      {text(278, 0, "backend", 58, EDITORIAL_DARK, 800, spacing=-2)}
+      {text(620, 0, "web", 58, EDITORIAL_BLUE, 800, spacing=-2)}
+      <path d="M0 38H820" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+      {text(0, 72, "DESIGNER · DEVELOPER · STUDENT", 13, EDITORIAL_DARK, 700, spacing=2, kind="mono")}
+    </g></g>
+  </g>
+
+  <g class="tunnel-scene">
+    <rect width="{W}" height="{H}" fill="{EDITORIAL_BLUE}"/>
+    <g transform="translate(600,280)"><g class="tunnel-rings">
+      <circle r="330" fill="none" stroke="#d9dfe3" stroke-width="80" opacity=".35"/>
+      <circle r="238" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
+      <circle r="158" fill="#d9dfe3" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
+      <path d="M0 -240L180 150H-180Z" fill="#8ba4db" opacity=".9"/>
+      <g transform="translate(-110,-100)"><g class="tunnel-window">
+        <rect width="220" height="188" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
+        {xp_titlebar(220, "enter.exe", h=26)}
+        <rect x="12" y="40" width="196" height="132" fill="url(#editorialblue)"/>
+        <g transform="translate(98,156)">{clippy(0, 0, .72)}</g>
+      </g></g>
+    </g></g>
+    {text(54, 62, "NO. 03 / GO THROUGH", 13, WHITE, 700, spacing=1.8, kind="mono")}
+    {text(1146, 510, "READ THE SYSTEM", 13, WHITE, 700, "end", spacing=1.8, kind="mono")}
+  </g>
+
+  <g class="final-scene">
   {editorial_bg(W, H)}
   <rect x="26" y="22" width="1148" height="516" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
   <path d="M26 66H1174M82 22V538M1118 22V538" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1" opacity=".55"/>
@@ -481,21 +552,46 @@ def hero():
     {text(0, 0, "NO. 02", 11, EDITORIAL_DARK, 700, spacing=1, kind="mono")}
     {text(1030, 0, "READ THE SYSTEM. BUILD THE NEXT ONE.", 11, EDITORIAL_DARK, 700, "end", spacing=1, kind="mono")}
   </g>
+  </g>
+  <rect class="scene-wipe" width="{W}" height="{H}" fill="#f3f4f1"/>
   </g>"""
     defs = XP_DEFS + EDITORIAL_DEFS + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="10"/></clipPath>'
     style = CLIPPY_STYLE + """
-      .headline{animation:headline-in .8s cubic-bezier(.15,.85,.2,1) both}
+      .intro-scene,.type-scene,.tunnel-scene,.scene-wipe{opacity:0}
+      .final-scene{opacity:1}
+      .intro-scene{animation:intro-scene 18s ease-in-out infinite}
+      @keyframes intro-scene{0%,15%{opacity:1}20%,93%{opacity:0}97%,100%{opacity:1}}
+      .boot-window{transform-box:fill-box;transform-origin:center;animation:boot-window 18s ease-in-out infinite}
+      @keyframes boot-window{0%,2%{opacity:0;transform:scale(.2) translateY(80px)}6%,12%{opacity:1;transform:scale(1) translateY(0)}18%{opacity:0;transform:scale(2.2) translateY(-38px)}100%{opacity:0}}
+      .type-scene{animation:type-scene 18s ease-in-out infinite}
+      @keyframes type-scene{0%,16%{opacity:0}21%,37%{opacity:1}42%,100%{opacity:0}}
+      .type-left{transform-box:fill-box;transform-origin:center;animation:type-left 18s ease-in-out infinite}
+      @keyframes type-left{0%,17%{transform:translateX(-180px);opacity:0}22%,35%{transform:translateX(0);opacity:1}40%,100%{transform:translateX(-40px);opacity:0}}
+      .type-right{transform-box:fill-box;transform-origin:center;animation:type-right 18s ease-in-out infinite}
+      @keyframes type-right{0%,18%{transform:translateX(180px);opacity:0}23%,36%{transform:translateX(0);opacity:1}41%,100%{transform:translateX(40px);opacity:0}}
+      .word-columns{transform-box:fill-box;transform-origin:center;animation:word-columns 18s ease-in-out infinite}
+      @keyframes word-columns{0%,24%{transform:scaleX(.15);opacity:0}29%,37%{transform:scaleX(1);opacity:1}41%,100%{transform:scaleX(1.18);opacity:0}}
+      .tunnel-scene{animation:tunnel-scene 18s ease-in-out infinite}
+      @keyframes tunnel-scene{0%,38%{opacity:0}42%,57%{opacity:1}63%,100%{opacity:0}}
+      .tunnel-rings{transform-box:fill-box;transform-origin:center;animation:tunnel-rings 18s ease-in-out infinite}
+      @keyframes tunnel-rings{0%,38%{transform:scale(.28) rotate(-8deg)}45%{transform:scale(1) rotate(0)}59%,100%{transform:scale(2.7) rotate(7deg)}}
+      .tunnel-window{transform-box:fill-box;transform-origin:center;animation:tunnel-window 18s ease-in-out infinite}
+      @keyframes tunnel-window{0%,40%{transform:scale(.25);opacity:0}45%{transform:scale(1);opacity:1}58%,100%{transform:scale(1.9);opacity:0}}
+      .final-scene{animation:final-scene 18s ease-in-out infinite}
+      @keyframes final-scene{0%,57%{opacity:0}63%,94%{opacity:1}98%,100%{opacity:0}}
+      .headline{animation:final-left 18s ease-in-out infinite}
       .headline-two{animation-delay:.12s}
-      @keyframes headline-in{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:translateX(0)}}
-      .window-enter{transform-origin:center;animation:window-in .9s .12s cubic-bezier(.18,.85,.22,1.08) both}
-      @keyframes window-in{from{opacity:0;transform:translate(55px,-30px) scale(.78) rotate(5deg)}to{opacity:1;transform:translate(0) scale(1) rotate(0)}}
+      @keyframes final-left{0%,58%{opacity:0;transform:translateX(-70px)}64%,94%{opacity:1;transform:translateX(0)}98%,100%{opacity:0}}
+      .window-enter{transform-box:fill-box;transform-origin:center;animation:final-window 18s ease-in-out infinite}
+      @keyframes final-window{0%,57%{opacity:0;transform:scale(.65) rotate(4deg)}63%,94%{opacity:1;transform:scale(1) rotate(0)}98%,100%{opacity:0}}
       .float{animation:float 4.8s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-12px) rotate(1deg)}}
       .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 16s linear infinite}
       .orbit-b{animation-direction:reverse;animation-duration:11s}
       @keyframes orbit{to{transform:rotate(360deg)}}
-      .side-note{animation:note-in .7s .7s ease-out both}
-      @keyframes note-in{from{opacity:0}to{opacity:1}}"""
+      .scene-wipe{transform-box:fill-box;transform-origin:left center;animation:scene-wipe 18s ease-in-out infinite}
+      @keyframes scene-wipe{0%,16%{opacity:0;transform:scaleX(0)}18%{opacity:1;transform:scaleX(1)}20%{opacity:0;transform:scaleX(1)}38%{opacity:0;transform:scaleX(0)}40%{opacity:1;transform:scaleX(1)}42%{opacity:0;transform:scaleX(1)}58%{opacity:0;transform:scaleX(0)}60%{opacity:1;transform:scaleX(1)}63%,100%{opacity:0;transform:scaleX(1)}}
+      @media (prefers-reduced-motion:reduce){.intro-scene,.type-scene,.tunnel-scene,.scene-wipe{display:none}.final-scene{display:inline;opacity:1}}"""
     return svg(W, H, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
