@@ -197,8 +197,21 @@ def clippy(cx, cy, scale=1.0, blink_delay=0):
 
 CLIPPY_STYLE = """.eye{animation:blink 4.6s ease-in-out infinite}
       @keyframes blink{0%,88%,100%{ry:12}91%{ry:1}}
-      .pupils{animation:look 8s ease-in-out infinite}
-      @keyframes look{0%,100%{transform:translate(0,0)}15%{transform:translate(3px,-2px)}35%{transform:translate(3px,-2px)}50%{transform:translate(-3px,1.5px)}70%{transform:translate(-3px,1.5px)}85%{transform:translate(0,-2.5px)}}
+      .pupils{animation:look 9s ease-in-out infinite}
+      @keyframes look{
+        0%{transform:translate(0,0)}
+        4%{transform:translate(4px,-2.5px)}
+        10%{transform:translate(4px,-2.5px)}
+        16%{transform:translate(0,0)}
+        40%{transform:translate(0,0)}
+        46%{transform:translate(-4.5px,2px)}
+        53%{transform:translate(-4.5px,2px)}
+        60%{transform:translate(0,0)}
+        82%{transform:translate(0,0)}
+        88%{transform:translate(2.5px,-3px)}
+        94%{transform:translate(2.5px,-3px)}
+        100%{transform:translate(0,0)}
+      }
       .brow-l{animation:browl 5.4s ease-in-out infinite}
       .brow-r{animation:browr 5.4s ease-in-out infinite}
       @keyframes browl{0%,100%{transform:translateY(0) rotate(0)}22%{transform:translateY(-3px) rotate(-6deg)}50%{transform:translateY(0) rotate(0)}76%{transform:translateY(-1.5px) rotate(2deg)}}
