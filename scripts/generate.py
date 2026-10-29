@@ -449,6 +449,10 @@ def hero():
       <rect x="6" y="18" width="7" height="7" fill="#b3f16d"/><rect x="16" y="18" width="7" height="7" fill="#ffe36b"/>
       {text(14, 50, "profile", 10, EDITORIAL_DARK, 600, "middle", kind="mono")}
     </g>
+    <g class="desktop-click"><circle cx="1094" cy="79" r="24" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="3"/></g>
+    <g class="desktop-cursor">
+      <path d="M0 0L0 24L6 18L12 31L18 28L12 16L22 16Z" fill="#f7f7f4" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+    </g>
     <g transform="translate(412,118)">
       <g class="boot-window">
         <rect x="-10" y="12" width="396" height="280" fill="{EDITORIAL_BLUE}" opacity=".2"/>
@@ -501,6 +505,46 @@ def hero():
     </g></g>
     {text(54, 62, "NO. 03 / GO THROUGH", 13, WHITE, 700, spacing=1.8, kind="mono")}
     {text(1146, 510, "READ THE SYSTEM", 13, WHITE, 700, "end", spacing=1.8, kind="mono")}
+  </g>
+
+  <g class="float-scene">
+    {editorial_bg(W, H)}
+    <rect x="24" y="20" width="1152" height="520" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+    {text(48, 52, "NO. 04 / OPEN WINDOWS", 12, EDITORIAL_DARK, 700, spacing=1.6, kind="mono")}
+    {text(1150, 52, "LEARN FROM THEM.", 12, EDITORIAL_DARK, 700, "end", spacing=1.6, kind="mono")}
+    <circle cx="600" cy="286" r="190" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="2" stroke-dasharray="8 9"/>
+    <circle cx="600" cy="286" r="128" fill="{EDITORIAL_BLUE}" opacity=".12"/>
+    <g transform="translate(92,128)"><g class="float-window float-window-a">
+      <rect width="300" height="196" fill="{EDITORIAL_DARK}" stroke="{EDITORIAL_BLUE}" stroke-width="3"/>
+      {xp_titlebar(300, "reverse.exe", h=28)}
+      <rect x="18" y="48" width="264" height="122" fill="#080d18"/>
+      {text(34, 76, "00000000  55 48 89 E5", 12, "#8ba4ff", 500, spacing=.5, kind="mono")}
+      {text(34, 101, "00000004  48 83 EC 20", 12, "#8ba4ff", 500, spacing=.5, kind="mono")}
+      {text(34, 126, "00000008  E8 ?? ?? ??", 12, "#ffffff", 600, spacing=.5, kind="mono")}
+      {text(34, 151, "inspect · understand · patch", 11, "#8ba4ff", 500, spacing=.6, kind="mono")}
+    </g></g>
+    <g transform="translate(808,92)"><g class="float-window float-window-b">
+      <rect width="286" height="180" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+      {xp_titlebar(286, "build.app", h=28)}
+      <rect x="20" y="48" width="246" height="108" fill="url(#editorialgrid)"/>
+      {text(143, 92, "SWIFT", 38, EDITORIAL_BLUE, 800, "middle", spacing=-1)}
+      {text(143, 123, "native by design", 12, EDITORIAL_DARK, 700, "middle", spacing=1, kind="mono")}
+    </g></g>
+    <g transform="translate(422,174)"><g class="float-window float-window-main">
+      <rect x="-12" y="12" width="380" height="280" fill="{EDITORIAL_BLUE}" opacity=".18"/>
+      <rect width="356" height="274" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
+      {xp_titlebar(356, "kisnner26.exe", h=30)}
+      <rect x="14" y="44" width="328" height="214" fill="url(#editorialblue)"/>
+      <circle cx="164" cy="116" r="84" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="7 8" opacity=".75"/>
+      <g transform="translate(164,210)">{clippy(0, 0, 1.02)}</g>
+      {text(24, 68, "BUILD", 11, WHITE, 700, spacing=1.6, kind="mono")}
+      {text(318, 238, "NO.04", 11, WHITE, 700, "end", spacing=1.3, kind="mono")}
+    </g></g>
+    <g transform="translate(870,352)"><g class="float-window float-window-c">
+      <rect width="246" height="124" fill="{EDITORIAL_BLUE}" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+      {text(123, 51, "SHIP", 34, WHITE, 800, "middle", spacing=-1)}
+      {text(123, 82, "useful software", 11, WHITE, 600, "middle", spacing=1, kind="mono")}
+    </g></g>
   </g>
 
   <g class="final-scene">
@@ -557,12 +601,16 @@ def hero():
   </g>"""
     defs = XP_DEFS + EDITORIAL_DEFS + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="10"/></clipPath>'
     style = CLIPPY_STYLE + """
-      .intro-scene,.type-scene,.tunnel-scene,.scene-wipe{opacity:0}
+      .intro-scene,.type-scene,.tunnel-scene,.float-scene,.scene-wipe{opacity:0}
       .final-scene{opacity:1}
       .intro-scene{animation:intro-scene 18s ease-in-out infinite}
       @keyframes intro-scene{0%,15%{opacity:1}20%,93%{opacity:0}97%,100%{opacity:1}}
       .boot-window{transform-box:fill-box;transform-origin:center;animation:boot-window 18s ease-in-out infinite}
       @keyframes boot-window{0%,2%{opacity:0;transform:scale(.2) translateY(80px)}6%,12%{opacity:1;transform:scale(1) translateY(0)}18%{opacity:0;transform:scale(2.2) translateY(-38px)}100%{opacity:0}}
+      .desktop-cursor{animation:desktop-cursor 18s ease-in-out infinite}
+      @keyframes desktop-cursor{0%{opacity:1;transform:translate(530px,330px)}4%,14%{opacity:1;transform:translate(1090px,84px)}18%,100%{opacity:0;transform:translate(1090px,84px)}}
+      .desktop-click{transform-box:fill-box;transform-origin:center;animation:desktop-click 18s ease-out infinite}
+      @keyframes desktop-click{0%,3%{opacity:0;transform:scale(.3)}5%{opacity:1;transform:scale(1)}7%,100%{opacity:0;transform:scale(1.8)}}
       .type-scene{animation:type-scene 18s ease-in-out infinite}
       @keyframes type-scene{0%,16%{opacity:0}21%,37%{opacity:1}42%,100%{opacity:0}}
       .type-left{transform-box:fill-box;transform-origin:center;animation:type-left 18s ease-in-out infinite}
@@ -572,26 +620,37 @@ def hero():
       .word-columns{transform-box:fill-box;transform-origin:center;animation:word-columns 18s ease-in-out infinite}
       @keyframes word-columns{0%,24%{transform:scaleX(.15);opacity:0}29%,37%{transform:scaleX(1);opacity:1}41%,100%{transform:scaleX(1.18);opacity:0}}
       .tunnel-scene{animation:tunnel-scene 18s ease-in-out infinite}
-      @keyframes tunnel-scene{0%,38%{opacity:0}42%,57%{opacity:1}63%,100%{opacity:0}}
+      @keyframes tunnel-scene{0%,36%{opacity:0}40%,51%{opacity:1}56%,100%{opacity:0}}
       .tunnel-rings{transform-box:fill-box;transform-origin:center;animation:tunnel-rings 18s ease-in-out infinite}
-      @keyframes tunnel-rings{0%,38%{transform:scale(.28) rotate(-8deg)}45%{transform:scale(1) rotate(0)}59%,100%{transform:scale(2.7) rotate(7deg)}}
+      @keyframes tunnel-rings{0%,36%{transform:scale(.28) rotate(-8deg)}43%{transform:scale(1) rotate(0)}54%,100%{transform:scale(2.7) rotate(7deg)}}
       .tunnel-window{transform-box:fill-box;transform-origin:center;animation:tunnel-window 18s ease-in-out infinite}
-      @keyframes tunnel-window{0%,40%{transform:scale(.25);opacity:0}45%{transform:scale(1);opacity:1}58%,100%{transform:scale(1.9);opacity:0}}
+      @keyframes tunnel-window{0%,38%{transform:scale(.25);opacity:0}43%{transform:scale(1);opacity:1}54%,100%{transform:scale(1.9);opacity:0}}
+      .float-scene{animation:float-scene 18s ease-in-out infinite}
+      @keyframes float-scene{0%,52%{opacity:0}57%,72%{opacity:1}77%,100%{opacity:0}}
+      .float-window{transform-box:fill-box;transform-origin:center;animation-duration:18s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+      .float-window-a{animation-name:float-window-a}
+      @keyframes float-window-a{0%,52%{opacity:0;transform:translate(-120px,30px) rotate(-8deg) scale(.72)}58%,72%{opacity:.92;transform:translate(0) rotate(-3deg) scale(1)}77%,100%{opacity:0;transform:translate(-40px,-15px) rotate(-5deg) scale(.92)}}
+      .float-window-b{animation-name:float-window-b}
+      @keyframes float-window-b{0%,53%{opacity:0;transform:translate(120px,-35px) rotate(9deg) scale(.7)}59%,72%{opacity:.95;transform:translate(0) rotate(3deg) scale(1)}77%,100%{opacity:0;transform:translate(35px,20px) rotate(5deg) scale(.94)}}
+      .float-window-main{animation-name:float-window-main}
+      @keyframes float-window-main{0%,54%{opacity:0;transform:scale(.34)}61%,72%{opacity:1;transform:scale(1)}77%,100%{opacity:0;transform:scale(1.34)}}
+      .float-window-c{animation-name:float-window-c}
+      @keyframes float-window-c{0%,56%{opacity:0;transform:translate(90px,60px) rotate(7deg)}62%,72%{opacity:.92;transform:translate(0) rotate(2deg)}77%,100%{opacity:0;transform:translate(45px,15px) rotate(4deg)}}
       .final-scene{animation:final-scene 18s ease-in-out infinite}
-      @keyframes final-scene{0%,57%{opacity:0}63%,94%{opacity:1}98%,100%{opacity:0}}
+      @keyframes final-scene{0%,73%{opacity:0}78%,95%{opacity:1}98%,100%{opacity:0}}
       .headline{animation:final-left 18s ease-in-out infinite}
       .headline-two{animation-delay:.12s}
-      @keyframes final-left{0%,58%{opacity:0;transform:translateX(-70px)}64%,94%{opacity:1;transform:translateX(0)}98%,100%{opacity:0}}
+      @keyframes final-left{0%,74%{opacity:0;transform:translateX(-70px)}79%,95%{opacity:1;transform:translateX(0)}98%,100%{opacity:0}}
       .window-enter{transform-box:fill-box;transform-origin:center;animation:final-window 18s ease-in-out infinite}
-      @keyframes final-window{0%,57%{opacity:0;transform:scale(.65) rotate(4deg)}63%,94%{opacity:1;transform:scale(1) rotate(0)}98%,100%{opacity:0}}
+      @keyframes final-window{0%,73%{opacity:0;transform:scale(.65) rotate(4deg)}78%,95%{opacity:1;transform:scale(1) rotate(0)}98%,100%{opacity:0}}
       .float{animation:float 4.8s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-12px) rotate(1deg)}}
       .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 16s linear infinite}
       .orbit-b{animation-direction:reverse;animation-duration:11s}
       @keyframes orbit{to{transform:rotate(360deg)}}
       .scene-wipe{transform-box:fill-box;transform-origin:left center;animation:scene-wipe 18s ease-in-out infinite}
-      @keyframes scene-wipe{0%,16%{opacity:0;transform:scaleX(0)}18%{opacity:1;transform:scaleX(1)}20%{opacity:0;transform:scaleX(1)}38%{opacity:0;transform:scaleX(0)}40%{opacity:1;transform:scaleX(1)}42%{opacity:0;transform:scaleX(1)}58%{opacity:0;transform:scaleX(0)}60%{opacity:1;transform:scaleX(1)}63%,100%{opacity:0;transform:scaleX(1)}}
-      @media (prefers-reduced-motion:reduce){.intro-scene,.type-scene,.tunnel-scene,.scene-wipe{display:none}.final-scene{display:inline;opacity:1}}"""
+      @keyframes scene-wipe{0%,16%{opacity:0;transform:scaleX(0)}18%{opacity:1;transform:scaleX(1)}20%{opacity:0;transform:scaleX(1)}36%{opacity:0;transform:scaleX(0)}38%{opacity:1;transform:scaleX(1)}40%{opacity:0;transform:scaleX(1)}52%{opacity:0;transform:scaleX(0)}54%{opacity:1;transform:scaleX(1)}57%{opacity:0;transform:scaleX(1)}72%{opacity:0;transform:scaleX(0)}74%{opacity:1;transform:scaleX(1)}78%,100%{opacity:0;transform:scaleX(1)}}
+      @media (prefers-reduced-motion:reduce){.intro-scene,.type-scene,.tunnel-scene,.float-scene,.scene-wipe{display:none}.final-scene{display:inline;opacity:1}}"""
     return svg(W, H, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
