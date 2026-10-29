@@ -246,31 +246,69 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
 
 
 # ---------------------------------------------------------------- hero
+def tab_strip(w, tabs, active, y=0, h=32):
+    """la fila de pestañas de un diálogo de propiedades clásico de XP."""
+    out = [f'<rect y="{y + h - 1}" width="{w}" height="1" fill="#aca899"/>']
+    x = 16
+    for i, label in enumerate(tabs):
+        tw = 24 + len(label) * 7.6
+        on = i == active
+        fill = XP_PANEL if on else "#d6d2c0"
+        out.append(f'<path d="M{x},{y + h} V{y + 8} Q{x},{y} {x + 8},{y} H{x + tw - 8} Q{x + tw},{y} {x + tw},{y + 8} V{y + h}'
+                    f'{" Z" if on else f" L{x + tw},{y + h}"}" fill="{fill}" stroke="#aca899" stroke-width="1"/>')
+        out.append(text(x + tw / 2, y + h / 2 + 5, label, 12.5, INK if on else "#6a6a5e", 700 if on else 500, "middle"))
+        x += tw + 4
+    return "\n    ".join(out)
+
+
+def group_box(x, y, w, h, label):
+    lw = len(label) * 7.2 + 10
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="none" stroke="#aca899" stroke-width="1.2"/>'
+            f'<rect x="{x + 12}" y="{y - 7}" width="{lw}" height="14" fill="{XP_PANEL}"/>'
+            f'{text(x + 17, y + 4, label, 12, "#55523f", 700, spacing=.5)}')
+
+
+def spec_row(x, y, label, value):
+    return (text(x, y, label, 13, "#6a6a5e", 700) + text(x + 150, y, value, 13.5, INK, 500))
+
+
 def hero():
-    tagline = text(0, 22, "Parece que estás viendo el perfil de Kisnner.", 16.5, "#1b1b1b", 500)
-    bubble = speech_bubble(372, 150, 420, 56, tagline, 44)
-    clip = clippy(150, 330, 1.18)
-    taskbar = f"""<rect y="{440 - 36}" width="1200" height="36" fill="url(#tbar)"/>
-    <rect x="10" y="{440 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
-    {text(24, 440 - 13, "inicio", 13.5, WHITE, 700)}
-    {text(1190, 440 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
+    tagline = text(0, 20, "Parece que estás viendo mi perfil.", 14.5, "#1b1b1b", 500)
+    bubble = speech_bubble(771, 144, 232, 44, tagline, 32)
+    taskbar = f"""<rect y="{480 - 36}" width="1200" height="36" fill="url(#tbar)"/>
+    <rect x="10" y="{480 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
+    {text(24, 480 - 13, "inicio", 13.5, WHITE, 700)}
+    {text(1190, 480 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
+    specs = "\n    ".join([
+        spec_row(0, 0, "Registrado a:", "Kisnner Obando  ·  kisnner26"),
+        spec_row(0, 30, "Stack:", "Swift · Node.js · TypeScript"),
+        spec_row(0, 60, "Intereses:", "Ingeniería inversa · Geometry Dash"),
+        spec_row(0, 90, "Ubicación:", "Managua, Nicaragua · 12.13°N 86.25°W"),
+        spec_row(0, 120, "Portafolio:", "kisnner26.github.io"),
+    ])
     body = f"""  <g clip-path="url(#card)">
-  {fiberglass_bg(1200, 440)}
+  {fiberglass_bg(1200, 480)}
   <g transform="translate(36,30)">
-    {xp_window(1128, 374, "Propiedades de Kisnner Obando.exe", "")}
-  </g>
-  <g transform="translate(36,60)">
-    <rect width="1128" height="344" fill="{XP_PANEL}"/>
-    {text(260, 78, "Kisnner Obando.", 46, INK, 700, spacing=-1)}
-    {text(260, 108, "apps nativas para Apple · backend transaccional · ingeniería inversa · open source", 14, "#3a3a3a", 500)}
-    {clip}
+  <rect width="1128" height="414" rx="9" fill="{XP_PANEL}" stroke="#0a246a" stroke-width="1.5"/>
+  {xp_titlebar(1128, "Propiedades de Kisnner Obando.exe", h=30)}
+  {tab_strip(1128, ["General", "Hardware", "Avanzado", "Red"], 0, y=30)}
+  <g transform="translate(0,62)">
+    <rect x="34" y="28" width="56" height="56" rx="10" fill="url(#startgrad)" stroke="#145314" stroke-width="1.4"/>
+    {text(62, 64, "K", 30, WHITE, 700, "middle")}
+    {text(104, 54, "Kisnner Obando.", 34, INK, 700, spacing=-.6)}
+    {text(104, 78, "apps nativas para Apple · backend · ingeniería inversa · open source", 13.5, "#3a3a3a", 500)}
+    <line x1="34" y1="108" x2="1094" y2="108" stroke="#aca899" stroke-width="1"/>
+    {group_box(34, 134, 620, 190, "Acerca de")}
+    <g transform="translate(60,170)">{specs}</g>
+    {group_box(680, 134, 414, 190, "Asistente")}
+    {clippy(887, 306, .75)}
     {bubble}
-    {text(260, 300, "kisnner26 · Managua, Nicaragua", 13, "#555", 500, opacity=.9, kind="mono")}
+  </g>
   </g>
   {taskbar}
   </g>"""
-    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="440" rx="14"/></clipPath>'
-    return svg(1200, 440, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, CLIPPY_STYLE, defs)
+    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="480" rx="14"/></clipPath>'
+    return svg(1200, 480, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, CLIPPY_STYLE, defs)
 
 
 # ---------------------------------------------------------------- tarjetas de contribuciones (estáticas)
