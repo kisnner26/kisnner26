@@ -307,6 +307,37 @@ def color_palette(x, y, w, h):
     return "".join(out)
 
 
+# ---------------------------------------------------------------- stack: lo que uso de verdad
+STACK = [
+    ("Swift", "#f05138"), ("JavaScript", "#f1e05a"), ("TypeScript", "#3178c6"),
+    ("Python", "#3572a5"), ("PHP", "#4f5d95"), ("MySQL", "#00618a"),
+    ("HTML · CSS", "#e34c26"), ("Shell", "#89e051"),
+]
+
+
+def tech_chip(x, y, label, color):
+    w = len(label) * 8.6 + 48
+    chip = (f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="34" rx="17" fill="{WHITE}" fill-opacity=".94" stroke="{GD_LAVENDER_B}" stroke-width="1.3"/>'
+            f'<circle cx="{x + 20:.1f}" cy="{y + 17}" r="6" fill="{color}" stroke="#00000025" stroke-width="1"/>'
+            f'{text(x + 35, y + 22, label, 13.5, INK, 700, kind="mono")}')
+    return chip, w
+
+
+def stack():
+    W, H, gap = 1200, 108, 14
+    widths = [tech_chip(0, 0, label, color)[1] for label, color in STACK]
+    total = sum(widths) + gap * (len(STACK) - 1)
+    chips, cx = [], (W - total) / 2
+    for (label, color), w in zip(STACK, widths):
+        chip, _ = tech_chip(cx, 37, label, color)
+        chips.append(chip)
+        cx += w + gap
+    inner = f"""  <rect width="{W}" height="{H - 42}" fill="{GD_PANEL}"/>
+  {"".join(chips)}"""
+    body = gd_window(W, H, "KISNNER26 / STACK.GMD", inner)
+    return svg(W, H, "Tecnologías", "Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell.", body, "", XP_DEFS + GD_DEFS)
+
+
 # ---------------------------------------------------------------- hero: un Clippy grande y animado
 def hero():
     W, H = 1200, 560
@@ -405,6 +436,7 @@ def main():
     for old in glob_old():
         old.unlink(missing_ok=True)
     write("hero.svg", hero())
+    write("stack.svg", stack())
     write("contributions.svg", contributions(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))

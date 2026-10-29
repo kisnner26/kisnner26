@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="assets/stack.svg" alt="Tecnologías que uso: Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell" width="100%">
+</p>
+
+<p align="center">
   <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 
