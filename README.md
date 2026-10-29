@@ -3,12 +3,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/nodejs/node/pull/66687"><img src="assets/tile-node.svg" alt="nodejs/node: PR mergeado, corrige los tipos de dirección e id de QuicStream en la documentación del core de Node.js" width="32%"></a>
-  <a href="https://github.com/radareorg/radare2/pull/26920"><img src="assets/tile-radare2.svg" alt="radareorg/radare2: PR mergeado, arregla referencias de memoria anidadas en expresiones numéricas" width="32%"></a>
-  <a href="https://github.com/geode-sdk/bindings/pull/1396"><img src="assets/tile-bindings.svg" alt="geode-sdk/bindings: PR mergeado, corrige 6 direcciones de Windows y añade el constructor de CustomSFXCell" width="32%"></a>
-</p>
-
-<p align="center">
   <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 

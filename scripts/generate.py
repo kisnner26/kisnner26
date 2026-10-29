@@ -36,21 +36,9 @@ FONT = "font-family=\"Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvet
 MONO = "font-family=\"'SF Mono',Menlo,Consolas,monospace\""
 
 MANAGUA = (12.13, -86.25)
-ROLES = ["Parece que estás escribiendo apps nativas para Apple.",
-         "Parece que estás armando un backend transaccional.",
-         "Parece que estás haciendo ingeniería inversa.",
-         "Parece que estás abriendo un pull request open source."]
-
-# contribuciones más destacadas: PRs mergeados en proyectos ajenos de peso
-# (repo, titular, subtítulo, meta, url)
-TILES = [
-    ("nodejs/node", ["Corrige tipos", "de QuicStream."], ["Documentación del core de Node.js,", "el runtime más usado del mundo."],
-     "PR #66687 mergeado · oct 2026", "https://github.com/nodejs/node/pull/66687"),
-    ("radareorg/radare2", ["Arregla referencias", "de memoria anidadas."], ["El framework de ingeniería inversa", "más usado por la comunidad RE."],
-     "PR #26920 mergeado · oct 2026", "https://github.com/radareorg/radare2/pull/26920"),
-    ("geode-sdk/bindings", ["6 direcciones de", "Windows corregidas."], ["El SDK de mods de Geometry Dash,", "usado por miles de creadores."],
-     "PR #1396 mergeado · oct 2026", "https://github.com/geode-sdk/bindings/pull/1396"),
-]
+ROLES = ["Parece que estás viendo mi perfil.",
+         "¿Quieres ayuda con tu próximo pull request?",
+         "Apps nativas para Apple, backend e ingeniería inversa."]
 
 
 # ---------------------------------------------------------------- datos
@@ -245,99 +233,34 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
     </linearGradient>"""
 
 
-# ---------------------------------------------------------------- hero
-def tab_strip(w, tabs, active, y=0, h=32):
-    """la fila de pestañas de un diálogo de propiedades clásico de XP."""
-    out = [f'<rect y="{y + h - 1}" width="{w}" height="1" fill="#aca899"/>']
-    x = 16
-    for i, label in enumerate(tabs):
-        tw = 24 + len(label) * 7.6
-        on = i == active
-        fill = XP_PANEL if on else "#d6d2c0"
-        out.append(f'<path d="M{x},{y + h} V{y + 8} Q{x},{y} {x + 8},{y} H{x + tw - 8} Q{x + tw},{y} {x + tw},{y + 8} V{y + h}'
-                    f'{" Z" if on else f" L{x + tw},{y + h}"}" fill="{fill}" stroke="#aca899" stroke-width="1"/>')
-        out.append(text(x + tw / 2, y + h / 2 + 5, label, 12.5, INK if on else "#6a6a5e", 700 if on else 500, "middle"))
-        x += tw + 4
-    return "\n    ".join(out)
-
-
-def group_box(x, y, w, h, label):
-    lw = len(label) * 7.2 + 10
-    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="none" stroke="#aca899" stroke-width="1.2"/>'
-            f'<rect x="{x + 12}" y="{y - 7}" width="{lw}" height="14" fill="{XP_PANEL}"/>'
-            f'{text(x + 17, y + 4, label, 12, "#55523f", 700, spacing=.5)}')
-
-
-def spec_row(x, y, label, value):
-    return (text(x, y, label, 13, "#6a6a5e", 700) + text(x + 150, y, value, 13.5, INK, 500))
-
-
+# ---------------------------------------------------------------- hero: un Clippy grande y animado
 def hero():
-    tagline = text(0, 20, "Parece que estás viendo mi perfil.", 14.5, "#1b1b1b", 500)
-    bubble = speech_bubble(771, 144, 232, 44, tagline, 32)
-    taskbar = f"""<rect y="{480 - 36}" width="1200" height="36" fill="url(#tbar)"/>
-    <rect x="10" y="{480 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
-    {text(24, 480 - 13, "inicio", 13.5, WHITE, 700)}
-    {text(1190, 480 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
-    specs = "\n    ".join([
-        spec_row(0, 0, "Registrado a:", "Kisnner Obando  ·  kisnner26"),
-        spec_row(0, 30, "Stack:", "Swift · Node.js · TypeScript"),
-        spec_row(0, 60, "Intereses:", "Ingeniería inversa · Geometry Dash"),
-        spec_row(0, 90, "Ubicación:", "Managua, Nicaragua · 12.13°N 86.25°W"),
-        spec_row(0, 120, "Portafolio:", "kisnner26.github.io"),
-    ])
+    role_lines = "".join(
+        f'<g class="role{" first" if i == 0 else ""}" style="animation-delay:{i * 3.6}s">{text(0, 24, role, 19, "#1b1b1b", 500, "middle")}</g>'
+        for i, role in enumerate(ROLES)
+    )
+    bubble_w = 480
+    bubble = speech_bubble(600 - bubble_w / 2, 54, bubble_w, 54, role_lines, bubble_w / 2 - 12)
+    taskbar = f"""<rect y="{560 - 36}" width="1200" height="36" fill="url(#tbar)"/>
+    <rect x="10" y="{560 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
+    {text(24, 560 - 13, "inicio", 13.5, WHITE, 700)}
+    {text(1190, 560 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
     body = f"""  <g clip-path="url(#card)">
-  {fiberglass_bg(1200, 480)}
-  <g transform="translate(36,30)">
-  <rect width="1128" height="414" rx="9" fill="{XP_PANEL}" stroke="#0a246a" stroke-width="1.5"/>
-  {xp_titlebar(1128, "Propiedades de Kisnner Obando.exe", h=30)}
-  {tab_strip(1128, ["General", "Hardware", "Avanzado", "Red"], 0, y=30)}
-  <g transform="translate(0,62)">
-    <rect x="34" y="28" width="56" height="56" rx="10" fill="url(#startgrad)" stroke="#145314" stroke-width="1.4"/>
-    {text(62, 64, "K", 30, WHITE, 700, "middle")}
-    {text(104, 54, "Kisnner Obando.", 34, INK, 700, spacing=-.6)}
-    {text(104, 78, "apps nativas para Apple · backend · ingeniería inversa · open source", 13.5, "#3a3a3a", 500)}
-    <line x1="34" y1="108" x2="1094" y2="108" stroke="#aca899" stroke-width="1"/>
-    {group_box(34, 134, 620, 190, "Acerca de")}
-    <g transform="translate(60,170)">{specs}</g>
-    {group_box(680, 134, 414, 190, "Asistente")}
-    {clippy(887, 306, .75)}
-    {bubble}
-  </g>
-  </g>
+  {fiberglass_bg(1200, 560)}
+  {xp_titlebar(1200, "Kisnner Obando — kisnner26", h=30)}
+  {bubble}
+  <g transform="translate(600,468)"><g class="float">{clippy(0, 0, 2.1)}</g></g>
+  {text(600, 540, "kisnner26 · Managua, Nicaragua", 13.5, WHITE, 500, "middle", .55, 1, "mono")}
   {taskbar}
   </g>"""
-    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="480" rx="14"/></clipPath>'
-    return svg(1200, 480, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, CLIPPY_STYLE, defs)
-
-
-# ---------------------------------------------------------------- tarjetas de contribuciones (estáticas)
-MERGE_PURPLE = "#8250df"
-
-
-def merged_badge(x, y):
-    """la insignia morada de "merged" que usa GitHub en los pull requests."""
-    return f"""<g transform="translate({x},{y})">
-    <rect width="118" height="26" rx="13" fill="{MERGE_PURPLE}"/>
-    <circle cx="16" cy="13" r="3" fill="{WHITE}"/>
-    <path d="M16 10V6M26 20v-6a4 4 0 0 0-4-4h-2" fill="none" stroke="{WHITE}" stroke-width="1.8" stroke-linecap="round"/>
-    <circle cx="26" cy="20" r="3" fill="none" stroke="{WHITE}" stroke-width="1.8"/>
-    {text(40, 18, "MERGEADO", 10.5, WHITE, 700, spacing=1)}
-  </g>"""
-
-
-def tile(repo, headline, sub, meta, url):
-    inner = f"""  <rect width="384" height="300" fill="{XP_PANEL}"/>
-    {text(32, 40, repo, 13, "#5a5a5a", 700, spacing=.5, kind="mono")}
-    {merged_badge(234, 26)}
-    {text(32, 80, headline[0], 27, INK, 700, spacing=-.6)}
-    {text(32, 111, headline[1], 27, INK, 700, spacing=-.6)}
-    {text(32, 144, sub[0], 14, "#3a3a3a", 400)}
-    {text(32, 163, sub[1], 14, "#3a3a3a", 400)}
-  <line x1="32" y1="254" x2="352" y2="254" stroke="{INK}" stroke-opacity=".12"/>
-  {text(32, 282, meta, 12, "#555", 500, kind="mono")}"""
-    body = xp_window(384, 330, repo, inner)
-    return svg(384, 330, repo, " ".join(headline) + " " + " ".join(sub) + " " + meta, body, "", XP_DEFS), url
+    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="560" rx="14"/></clipPath>'
+    style = CLIPPY_STYLE + """
+      .role{opacity:0;animation:role 10.8s infinite}
+      @keyframes role{0%{opacity:0;transform:translateY(8px)}5%{opacity:1;transform:none}28%{opacity:1;transform:none}33%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+      @media (prefers-reduced-motion:reduce){.role{opacity:0}.role.first{opacity:1}}
+      .float{animation:float 4.5s ease-in-out infinite}
+      @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}"""
+    return svg(1200, 560, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
@@ -406,20 +329,17 @@ def main():
             data["downloads"] = previous.get("downloads")
         SNAPSHOT.parent.mkdir(exist_ok=True)
         SNAPSHOT.write_text(json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
-    for old in ("tile-altserver.svg", "tile-relevo.svg", "tile-lumora.svg"):
-        (ASSETS / old).unlink(missing_ok=True)
+    for old in glob_old():
+        old.unlink(missing_ok=True)
     write("hero.svg", hero())
-    tile_urls = []
-    for repo, headline, sub, meta, url in TILES:
-        slug = repo.split("/")[-1].lower()
-        content, link = tile(repo, headline, sub, meta, url)
-        write(f"tile-{slug}.svg", content)
-        tile_urls.append((slug, link))
     write("contributions.svg", contributions(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))
     print("listo:", len(list(ASSETS.glob("*.svg"))), "svg")
-    print("tiles:", tile_urls)
+
+
+def glob_old():
+    return list(ASSETS.glob("tile-*.svg"))
 
 
 if __name__ == "__main__":
