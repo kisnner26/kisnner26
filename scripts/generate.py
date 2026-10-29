@@ -254,24 +254,78 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
     </linearGradient>"""
 
 
+# --------------------------------------------------- cromo "editor de niveles" (estilo Geometry Dash)
+GD_LAVENDER_A, GD_LAVENDER_B = "#8f94d9", "#5a5fae"
+GD_PANEL = "#b9bce3"
+PALETTE = ["#f5903a", "#cfe23a", "#36cf3a", "#17c97a", "#2f9fe0", "#7b4fe4", "#e034a0", "#171a33", "#8686a0", "#ffffff"]
+
+
+def gd_titlebar(w, title, h=42):
+    return f"""<rect width="{w}" height="{h}" rx="7" fill="url(#gdbar)"/>
+  <rect x="10" y="{h / 2 - 11:.0f}" width="22" height="22" rx="4" fill="{WHITE}" fill-opacity=".85"/>
+  <rect x="14" y="{h / 2 - 7:.0f}" width="6" height="6" fill="{GD_LAVENDER_B}"/>
+  <rect x="22" y="{h / 2 - 7:.0f}" width="6" height="6" fill="{GD_LAVENDER_B}"/>
+  <rect x="14" y="{h / 2 + 1:.0f}" width="6" height="6" fill="{GD_LAVENDER_B}"/>
+  <rect x="22" y="{h / 2 + 1:.0f}" width="6" height="6" fill="{GD_LAVENDER_B}"/>
+  {text(44, h / 2 + 6, title, 15, WHITE, 700, spacing=1, kind="mono")}
+  <g transform="translate({w - 62},{h / 2 - 11:.0f})">
+    <rect width="22" height="22" rx="4" fill="{WHITE}" fill-opacity=".85"/>
+    <rect x="6" y="10" width="10" height="3" fill="{GD_LAVENDER_B}"/>
+    <rect x="30" width="22" height="22" rx="4" fill="url(#closegrad)"/>
+    <path d="M36 6l10 10m0-10l-10 10" stroke="{WHITE}" stroke-width="2" stroke-linecap="round"/>
+  </g>"""
+
+
+def gd_xboxes(x, y, w, rows=7):
+    out = []
+    bs, gap = (w - 10) / 2, 8
+    for r in range(rows):
+        for c in range(2):
+            bx, by = x + c * (bs + gap), y + r * (bs + gap)
+            out.append(f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bs:.1f}" height="{bs:.1f}" rx="4" fill="{INK}" fill-opacity=".18"/>'
+                        f'<path d="M{bx + 6:.1f} {by + 6:.1f}l{bs - 12:.1f} {bs - 12:.1f}m0-{bs - 12:.1f}l-{bs - 12:.1f} {bs - 12:.1f}" '
+                        f'stroke="{INK}" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/>')
+    return "".join(out)
+
+
+def color_palette(x, y, w, h):
+    n = len(PALETTE)
+    gap, bs = 10, min(44, (w - 10 * (n - 1)) / n)
+    out = [f'<rect x="{x - 14}" y="{y - 10}" width="{w + 28}" height="{h + 20}" rx="10" fill="{INK}" fill-opacity=".12"/>']
+    for i, c in enumerate(PALETTE):
+        bx = x + i * (bs + gap)
+        out.append(f'<rect x="{bx:.1f}" y="{y}" width="{bs:.1f}" height="{bs:.1f}" rx="6" fill="{c}" stroke="#00000030" stroke-width="1.5"/>')
+    return "".join(out)
+
+
 # ---------------------------------------------------------------- hero: un Clippy grande y animado
 def hero():
-    taskbar = f"""<rect y="{520 - 36}" width="1200" height="36" fill="url(#tbar)"/>
-    <rect x="10" y="{520 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
-    {text(24, 520 - 13, "inicio", 13.5, WHITE, 700)}
-    {text(1190, 520 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
+    W, H = 1200, 560
+    top_h, side_w, pal_h = 42, 96, 70
+    view_x, view_w = side_w, W - side_w * 2 - 18
+    view_y, view_h = top_h, H - top_h - pal_h
     body = f"""  <g clip-path="url(#card)">
-  {fiberglass_bg(1200, 520)}
-  {xp_titlebar(1200, "Kisnner Obando — kisnner26", h=30)}
-  <g transform="translate(600,424)"><g class="float">{clippy(0, 0, 2.4)}</g></g>
-  {text(600, 500, "kisnner26 · Managua, Nicaragua", 13.5, WHITE, 500, "middle", .55, 1, "mono")}
-  {taskbar}
+  <rect width="{W}" height="{H}" fill="{GD_PANEL}"/>
+  {gd_titlebar(W, "KISNNER26 / PERFIL.GMD", top_h)}
+  <g transform="translate(10,{top_h + 14})">{gd_xboxes(0, 0, side_w - 20)}</g>
+  <g transform="translate({W - side_w + 10},{top_h + 14})">{gd_xboxes(0, 0, side_w - 20, rows=7)}</g>
+  <g clip-path="url(#viewport)">
+    <g transform="translate({view_x},{view_y})">
+      {fiberglass_bg(view_w, view_h)}
+      <g transform="translate({view_w / 2:.0f},{view_h - 68:.0f})"><g class="float">{clippy(0, 0, 2.0)}</g></g>
+      {text(view_w / 2, view_h - 16, "kisnner26 · Managua, Nicaragua", 13, WHITE, 500, "middle", .6, 1, "mono")}
+    </g>
+  </g>
+  {color_palette(view_x + 20, H - pal_h / 2 - 18, view_w - 40, 36)}
   </g>"""
-    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="520" rx="14"/></clipPath>'
+    defs = (XP_DEFS + FIBERGLASS_DEFS
+            + f'\n    <linearGradient id="gdbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{GD_LAVENDER_A}"/><stop offset="1" stop-color="{GD_LAVENDER_B}"/></linearGradient>'
+            + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="14"/></clipPath>'
+            + f'\n    <clipPath id="viewport"><rect x="{view_x}" y="{view_y}" width="{view_w}" height="{view_h}" rx="6"/></clipPath>')
     style = CLIPPY_STYLE + """
       .float{animation:float 4.5s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}"""
-    return svg(1200, 520, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
+    return svg(W, H, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
