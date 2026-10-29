@@ -307,35 +307,90 @@ def color_palette(x, y, w, h):
     return "".join(out)
 
 
-# ---------------------------------------------------------------- stack: lo que uso de verdad
-STACK = [
-    ("Swift", "#f05138"), ("JavaScript", "#f1e05a"), ("TypeScript", "#3178c6"),
-    ("Python", "#3572a5"), ("PHP", "#4f5d95"), ("MySQL", "#00618a"),
-    ("HTML · CSS", "#e34c26"), ("Shell", "#89e051"),
-]
+# ---------------------------------------------------------------- stack: lo que uso de verdad, con sus logos
+def logo_swift(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .22:.1f}" fill="url(#swiftgrad)"/>
+  <path d="M{s * .22:.1f} {s * .24:.1f} C{s * .5:.1f} {s * .3:.1f} {s * .86:.1f} {s * .5:.1f} {s * .82:.1f} {s * .62:.1f}
+    C{s * .78:.1f} {s * .74:.1f} {s * .6:.1f} {s * .78:.1f} {s * .4:.1f} {s * .72:.1f}
+    C{s * .55:.1f} {s * .68:.1f} {s * .62:.1f} {s * .58:.1f} {s * .58:.1f} {s * .5:.1f}
+    C{s * .48:.1f} {s * .58:.1f} {s * .3:.1f} {s * .6:.1f} {s * .18:.1f} {s * .5:.1f}
+    C{s * .3:.1f} {s * .5:.1f} {s * .38:.1f} {s * .44:.1f} {s * .4:.1f} {s * .38:.1f}
+    C{s * .32:.1f} {s * .36:.1f} {s * .24:.1f} {s * .3:.1f} {s * .22:.1f} {s * .24:.1f} Z" fill="{WHITE}"/>"""
 
 
-def tech_chip(x, y, label, color):
-    w = len(label) * 8.6 + 48
-    chip = (f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="34" rx="17" fill="{WHITE}" fill-opacity=".94" stroke="{GD_LAVENDER_B}" stroke-width="1.3"/>'
-            f'<circle cx="{x + 20:.1f}" cy="{y + 17}" r="6" fill="{color}" stroke="#00000025" stroke-width="1"/>'
-            f'{text(x + 35, y + 22, label, 13.5, INK, 700, kind="mono")}')
-    return chip, w
+def logo_js(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .16:.1f}" fill="#f0db4f"/>
+  {text(s * .5, s * .72, "JS", s * .4, "#1b1b1b", 800, "middle")}"""
+
+
+def logo_ts(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .16:.1f}" fill="#3178c6"/>
+  {text(s * .5, s * .72, "TS", s * .4, WHITE, 800, "middle")}"""
+
+
+def logo_python(s):
+    c1, c2 = "#3776ab", "#ffd43b"
+    return f"""<rect width="{s}" height="{s}" rx="{s * .22:.1f}" fill="{INK}"/>
+  <g transform="translate({s * .5:.1f},{s * .5:.1f})">
+    <path d="M-2 -24 C10 -24 16 -20 16 -14 V-2 H-10 V4 H22 V-16 C22 -28 12 -34 -2 -34 C-16 -34 -22 -28 -22 -18 H-8 C-8 -22 -6 -24 -2 -24 Z" fill="{c1}" transform="scale({s / 64:.3f})"/>
+    <path d="M2 24 C-10 24 -16 20 -16 14 V2 H10 V-4 H-22 V16 C-22 28 -12 34 2 34 C16 34 22 28 22 18 H8 C8 22 6 24 2 24 Z" fill="{c2}" transform="scale({s / 64:.3f})"/>
+    <circle cx="{-6 * s / 64:.1f}" cy="{-27 * s / 64:.1f}" r="{2.6 * s / 64:.1f}" fill="{WHITE}"/>
+    <circle cx="{6 * s / 64:.1f}" cy="{27 * s / 64:.1f}" r="{2.6 * s / 64:.1f}" fill="{WHITE}"/>
+  </g>"""
+
+
+def logo_php(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .16:.1f}" fill="{WHITE}"/>
+  <ellipse cx="{s / 2:.1f}" cy="{s / 2:.1f}" rx="{s * .46:.1f}" ry="{s * .3:.1f}" fill="#777bb4"/>
+  {text(s / 2, s * .58, "php", s * .3, WHITE, 800, "middle", extra='font-style="italic"')}"""
+
+
+def logo_mysql(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .16:.1f}" fill="{WHITE}" stroke="#d9d9e3" stroke-width="2"/>
+  <path d="M{s * .22:.1f} {s * .72:.1f} C{s * .2:.1f} {s * .5:.1f} {s * .3:.1f} {s * .28:.1f} {s * .5:.1f} {s * .24:.1f}
+    C{s * .7:.1f} {s * .2:.1f} {s * .84:.1f} {s * .34:.1f} {s * .78:.1f} {s * .5:.1f}
+    C{s * .72:.1f} {s * .66:.1f} {s * .5:.1f} {s * .62:.1f} {s * .4:.1f} {s * .7:.1f}" fill="none" stroke="#00618a" stroke-width="{s * .07:.1f}" stroke-linecap="round"/>
+  <path d="M{s * .62:.1f} {s * .4:.1f} l{s * .14:.1f} -{s * .1:.1f} l-{s * .02:.1f} {s * .14:.1f} Z" fill="#e97d30"/>"""
+
+
+def logo_html(s):
+    return f"""<path d="M{s * .5:.1f} 0 L{s} {s * .14:.1f} L{s} {s} L{s * .5:.1f} {s * 1.18:.1f} L0 {s} L0 {s * .14:.1f} Z" fill="#e34f26"/>
+  {text(s * .5, s * .7, "5", s * .42, WHITE, 800, "middle")}"""
+
+
+def logo_css(s):
+    return f"""<path d="M{s * .5:.1f} 0 L{s} {s * .14:.1f} L{s} {s} L{s * .5:.1f} {s * 1.18:.1f} L0 {s} L0 {s * .14:.1f} Z" fill="#1572b6"/>
+  {text(s * .5, s * .7, "3", s * .42, WHITE, 800, "middle")}"""
+
+
+def logo_shell(s):
+    return f"""<rect width="{s}" height="{s}" rx="{s * .16:.1f}" fill="#1b1b1b"/>
+  {text(s * .16, s * .62, ">_", s * .34, "#6cff6c", 800, kind="mono")}"""
+
+
+STACK = [("Swift", logo_swift), ("JavaScript", logo_js), ("TypeScript", logo_ts), ("Python", logo_python),
+         ("PHP", logo_php), ("MySQL", logo_mysql), ("HTML5", logo_html), ("CSS3", logo_css), ("Shell", logo_shell)]
+SWIFT_DEFS = '<linearGradient id="swiftgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fa7343"/><stop offset="1" stop-color="#f6416c"/></linearGradient>'
 
 
 def stack():
-    W, H, gap = 1200, 108, 14
-    widths = [tech_chip(0, 0, label, color)[1] for label, color in STACK]
-    total = sum(widths) + gap * (len(STACK) - 1)
-    chips, cx = [], (W - total) / 2
-    for (label, color), w in zip(STACK, widths):
-        chip, _ = tech_chip(cx, 37, label, color)
-        chips.append(chip)
-        cx += w + gap
-    inner = f"""  <rect width="{W}" height="{H - 42}" fill="{GD_PANEL}"/>
-  {"".join(chips)}"""
-    body = gd_window(W, H, "KISNNER26 / STACK.GMD", inner)
-    return svg(W, H, "Tecnologías", "Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell.", body, "", XP_DEFS + GD_DEFS)
+    W, H = 1200, 220
+    size, gap = 84, 44
+    total = size * len(STACK) + gap * (len(STACK) - 1)
+    cx0 = (W - total) / 2
+    items = []
+    for i, (label, logo) in enumerate(STACK):
+        x = cx0 + i * (size + gap)
+        items.append(f"""<g transform="translate({x:.1f},36)">
+      {logo(size)}
+      {text(size / 2, size + 30, label, 14, WHITE, 600, "middle", .92, .3, "mono")}
+    </g>""")
+    body = f"""  <g clip-path="url(#stackcard)">
+  {fiberglass_bg(W, H)}
+  {"".join(items)}
+  </g>"""
+    defs = FIBERGLASS_DEFS + SWIFT_DEFS + f'\n    <clipPath id="stackcard"><rect width="{W}" height="{H}" rx="14"/></clipPath>'
+    return svg(W, H, "Tecnologías", "Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML5, CSS3 y Shell.", body, "", defs)
 
 
 # ---------------------------------------------------------------- hero: un Clippy grande y animado

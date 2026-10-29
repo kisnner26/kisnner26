@@ -1,37 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 108" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" role="img" aria-labelledby="t d">
   <title id="t">Tecnologías</title>
-  <desc id="d">Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell.</desc>
+  <desc id="d">Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML5, CSS3 y Shell.</desc>
   <defs>
-    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3b7ce0"/><stop offset=".5" stop-color="#0a246a"/><stop offset="1" stop-color="#0a246a"/>
-    </linearGradient>
-    <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#f3938a"/><stop offset="1" stop-color="#d6341f"/>
-    </linearGradient>
-    <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
-    </linearGradient><linearGradient id="gdbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f94d9"/><stop offset="1" stop-color="#5a5fae"/></linearGradient>
+    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050b2e"/><stop offset="1" stop-color="#1452d6"/>
+    </linearGradient><linearGradient id="swiftgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fa7343"/><stop offset="1" stop-color="#f6416c"/></linearGradient>
+    <clipPath id="stackcard"><rect width="1200" height="220" rx="14"/></clipPath>
     <style>
       
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
-<g>
-  <rect width="1200" height="108" rx="9" fill="#b9bce3" stroke="#5a5fae" stroke-width="1.5"/>
-  <rect width="1200" height="42" rx="7" fill="url(#gdbar)"/>
-  <rect x="10" y="10" width="22" height="22" rx="4" fill="#ffffff" fill-opacity=".85"/>
-  <rect x="14" y="14" width="6" height="6" fill="#5a5fae"/>
-  <rect x="22" y="14" width="6" height="6" fill="#5a5fae"/>
-  <rect x="14" y="22" width="6" height="6" fill="#5a5fae"/>
-  <rect x="22" y="22" width="6" height="6" fill="#5a5fae"/>
-  <text x="44" y="27.0" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="1" >KISNNER26 / STACK.GMD</text>
-  <g transform="translate(1138,10)">
-    <rect width="22" height="22" rx="4" fill="#ffffff" fill-opacity=".85"/>
-    <rect x="6" y="10" width="10" height="3" fill="#5a5fae"/>
-    <rect x="30" width="22" height="22" rx="4" fill="url(#closegrad)"/>
-    <path d="M36 6l10 10m0-10l-10 10" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <g clip-path="url(#stackcard)">
+  <rect width="1200" height="220" fill="url(#glitchgrad)"/>
+  <rect y="0" width="1200" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="6" width="1200" height="1" fill="#8fb8ff" opacity="0.08"/><rect y="12" width="1200" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="18" width="1200" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="24" width="1200" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="30" width="1200" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="36" width="1200" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="42" width="1200" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="48" width="1200" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="54" width="1200" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="60" width="1200" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="66" width="1200" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="72" width="1200" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="78" width="1200" height="1" fill="#8fb8ff" opacity="0.08"/><rect y="84" width="1200" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="90" width="1200" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="96" width="1200" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="102" width="1200" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="108" width="1200" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="114" width="1200" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="120" width="1200" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="126" width="1200" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="132" width="1200" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="138" width="1200" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="144" width="1200" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="150" width="1200" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="156" width="1200" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="162" width="1200" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="168" width="1200" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="174" width="1200" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="180" width="1200" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="186" width="1200" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="192" width="1200" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="198" width="1200" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="204" width="1200" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="210" width="1200" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="216" width="1200" height="1" fill="#8fb8ff" opacity="0.09"/>
+  <g transform="translate(273,63) rotate(4.8)" opacity="0.13"><rect width="215" height="93" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="215" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(727,74) rotate(-1.5)" opacity="0.08"><rect width="91" height="73" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="91" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(1028,110) rotate(0.3)" opacity="0.10"><rect width="124" height="98" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="124" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(496,59) rotate(1.1)" opacity="0.09"><rect width="206" height="139" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="206" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(382,92) rotate(-1.8)" opacity="0.12"><rect width="223" height="69" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="223" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(450,69) rotate(0.2)" opacity="0.15"><rect width="248" height="75" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="248" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(243,82) rotate(1.6)" opacity="0.13"><rect width="175" height="73" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="175" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(114,25) rotate(-0.2)" opacity="0.08"><rect width="193" height="54" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="193" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(415,56) rotate(-1.6)" opacity="0.07"><rect width="248" height="86" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="248" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(101,42) rotate(4.1)" opacity="0.12"><rect width="185" height="66" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="185" height="14" rx="5" fill="#ffffff"/></g>
+  <g transform="translate(46.0,36)">
+      <rect width="84" height="84" rx="18.5" fill="url(#swiftgrad)"/>
+  <path d="M18.5 20.2 C42.0 25.2 72.2 42.0 68.9 52.1
+    C65.5 62.2 50.4 65.5 33.6 60.5
+    C46.2 57.1 52.1 48.7 48.7 42.0
+    C40.3 48.7 25.2 50.4 15.1 42.0
+    C25.2 42.0 31.9 37.0 33.6 31.9
+    C26.9 30.2 20.2 25.2 18.5 20.2 Z" fill="#ffffff"/>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >Swift</text>
+    </g><g transform="translate(174.0,36)">
+      <rect width="84" height="84" rx="13.4" fill="#f0db4f"/>
+  <text x="42.0" y="60.48" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33.6" font-weight="800" fill="#1b1b1b" text-anchor="middle" >JS</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >JavaScript</text>
+    </g><g transform="translate(302.0,36)">
+      <rect width="84" height="84" rx="13.4" fill="#3178c6"/>
+  <text x="42.0" y="60.48" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33.6" font-weight="800" fill="#ffffff" text-anchor="middle" >TS</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >TypeScript</text>
+    </g><g transform="translate(430.0,36)">
+      <rect width="84" height="84" rx="18.5" fill="#0a1d3a"/>
+  <g transform="translate(42.0,42.0)">
+    <path d="M-2 -24 C10 -24 16 -20 16 -14 V-2 H-10 V4 H22 V-16 C22 -28 12 -34 -2 -34 C-16 -34 -22 -28 -22 -18 H-8 C-8 -22 -6 -24 -2 -24 Z" fill="#3776ab" transform="scale(1.312)"/>
+    <path d="M2 24 C-10 24 -16 20 -16 14 V2 H10 V-4 H-22 V16 C-22 28 -12 34 2 34 C16 34 22 28 22 18 H8 C8 22 6 24 2 24 Z" fill="#ffd43b" transform="scale(1.312)"/>
+    <circle cx="-7.9" cy="-35.4" r="3.4" fill="#ffffff"/>
+    <circle cx="7.9" cy="35.4" r="3.4" fill="#ffffff"/>
   </g>
-  <g transform="translate(0,42)">  <rect width="1200" height="66" fill="#b9bce3"/>
-  <rect x="126.8" y="37" width="91.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="146.8" cy="54" r="6" fill="#f05138" stroke="#00000025" stroke-width="1"/><text x="161.8" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >Swift</text><rect x="231.8" y="37" width="134.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="251.8" cy="54" r="6" fill="#f1e05a" stroke="#00000025" stroke-width="1"/><text x="266.8" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >JavaScript</text><rect x="379.8" y="37" width="134.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="399.8" cy="54" r="6" fill="#3178c6" stroke="#00000025" stroke-width="1"/><text x="414.8" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >TypeScript</text><rect x="527.8" y="37" width="99.6" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="547.8" cy="54" r="6" fill="#3572a5" stroke="#00000025" stroke-width="1"/><text x="562.8" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >Python</text><rect x="641.4" y="37" width="73.8" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="661.4" cy="54" r="6" fill="#4f5d95" stroke="#00000025" stroke-width="1"/><text x="676.4" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >PHP</text><rect x="729.2" y="37" width="91.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="749.2" cy="54" r="6" fill="#00618a" stroke="#00000025" stroke-width="1"/><text x="764.1999999999999" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >MySQL</text><rect x="834.2" y="37" width="134.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="854.2" cy="54" r="6" fill="#e34c26" stroke="#00000025" stroke-width="1"/><text x="869.1999999999999" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >HTML · CSS</text><rect x="982.2" y="37" width="91.0" height="34" rx="17" fill="#ffffff" fill-opacity=".94" stroke="#5a5fae" stroke-width="1.3"/><circle cx="1002.2" cy="54" r="6" fill="#89e051" stroke="#00000025" stroke-width="1"/><text x="1017.1999999999999" y="59" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13.5" font-weight="700" fill="#0a1d3a" text-anchor="start" >Shell</text></g>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >Python</text>
+    </g><g transform="translate(558.0,36)">
+      <rect width="84" height="84" rx="13.4" fill="#ffffff"/>
+  <ellipse cx="42.0" cy="42.0" rx="38.6" ry="25.2" fill="#777bb4"/>
+  <text x="42.0" y="48.72" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="25.2" font-weight="800" fill="#ffffff" text-anchor="middle" font-style="italic">php</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >PHP</text>
+    </g><g transform="translate(686.0,36)">
+      <rect width="84" height="84" rx="13.4" fill="#ffffff" stroke="#d9d9e3" stroke-width="2"/>
+  <path d="M18.5 60.5 C16.8 42.0 25.2 23.5 42.0 20.2
+    C58.8 16.8 70.6 28.6 65.5 42.0
+    C60.5 55.4 42.0 52.1 33.6 58.8" fill="none" stroke="#00618a" stroke-width="5.9" stroke-linecap="round"/>
+  <path d="M52.1 33.6 l11.8 -8.4 l-1.7 11.8 Z" fill="#e97d30"/>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >MySQL</text>
+    </g><g transform="translate(814.0,36)">
+      <path d="M42.0 0 L84 11.8 L84 84 L42.0 99.1 L0 84 L0 11.8 Z" fill="#e34f26"/>
+  <text x="42.0" y="58.8" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="35.28" font-weight="800" fill="#ffffff" text-anchor="middle" >5</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >HTML5</text>
+    </g><g transform="translate(942.0,36)">
+      <path d="M42.0 0 L84 11.8 L84 84 L42.0 99.1 L0 84 L0 11.8 Z" fill="#1572b6"/>
+  <text x="42.0" y="58.8" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="35.28" font-weight="800" fill="#ffffff" text-anchor="middle" >3</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >CSS3</text>
+    </g><g transform="translate(1070.0,36)">
+      <rect width="84" height="84" rx="13.4" fill="#1b1b1b"/>
+  <text x="13.44" y="52.08" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="28.560000000000002" font-weight="800" fill="#6cff6c" text-anchor="start" >&gt;_</text>
+      <text x="42.0" y="114" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="0.3" opacity="0.92" >Shell</text>
+    </g>
   </g>
 </svg>
