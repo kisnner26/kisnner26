@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
+  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg?v=20261029" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 
 <p align="center">
