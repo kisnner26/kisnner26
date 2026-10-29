@@ -10,8 +10,8 @@
   "radare2",
   "swift-llm-kit"
  ],
- "downloads": 1339,
- "total": 3035,
+ "downloads": 1340,
+ "total": 3054,
  "weeks": [
   0,
   0,
@@ -65,9 +65,9 @@
   843,
   514,
   317,
-  794
+  813
  ],
  "first": "2025-10-26",
- "streak": 25,
- "best_day": 595
+ "streak": 26,
+ "best_day": 601
 }
