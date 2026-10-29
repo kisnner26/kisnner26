@@ -603,31 +603,31 @@ def hero():
     style = CLIPPY_STYLE + """
       .intro-scene,.type-scene,.tunnel-scene,.float-scene,.scene-wipe{opacity:0}
       .final-scene{opacity:1}
-      .intro-scene{animation:intro-scene 18s ease-in-out infinite}
-      @keyframes intro-scene{0%,15%{opacity:1}20%,93%{opacity:0}97%,100%{opacity:1}}
-      .boot-window{transform-box:fill-box;transform-origin:center;animation:boot-window 18s ease-in-out infinite}
+      .intro-scene{animation:intro-scene 18s ease-in-out 1 both}
+      @keyframes intro-scene{0%,15%{opacity:1}20%,100%{opacity:0}}
+      .boot-window{transform-box:fill-box;transform-origin:center;animation:boot-window 18s ease-in-out 1 both}
       @keyframes boot-window{0%,2%{opacity:0;transform:scale(.2) translateY(80px)}6%,12%{opacity:1;transform:scale(1) translateY(0)}18%{opacity:0;transform:scale(2.2) translateY(-38px)}100%{opacity:0}}
-      .desktop-cursor{animation:desktop-cursor 18s ease-in-out infinite}
+      .desktop-cursor{animation:desktop-cursor 18s ease-in-out 1 both}
       @keyframes desktop-cursor{0%{opacity:1;transform:translate(530px,330px)}4%,14%{opacity:1;transform:translate(1090px,84px)}18%,100%{opacity:0;transform:translate(1090px,84px)}}
-      .desktop-click{transform-box:fill-box;transform-origin:center;animation:desktop-click 18s ease-out infinite}
+      .desktop-click{transform-box:fill-box;transform-origin:center;animation:desktop-click 18s ease-out 1 both}
       @keyframes desktop-click{0%,3%{opacity:0;transform:scale(.3)}5%{opacity:1;transform:scale(1)}7%,100%{opacity:0;transform:scale(1.8)}}
-      .type-scene{animation:type-scene 18s ease-in-out infinite}
+      .type-scene{animation:type-scene 18s ease-in-out 1 both}
       @keyframes type-scene{0%,16%{opacity:0}21%,37%{opacity:1}42%,100%{opacity:0}}
-      .type-left{transform-box:fill-box;transform-origin:center;animation:type-left 18s ease-in-out infinite}
+      .type-left{transform-box:fill-box;transform-origin:center;animation:type-left 18s ease-in-out 1 both}
       @keyframes type-left{0%,17%{transform:translateX(-180px);opacity:0}22%,35%{transform:translateX(0);opacity:1}40%,100%{transform:translateX(-40px);opacity:0}}
-      .type-right{transform-box:fill-box;transform-origin:center;animation:type-right 18s ease-in-out infinite}
+      .type-right{transform-box:fill-box;transform-origin:center;animation:type-right 18s ease-in-out 1 both}
       @keyframes type-right{0%,18%{transform:translateX(180px);opacity:0}23%,36%{transform:translateX(0);opacity:1}41%,100%{transform:translateX(40px);opacity:0}}
-      .word-columns{transform-box:fill-box;transform-origin:center;animation:word-columns 18s ease-in-out infinite}
+      .word-columns{transform-box:fill-box;transform-origin:center;animation:word-columns 18s ease-in-out 1 both}
       @keyframes word-columns{0%,24%{transform:scaleX(.15);opacity:0}29%,37%{transform:scaleX(1);opacity:1}41%,100%{transform:scaleX(1.18);opacity:0}}
-      .tunnel-scene{animation:tunnel-scene 18s ease-in-out infinite}
+      .tunnel-scene{animation:tunnel-scene 18s ease-in-out 1 both}
       @keyframes tunnel-scene{0%,36%{opacity:0}40%,51%{opacity:1}56%,100%{opacity:0}}
-      .tunnel-rings{transform-box:fill-box;transform-origin:center;animation:tunnel-rings 18s ease-in-out infinite}
+      .tunnel-rings{transform-box:fill-box;transform-origin:center;animation:tunnel-rings 18s ease-in-out 1 both}
       @keyframes tunnel-rings{0%,36%{transform:scale(.28) rotate(-8deg)}43%{transform:scale(1) rotate(0)}54%,100%{transform:scale(2.7) rotate(7deg)}}
-      .tunnel-window{transform-box:fill-box;transform-origin:center;animation:tunnel-window 18s ease-in-out infinite}
+      .tunnel-window{transform-box:fill-box;transform-origin:center;animation:tunnel-window 18s ease-in-out 1 both}
       @keyframes tunnel-window{0%,38%{transform:scale(.25);opacity:0}43%{transform:scale(1);opacity:1}54%,100%{transform:scale(1.9);opacity:0}}
-      .float-scene{animation:float-scene 18s ease-in-out infinite}
+      .float-scene{animation:float-scene 18s ease-in-out 1 both}
       @keyframes float-scene{0%,52%{opacity:0}57%,72%{opacity:1}77%,100%{opacity:0}}
-      .float-window{transform-box:fill-box;transform-origin:center;animation-duration:18s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+      .float-window{transform-box:fill-box;transform-origin:center;animation-duration:18s;animation-timing-function:ease-in-out;animation-iteration-count:1;animation-fill-mode:both}
       .float-window-a{animation-name:float-window-a}
       @keyframes float-window-a{0%,52%{opacity:0;transform:translate(-120px,30px) rotate(-8deg) scale(.72)}58%,72%{opacity:.92;transform:translate(0) rotate(-3deg) scale(1)}77%,100%{opacity:0;transform:translate(-40px,-15px) rotate(-5deg) scale(.92)}}
       .float-window-b{animation-name:float-window-b}
@@ -636,19 +636,19 @@ def hero():
       @keyframes float-window-main{0%,54%{opacity:0;transform:scale(.34)}61%,72%{opacity:1;transform:scale(1)}77%,100%{opacity:0;transform:scale(1.34)}}
       .float-window-c{animation-name:float-window-c}
       @keyframes float-window-c{0%,56%{opacity:0;transform:translate(90px,60px) rotate(7deg)}62%,72%{opacity:.92;transform:translate(0) rotate(2deg)}77%,100%{opacity:0;transform:translate(45px,15px) rotate(4deg)}}
-      .final-scene{animation:final-scene 18s ease-in-out infinite}
-      @keyframes final-scene{0%,73%{opacity:0}78%,95%{opacity:1}98%,100%{opacity:0}}
-      .headline{animation:final-left 18s ease-in-out infinite}
+      .final-scene{animation:final-scene 18s ease-in-out 1 both}
+      @keyframes final-scene{0%,73%{opacity:0}78%,100%{opacity:1}}
+      .headline{animation:final-left 18s ease-in-out 1 both}
       .headline-two{animation-delay:.12s}
-      @keyframes final-left{0%,74%{opacity:0;transform:translateX(-70px)}79%,95%{opacity:1;transform:translateX(0)}98%,100%{opacity:0}}
-      .window-enter{transform-box:fill-box;transform-origin:center;animation:final-window 18s ease-in-out infinite}
-      @keyframes final-window{0%,73%{opacity:0;transform:scale(.65) rotate(4deg)}78%,95%{opacity:1;transform:scale(1) rotate(0)}98%,100%{opacity:0}}
+      @keyframes final-left{0%,74%{opacity:0;transform:translateX(-70px)}79%,100%{opacity:1;transform:translateX(0)}}
+      .window-enter{transform-box:fill-box;transform-origin:center;animation:final-window 18s ease-in-out 1 both}
+      @keyframes final-window{0%,73%{opacity:0;transform:scale(.65) rotate(4deg)}78%,100%{opacity:1;transform:scale(1) rotate(0)}}
       .float{animation:float 4.8s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-12px) rotate(1deg)}}
       .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 16s linear infinite}
       .orbit-b{animation-direction:reverse;animation-duration:11s}
       @keyframes orbit{to{transform:rotate(360deg)}}
-      .scene-wipe{transform-box:fill-box;transform-origin:left center;animation:scene-wipe 18s ease-in-out infinite}
+      .scene-wipe{transform-box:fill-box;transform-origin:left center;animation:scene-wipe 18s ease-in-out 1 both}
       @keyframes scene-wipe{0%,16%{opacity:0;transform:scaleX(0)}18%{opacity:1;transform:scaleX(1)}20%{opacity:0;transform:scaleX(1)}36%{opacity:0;transform:scaleX(0)}38%{opacity:1;transform:scaleX(1)}40%{opacity:0;transform:scaleX(1)}52%{opacity:0;transform:scaleX(0)}54%{opacity:1;transform:scaleX(1)}57%{opacity:0;transform:scaleX(1)}72%{opacity:0;transform:scaleX(0)}74%{opacity:1;transform:scaleX(1)}78%,100%{opacity:0;transform:scaleX(1)}}
       @media (prefers-reduced-motion:reduce){.intro-scene,.type-scene,.tunnel-scene,.float-scene,.scene-wipe{display:none}.final-scene{display:inline;opacity:1}}"""
     return svg(W, H, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
@@ -693,7 +693,7 @@ def contributions(d):
     for i in range(len(steps)):
         start = i * interval
         end = (i + 1) * interval
-        counter_rules.append(f".counter-step-{i}{{animation:count-step-{i} 8s linear infinite}}")
+        counter_rules.append(f".counter-step-{i}{{animation:count-step-{i} 8s linear 1 both}}")
         if i == 0:
             frames = f"0%,{end - .1:.1f}%{{opacity:1}}{end:.1f}%,100%{{opacity:0}}"
         elif i == len(steps) - 1:

@@ -18,17 +18,17 @@
     </linearGradient>
     <style>
       .counter-step{opacity:0}.counter-final{opacity:1}
-      .counter-step-0{animation:count-step-0 8s linear infinite}
+      .counter-step-0{animation:count-step-0 8s linear 1 both}
       @keyframes count-step-0{0%,11.6%{opacity:1}11.7%,100%{opacity:0}}
-      .counter-step-1{animation:count-step-1 8s linear infinite}
+      .counter-step-1{animation:count-step-1 8s linear 1 both}
       @keyframes count-step-1{0%,11.6%{opacity:0}11.7%,23.2%{opacity:1}23.3%,100%{opacity:0}}
-      .counter-step-2{animation:count-step-2 8s linear infinite}
+      .counter-step-2{animation:count-step-2 8s linear 1 both}
       @keyframes count-step-2{0%,23.2%{opacity:0}23.3%,34.9%{opacity:1}35.0%,100%{opacity:0}}
-      .counter-step-3{animation:count-step-3 8s linear infinite}
+      .counter-step-3{animation:count-step-3 8s linear 1 both}
       @keyframes count-step-3{0%,34.9%{opacity:0}35.0%,46.6%{opacity:1}46.7%,100%{opacity:0}}
-      .counter-step-4{animation:count-step-4 8s linear infinite}
+      .counter-step-4{animation:count-step-4 8s linear 1 both}
       @keyframes count-step-4{0%,46.6%{opacity:0}46.7%,58.2%{opacity:1}58.3%,100%{opacity:0}}
-      .counter-step-5{animation:count-step-5 8s linear infinite}
+      .counter-step-5{animation:count-step-5 8s linear 1 both}
       @keyframes count-step-5{0%,58.2%{opacity:0}58.3%,100%{opacity:1}}
       .contribution-bar{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .5s cubic-bezier(.2,.8,.3,1) both}
       @keyframes grow-bar{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}

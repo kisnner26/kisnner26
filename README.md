@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://kisnner26.github.io"><img src="assets/hero.svg?v=20261029d" alt="Kisnner Obando. Secuencia animada estilo escritorio que presenta sus áreas de trabajo: apps para Apple, backend, ingeniería inversa y herramientas web. Managua, Nicaragua." width="100%"></a>
+  <a href="https://kisnner26.github.io"><img src="assets/hero.svg?v=20261029e" alt="Kisnner Obando. Secuencia animada estilo escritorio que presenta sus áreas de trabajo: apps para Apple, backend, ingeniería inversa y herramientas web. Managua, Nicaragua." width="100%"></a>
 </p>
 
 <p align="center">
@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg?v=20261029b" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
+  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg?v=20261029e" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 
 <p align="center">
