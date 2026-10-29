@@ -195,8 +195,8 @@ def clippy(cx, cy, scale=1.0, blink_delay=0):
   </g>"""
 
 
-CLIPPY_STYLE = """.eye{animation:blink 4.6s ease-in-out infinite}
-      @keyframes blink{0%,88%,100%{ry:12}91%{ry:1}}
+CLIPPY_STYLE = """.eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s ease-in-out infinite}
+      @keyframes blink{0%,88%,100%{transform:scaleY(1)}91%{transform:scaleY(.08)}}
       .pupils{animation:look 9s ease-in-out infinite}
       @keyframes look{
         0%{transform:translate(0,0)}
@@ -252,6 +252,29 @@ def fiberglass_bg(w, h, seed=0):
 FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="{XP_GLITCH_A}"/><stop offset="1" stop-color="{XP_GLITCH_B}"/>
     </linearGradient>"""
+
+EDITORIAL_BG = "#d9dfe3"
+EDITORIAL_GRID = "#7f8991"
+EDITORIAL_BLUE = "#1741c7"
+EDITORIAL_DARK = "#101828"
+EDITORIAL_DEFS = f"""    <pattern id="editorialgrid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1" stroke-dasharray="5 6" opacity=".45"/>
+    </pattern>
+    <linearGradient id="editorialblue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2358ec"/><stop offset="1" stop-color="#0b2a9a"/>
+    </linearGradient>"""
+
+
+def editorial_bg(w, h):
+    pixels = "".join(
+        f'<rect x="{x}" y="{y}" width="10" height="10" fill="{EDITORIAL_DARK}" opacity="{op}"/>'
+        for x, y, op in ((42, 38, .18), (52, 48, .1), (1080, 74, .16), (1090, 64, .08),
+                         (1014, 444, .14), (1024, 454, .08), (314, 474, .12), (324, 464, .07)))
+    return f"""<rect width="{w}" height="{h}" fill="{EDITORIAL_BG}"/>
+  <rect width="{w}" height="{h}" fill="url(#editorialgrid)"/>
+  <circle cx="{w * .16:.0f}" cy="{h * .55:.0f}" r="{h * .22:.0f}" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="1.5" stroke-dasharray="7 7" opacity=".55"/>
+  <circle cx="{w * .84:.0f}" cy="{h * .3:.0f}" r="{h * .13:.0f}" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1.5" stroke-dasharray="5 6" opacity=".7"/>
+  {pixels}"""
 
 
 # --------------------------------------------------- cromo "editor de niveles" (estilo Geometry Dash)
@@ -374,51 +397,105 @@ SWIFT_DEFS = '<linearGradient id="swiftgrad" x1="0" y1="0" x2="1" y2="1"><stop o
 
 
 def stack():
-    W, H = 1200, 220
-    size, gap = 84, 44
+    W, H = 1200, 242
+    size, gap = 76, 42
     total = size * len(STACK) + gap * (len(STACK) - 1)
     cx0 = (W - total) / 2
     items = []
     for i, (label, logo) in enumerate(STACK):
         x = cx0 + i * (size + gap)
-        items.append(f"""<g transform="translate({x:.1f},36)">
-      {logo(size)}
-      {text(size / 2, size + 30, label, 14, WHITE, 600, "middle", .92, .3, "mono")}
+        tilt = (-2, 1, -1, 2, 0)[i % 5]
+        items.append(f"""<g transform="translate({x:.1f},76)">
+      <g class="tool-card" style="animation-delay:{.08 * i:.2f}s;transform:rotate({tilt}deg)">
+        <rect x="-10" y="-10" width="{size + 20}" height="{size + 52}" fill="#f4f5f2" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+        <rect x="-10" y="-10" width="{size + 20}" height="15" fill="{EDITORIAL_BLUE}"/>
+        {logo(size)}
+        {text(size / 2, size + 27, label.upper(), 11.5, EDITORIAL_DARK, 700, "middle", 1, .9, "mono")}
+      </g>
     </g>""")
     body = f"""  <g clip-path="url(#stackcard)">
-  {fiberglass_bg(W, H)}
+  {editorial_bg(W, H)}
+  <rect x="0" y="0" width="{W}" height="44" fill="{EDITORIAL_DARK}"/>
+  {text(34, 29, "KISNNER26 / TOOL DIRECTORY", 13, WHITE, 700, spacing=1.5, kind="mono")}
+  {text(W - 34, 29, "09 ITEMS · ACTIVE", 12, "#a8bfff", 600, "end", spacing=1, kind="mono")}
+  <path d="M0 218H1200" stroke="{EDITORIAL_BLUE}" stroke-width="10"/>
   {"".join(items)}
   </g>"""
-    defs = FIBERGLASS_DEFS + SWIFT_DEFS + f'\n    <clipPath id="stackcard"><rect width="{W}" height="{H}" rx="14"/></clipPath>'
-    return svg(W, H, "Tecnologías", "Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML5, CSS3 y Shell.", body, "", defs)
+    defs = EDITORIAL_DEFS + SWIFT_DEFS + f'\n    <clipPath id="stackcard"><rect width="{W}" height="{H}" rx="10"/></clipPath>'
+    style = """.tool-card{transform-box:fill-box;transform-origin:center;animation:tool-in .65s cubic-bezier(.2,.9,.25,1.15) both}
+      @keyframes tool-in{from{opacity:0;transform:translateY(28px) rotate(0deg) scale(.88)}to{opacity:1;transform:translateY(0) scale(1)}}
+      .tool-card:nth-child(odd){animation-name:tool-in-alt}
+      @keyframes tool-in-alt{from{opacity:0;transform:translateY(-20px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}"""
+    return svg(W, H, "Tecnologías", "Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML5, CSS3 y Shell.", body, style, defs)
 
 
-# ---------------------------------------------------------------- hero: un Clippy grande y animado
+# ---------------------------------------------------------------- hero: editorial técnico inspirado en software de escritorio
 def hero():
     W, H = 1200, 560
-    top_h, side_w, pal_h = 42, 96, 70
-    view_x, view_w = side_w, W - side_w * 2 - 18
-    view_y, view_h = top_h, H - top_h - pal_h
     body = f"""  <g clip-path="url(#card)">
-  <rect width="{W}" height="{H}" fill="{GD_PANEL}"/>
-  {gd_titlebar(W, "KISNNER26 / PERFIL.GMD", top_h)}
-  <g transform="translate(10,{top_h + 14})">{gd_xboxes(0, 0, side_w - 20)}</g>
-  <g transform="translate({W - side_w + 10},{top_h + 14})">{gd_xboxes(0, 0, side_w - 20, rows=7)}</g>
-  <g clip-path="url(#viewport)">
-    <g transform="translate({view_x},{view_y})">
-      {fiberglass_bg(view_w, view_h)}
-      <g transform="translate({view_w / 2:.0f},{view_h - 96:.0f})"><g class="float">{clippy(0, 0, 1.9)}</g></g>
-      {text(view_w / 2, view_h - 16, "kisnner26 · Managua, Nicaragua", 13, WHITE, 500, "middle", .6, 1, "mono")}
+  {editorial_bg(W, H)}
+  <rect x="26" y="22" width="1148" height="516" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+  <path d="M26 66H1174M82 22V538M1118 22V538" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1" opacity=".55"/>
+  {text(48, 51, "KISNNER26 / SYSTEM PROFILE", 13, EDITORIAL_DARK, 700, spacing=1.5, kind="mono")}
+  {text(1150, 51, "12.13 N · 86.25 W", 12, EDITORIAL_DARK, 600, "end", spacing=1, kind="mono")}
+
+  <g transform="translate(82,104)">
+    <g class="headline headline-one">
+      {text(0, 82, "KISNNER", 78, EDITORIAL_DARK, 800, spacing=-2)}
+    </g>
+    <g class="headline headline-two">
+      {text(0, 163, "OBANDO", 92, EDITORIAL_BLUE, 800, spacing=-3)}
+    </g>
+    <rect x="2" y="190" width="410" height="2" fill="{EDITORIAL_DARK}"/>
+    {text(2, 224, "APPLE APPS / BACKEND / WEB TOOLS", 14, EDITORIAL_DARK, 700, spacing=1.1, kind="mono")}
+    {text(2, 254, "software útil, sistemas sólidos y curiosidad", 15, EDITORIAL_DARK, 400)}
+    {text(2, 276, "por lo que ocurre debajo de la interfaz.", 15, EDITORIAL_DARK, 400)}
+    <g transform="translate(0,320)">
+      <rect width="146" height="34" fill="{EDITORIAL_BLUE}"/>
+      {text(73, 23, "MANAGUA / NI", 11.5, WHITE, 700, "middle", 1, 1, "mono")}
+      <rect x="156" width="164" height="34" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="1.5"/>
+      {text(238, 23, "AVAILABLE FOR WORK", 11, EDITORIAL_DARK, 700, "middle", 1, .7, "mono")}
     </g>
   </g>
-  {color_palette(view_x + 20, H - pal_h / 2 - 18, view_w - 40, 36)}
+
+  <g transform="translate(638,90)">
+    <g class="window-enter">
+      <rect x="-18" y="16" width="458" height="374" fill="{EDITORIAL_BLUE}" opacity=".18"/>
+      <rect width="440" height="374" rx="4" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
+      {xp_titlebar(440, "profile.exe", h=32)}
+      <g transform="translate(12,46)">
+        <rect width="416" height="314" fill="url(#editorialblue)"/>
+        <rect width="416" height="314" fill="url(#editorialgrid)" opacity=".32"/>
+        <circle class="orbit orbit-a" cx="208" cy="156" r="122" fill="none" stroke="#dfe7ff" stroke-width="1.4" stroke-dasharray="9 8" opacity=".8"/>
+        <circle class="orbit orbit-b" cx="208" cy="156" r="88" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="3 9" opacity=".55"/>
+        <g transform="translate(208,264)"><g class="float">{clippy(0, 0, 1.42)}</g></g>
+        {text(20, 28, "NO.01", 11.5, WHITE, 700, spacing=1.5, kind="mono")}
+        {text(396, 292, "K.O.", 11.5, WHITE, 700, "end", spacing=1.5, kind="mono")}
+      </g>
+    </g>
+  </g>
+  <g class="side-note" transform="translate(1090,164) rotate(90)">
+    {text(0, 0, "DESIGNER · DEVELOPER · STUDENT", 11.5, EDITORIAL_DARK, 700, spacing=1.6, kind="mono")}
+  </g>
+  <g transform="translate(48,512)">
+    {text(0, 0, "NO. 02", 11, EDITORIAL_DARK, 700, spacing=1, kind="mono")}
+    {text(1030, 0, "READ THE SYSTEM. BUILD THE NEXT ONE.", 11, EDITORIAL_DARK, 700, "end", spacing=1, kind="mono")}
+  </g>
   </g>"""
-    defs = (XP_DEFS + FIBERGLASS_DEFS + GD_DEFS
-            + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="14"/></clipPath>'
-            + f'\n    <clipPath id="viewport"><rect x="{view_x}" y="{view_y}" width="{view_w}" height="{view_h}" rx="6"/></clipPath>')
+    defs = XP_DEFS + EDITORIAL_DEFS + f'\n    <clipPath id="card"><rect width="{W}" height="{H}" rx="10"/></clipPath>'
     style = CLIPPY_STYLE + """
-      .float{animation:float 4.5s ease-in-out infinite}
-      @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}"""
+      .headline{animation:headline-in .8s cubic-bezier(.15,.85,.2,1) both}
+      .headline-two{animation-delay:.12s}
+      @keyframes headline-in{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:translateX(0)}}
+      .window-enter{transform-origin:center;animation:window-in .9s .12s cubic-bezier(.18,.85,.22,1.08) both}
+      @keyframes window-in{from{opacity:0;transform:translate(55px,-30px) scale(.78) rotate(5deg)}to{opacity:1;transform:translate(0) scale(1) rotate(0)}}
+      .float{animation:float 4.8s ease-in-out infinite}
+      @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+      .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 16s linear infinite}
+      .orbit-b{animation-direction:reverse;animation-duration:11s}
+      @keyframes orbit{to{transform:rotate(360deg)}}
+      .side-note{animation:note-in .7s .7s ease-out both}
+      @keyframes note-in{from{opacity:0}to{opacity:1}}"""
     return svg(W, H, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
@@ -440,7 +517,7 @@ def contributions(d):
         h = max(4, (base - top) * (count / peak) ** .5)
         last = i == len(weeks) - 1
         bars += (f'<rect x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .18:.1f}" '
-                 f'class="contribution-bar" fill="#6cff6c" fill-opacity="{1 if last else .4}" '
+                 f'class="contribution-bar" fill="{"#ffffff" if last else "#7898ff"}" fill-opacity="{1 if last else .58}" '
                  f'style="animation-delay:{.28 + i * .055:.2f}s"/>')
     months = ""
     for i in range(len(weeks)):
@@ -454,8 +531,8 @@ def contributions(d):
     counter = ""
     for i, value in enumerate(steps):
         final = " counter-final" if i == len(steps) - 1 else ""
-        counter += text(64, y0, f"{value:,}", 64, "#6cff6c", 700,
-                        extra=f'class="counter-step counter-step-{i}{final}"')
+        counter += text(64, y0, f"{value:,}", 64, WHITE, 700,
+                        extra=f'class="counter-step counter-step-{i}{final}" font-variant-numeric="tabular-nums"')
     counter_rules = []
     interval = 70 / len(steps)
     for i in range(len(steps)):
@@ -477,16 +554,17 @@ def contributions(d):
       .contribution-bar{{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .5s cubic-bezier(.2,.8,.3,1) both}}
       @keyframes grow-bar{{from{{transform:scaleY(0);opacity:0}}to{{transform:scaleY(1);opacity:1}}}}
       @media (prefers-reduced-motion:reduce){{.counter-step{{display:none}}.counter-final{{display:inline}}}}"""
-    inner = f"""  <rect width="1200" height="230" fill="#05070d"/>
-  {text(64, 40, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#8fb8ff", 700, spacing=2.2, kind="mono")}
+    inner = f"""  <rect width="1200" height="240" fill="{EDITORIAL_DARK}"/>
+  <rect width="1200" height="240" fill="url(#editorialgrid)" opacity=".14"/>
+  {text(64, 40, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#a8bfff", 700, spacing=2.2, kind="mono")}
   {counter}
-  {text(66, y0 + 26, "commits, pull requests, issues y revisiones", 14.5, "#cfe3ff", 400)}
+  {text(66, y0 + 26, "commits, pull requests, issues y revisiones", 14.5, "#dfe7ff", 400)}
   {bars}
   {months}
   <line x1="64" y1="204" x2="1136" y2="204" stroke="{WHITE}" stroke-opacity=".12"/>
-  {text(64, 222, stats, 12.5, "#8fb8ff", 500, kind="mono")}"""
-    body = gd_window(1200, 272, "KISNNER26 / CONTRIBUCIONES.GMD", inner)
-    return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, XP_DEFS + GD_DEFS)
+  {text(64, 222, stats, 12.5, "#a8bfff", 500, kind="mono")}"""
+    body = xp_window(1200, 272, "KISNNER26 / contributions.exe", inner, theme_fill=EDITORIAL_BG, title_h=32)
+    return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, XP_DEFS + EDITORIAL_DEFS)
 
 
 def pill(label, width, primary):

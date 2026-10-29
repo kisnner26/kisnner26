@@ -1,13 +1,13 @@
 <p align="center">
-  <a href="https://kisnner26.github.io"><img src="assets/hero.svg" alt="Kisnner Obando. Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io" width="100%"></a>
+  <a href="https://kisnner26.github.io"><img src="assets/hero.svg?v=20261029b" alt="Kisnner Obando. Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io" width="100%"></a>
 </p>
 
 <p align="center">
-  <img src="assets/stack.svg" alt="Tecnologías que uso: Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell" width="100%">
+  <img src="assets/stack.svg?v=20261029b" alt="Tecnologías que uso: Swift, JavaScript, TypeScript, Python, PHP, MySQL, HTML, CSS y Shell" width="100%">
 </p>
 
 <p align="center">
-  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg?v=20261029" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
+  <a href="https://github.com/kisnner26?tab=overview"><img src="assets/contributions.svg?v=20261029b" alt="contribuciones en GitHub del último año, semana a semana, y pull requests mergeados en proyectos ajenos" width="100%"></a>
 </p>
 
 <p align="center">

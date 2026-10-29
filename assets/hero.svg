@@ -10,14 +10,16 @@
     </linearGradient>
     <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#52c24b"/><stop offset="1" stop-color="#1f7a1f"/>
-    </linearGradient>    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#050b2e"/><stop offset="1" stop-color="#1452d6"/>
-    </linearGradient><linearGradient id="gdbar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f94d9"/><stop offset="1" stop-color="#5a5fae"/></linearGradient>
-    <clipPath id="card"><rect width="1200" height="560" rx="14"/></clipPath>
-    <clipPath id="viewport"><rect x="96" y="42" width="990" height="448" rx="6"/></clipPath>
+    </linearGradient>    <pattern id="editorialgrid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#7f8991" stroke-width="1" stroke-dasharray="5 6" opacity=".45"/>
+    </pattern>
+    <linearGradient id="editorialblue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2358ec"/><stop offset="1" stop-color="#0b2a9a"/>
+    </linearGradient>
+    <clipPath id="card"><rect width="1200" height="560" rx="10"/></clipPath>
     <style>
-      .eye{animation:blink 4.6s ease-in-out infinite}
-      @keyframes blink{0%,88%,100%{ry:12}91%{ry:1}}
+      .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.6s ease-in-out infinite}
+      @keyframes blink{0%,88%,100%{transform:scaleY(1)}91%{transform:scaleY(.08)}}
       .pupils{animation:look 9s ease-in-out infinite}
       @keyframes look{
         0%{transform:translate(0,0)}
@@ -41,34 +43,73 @@
       @keyframes wire{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-1.6deg) scale(1.015)}}
       .pad{animation:pad 6s ease-in-out infinite}
       @keyframes pad{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-2deg)}}
-      .float{animation:float 4.5s ease-in-out infinite}
-      @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}
+      .headline{animation:headline-in .8s cubic-bezier(.15,.85,.2,1) both}
+      .headline-two{animation-delay:.12s}
+      @keyframes headline-in{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:translateX(0)}}
+      .window-enter{transform-origin:center;animation:window-in .9s .12s cubic-bezier(.18,.85,.22,1.08) both}
+      @keyframes window-in{from{opacity:0;transform:translate(55px,-30px) scale(.78) rotate(5deg)}to{opacity:1;transform:translate(0) scale(1) rotate(0)}}
+      .float{animation:float 4.8s ease-in-out infinite}
+      @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+      .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 16s linear infinite}
+      .orbit-b{animation-direction:reverse;animation-duration:11s}
+      @keyframes orbit{to{transform:rotate(360deg)}}
+      .side-note{animation:note-in .7s .7s ease-out both}
+      @keyframes note-in{from{opacity:0}to{opacity:1}}
       @media (prefers-reduced-motion:reduce){*{animation:none!important}}
     </style>
   </defs>
   <g clip-path="url(#card)">
-  <rect width="1200" height="560" fill="#b9bce3"/>
-  <rect width="1200" height="42" rx="7" fill="url(#gdbar)"/>
-  <rect x="10" y="10" width="22" height="22" rx="4" fill="#ffffff" fill-opacity=".85"/>
-  <rect x="14" y="14" width="6" height="6" fill="#5a5fae"/>
-  <rect x="22" y="14" width="6" height="6" fill="#5a5fae"/>
-  <rect x="14" y="22" width="6" height="6" fill="#5a5fae"/>
-  <rect x="22" y="22" width="6" height="6" fill="#5a5fae"/>
-  <text x="44" y="27.0" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="15" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="1" >KISNNER26 / PERFIL.GMD</text>
-  <g transform="translate(1138,10)">
-    <rect width="22" height="22" rx="4" fill="#ffffff" fill-opacity=".85"/>
-    <rect x="6" y="10" width="10" height="3" fill="#5a5fae"/>
-    <rect x="30" width="22" height="22" rx="4" fill="url(#closegrad)"/>
-    <path d="M36 6l10 10m0-10l-10 10" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <rect width="1200" height="560" fill="#d9dfe3"/>
+  <rect width="1200" height="560" fill="url(#editorialgrid)"/>
+  <circle cx="192" cy="308" r="123" fill="none" stroke="#1741c7" stroke-width="1.5" stroke-dasharray="7 7" opacity=".55"/>
+  <circle cx="1008" cy="168" r="73" fill="none" stroke="#7f8991" stroke-width="1.5" stroke-dasharray="5 6" opacity=".7"/>
+  <rect x="42" y="38" width="10" height="10" fill="#101828" opacity="0.18"/><rect x="52" y="48" width="10" height="10" fill="#101828" opacity="0.1"/><rect x="1080" y="74" width="10" height="10" fill="#101828" opacity="0.16"/><rect x="1090" y="64" width="10" height="10" fill="#101828" opacity="0.08"/><rect x="1014" y="444" width="10" height="10" fill="#101828" opacity="0.14"/><rect x="1024" y="454" width="10" height="10" fill="#101828" opacity="0.08"/><rect x="314" y="474" width="10" height="10" fill="#101828" opacity="0.12"/><rect x="324" y="464" width="10" height="10" fill="#101828" opacity="0.07"/>
+  <rect x="26" y="22" width="1148" height="516" fill="none" stroke="#101828" stroke-width="1.5"/>
+  <path d="M26 66H1174M82 22V538M1118 22V538" fill="none" stroke="#101828" stroke-width="1" opacity=".55"/>
+  <text x="48" y="51" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#101828" text-anchor="start" letter-spacing="1.5" >KISNNER26 / SYSTEM PROFILE</text>
+  <text x="1150" y="51" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12" font-weight="600" fill="#101828" text-anchor="end" letter-spacing="1" >12.13 N · 86.25 W</text>
+
+  <g transform="translate(82,104)">
+    <g class="headline headline-one">
+      <text x="0" y="82" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="78" font-weight="800" fill="#101828" text-anchor="start" letter-spacing="-2" >KISNNER</text>
+    </g>
+    <g class="headline headline-two">
+      <text x="0" y="163" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="92" font-weight="800" fill="#1741c7" text-anchor="start" letter-spacing="-3" >OBANDO</text>
+    </g>
+    <rect x="2" y="190" width="410" height="2" fill="#101828"/>
+    <text x="2" y="224" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#101828" text-anchor="start" letter-spacing="1.1" >APPLE APPS / BACKEND / WEB TOOLS</text>
+    <text x="2" y="254" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" font-weight="400" fill="#101828" text-anchor="start" >software útil, sistemas sólidos y curiosidad</text>
+    <text x="2" y="276" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" font-weight="400" fill="#101828" text-anchor="start" >por lo que ocurre debajo de la interfaz.</text>
+    <g transform="translate(0,320)">
+      <rect width="146" height="34" fill="#1741c7"/>
+      <text x="73" y="23" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1" >MANAGUA / NI</text>
+      <rect x="156" width="164" height="34" fill="none" stroke="#101828" stroke-width="1.5"/>
+      <text x="238" y="23" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#101828" text-anchor="middle" letter-spacing="0.7" >AVAILABLE FOR WORK</text>
+    </g>
   </g>
-  <g transform="translate(10,56)"><rect x="0.0" y="0.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 6.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="0.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 6.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="41.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 47.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="41.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 47.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="82.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 88.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="82.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 88.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="123.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 129.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="123.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 129.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="164.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 170.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="164.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 170.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="205.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 211.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="205.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 211.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="246.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 252.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="246.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 252.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/></g>
-  <g transform="translate(1114,56)"><rect x="0.0" y="0.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 6.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="0.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 6.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="41.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 47.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="41.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 47.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="82.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 88.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="82.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 88.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="123.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 129.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="123.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 129.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="164.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 170.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="164.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 170.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="205.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 211.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="205.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 211.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="0.0" y="246.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M6.0 252.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/><rect x="41.0" y="246.0" width="33.0" height="33.0" rx="4" fill="#0a1d3a" fill-opacity=".18"/><path d="M47.0 252.0l21.0 21.0m0-21.0l-21.0 21.0" stroke="#0a1d3a" stroke-opacity=".32" stroke-width="2" stroke-linecap="round"/></g>
-  <g clip-path="url(#viewport)">
-    <g transform="translate(96,42)">
-      <rect width="990" height="448" fill="url(#glitchgrad)"/>
-  <rect y="0" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="6" width="990" height="1" fill="#8fb8ff" opacity="0.08"/><rect y="12" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="18" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="24" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="30" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="36" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="42" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="48" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="54" width="990" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="60" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="66" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="72" width="990" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="78" width="990" height="1" fill="#8fb8ff" opacity="0.08"/><rect y="84" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="90" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="96" width="990" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="102" width="990" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="108" width="990" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="114" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="120" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="126" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="132" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="138" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="144" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="150" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="156" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="162" width="990" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="168" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="174" width="990" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="180" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="186" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="192" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="198" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="204" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="210" width="990" height="1" fill="#8fb8ff" opacity="0.06"/><rect y="216" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="222" width="990" height="1" fill="#8fb8ff" opacity="0.15"/><rect y="228" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="234" width="990" height="1" fill="#8fb8ff" opacity="0.15"/><rect y="240" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="246" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="252" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="258" width="990" height="1" fill="#8fb8ff" opacity="0.08"/><rect y="264" width="990" height="1" fill="#8fb8ff" opacity="0.05"/><rect y="270" width="990" height="1" fill="#8fb8ff" opacity="0.14"/><rect y="276" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="282" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="288" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="294" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="300" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="306" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="312" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="318" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="324" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="330" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="336" width="990" height="1" fill="#8fb8ff" opacity="0.15"/><rect y="342" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="348" width="990" height="1" fill="#8fb8ff" opacity="0.11"/><rect y="354" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="360" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="366" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="372" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="378" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="384" width="990" height="1" fill="#8fb8ff" opacity="0.07"/><rect y="390" width="990" height="1" fill="#8fb8ff" opacity="0.15"/><rect y="396" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="402" width="990" height="1" fill="#8fb8ff" opacity="0.09"/><rect y="408" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="414" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="420" width="990" height="1" fill="#8fb8ff" opacity="0.10"/><rect y="426" width="990" height="1" fill="#8fb8ff" opacity="0.15"/><rect y="432" width="990" height="1" fill="#8fb8ff" opacity="0.12"/><rect y="438" width="990" height="1" fill="#8fb8ff" opacity="0.13"/><rect y="444" width="990" height="1" fill="#8fb8ff" opacity="0.08"/>
-  <g transform="translate(215,177) rotate(4.8)" opacity="0.13"><rect width="215" height="93" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="215" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(589,189) rotate(-1.5)" opacity="0.08"><rect width="91" height="73" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="91" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(827,315) rotate(0.3)" opacity="0.10"><rect width="124" height="98" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="124" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(391,228) rotate(1.1)" opacity="0.09"><rect width="206" height="139" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="206" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(300,230) rotate(-1.8)" opacity="0.12"><rect width="223" height="69" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="223" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(350,177) rotate(0.2)" opacity="0.15"><rect width="248" height="75" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="248" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(193,210) rotate(1.6)" opacity="0.13"><rect width="175" height="73" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="175" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(90,60) rotate(-0.2)" opacity="0.08"><rect width="193" height="54" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="193" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(324,151) rotate(-1.6)" opacity="0.07"><rect width="248" height="86" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="248" height="14" rx="5" fill="#ffffff"/></g><g transform="translate(80,103) rotate(4.1)" opacity="0.12"><rect width="185" height="66" rx="5" fill="none" stroke="#ffffff" stroke-width="2"/><rect width="185" height="14" rx="5" fill="#ffffff"/></g>
-      <g transform="translate(495,352)"><g class="float"><g transform="translate(0,0) scale(1.9)">
+
+  <g transform="translate(638,90)">
+    <g class="window-enter">
+      <rect x="-18" y="16" width="458" height="374" fill="#1741c7" opacity=".18"/>
+      <rect width="440" height="374" rx="4" fill="#f3f4f1" stroke="#101828" stroke-width="2"/>
+      <rect width="440" height="32" rx="8" fill="url(#tbar)"/>
+  <rect y="24" width="440" height="8" fill="url(#tbar)"/>
+  <rect x="6" y="9" width="14" height="14" rx="3" fill="#ffffff" fill-opacity=".85"/>
+  <text x="26" y="21.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="0.2" >profile.exe</text>
+    <g transform="translate(360,8.0)">
+      <rect x="0" y="0" width="18" height="16" rx="2" fill="#2b5bb0" stroke="#dbe9ff" stroke-width="1"/>
+      <rect x="6" y="11" width="7" height="2" fill="#ffffff"/>
+      <rect x="24" y="0" width="18" height="16" rx="2" fill="#2b5bb0" stroke="#dbe9ff" stroke-width="1"/>
+      <rect x="29" y="3" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+      <rect x="48" y="0" width="20" height="16" rx="2" fill="url(#closegrad)" stroke="#8c1a10" stroke-width="1"/>
+      <path d="M53 4l10 8m0-8l-10 8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+    </g>
+      <g transform="translate(12,46)">
+        <rect width="416" height="314" fill="url(#editorialblue)"/>
+        <rect width="416" height="314" fill="url(#editorialgrid)" opacity=".32"/>
+        <circle class="orbit orbit-a" cx="208" cy="156" r="122" fill="none" stroke="#dfe7ff" stroke-width="1.4" stroke-dasharray="9 8" opacity=".8"/>
+        <circle class="orbit orbit-b" cx="208" cy="156" r="88" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="3 9" opacity=".55"/>
+        <g transform="translate(208,264)"><g class="float"><g transform="translate(0,0) scale(1.42)">
     <g class="pad" style="transform-origin:0px -40px;transform:rotate(-4deg)">
       <rect x="-54" y="-156" width="108" height="168" rx="6" fill="#f6e79c" stroke="#c9ad3f" stroke-width="2"/>
       <line x1="-44" y1="-134" x2="44" y2="-134" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-120" x2="44" y2="-120" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-106" x2="44" y2="-106" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-92" x2="44" y2="-92" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-78" x2="44" y2="-78" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-64" x2="44" y2="-64" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-50" x2="44" y2="-50" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-36" x2="44" y2="-36" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-22" x2="44" y2="-22" stroke="#d8c268" stroke-width="1.5"/><line x1="-44" y1="-8" x2="44" y2="-8" stroke="#d8c268" stroke-width="1.5"/>
@@ -94,9 +135,17 @@
       <path class="brow-r" d="M-6 -138 q11 -6 21 1" style="transform-origin:4px -140px"/>
     </g>
   </g></g></g>
-      <text x="495.0" y="432" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="13" font-weight="500" fill="#ffffff" text-anchor="middle" letter-spacing="1" opacity="0.6" >kisnner26 · Managua, Nicaragua</text>
+        <text x="20" y="28" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="1.5" >NO.01</text>
+        <text x="396" y="292" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end" letter-spacing="1.5" >K.O.</text>
+      </g>
     </g>
   </g>
-  <rect x="102" y="497.0" width="978" height="56" rx="10" fill="#0a1d3a" fill-opacity=".12"/><rect x="116.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#f5903a" stroke="#00000030" stroke-width="1.5"/><rect x="170.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#cfe23a" stroke="#00000030" stroke-width="1.5"/><rect x="224.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#36cf3a" stroke="#00000030" stroke-width="1.5"/><rect x="278.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#17c97a" stroke="#00000030" stroke-width="1.5"/><rect x="332.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#2f9fe0" stroke="#00000030" stroke-width="1.5"/><rect x="386.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#7b4fe4" stroke="#00000030" stroke-width="1.5"/><rect x="440.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#e034a0" stroke="#00000030" stroke-width="1.5"/><rect x="494.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#171a33" stroke="#00000030" stroke-width="1.5"/><rect x="548.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#8686a0" stroke="#00000030" stroke-width="1.5"/><rect x="602.0" y="507.0" width="44.0" height="44.0" rx="6" fill="#ffffff" stroke="#00000030" stroke-width="1.5"/>
+  <g class="side-note" transform="translate(1090,164) rotate(90)">
+    <text x="0" y="0" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#101828" text-anchor="start" letter-spacing="1.6" >DESIGNER · DEVELOPER · STUDENT</text>
+  </g>
+  <g transform="translate(48,512)">
+    <text x="0" y="0" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#101828" text-anchor="start" letter-spacing="1" >NO. 02</text>
+    <text x="1030" y="0" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="700" fill="#101828" text-anchor="end" letter-spacing="1" >READ THE SYSTEM. BUILD THE NEXT ONE.</text>
+  </g>
   </g>
 </svg>
