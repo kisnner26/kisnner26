@@ -440,7 +440,8 @@ def contributions(d):
         h = max(4, (base - top) * (count / peak) ** .5)
         last = i == len(weeks) - 1
         bars += (f'<rect x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .18:.1f}" '
-                 f'fill="#6cff6c" fill-opacity="{1 if last else .4}"/>')
+                 f'class="contribution-bar" fill="#6cff6c" fill-opacity="{1 if last else .4}" '
+                 f'style="animation-delay:{.28 + i * .055:.2f}s"/>')
     months = ""
     for i in range(len(weeks)):
         dt = first.timestamp() + i * 7 * 86400
@@ -448,16 +449,44 @@ def contributions(d):
         if m.day <= 7:
             months += text(left + i * gap, base + 22, MESES[m.month - 1], 11, "#8fb8ff", 400, kind="mono")
     stats = f"racha más larga {d['streak']} días   ·   {d['merged']} pull requests mergeados en proyectos ajenos"
+    steps = [0] + [round(d["total"] * factor) for factor in (.08, .23, .48, .73)] + [d["total"]]
+    steps = list(dict.fromkeys(steps))
+    counter = ""
+    for i, value in enumerate(steps):
+        final = " counter-final" if i == len(steps) - 1 else ""
+        counter += text(64, y0, f"{value:,}", 64, "#6cff6c", 700,
+                        extra=f'class="counter-step counter-step-{i}{final}"')
+    counter_rules = []
+    interval = 70 / len(steps)
+    for i in range(len(steps)):
+        start = i * interval
+        end = (i + 1) * interval
+        counter_rules.append(f".counter-step-{i}{{animation:count-step-{i} 8s linear infinite}}")
+        if i == 0:
+            frames = f"0%,{end - .1:.1f}%{{opacity:1}}{end:.1f}%,100%{{opacity:0}}"
+        elif i == len(steps) - 1:
+            frames = f"0%,{start - .1:.1f}%{{opacity:0}}{start:.1f}%,100%{{opacity:1}}"
+        else:
+            frames = (f"0%,{start - .1:.1f}%{{opacity:0}}"
+                      f"{start:.1f}%,{end - .1:.1f}%{{opacity:1}}"
+                      f"{end:.1f}%,100%{{opacity:0}}")
+        counter_rules.append(f"@keyframes count-step-{i}{{{frames}}}")
+    counter_style = "\n      ".join(counter_rules)
+    style = f""".counter-step{{opacity:0}}.counter-final{{opacity:1}}
+      {counter_style}
+      .contribution-bar{{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .5s cubic-bezier(.2,.8,.3,1) both}}
+      @keyframes grow-bar{{from{{transform:scaleY(0);opacity:0}}to{{transform:scaleY(1);opacity:1}}}}
+      @media (prefers-reduced-motion:reduce){{.counter-step{{display:none}}.counter-final{{display:inline}}}}"""
     inner = f"""  <rect width="1200" height="230" fill="#05070d"/>
   {text(64, 40, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#8fb8ff", 700, spacing=2.2, kind="mono")}
-  {text(64, y0, f"{d['total']:,}", 64, "#6cff6c", 700)}
+  {counter}
   {text(66, y0 + 26, "commits, pull requests, issues y revisiones", 14.5, "#cfe3ff", 400)}
   {bars}
   {months}
   <line x1="64" y1="204" x2="1136" y2="204" stroke="{WHITE}" stroke-opacity=".12"/>
   {text(64, 222, stats, 12.5, "#8fb8ff", 500, kind="mono")}"""
     body = gd_window(1200, 272, "KISNNER26 / CONTRIBUCIONES.GMD", inner)
-    return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, "", XP_DEFS + GD_DEFS)
+    return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, XP_DEFS + GD_DEFS)
 
 
 def pill(label, width, primary):
