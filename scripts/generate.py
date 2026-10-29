@@ -786,7 +786,7 @@ def main():
         old.unlink(missing_ok=True)
     write("hero.svg", hero())
     write("stack.svg", stack())
-    write("contributions.svg", contributions(data))
+    write("contributions-motion.svg", contributions(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))
     print("listo:", len(list(ASSETS.glob("*.svg"))), "svg")
