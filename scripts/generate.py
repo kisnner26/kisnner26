@@ -235,32 +235,22 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
 
 # ---------------------------------------------------------------- hero: un Clippy grande y animado
 def hero():
-    role_lines = "".join(
-        f'<g class="role{" first" if i == 0 else ""}" style="animation-delay:{i * 3.6}s">{text(0, 24, role, 19, "#1b1b1b", 500, "middle")}</g>'
-        for i, role in enumerate(ROLES)
-    )
-    bubble_w = 480
-    bubble = speech_bubble(600 - bubble_w / 2, 54, bubble_w, 54, role_lines, bubble_w / 2 - 12)
-    taskbar = f"""<rect y="{560 - 36}" width="1200" height="36" fill="url(#tbar)"/>
-    <rect x="10" y="{560 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
-    {text(24, 560 - 13, "inicio", 13.5, WHITE, 700)}
-    {text(1190, 560 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
+    taskbar = f"""<rect y="{520 - 36}" width="1200" height="36" fill="url(#tbar)"/>
+    <rect x="10" y="{520 - 31}" width="104" height="26" rx="5" fill="url(#startgrad)" stroke="#145314" stroke-width="1"/>
+    {text(24, 520 - 13, "inicio", 13.5, WHITE, 700)}
+    {text(1190, 520 - 13, "kisnner26.github.io", 13, WHITE, 700, "end", 1, .4, "mono")}"""
     body = f"""  <g clip-path="url(#card)">
-  {fiberglass_bg(1200, 560)}
+  {fiberglass_bg(1200, 520)}
   {xp_titlebar(1200, "Kisnner Obando — kisnner26", h=30)}
-  {bubble}
-  <g transform="translate(600,468)"><g class="float">{clippy(0, 0, 2.1)}</g></g>
-  {text(600, 540, "kisnner26 · Managua, Nicaragua", 13.5, WHITE, 500, "middle", .55, 1, "mono")}
+  <g transform="translate(600,424)"><g class="float">{clippy(0, 0, 2.4)}</g></g>
+  {text(600, 500, "kisnner26 · Managua, Nicaragua", 13.5, WHITE, 500, "middle", .55, 1, "mono")}
   {taskbar}
   </g>"""
-    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="560" rx="14"/></clipPath>'
+    defs = XP_DEFS + FIBERGLASS_DEFS + '\n    <clipPath id="card"><rect width="1200" height="520" rx="14"/></clipPath>'
     style = CLIPPY_STYLE + """
-      .role{opacity:0;animation:role 10.8s infinite}
-      @keyframes role{0%{opacity:0;transform:translateY(8px)}5%{opacity:1;transform:none}28%{opacity:1;transform:none}33%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
-      @media (prefers-reduced-motion:reduce){.role{opacity:0}.role.first{opacity:1}}
       .float{animation:float 4.5s ease-in-out infinite}
       @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1.2deg)}}"""
-    return svg(1200, 560, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
+    return svg(1200, 520, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, style, defs)
 
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
