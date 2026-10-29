@@ -41,11 +41,15 @@ ROLES = ["Parece que estás escribiendo apps nativas para Apple.",
          "Parece que estás haciendo ingeniería inversa.",
          "Parece que estás abriendo un pull request open source."]
 
-# (etiqueta, titular, subtítulo, meta)
+# contribuciones más destacadas: PRs mergeados en proyectos ajenos de peso
+# (repo, titular, subtítulo, meta, url)
 TILES = [
-    ("ALTSERVER", ["Vuelve a iniciar", "sesión."], ["Arreglo propuesto para AltServer", "en macOS 27."], "PR abierto en AltStore"),
-    ("RELEVO", ["Reparte el", "trabajo."], ["Servicio en Node con worker threads", "y balanceador propio."], "REST · GraphQL · WebSocket · 36 pruebas"),
-    ("LUMORA", ["La letra,", "en escena."], ["Lyric videos en vivo con un director", "local que no usa internet."], "Canvas 2D · Mac y navegador"),
+    ("nodejs/node", ["Corrige tipos", "de QuicStream."], ["Documentación del core de Node.js,", "el runtime más usado del mundo."],
+     "PR #66687 mergeado · oct 2026", "https://github.com/nodejs/node/pull/66687"),
+    ("radareorg/radare2", ["Arregla referencias", "de memoria anidadas."], ["El framework de ingeniería inversa", "más usado por la comunidad RE."],
+     "PR #26920 mergeado · oct 2026", "https://github.com/radareorg/radare2/pull/26920"),
+    ("geode-sdk/bindings", ["6 direcciones de", "Windows corregidas."], ["El SDK de mods de Geometry Dash,", "usado por miles de creadores."],
+     "PR #1396 mergeado · oct 2026", "https://github.com/geode-sdk/bindings/pull/1396"),
 ]
 
 
@@ -269,46 +273,33 @@ def hero():
     return svg(1200, 440, "Kisnner Obando", "Apps nativas para Apple, backend transaccional, ingeniería inversa y open source. Managua, Nicaragua. Portafolio: kisnner26.github.io", body, CLIPPY_STYLE, defs)
 
 
-# ---------------------------------------------------------------- tarjetas (estáticas, sin animación)
-def tile_visual(index):
-    if index == 0:  # una terminal estilo s.cmd, con el resultado final ya escrito
-        body = f"""  <g transform="translate(22,184)">
-  <rect width="340" height="96" rx="4" fill="#0a0a0a" stroke="{XP_TITLE_A}" stroke-width="1.5"/>
-  {xp_titlebar(340, "s.cmd", buttons=False, h=18, grad_id="tbar")}
-  <g transform="translate(0,18)">
-  {text(14, 32, "$ altserver --sign-in", 13, "#6cff6c", 500, kind="mono")}
-  <g opacity=".55">{text(14, 58, "← 503  Service Unavailable", 13, "#ff6c6c", 400, kind="mono")}<line x1="14" y1="54" x2="228" y2="54" stroke="#ff6c6c" stroke-width="1.5"/></g>
-  {text(14, 84, "← 200  OK · signed in", 13, "#6cff6c", 700, kind="mono")}
-  </g>
+# ---------------------------------------------------------------- tarjetas de contribuciones (estáticas)
+MERGE_PURPLE = "#8250df"
+
+
+def merged_badge(x, y):
+    """la insignia morada de "merged" que usa GitHub en los pull requests."""
+    return f"""<g transform="translate({x},{y})">
+    <rect width="118" height="26" rx="13" fill="{MERGE_PURPLE}"/>
+    <circle cx="16" cy="13" r="3" fill="{WHITE}"/>
+    <path d="M16 10V6M26 20v-6a4 4 0 0 0-4-4h-2" fill="none" stroke="{WHITE}" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="26" cy="20" r="3" fill="none" stroke="{WHITE}" stroke-width="1.8"/>
+    {text(40, 18, "MERGEADO", 10.5, WHITE, 700, spacing=1)}
   </g>"""
-        return body
-    if index == 1:  # cuatro carriles con un trabajo ya posicionado en cada uno
-        lanes = ""
-        for y, pos in ((184, .78), (204, .42), (224, .64), (244, .3)):
-            lanes += (f'<rect x="56" y="{y}" width="300" height="2" rx="1" fill="{INK}" fill-opacity=".18"/>'
-                      f'<circle cx="{56 + 300 * pos:.0f}" cy="{y + .7}" r="5" fill="{XP_TITLE_A}"/>')
-        return f"""  <rect x="34" y="174" width="7" height="80" rx="3.5" fill="{XP_TITLE_A}"/>
-  {lanes}"""
-    # karaoke: tres versos, cada uno ya resaltado
-    body = ""
-    for y, w in ((184, 280), (210, 210), (236, 248)):
-        body += f'<rect x="32" y="{y}" width="{w}" height="12" rx="6" fill="{XP_TITLE_A}"/>'
-    return "  " + body
 
 
-def tile(index, label, headline, sub, meta, downloads):
-    if index == 0 and downloads:
-        meta = f"{downloads} descargas · PR abierto"
-    inner = f"""  <rect width="384" height="324" fill="{XP_PANEL}"/>
-    {text(32, 42, label, 12.5, "#5a5a5a", 700, spacing=2)}
-    {text(32, 82, headline[0], 28, INK, 700, spacing=-.6)}
-    {text(32, 114, headline[1], 28, INK, 700, spacing=-.6)}
-    {text(32, 146, sub[0], 14, "#3a3a3a", 400)}
-    {text(32, 165, sub[1], 14, "#3a3a3a", 400)}
-{tile_visual(index)}
-  {text(32, 306, meta, 12, "#555", 500, kind="mono")}"""
-    body = xp_window(384, 354, label.title(), inner)
-    return svg(384, 354, label.title(), " ".join(headline) + " " + " ".join(sub) + " " + meta, body, "", XP_DEFS)
+def tile(repo, headline, sub, meta, url):
+    inner = f"""  <rect width="384" height="300" fill="{XP_PANEL}"/>
+    {text(32, 40, repo, 13, "#5a5a5a", 700, spacing=.5, kind="mono")}
+    {merged_badge(234, 26)}
+    {text(32, 80, headline[0], 27, INK, 700, spacing=-.6)}
+    {text(32, 111, headline[1], 27, INK, 700, spacing=-.6)}
+    {text(32, 144, sub[0], 14, "#3a3a3a", 400)}
+    {text(32, 163, sub[1], 14, "#3a3a3a", 400)}
+  <line x1="32" y1="254" x2="352" y2="254" stroke="{INK}" stroke-opacity=".12"/>
+  {text(32, 282, meta, 12, "#555", 500, kind="mono")}"""
+    body = xp_window(384, 330, repo, inner)
+    return svg(384, 330, repo, " ".join(headline) + " " + " ".join(sub) + " " + meta, body, "", XP_DEFS), url
 
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
@@ -377,13 +368,20 @@ def main():
             data["downloads"] = previous.get("downloads")
         SNAPSHOT.parent.mkdir(exist_ok=True)
         SNAPSHOT.write_text(json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8")
+    for old in ("tile-altserver.svg", "tile-relevo.svg", "tile-lumora.svg"):
+        (ASSETS / old).unlink(missing_ok=True)
     write("hero.svg", hero())
-    for index, (label, headline, sub, meta) in enumerate(TILES):
-        write(f"tile-{label.lower()}.svg", tile(index, label, headline, sub, meta, data.get("downloads")))
+    tile_urls = []
+    for repo, headline, sub, meta, url in TILES:
+        slug = repo.split("/")[-1].lower()
+        content, link = tile(repo, headline, sub, meta, url)
+        write(f"tile-{slug}.svg", content)
+        tile_urls.append((slug, link))
     write("contributions.svg", contributions(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))
     print("listo:", len(list(ASSETS.glob("*.svg"))), "svg")
+    print("tiles:", tile_urls)
 
 
 if __name__ == "__main__":

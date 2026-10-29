@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://kisnner26.github.io/altserver-80045/"><img src="assets/tile-altserver.svg" alt="AltServer: arreglo propuesto para el inicio de sesión en macOS 27, con pull request abierto en AltStore" width="32%"></a>
-  <a href="https://github.com/kisnner26/relevo"><img src="assets/tile-relevo.svg" alt="relevo: servicio en Node con worker threads y balanceador propio" width="32%"></a>
-  <a href="https://github.com/kisnner26/lumora"><img src="assets/tile-lumora.svg" alt="Lumora: lyric videos en vivo con un director local que no usa internet" width="32%"></a>
+  <a href="https://github.com/nodejs/node/pull/66687"><img src="assets/tile-node.svg" alt="nodejs/node: PR mergeado, corrige los tipos de dirección e id de QuicStream en la documentación del core de Node.js" width="32%"></a>
+  <a href="https://github.com/radareorg/radare2/pull/26920"><img src="assets/tile-radare2.svg" alt="radareorg/radare2: PR mergeado, arregla referencias de memoria anidadas en expresiones numéricas" width="32%"></a>
+  <a href="https://github.com/geode-sdk/bindings/pull/1396"><img src="assets/tile-bindings.svg" alt="geode-sdk/bindings: PR mergeado, corrige 6 direcciones de Windows y añade el constructor de CustomSFXCell" width="32%"></a>
 </p>
 
 <p align="center">
