@@ -668,12 +668,15 @@ def contributions(d):
     left, right, base, top = 560, 1150, 180, 50
     gap = (right - left) / len(weeks)
     bars = ""
+    last_x = last_y = last_h = 0
     for i, count in enumerate(weeks):
         h = max(4, (base - top) * (count / peak) ** .5)
         last = i == len(weeks) - 1
+        if last:
+            last_x, last_y, last_h = left + i * gap, base - h, h
         bars += (f'<rect x="{left + i * gap:.1f}" y="{base - h:.1f}" width="{gap * .62:.1f}" height="{h:.1f}" rx="{gap * .18:.1f}" '
-                 f'class="contribution-bar" fill="{"#ffffff" if last else "#7898ff"}" fill-opacity="{1 if last else .58}" '
-                 f'style="animation-delay:{.28 + i * .055:.2f}s"/>')
+                 f'class="contribution-bar{" final-bar" if last else ""}" fill="{"#ffffff" if last else "#7898ff"}" fill-opacity="{1 if last else .58}" '
+                 f'style="animation-delay:{1.1 + i * .085:.2f}s"/>')
     months = ""
     for i in range(len(weeks)):
         dt = first.timestamp() + i * 7 * 86400
@@ -689,32 +692,61 @@ def contributions(d):
         counter += text(64, y0, f"{value:,}", 64, WHITE, 700,
                         extra=f'class="counter-step counter-step-{i}{final}" font-variant-numeric="tabular-nums"')
     counter_rules = []
-    interval = 70 / len(steps)
+    interval = 68 / len(steps)
     for i in range(len(steps)):
-        start = i * interval
-        end = (i + 1) * interval
-        counter_rules.append(f".counter-step-{i}{{animation:count-step-{i} 8s linear 1 both}}")
+        start = 7 + i * interval
+        end = 7 + (i + 1) * interval
+        counter_rules.append(f".counter-step-{i}{{animation:count-step-{i} 8s ease-in-out 1 both}}")
         if i == 0:
-            frames = f"0%,{end - .1:.1f}%{{opacity:1}}{end:.1f}%,100%{{opacity:0}}"
+            frames = (f"0%,{start - .1:.1f}%{{opacity:0;transform:translateY(18px) scale(.82)}}"
+                      f"{start:.1f}%,{end - .1:.1f}%{{opacity:1;transform:translateY(0) scale(1)}}"
+                      f"{end:.1f}%,100%{{opacity:0;transform:translateY(-18px) scale(1.08)}}")
         elif i == len(steps) - 1:
-            frames = f"0%,{start - .1:.1f}%{{opacity:0}}{start:.1f}%,100%{{opacity:1}}"
+            frames = (f"0%,{start - .1:.1f}%{{opacity:0;transform:translateY(18px) scale(.84)}}"
+                      f"{start:.1f}%,{end:.1f}%{{opacity:1;transform:translateY(0) scale(1.12)}}"
+                      f"88%,100%{{opacity:1;transform:translateY(0) scale(1)}}")
         else:
-            frames = (f"0%,{start - .1:.1f}%{{opacity:0}}"
-                      f"{start:.1f}%,{end - .1:.1f}%{{opacity:1}}"
-                      f"{end:.1f}%,100%{{opacity:0}}")
+            frames = (f"0%,{start - .1:.1f}%{{opacity:0;transform:translateY(16px) scale(.86)}}"
+                      f"{start:.1f}%,{end - .1:.1f}%{{opacity:1;transform:translateY(0) scale(1)}}"
+                      f"{end:.1f}%,100%{{opacity:0;transform:translateY(-16px) scale(1.1)}}")
         counter_rules.append(f"@keyframes count-step-{i}{{{frames}}}")
     counter_style = "\n      ".join(counter_rules)
-    style = f""".counter-step{{opacity:0}}.counter-final{{opacity:1}}
+    style = f""".counter-step{{opacity:0;transform-box:fill-box;transform-origin:left center}}.counter-final{{opacity:1}}
       {counter_style}
-      .contribution-bar{{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .5s cubic-bezier(.2,.8,.3,1) both}}
-      @keyframes grow-bar{{from{{transform:scaleY(0);opacity:0}}to{{transform:scaleY(1);opacity:1}}}}
-      @media (prefers-reduced-motion:reduce){{.counter-step{{display:none}}.counter-final{{display:inline}}}}"""
+      .contribution-bar{{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .72s ease-out 1 both}}
+      @keyframes grow-bar{{from{{transform:scaleY(0);opacity:0}}70%{{transform:scaleY(1.08);opacity:1}}to{{transform:scaleY(1);opacity:1}}}}
+      .sync-label{{opacity:1;animation:sync-label 8s ease-in-out 1 both}}
+      @keyframes sync-label{{0%,47%{{opacity:1;transform:translateY(0)}}56%,100%{{opacity:0;transform:translateY(-8px)}}}}
+      .ready-label{{opacity:0;animation:ready-label 8s ease-out 1 both}}
+      @keyframes ready-label{{0%,53%{{opacity:0;transform:translateY(8px)}}63%,100%{{opacity:1;transform:translateY(0)}}}}
+      .sync-progress{{transform-box:fill-box;transform-origin:left center;animation:sync-progress 8s ease-in-out 1 both}}
+      @keyframes sync-progress{{0%{{transform:scaleX(0);opacity:.3}}72%{{transform:scaleX(1);opacity:1}}100%{{transform:scaleX(1);opacity:.42}}}}
+      .chart-scan{{opacity:0;transform-box:fill-box;transform-origin:center;animation:chart-scan 8s ease-in-out 1 both}}
+      @keyframes chart-scan{{0%,38%{{opacity:0;transform:translateX(0)}}45%{{opacity:.85}}73%{{opacity:.85;transform:translateX(570px)}}78%,100%{{opacity:0;transform:translateX(570px)}}}}
+      .counter-echo{{transform-box:fill-box;transform-origin:left center;animation:counter-echo 8s ease-out 1 both}}
+      @keyframes counter-echo{{0%,68%{{opacity:0;transform:scale(.8)}}76%{{opacity:.34;transform:scale(1.18)}}86%,100%{{opacity:0;transform:scale(1.28)}}}}
+      .final-halo{{transform-box:fill-box;transform-origin:center;animation:final-halo 8s ease-out 1 both}}
+      @keyframes final-halo{{0%,69%{{opacity:0;transform:scale(.45)}}78%{{opacity:1;transform:scale(1)}}90%,100%{{opacity:.28;transform:scale(1.18)}}}}
+      .burst{{opacity:0;transform-box:fill-box;transform-origin:center;animation-duration:8s;animation-timing-function:ease-out;animation-iteration-count:1;animation-fill-mode:both}}
+      .burst-a{{animation-name:burst-a}}@keyframes burst-a{{0%,71%{{opacity:0;transform:translate(0,0) scale(.3)}}79%{{opacity:1}}91%,100%{{opacity:0;transform:translate(-28px,-34px) scale(1)}}}}
+      .burst-b{{animation-name:burst-b}}@keyframes burst-b{{0%,72%{{opacity:0;transform:translate(0,0) scale(.3)}}80%{{opacity:1}}92%,100%{{opacity:0;transform:translate(30px,-22px) scale(.9)}}}}
+      .burst-c{{animation-name:burst-c}}@keyframes burst-c{{0%,73%{{opacity:0;transform:translate(0,0) scale(.3)}}81%{{opacity:1}}93%,100%{{opacity:0;transform:translate(-18px,30px) scale(.75)}}}}
+      @media (prefers-reduced-motion:reduce){{.counter-step{{display:none}}.counter-final{{display:inline;transform:none}}.sync-label,.chart-scan,.counter-echo,.burst{{display:none}}.ready-label,.sync-progress,.final-halo{{animation:none;opacity:1;transform:none}}}}"""
     inner = f"""  <rect width="1200" height="240" fill="{EDITORIAL_DARK}"/>
   <rect width="1200" height="240" fill="url(#editorialgrid)" opacity=".14"/>
   {text(64, 40, "CONTRIBUCIONES · ÚLTIMO AÑO", 12.5, "#a8bfff", 700, spacing=2.2, kind="mono")}
+  <g class="sync-label">{text(1136, 40, "SYNCING ACTIVITY...", 11.5, "#a8bfff", 700, "end", spacing=1.4, kind="mono")}</g>
+  <g class="ready-label">{text(1136, 40, "SNAPSHOT VERIFICADO", 11.5, WHITE, 700, "end", spacing=1.4, kind="mono")}</g>
+  <rect class="sync-progress" x="64" y="51" width="1072" height="2" fill="#7898ff"/>
+  {text(64, y0, f"{d['total']:,}", 64, "none", 700, extra='class="counter-echo" stroke="#7898ff" stroke-width="1.2" font-variant-numeric="tabular-nums"')}
   {counter}
   {text(66, y0 + 26, "commits, pull requests, issues y revisiones", 14.5, "#dfe7ff", 400)}
   {bars}
+  <g transform="translate({left:.1f},{top:.1f})"><rect class="chart-scan" width="3" height="{base - top:.1f}" fill="#ffffff"/></g>
+  <rect class="final-halo" x="{last_x - 7:.1f}" y="{last_y - 7:.1f}" width="{gap * .62 + 14:.1f}" height="{last_h + 14:.1f}" rx="8" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <rect class="burst burst-a" x="{last_x + 3:.1f}" y="{last_y + 8:.1f}" width="7" height="7" fill="#ffffff"/>
+  <rect class="burst burst-b" x="{last_x + 7:.1f}" y="{last_y + 14:.1f}" width="6" height="6" fill="#7898ff"/>
+  <rect class="burst burst-c" x="{last_x + 2:.1f}" y="{last_y + 20:.1f}" width="5" height="5" fill="#ffffff"/>
   {months}
   <line x1="64" y1="204" x2="1136" y2="204" stroke="{WHITE}" stroke-opacity=".12"/>
   {text(64, 222, stats, 12.5, "#a8bfff", 500, kind="mono")}"""
