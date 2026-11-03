@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-02",
- "merged": 10,
+ "generated": "2026-11-03",
+ "merged": 11,
  "projects": [
   "ClaudeHub",
   "PeerBeam",
@@ -9,10 +9,11 @@
   "pefile",
   "pyelftools",
   "radare2",
+  "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1356,
- "total": 3318,
+ "downloads": 1359,
+ "total": 3807,
  "weeks": [
   0,
   0,
@@ -66,7 +67,7 @@
   514,
   317,
   846,
-  231
+  720
  ],
  "first": "2025-11-02",
  "streak": 27,
