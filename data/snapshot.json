@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-03",
- "merged": 11,
+ "generated": "2026-11-04",
+ "merged": 13,
  "projects": [
   "ClaudeHub",
   "PeerBeam",
@@ -12,8 +12,8 @@
   "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1359,
- "total": 3807,
+ "downloads": 1362,
+ "total": 4013,
  "weeks": [
   0,
   0,
@@ -67,7 +67,7 @@
   514,
   317,
   846,
-  720
+  926
  ],
  "first": "2025-11-02",
  "streak": 27,
