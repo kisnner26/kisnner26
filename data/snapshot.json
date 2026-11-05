@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-05",
  "merged": 13,
  "projects": [
   "ClaudeHub",
@@ -12,8 +12,8 @@
   "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1362,
- "total": 4013,
+ "downloads": 1364,
+ "total": 4125,
  "weeks": [
   0,
   0,
@@ -67,7 +67,7 @@
   514,
   317,
   846,
-  926
+  1038
  ],
  "first": "2025-11-02",
  "streak": 27,
