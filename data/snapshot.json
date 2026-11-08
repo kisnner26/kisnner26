@@ -1,7 +1,8 @@
 {
- "generated": "2026-11-07",
- "merged": 13,
+ "generated": "2026-11-08",
+ "merged": 15,
  "projects": [
+  "AltSign",
   "ClaudeHub",
   "PeerBeam",
   "bindings",
@@ -12,10 +13,9 @@
   "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1366,
- "total": 4138,
+ "downloads": 1371,
+ "total": 4148,
  "weeks": [
-  0,
   0,
   0,
   0,
@@ -67,9 +67,10 @@
   514,
   317,
   846,
-  1051
+  1054,
+  7
  ],
- "first": "2025-11-02",
+ "first": "2025-11-09",
  "streak": 27,
  "best_day": 601
 }
