@@ -21,17 +21,21 @@ ASSETS = ROOT / "assets"
 SNAPSHOT = ROOT / "data" / "snapshot.json"
 LOGIN = "kisnner26"
 
-# paleta Windows XP / Luna
+# paleta fractal / esotérica — tinta violeta y oro sobre grimorio
 INK = "#0a1d3a"
 WHITE = "#ffffff"
-XP_TITLE_A, XP_TITLE_B, XP_TITLE_C = "#0a246a", "#3b7ce0", "#0a246a"   # titlebar activa
-XP_PANEL = "#ece9d8"                                                   # cuerpo clásico (ventanas de diálogo)
-XP_FACE = "#d4d0c8"                                                     # bordes grises 3D
-XP_GLITCH_A, XP_GLITCH_B = "#050b2e", "#1452d6"                        # fondo fiberglass
-XP_GLITCH_LINE = "#8fb8ff"
+XP_TITLE_A, XP_TITLE_B, XP_TITLE_C = "#2e1065", "#7c3aed", "#2e1065"   # cabecera de ventana (gradiente arcano)
+XP_PANEL = "#efe6d2"                                                   # página de grimorio (pergamino envejecido)
+XP_FACE = "#d4d0c8"                                                     # bordes 3D
+XP_GLITCH_A, XP_GLITCH_B = "#0d0616", "#2e1065"                        # fondo cósmico
+XP_GLITCH_LINE = "#a78bfa"
 CLOSE_A, CLOSE_B = "#f3938a", "#d6341f"
-START_A, START_B = "#52c24b", "#1f7a1f"
+START_A, START_B = "#f3d47a", "#c89a2e"
 PAD_YELLOW = "#f6e79c"
+GOLD = "#d4af37"
+VIOLET = "#7c3aed"
+COSMIC_A, COSMIC_B = "#1a0f2e", "#030105"
+FRACTAL_LINE = "#8b6fc9"
 FONT = "font-family=\"Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif\""
 MONO = "font-family=\"'SF Mono',Menlo,Consolas,monospace\""
 
@@ -123,24 +127,24 @@ def rnd(i, salt):
     return (math.sin(i * 12.9898 + salt * 78.233) * 43758.5453) % 1
 
 
-# ---------------------------------------------------------------- cromo de ventana XP
+# ---------------------------------------------------------------- cromo de ventana (grimorio arcano)
 def xp_titlebar(w, title, buttons=True, h=30, grad_id="tbar"):
     btns = ""
     if buttons:
-        by = h / 2 - 8
+        cy = h / 2
         btns = f"""
-    <g transform="translate({w - 80},{by})">
-      <rect x="0" y="0" width="18" height="16" rx="2" fill="#2b5bb0" stroke="#dbe9ff" stroke-width="1"/>
-      <rect x="6" y="11" width="7" height="2" fill="{WHITE}"/>
-      <rect x="24" y="0" width="18" height="16" rx="2" fill="#2b5bb0" stroke="#dbe9ff" stroke-width="1"/>
-      <rect x="29" y="3" width="8" height="8" fill="none" stroke="{WHITE}" stroke-width="1.4"/>
-      <rect x="48" y="0" width="20" height="16" rx="2" fill="url(#closegrad)" stroke="#8c1a10" stroke-width="1"/>
-      <path d="M53 4l10 8m0-8l-10 8" stroke="{WHITE}" stroke-width="1.8" stroke-linecap="round"/>
+    <g transform="translate({w - 62},{cy})" stroke="{WHITE}" stroke-opacity=".85" fill="none" stroke-width="1.4">
+      <circle cx="0" cy="0" r="5.5"/>
+      <path d="M18 -5.5 L23.5 5.5 L12.5 5.5 Z"/>
+      <rect x="30" y="-5.5" width="11" height="11" transform="rotate(45 35.5 0)"/>
     </g>"""
     return f"""<rect width="{w}" height="{h}" rx="8" fill="url(#{grad_id})"/>
   <rect y="{h - 8}" width="{w}" height="8" fill="url(#{grad_id})"/>
-  <rect x="6" y="{h / 2 - 7:.0f}" width="14" height="14" rx="3" fill="{WHITE}" fill-opacity=".85"/>
-  {text(26, h / 2 + 5, title, 13, WHITE, 700, spacing=.2)}{btns}"""
+  <g transform="translate(13,{h / 2})" stroke="{WHITE}" stroke-width="1.3" fill="none" opacity=".9">
+    <path d="M0 -7 L6 5 L-6 5 Z"/>
+    <path d="M0 -3.4 L3 2.6 L-3 2.6 Z" opacity=".7"/>
+  </g>
+  {text(30, h / 2 + 5, title, 13, WHITE, 700, spacing=.2)}{btns}"""
 
 
 XP_DEFS = f"""    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
@@ -151,7 +155,10 @@ XP_DEFS = f"""    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
     </linearGradient>
     <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="{START_A}"/><stop offset="1" stop-color="{START_B}"/>
-    </linearGradient>"""
+    </linearGradient>
+    <radialGradient id="sigilglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="{VIOLET}" stop-opacity=".55"/><stop offset="100%" stop-color="{VIOLET}" stop-opacity="0"/>
+    </radialGradient>"""
 
 
 def xp_window(w, h, title, inner, theme_fill=XP_PANEL, title_h=30):
@@ -162,35 +169,33 @@ def xp_window(w, h, title, inner, theme_fill=XP_PANEL, title_h=30):
   </g>"""
 
 
-# ---------------------------------------------------------------- Clippy
+# ---------------------------------------------------------------- sigilo fractal (ojo dentro de triángulos anidados)
 def clippy(cx, cy, scale=1.0, blink_delay=0):
-    """clippy: libreta amarilla detrás, dos aros de alambre anidados (como el clip real) y una
-    carita que asoma por el hueco de arriba, ojos que parpadean y miran."""
+    """el ojo que todo lo ve, enmarcado en triángulos recursivos: reemplaza al clip de antaño.
+    conserva las mismas clases (pad/wire/eyes/eye/pupils/brow) para que la animación original siga intacta."""
     s = scale
     return f"""<g transform="translate({cx},{cy}) scale({s})">
-    <g class="pad" style="transform-origin:0px -40px;transform:rotate(-4deg)">
-      <rect x="-54" y="-156" width="108" height="168" rx="6" fill="{PAD_YELLOW}" stroke="#c9ad3f" stroke-width="2"/>
-      {"".join(f'<line x1="-44" y1="{y}" x2="44" y2="{y}" stroke="#d8c268" stroke-width="1.5"/>' for y in range(-134, 2, 14))}
+    <g class="pad" style="transform-origin:0px -116px">
+      <circle cx="0" cy="-116" r="92" fill="url(#sigilglow)"/>
     </g>
-    <g class="wire" fill="none" stroke-linecap="round" style="transform-origin:0px -40px">
-      <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#7d828e" stroke-width="10"/>
-      <rect x="-46" y="-140" width="52" height="134" rx="26" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
-      <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#7d828e" stroke-width="9"/>
-      <rect x="-20" y="-118" width="34" height="140" rx="17" stroke="#dfe2e8" stroke-width="3" opacity=".7"/>
+    <g class="wire" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform-origin:0px -116px">
+      <path d="M0 -190 L76 -46 L-76 -46 Z" stroke="{GOLD}" stroke-width="3"/>
+      <path d="M0 -160 L58 -56 L-58 -56 Z" stroke="{VIOLET}" stroke-width="2.4" opacity=".85"/>
+      <path d="M0 -132 L40 -64 L-40 -64 Z" stroke="{GOLD}" stroke-width="1.8" opacity=".65"/>
     </g>
     <g class="eyes">
-      <ellipse cx="-19" cy="-116" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye eye-l" style="animation-delay:{blink_delay}s"/>
-      <ellipse cx="4" cy="-118" rx="9.5" ry="12" fill="{WHITE}" stroke="#20242c" stroke-width="2.2" class="eye eye-r" style="animation-delay:{blink_delay + .08}s"/>
+      <ellipse cx="-8" cy="-100" rx="26" ry="16" fill="#0d0616" stroke="{GOLD}" stroke-width="2.4" class="eye eye-l" style="animation-delay:{blink_delay}s"/>
+      <ellipse cx="18" cy="-104" rx="10" ry="12" fill="#0d0616" stroke="{GOLD}" stroke-width="2" class="eye eye-r" style="animation-delay:{blink_delay + .08}s"/>
       <g class="pupils">
-        <circle cx="-16" cy="-113" r="3.8" fill="#15171c" class="pupil"/>
-        <circle cx="7" cy="-115" r="3.8" fill="#15171c" class="pupil"/>
-        <circle cx="-18.5" cy="-116.5" r="1.2" fill="{WHITE}"/>
-        <circle cx="5.5" cy="-118.5" r="1.2" fill="{WHITE}"/>
+        <circle cx="-6" cy="-100" r="9" fill="{VIOLET}" class="pupil"/>
+        <circle cx="18" cy="-104" r="3.6" fill="{VIOLET}" class="pupil"/>
+        <circle cx="-9" cy="-103" r="2.6" fill="{WHITE}"/>
+        <circle cx="16.5" cy="-106" r="1.2" fill="{WHITE}"/>
       </g>
     </g>
-    <g stroke="#15171c" stroke-width="2.8" stroke-linecap="round">
-      <path class="brow-l" d="M-30 -134 q11 -8 21 -3" style="transform-origin:-20px -136px"/>
-      <path class="brow-r" d="M-6 -138 q11 -6 21 1" style="transform-origin:4px -140px"/>
+    <g stroke="{GOLD}" stroke-width="2.4" stroke-linecap="round" opacity=".8">
+      <path class="brow-l" d="M-36 -124 q16 -10 30 -3" style="transform-origin:-21px -127px"/>
+      <path class="brow-r" d="M2 -130 q16 -8 30 1" style="transform-origin:17px -133px"/>
     </g>
   </g>"""
 
@@ -253,28 +258,49 @@ FIBERGLASS_DEFS = f"""    <linearGradient id="glitchgrad" x1="0" y1="0" x2="1" y
       <stop offset="0" stop-color="{XP_GLITCH_A}"/><stop offset="1" stop-color="{XP_GLITCH_B}"/>
     </linearGradient>"""
 
-EDITORIAL_BG = "#d9dfe3"
-EDITORIAL_GRID = "#7f8991"
-EDITORIAL_BLUE = "#1741c7"
+EDITORIAL_BG = "#efe6d2"
+EDITORIAL_GRID = "#9c8aad"
+EDITORIAL_BLUE = "#7c3aed"
 EDITORIAL_DARK = "#101828"
 EDITORIAL_DEFS = f"""    <pattern id="editorialgrid" width="56" height="56" patternUnits="userSpaceOnUse">
-      <path d="M56 0H0V56" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1" stroke-dasharray="5 6" opacity=".45"/>
+      <path d="M56 0H0V56" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1" stroke-dasharray="5 6" opacity=".4"/>
     </pattern>
     <linearGradient id="editorialblue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2358ec"/><stop offset="1" stop-color="#0b2a9a"/>
+      <stop offset="0" stop-color="{VIOLET}"/><stop offset="1" stop-color="#2e1065"/>
     </linearGradient>"""
 
 
+def _fractal_branches(x, y, angle, length, depth, out, max_depth=6, shrink=.72, spread=23):
+    if depth > max_depth or length < 2:
+        return
+    x2 = x + length * math.cos(math.radians(angle))
+    y2 = y - length * math.sin(math.radians(angle))
+    t = depth / max_depth
+    r, g, b = (int(124 + (212 - 124) * t), int(58 + (175 - 58) * t), int(237 + (55 - 237) * t))
+    w = max(.4, 1.8 - depth * .16)
+    out.append(f'<line x1="{x:.1f}" y1="{y:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="rgb({r},{g},{b})" '
+               f'stroke-width="{w:.2f}" stroke-linecap="round" opacity="{max(.25,.8-depth*.08):.2f}"/>')
+    _fractal_branches(x2, y2, angle - spread, length * shrink, depth + 1, out, max_depth, shrink, spread)
+    _fractal_branches(x2, y2, angle + spread, length * shrink, depth + 1, out, max_depth, shrink, spread)
+
+
+def _sigil_glyph(cx, cy, s):
+    return (f'<g transform="translate({cx},{cy})" fill="none" stroke="{GOLD}" stroke-width="{.9*s:.2f}" opacity=".35">'
+            f'<path d="M0 {-7*s:.1f} L{6*s:.1f} {5*s:.1f} L{-6*s:.1f} {5*s:.1f} Z"/></g>')
+
+
 def editorial_bg(w, h):
-    pixels = "".join(
-        f'<rect x="{x}" y="{y}" width="10" height="10" fill="{EDITORIAL_DARK}" opacity="{op}"/>'
-        for x, y, op in ((42, 38, .18), (52, 48, .1), (1080, 74, .16), (1090, 64, .08),
-                         (1014, 444, .14), (1024, 454, .08), (314, 474, .12), (324, 464, .07)))
+    branches = []
+    _fractal_branches(w * .14, h * 1.02, 90, h * .16, 0, branches, max_depth=6)
+    _fractal_branches(w * .88, h * 1.02, 90, h * .13, 0, branches, max_depth=5)
+    glyphs = "".join(_sigil_glyph(x, y, sc) for x, y, sc in
+                      ((42, 40, 1.4), (1082, 70, 1.1), (1016, 448, 1.3), (316, 476, 1.0)))
     return f"""<rect width="{w}" height="{h}" fill="{EDITORIAL_BG}"/>
   <rect width="{w}" height="{h}" fill="url(#editorialgrid)"/>
-  <circle cx="{w * .16:.0f}" cy="{h * .55:.0f}" r="{h * .22:.0f}" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="1.5" stroke-dasharray="7 7" opacity=".55"/>
-  <circle cx="{w * .84:.0f}" cy="{h * .3:.0f}" r="{h * .13:.0f}" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1.5" stroke-dasharray="5 6" opacity=".7"/>
-  {pixels}"""
+  {"".join(branches)}
+  <circle cx="{w * .16:.0f}" cy="{h * .55:.0f}" r="{h * .22:.0f}" fill="none" stroke="{EDITORIAL_BLUE}" stroke-width="1.5" stroke-dasharray="7 7" opacity=".5"/>
+  <circle cx="{w * .84:.0f}" cy="{h * .3:.0f}" r="{h * .13:.0f}" fill="none" stroke="{EDITORIAL_GRID}" stroke-width="1.5" stroke-dasharray="5 6" opacity=".6"/>
+  {glyphs}"""
 
 
 # --------------------------------------------------- cromo "editor de niveles" (estilo Geometry Dash)
@@ -439,13 +465,13 @@ def hero():
     W, H = 1200, 560
     body = f"""  <g clip-path="url(#card)">
   <g class="intro-scene">
-    <rect width="{W}" height="{H}" fill="#cdd7dc"/>
+    <rect width="{W}" height="{H}" fill="#140a22"/>
     <rect y="524" width="{W}" height="36" fill="url(#tbar)"/>
-    <rect x="12" y="529" width="72" height="25" fill="#34a33a" stroke="#1d6e24"/>
-    {text(48, 547, "start", 12, WHITE, 700, "middle", kind="mono")}
+    <rect x="12" y="529" width="72" height="25" fill="#d4af37" stroke="#8a6f1f"/>
+    {text(48, 547, "start", 12, "#1a0f2e", 700, "middle", kind="mono")}
     <g transform="translate(74,74)">
-      <rect width="30" height="36" fill="#efe4a2" stroke="#7d7353"/>
-      <path d="M0 8h30" stroke="#7d7353"/>
+      <rect width="30" height="36" fill="#2a1b45" stroke="#7c3aed"/>
+      <path d="M0 8h30" stroke="#7c3aed"/>
       {text(15, 53, "work", 10, EDITORIAL_DARK, 600, "middle", kind="mono")}
     </g>
     <g transform="translate(1080,62)">
@@ -500,7 +526,7 @@ def hero():
       <circle r="330" fill="none" stroke="#d9dfe3" stroke-width="80" opacity=".35"/>
       <circle r="238" fill="none" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
       <circle r="158" fill="#d9dfe3" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
-      <path d="M0 -240L180 150H-180Z" fill="#8ba4db" opacity=".9"/>
+      <path d="M0 -240L180 150H-180Z" fill="#a78bfa" opacity=".9"/>
       <g transform="translate(-110,-100)"><g class="tunnel-window">
         <rect width="220" height="188" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="3"/>
         {xp_titlebar(220, "enter.exe", h=26)}
@@ -522,11 +548,11 @@ def hero():
     <g transform="translate(92,128)"><g class="float-window float-window-a">
       <rect width="300" height="196" fill="{EDITORIAL_DARK}" stroke="{EDITORIAL_BLUE}" stroke-width="3"/>
       {xp_titlebar(300, "reverse.exe", h=28)}
-      <rect x="18" y="48" width="264" height="122" fill="#080d18"/>
-      {text(34, 76, "00000000  55 48 89 E5", 12, "#8ba4ff", 500, spacing=.5, kind="mono")}
-      {text(34, 101, "00000004  48 83 EC 20", 12, "#8ba4ff", 500, spacing=.5, kind="mono")}
+      <rect x="18" y="48" width="264" height="122" fill="#0d0616"/>
+      {text(34, 76, "00000000  55 48 89 E5", 12, "#c4b5fd", 500, spacing=.5, kind="mono")}
+      {text(34, 101, "00000004  48 83 EC 20", 12, "#c4b5fd", 500, spacing=.5, kind="mono")}
       {text(34, 126, "00000008  E8 ?? ?? ??", 12, "#ffffff", 600, spacing=.5, kind="mono")}
-      {text(34, 151, "inspect · understand · patch", 11, "#8ba4ff", 500, spacing=.6, kind="mono")}
+      {text(34, 151, "inspect · understand · patch", 11, "#c4b5fd", 500, spacing=.6, kind="mono")}
     </g></g>
     <g transform="translate(808,92)"><g class="float-window float-window-b">
       <rect width="286" height="180" fill="#f3f4f1" stroke="{EDITORIAL_DARK}" stroke-width="2"/>
