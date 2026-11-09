@@ -1,163 +1,172 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" font-family="'Segoe Print','Comic Sans MS','Bradley Hand',cursive">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1120" width="100%" font-family="'Segoe Print','Comic Sans MS','Bradley Hand',cursive">
 <defs>
   <filter id="paperTex" x="-5%" y="-5%" width="110%" height="110%">
     <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="n"/>
     <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
   </filter>
   <filter id="crayon" x="-30%" y="-30%" width="160%" height="160%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="4"/>
-  </filter>
-  <filter id="wob" x="-20%" y="-20%" width="140%" height="140%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" seed="9" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4"/>
   </filter>
 </defs>
+<rect x="0" y="0" width="1700" height="1120" fill="#f6efe0"/>
+<rect x="0" y="0" width="1700" height="1120" fill="#000" filter="url(#paperTex)" opacity="0.5"/>
 
-<rect x="0" y="0" width="1600" height="1000" fill="#f6efe0"/>
-<rect x="0" y="0" width="1600" height="1000" fill="#000" filter="url(#paperTex)" opacity="0.5"/>
-
-<line x1="40" y1="70" x2="1560" y2="70" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="136" x2="1560" y2="136" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="202" x2="1560" y2="202" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="268" x2="1560" y2="268" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="334" x2="1560" y2="334" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="400" x2="1560" y2="400" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="466" x2="1560" y2="466" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="532" x2="1560" y2="532" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="598" x2="1560" y2="598" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="664" x2="1560" y2="664" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="730" x2="1560" y2="730" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="796" x2="1560" y2="796" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="862" x2="1560" y2="862" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="40" y1="928" x2="1560" y2="928" stroke="#d9cdb0" stroke-width="1" opacity="0.55"/>
-<line x1="150" y1="20" x2="150" y2="980" stroke="#d98c7a" stroke-width="1.4" opacity="0.4"/>
-<path d="M 18.8 19.5 Q 407.5 25.5 801.9 20.8 Q 1196.1 16.4 1583.5 20.7 Q 1585.1 255.6 1579.0 499.8 Q 1583.4 736.6 1584.8 983.0 Q 1187.3 986.0 802.6 979.5 Q 406.5 976.3 17.8 980.4 Q 24.2 745.2 18.3 500.5 Q 13.9 264.2 14.9 16.2 Z" fill="none" stroke="#2b2621" stroke-width="2.4" opacity="0.5"/>
-<text x="190" y="150" font-size="74" fill="#2b2621" font-weight="800" text-anchor="start" transform="rotate(-1 190 150)" opacity="1">KISNNER OBANDO</text>
-<path d="M 190.2 168.7 Q 376.0 173.0 558.8 169.8 " stroke="#ff7a3d" stroke-width="6" fill="none" opacity="0.85" stroke-linecap="round"/>
-<text x="192" y="210" font-size="26" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(-0.4 192 210)" opacity="1">iOS &amp; macOS developer / backend / security-curious</text>
-<text x="192" y="245" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 192 245)" opacity="1">Managua, Nicaragua</text>
+<line x1="40" y1="70" x2="1660" y2="70" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="136" x2="1660" y2="136" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="202" x2="1660" y2="202" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="268" x2="1660" y2="268" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="334" x2="1660" y2="334" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="400" x2="1660" y2="400" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="466" x2="1660" y2="466" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="532" x2="1660" y2="532" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="598" x2="1660" y2="598" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="664" x2="1660" y2="664" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="730" x2="1660" y2="730" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="796" x2="1660" y2="796" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="862" x2="1660" y2="862" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="928" x2="1660" y2="928" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="994" x2="1660" y2="994" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="40" y1="1060" x2="1660" y2="1060" stroke="#d9cdb0" stroke-width="1" opacity="0.5"/>
+<line x1="50" y1="20" x2="50" y2="1100" stroke="#d98c7a" stroke-width="1.4" opacity="0.4"/>
+<path d="M 18.8 19.5 Q 432.5 25.5 851.9 20.8 Q 1271.1 16.4 1683.5 20.7 Q 1685.1 285.6 1679.0 559.8 Q 1683.4 826.6 1684.8 1103.0 Q 1262.3 1106.0 852.6 1099.5 Q 431.5 1096.3 17.8 1100.4 Q 24.2 835.2 18.3 560.5 Q 13.9 294.2 14.9 16.2 Z" fill="none" stroke="#2b2621" stroke-width="2.4" opacity="0.5"/>
+<text x="90" y="150" font-size="74" fill="#2b2621" font-weight="800" font-style="normal" text-anchor="start" transform="rotate(-1 90 150)" opacity="1">KISNNER OBANDO</text>
+<path d="M 90.2 168.7 Q 306.0 173.0 518.8 169.8 " stroke="#ff7a3d" stroke-width="6" fill="none" opacity="0.85" stroke-linecap="round"/>
+<text x="92" y="212" font-size="27" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(-0.4 92 212)" opacity="1">iOS &amp; macOS developer / backend / security-curious</text>
+<text x="92" y="248" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 92 248)" opacity="1">Managua, Nicaragua</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-3 1430 120;3 1430 120;-3 1430 120" dur="3.2s" repeatCount="indefinite"/>
-<path d="M 1581.9 119.0 Q 1572.5 130.4 1572.0 133.2 Q 1556.9 138.1 1549.7 146.1 Q 1534.5 156.7 1517.2 159.3 Q 1494.1 167.0 1474.0 166.5 Q 1452.0 165.0 1429.2 167.1 Q 1405.4 163.2 1385.2 165.6 Q 1359.0 158.8 1340.9 158.7 Q 1327.1 157.2 1309.6 146.1 Q 1296.4 135.0 1289.6 132.5 Q 1290.1 127.4 1281.2 121.7 Q 1282.2 111.6 1285.0 106.5 Q 1297.4 102.5 1308.0 92.2 Q 1323.3 84.8 1339.5 79.0 Q 1356.5 81.8 1382.1 76.5 Q 1400.8 74.8 1428.5 73.2 Q 1456.7 71.3 1478.4 76.5 Q 1500.1 82.8 1517.4 80.5 Q 1535.7 89.6 1551.5 93.1 Q 1557.3 99.1 1570.8 106.4 Q 1572.7 117.4 1581.4 121.7 Z" fill="#ef6c3b" opacity="0.22" filter="url(#crayon)"/>
-<path d="M 1579.0 119.8 Q 1576.7 131.2 1575.1 136.5 Q 1565.8 145.1 1553.6 148.0 Q 1534.4 155.3 1518.1 159.9 Q 1499.5 165.4 1476.3 164.6 Q 1451.5 168.8 1429.5 166.3 Q 1409.8 169.0 1383.1 168.0 Q 1368.1 168.1 1344.0 159.4 Q 1326.5 153.7 1308.6 147.4 Q 1293.8 143.8 1285.4 133.7 Q 1287.6 127.5 1281.4 121.8 Q 1285.9 116.3 1286.7 106.5 Q 1300.5 96.5 1310.0 92.7 Q 1329.0 88.3 1342.6 82.4 Q 1364.4 78.1 1383.0 75.3 Q 1407.2 76.3 1428.9 71.9 Q 1454.6 75.7 1477.6 75.3 Q 1492.9 76.0 1517.2 83.3 Q 1534.1 89.2 1552.1 92.2 Q 1558.5 100.6 1570.3 105.4 Q 1575.8 108.7 1578.8 120.8 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
-<text x="1430" y="128" font-size="21" fill="#2b2621" font-weight="800" text-anchor="middle" transform="rotate(0 1430 128)" opacity="1">AVAILABLE FOR WORK</text>
+<animateTransform attributeName="transform" type="rotate" values="-3 1460 110;3 1460 110;-3 1460 110" dur="3.20s" begin="0.00s" repeatCount="indefinite"/>
+<path d="M 1611.9 109.0 Q 1602.5 120.4 1602.0 123.2 Q 1586.9 128.1 1579.7 136.1 Q 1564.5 146.7 1547.2 149.3 Q 1524.1 157.0 1504.0 156.5 Q 1482.0 155.0 1459.2 157.1 Q 1435.4 153.2 1415.2 155.6 Q 1389.0 148.8 1370.9 148.7 Q 1357.1 147.2 1339.6 136.1 Q 1326.4 125.0 1319.6 122.5 Q 1320.1 117.4 1311.2 111.7 Q 1312.2 101.6 1315.0 96.5 Q 1327.4 92.5 1338.0 82.2 Q 1353.3 74.8 1369.5 69.0 Q 1386.5 71.8 1412.1 66.5 Q 1430.8 64.8 1458.5 63.2 Q 1486.7 61.3 1508.4 66.5 Q 1530.1 72.8 1547.4 70.5 Q 1565.7 79.6 1581.5 83.1 Q 1587.3 89.1 1600.8 96.4 Q 1602.7 107.4 1611.4 111.7 Z" fill="#f6c89a" opacity="0.5" filter="url(#crayon)"/>
+<path d="M 1609.0 109.8 Q 1606.7 121.2 1605.1 126.5 Q 1595.8 135.1 1583.6 138.0 Q 1564.4 145.3 1548.1 149.9 Q 1529.5 155.4 1506.3 154.6 Q 1481.5 158.8 1459.5 156.3 Q 1439.8 159.0 1413.1 158.0 Q 1398.1 158.1 1374.0 149.4 Q 1356.5 143.7 1338.6 137.4 Q 1323.8 133.8 1315.4 123.7 Q 1317.6 117.5 1311.4 111.8 Q 1315.9 106.3 1316.7 96.5 Q 1330.5 86.5 1340.0 82.7 Q 1359.0 78.3 1372.6 72.4 Q 1394.4 68.1 1413.0 65.3 Q 1437.2 66.3 1458.9 61.9 Q 1484.6 65.7 1507.6 65.3 Q 1522.9 66.0 1547.2 73.3 Q 1564.1 79.2 1582.1 82.2 Q 1588.5 90.6 1600.3 95.4 Q 1605.8 98.7 1608.8 110.8 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<text x="1460" y="118" font-size="21" fill="#2b2621" font-weight="800" font-style="normal" text-anchor="middle" transform="rotate(0 1460 118)" opacity="1">AVAILABLE FOR WORK</text>
 </g>
-<text x="190" y="335" font-size="36" fill="#2b2621" font-weight="800" text-anchor="start" transform="rotate(-1 190 335)" opacity="1">my toolbox</text>
-<path d="M 189.9 347.1 Q 293.1 344.9 398.6 346.8 " stroke="#3b82c4" stroke-width="4" fill="none" opacity="0.8"/>
+<text x="90" y="335" font-size="36" fill="#2b2621" font-weight="800" font-style="normal" text-anchor="start" transform="rotate(-1 90 335)" opacity="1">my toolbox</text>
+<path d="M 89.9 347.1 Q 193.1 344.9 298.6 346.8 " stroke="#3b82c4" stroke-width="4" fill="none" opacity="0.8"/>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-7.679678778500491 220 430;0.32032122149950926 220 430;-7.679678778500491 220 430" dur="2.65s" begin="0.65s" repeatCount="indefinite"/>
-<path d="M 267.3 430.7 Q 271.2 436.3 265.6 444.8 Q 261.6 448.1 259.2 457.9 Q 248.8 469.7 243.4 470.2 Q 234.2 478.1 227.8 475.0 Q 225.7 476.9 213.7 476.5 Q 200.6 480.2 193.2 472.3 Q 187.0 465.7 180.8 461.1 Q 175.2 459.8 173.9 446.9 Q 174.2 436.8 174.7 431.9 Q 174.3 419.1 174.4 415.5 Q 180.7 406.2 184.1 398.4 Q 186.5 397.1 193.9 389.0 Q 206.9 381.4 212.0 385.5 Q 222.0 381.7 231.1 383.4 Q 242.3 390.5 243.1 390.8 Q 245.4 391.0 253.8 396.8 Q 255.5 411.4 265.5 414.3 Q 263.2 423.8 265.8 430.8 Z" fill="#ff7a3d" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 267.8 430.9 Q 266.0 436.8 265.7 447.9 Q 263.5 460.1 254.5 462.4 Q 244.4 466.8 242.8 471.8 Q 235.7 473.9 227.4 476.1 Q 217.6 472.4 211.8 477.1 Q 204.5 478.8 195.2 473.0 Q 184.3 462.3 183.8 458.1 Q 182.4 455.6 173.4 446.2 Q 175.9 433.5 174.5 432.3 Q 177.5 427.2 175.2 410.7 Q 186.0 407.1 184.9 398.7 Q 185.3 398.3 196.5 389.7 Q 201.1 387.9 212.5 382.6 Q 227.1 384.9 230.8 382.0 Q 232.7 383.8 243.4 390.5 Q 254.2 390.0 254.9 397.9 Q 262.3 403.4 267.1 411.0 Q 264.5 422.5 270.0 431.2 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="220" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 220 438)" opacity="1">SW</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 149.0 430;3.2 149.0 430;-3.2 149.0 430" dur="2.84s" begin="0.56s" repeatCount="indefinite"/>
+<path d="M 111.4 371.6 Q 131.1 375.4 149.5 369.6 Q 173.6 370.1 188.1 368.4 Q 196.3 384.2 207.5 391.8 Q 202.3 405.8 207.5 428.0 Q 209.3 448.4 209.7 466.3 Q 192.9 479.3 183.6 489.6 Q 169.3 488.1 146.9 489.2 Q 128.3 486.5 111.2 489.4 Q 99.6 484.0 92.4 468.7 Q 89.7 454.9 89.6 431.6 Q 94.5 413.0 90.7 392.3 Q 97.9 386.9 110.1 371.5 Z" fill="#f6823a" opacity="0.92" filter="url(#crayon)"/>
+<path d="M 112.0 370.6 Q 131.1 374.6 148.1 373.5 Q 163.0 374.4 186.0 369.9 Q 194.8 380.8 207.9 391.0 Q 206.6 408.3 208.6 429.7 Q 208.1 448.7 206.9 468.5 Q 195.9 480.0 187.7 486.5 Q 169.4 482.3 149.2 487.8 Q 129.1 488.7 114.3 490.5 Q 105.8 482.2 88.7 465.8 Q 88.9 444.1 88.2 432.5 Q 91.5 412.3 88.9 393.6 Q 101.2 384.8 111.9 371.8 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<path d="M 119.4 403.9 Q 139.2 403.6 158.2 399.7 Q 166.0 406.8 178.7 417.0 Q 172.2 419.8 162.2 419.4 Q 173.0 422.5 181.9 430.8 Q 175.2 434.3 165.9 432.5 Q 174.2 443.1 176.8 451.4 Q 161.8 450.2 151.8 445.1 Q 135.3 439.4 122.0 431.9 Q 135.1 434.2 143.1 434.0 Q 128.8 417.3 118.5 403.0 Z" fill="#ffffff" opacity="0.96"/>
 </g>
-<text x="220" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 220 512)" opacity="1">Swift</text>
+<text x="149.0" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 149.0 521.0)" opacity="1">Swift</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-9.477245370550955 380 430;-1.4772453705509552 380 430;-9.477245370550955 380 430" dur="2.75s" begin="0.53s" repeatCount="indefinite"/>
-<path d="M 425.4 427.3 Q 430.0 437.4 425.6 447.9 Q 420.2 456.8 419.0 458.7 Q 405.7 467.3 403.6 470.5 Q 390.9 469.6 388.9 477.2 Q 387.0 479.0 374.3 476.5 Q 360.5 470.0 353.3 472.8 Q 352.9 469.2 341.1 461.6 Q 341.9 450.9 334.9 448.9 Q 335.1 438.1 332.3 430.7 Q 329.7 420.3 333.5 413.9 Q 339.0 405.5 341.8 400.6 Q 347.6 389.1 356.1 386.2 Q 367.1 385.9 370.1 382.0 Q 383.6 380.6 389.8 380.8 Q 401.7 385.3 405.3 389.4 Q 410.9 395.6 414.3 400.2 Q 421.3 404.5 422.7 411.3 Q 420.8 414.3 428.6 428.4 Z" fill="#f2c94c" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 426.2 427.2 Q 423.2 431.1 427.4 446.3 Q 419.7 447.0 418.3 457.9 Q 409.9 471.6 403.8 473.9 Q 394.8 473.1 389.1 476.8 Q 379.9 473.3 371.5 474.9 Q 365.5 474.8 353.9 469.5 Q 344.2 461.7 342.5 460.2 Q 341.9 457.5 337.2 444.3 Q 335.6 435.7 330.5 428.7 Q 337.4 414.6 332.9 412.3 Q 332.0 409.0 341.6 399.0 Q 346.3 389.5 353.2 391.0 Q 362.6 394.0 370.9 385.4 Q 380.4 382.8 389.5 383.8 Q 391.8 382.3 403.8 391.1 Q 413.9 395.5 414.5 400.2 Q 424.4 402.0 423.9 414.6 Q 423.5 415.9 429.4 428.0 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="380" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 380 438)" opacity="1">JS</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 324.25 430;3.2 324.25 430;-3.2 324.25 430" dur="2.98s" begin="0.73s" repeatCount="indefinite"/>
+<path d="M 274.8 369.2 Q 297.4 369.5 324.9 368.6 Q 345.5 372.1 371.2 370.4 Q 376.3 370.7 381.0 378.7 Q 379.6 403.6 383.6 431.3 Q 386.9 450.8 385.2 477.1 Q 381.3 484.2 372.9 488.0 Q 344.5 490.2 324.8 488.9 Q 296.9 484.7 277.5 488.3 Q 271.2 481.5 262.9 480.0 Q 267.1 455.2 263.4 430.7 Q 262.5 410.0 265.3 383.1 Q 265.5 379.7 275.5 371.6 Z" fill="#f2d624" opacity="0.92" filter="url(#crayon)"/>
+<path d="M 272.9 369.2 Q 302.3 369.5 326.6 371.9 Q 345.0 365.6 371.8 369.0 Q 375.7 370.6 385.7 381.9 Q 389.4 404.8 384.9 428.1 Q 387.1 448.0 383.9 478.2 Q 377.6 487.2 371.9 488.1 Q 349.6 487.4 324.8 488.2 Q 299.4 483.5 274.7 487.1 Q 267.2 479.9 267.0 479.8 Q 265.6 453.5 266.8 429.7 Q 270.9 401.8 267.1 381.1 Q 268.8 373.9 275.7 371.4 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<text x="324.25" y="444" font-size="38" fill="#1a1a1a" font-weight="800" font-style="normal" text-anchor="middle" transform="rotate(0 324.25 444)" opacity="1">JS</text>
 </g>
-<text x="380" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 380 512)" opacity="1">JavaScript</text>
+<text x="324.25" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 324.25 521.0)" opacity="1">JavaScript</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-5.2321730451391595 540 430;2.7678269548608405 540 430;-5.2321730451391595 540 430" dur="2.68s" begin="0.36s" repeatCount="indefinite"/>
-<path d="M 587.4 428.8 Q 579.9 435.4 582.4 443.6 Q 581.9 448.2 579.6 458.9 Q 566.6 467.4 564.1 471.0 Q 550.9 469.3 548.5 474.8 Q 537.0 473.3 530.5 474.9 Q 518.6 473.6 516.3 474.1 Q 507.8 471.6 503.8 463.0 Q 499.2 458.0 493.2 443.5 Q 494.6 439.8 492.2 429.9 Q 494.7 420.7 495.3 412.8 Q 503.5 408.5 504.0 400.5 Q 516.7 396.6 518.5 387.3 Q 527.3 383.2 531.4 384.7 Q 542.8 381.1 546.7 380.4 Q 550.3 378.0 562.9 386.0 Q 566.7 390.7 578.4 401.1 Q 583.3 403.6 584.0 411.4 Q 579.5 423.1 585.5 428.5 Z" fill="#3b82c4" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 588.3 427.2 Q 591.1 430.1 582.4 444.2 Q 580.1 453.4 575.9 463.0 Q 575.9 466.3 566.7 472.2 Q 553.3 471.9 546.7 476.8 Q 535.2 477.3 530.8 476.3 Q 520.2 477.2 513.1 472.1 Q 506.0 465.4 505.2 462.2 Q 495.8 460.2 492.5 446.6 Q 495.3 443.1 490.0 431.3 Q 493.7 422.5 494.6 416.2 Q 495.5 410.5 505.0 396.9 Q 509.8 388.3 514.9 390.9 Q 519.2 381.8 531.4 382.3 Q 542.3 388.1 548.0 384.3 Q 553.7 390.0 566.6 388.6 Q 571.0 396.4 579.6 399.7 Q 585.5 409.1 582.7 415.5 Q 588.7 419.9 587.5 427.3 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="540" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 540 438)" opacity="1">TS</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 499.5 430;3.2 499.5 430;-3.2 499.5 430" dur="3.14s" begin="0.28s" repeatCount="indefinite"/>
+<path d="M 450.4 368.6 Q 478.3 365.9 501.7 370.3 Q 523.5 372.9 550.8 372.0 Q 559.7 377.9 559.4 380.9 Q 559.4 409.4 560.8 428.0 Q 555.0 448.4 559.4 477.9 Q 557.3 483.1 549.4 490.2 Q 518.8 489.3 497.7 487.4 Q 478.0 487.7 448.0 487.6 Q 441.6 478.8 438.3 478.5 Q 436.2 458.0 443.0 429.3 Q 441.2 409.6 439.5 380.8 Q 439.8 373.9 449.4 372.2 Z" fill="#3178c6" opacity="0.92" filter="url(#crayon)"/>
+<path d="M 448.2 370.5 Q 474.0 372.4 497.2 369.7 Q 526.9 367.9 548.0 370.0 Q 551.6 377.7 556.2 378.6 Q 555.7 399.5 561.0 428.3 Q 557.8 449.1 558.5 478.5 Q 556.4 486.0 548.7 486.8 Q 521.7 483.1 498.5 487.0 Q 470.3 486.4 450.7 491.2 Q 441.5 485.3 441.0 480.9 Q 440.8 451.5 439.0 427.5 Q 435.3 406.3 440.7 380.9 Q 441.1 372.5 450.9 370.4 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<text x="499.5" y="444" font-size="36" fill="#ffffff" font-weight="800" font-style="normal" text-anchor="middle" transform="rotate(0 499.5 444)" opacity="1">TS</text>
 </g>
-<text x="540" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 540 512)" opacity="1">TypeScript</text>
+<text x="499.5" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 499.5 521.0)" opacity="1">TypeScript</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-9.879014482777865 700 430;-1.8790144827778654 700 430;-9.879014482777865 700 430" dur="3.32s" begin="0.82s" repeatCount="indefinite"/>
-<path d="M 746.1 429.3 Q 747.9 437.8 744.0 443.6 Q 736.3 452.1 735.6 460.2 Q 734.5 463.3 723.9 472.8 Q 721.5 477.0 707.7 480.2 Q 699.4 474.0 693.6 479.8 Q 684.0 472.3 677.2 472.6 Q 672.1 472.4 663.5 462.6 Q 663.7 456.2 654.1 447.0 Q 652.2 433.9 653.1 430.1 Q 655.6 421.2 653.6 411.0 Q 659.8 403.2 660.8 398.3 Q 673.3 390.7 676.5 390.0 Q 682.4 383.0 693.0 381.6 Q 703.4 386.2 710.9 381.4 Q 714.1 385.2 725.3 385.9 Q 735.0 389.7 738.3 400.2 Q 737.8 408.9 747.8 416.0 Q 752.4 428.5 749.1 432.0 Z" fill="#4b8bbe" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 749.4 429.5 Q 742.3 441.1 744.7 446.6 Q 744.8 456.9 739.2 459.7 Q 734.6 468.5 722.7 472.2 Q 722.0 479.3 711.1 475.4 Q 701.5 480.8 688.8 475.0 Q 677.9 468.8 676.4 472.2 Q 663.6 462.1 661.3 459.0 Q 656.9 452.6 655.5 447.3 Q 656.5 442.2 653.1 431.4 Q 647.7 421.3 652.3 413.5 Q 659.3 406.2 665.2 401.9 Q 665.5 397.4 674.9 390.5 Q 682.2 390.1 692.5 385.3 Q 699.6 390.2 706.7 383.9 Q 721.7 381.0 726.0 388.3 Q 733.3 395.5 734.4 397.3 Q 736.3 399.6 743.0 411.1 Q 744.2 419.2 745.9 430.7 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="700" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 700 438)" opacity="1">PY</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 674.75 430;3.2 674.75 430;-3.2 674.75 430" dur="3.25s" begin="0.12s" repeatCount="indefinite"/>
+<path d="M 637.3 370.0 Q 651.8 366.0 676.1 371.3 Q 691.1 370.1 713.8 371.8 Q 728.2 387.3 735.1 393.4 Q 735.4 409.7 733.4 431.6 Q 733.3 449.1 734.6 469.4 Q 722.0 474.6 712.9 490.0 Q 694.1 493.7 673.5 490.6 Q 657.7 484.6 637.1 487.1 Q 625.6 472.8 613.5 465.3 Q 616.2 447.5 614.5 430.9 Q 619.1 413.9 614.6 390.7 Q 622.9 379.1 639.1 371.3 Z" fill="#f6efe0" opacity="1" filter="url(#crayon)"/>
+<path d="M 639.9 370.8 Q 655.6 368.1 674.4 370.7 Q 698.8 375.5 713.1 373.3 Q 727.2 385.6 733.9 395.4 Q 733.1 408.0 734.2 427.9 Q 738.3 447.2 735.4 466.6 Q 717.6 475.6 709.4 491.5 Q 686.7 492.7 672.3 489.4 Q 659.2 487.1 637.7 491.0 Q 629.5 476.4 615.2 465.5 Q 616.8 450.8 614.6 428.4 Q 616.6 413.5 616.1 392.3 Q 626.3 375.9 639.1 369.7 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<path d="M 648.8 396.2 Q 663.2 392.8 679.9 393.7 Q 685.0 395.5 694.3 398.8 Q 695.7 410.6 696.3 419.7 Q 691.6 423.1 684.7 428.5 Q 673.8 427.7 658.5 429.3 Q 660.2 422.0 659.6 419.1 Q 669.7 419.7 677.3 418.4 Q 679.4 416.7 676.8 410.8 Q 665.6 412.3 652.4 410.2 Q 652.0 403.7 649.2 396.1 Z" fill="#4b8bbe"/>
+<path d="M 700.0 464.0 Q 683.9 463.5 669.8 465.3 Q 663.5 464.8 656.0 460.1 Q 652.5 450.1 652.5 438.7 Q 659.9 433.5 664.5 431.2 Q 675.5 432.4 691.1 433.0 Q 693.2 439.6 691.8 442.3 Q 683.3 441.2 672.5 441.0 Q 672.5 445.7 673.2 450.1 Q 687.4 448.9 697.3 449.7 Q 698.4 457.0 701.8 463.3 Z" fill="#ffd43b"/>
+<circle cx="662.75" cy="404" r="3.2" fill="#f6efe0"/>
+<circle cx="686.75" cy="456" r="3.2" fill="#2b2621"/>
 </g>
-<text x="700" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 700 512)" opacity="1">Python</text>
+<text x="674.75" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 674.75 521.0)" opacity="1">Python</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-1.1522073869031928 860 430;6.847792613096807 860 430;-1.1522073869031928 860 430" dur="3.89s" begin="0.53s" repeatCount="indefinite"/>
-<path d="M 906.7 430.0 Q 903.9 444.5 906.3 448.2 Q 904.0 454.0 897.2 459.6 Q 884.8 465.4 883.0 473.7 Q 879.1 473.3 868.5 474.6 Q 860.9 480.0 851.2 475.7 Q 845.8 474.0 837.0 469.0 Q 823.9 458.0 821.9 458.4 Q 821.5 452.8 814.8 449.3 Q 818.0 443.2 812.2 429.3 Q 819.9 418.8 817.5 411.1 Q 825.9 409.1 822.4 401.0 Q 832.4 391.3 833.0 390.0 Q 845.3 384.0 850.8 379.8 Q 864.5 387.1 866.8 382.5 Q 871.7 384.6 883.3 388.5 Q 885.9 392.6 894.1 397.5 Q 898.5 407.3 908.0 413.2 Q 903.4 416.4 907.8 427.5 Z" fill="#8b7bd8" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 907.7 427.4 Q 901.7 437.9 904.4 448.8 Q 904.2 448.0 899.1 459.0 Q 893.4 465.3 881.1 473.5 Q 876.2 477.0 871.1 477.9 Q 863.8 471.4 849.5 475.7 Q 844.0 469.4 838.5 474.2 Q 828.1 464.7 820.4 459.0 Q 811.7 449.6 814.5 445.0 Q 813.4 439.0 813.5 429.2 Q 820.1 418.8 816.5 411.5 Q 820.3 409.3 823.3 402.0 Q 835.5 399.4 837.2 386.0 Q 849.1 382.4 849.3 383.6 Q 854.5 387.9 867.6 381.9 Q 870.7 384.8 883.9 388.9 Q 894.6 393.6 899.6 397.6 Q 901.2 410.0 905.5 412.2 Q 904.5 422.4 908.3 431.4 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="860" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 860 438)" opacity="1">PHP</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 850.0 430;3.2 850.0 430;-3.2 850.0 430" dur="3.02s" begin="0.04s" repeatCount="indefinite"/>
+<path d="M 811.0 371.3 Q 832.0 366.2 850.5 369.4 Q 870.6 372.9 885.4 371.5 Q 900.9 385.9 909.8 394.0 Q 912.2 415.3 910.2 427.7 Q 914.3 449.5 908.9 468.7 Q 904.0 474.3 889.4 488.1 Q 866.5 484.4 851.8 489.8 Q 830.5 487.4 815.2 487.6 Q 803.2 480.1 792.0 468.8 Q 794.0 444.0 790.9 427.9 Q 789.1 410.0 789.4 391.2 Q 798.8 376.2 810.9 369.2 Z" fill="#f6efe0" opacity="1" filter="url(#crayon)"/>
+<path d="M 813.5 370.3 Q 831.4 367.9 851.0 371.0 Q 871.9 367.7 889.4 373.3 Q 895.7 379.6 906.8 394.4 Q 908.2 416.7 910.2 428.9 Q 909.0 446.7 907.0 466.9 Q 901.1 474.3 886.2 490.2 Q 867.7 492.5 852.2 488.4 Q 826.9 491.5 811.9 489.0 Q 800.5 473.7 792.0 468.5 Q 789.1 448.3 791.4 428.9 Q 789.6 412.0 790.2 394.8 Q 797.0 378.8 813.1 368.7 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<path d="M 893.5 429.8 Q 890.9 435.8 889.9 436.7 Q 889.0 439.8 883.3 446.7 Q 876.2 451.0 875.3 451.1 Q 871.4 453.4 861.5 454.4 Q 853.9 453.4 850.9 455.8 Q 846.8 458.7 837.3 456.0 Q 828.5 451.7 825.8 451.5 Q 819.7 446.1 814.5 443.8 Q 814.4 439.9 810.9 437.8 Q 811.8 432.2 809.2 431.0 Q 810.4 429.3 811.4 421.6 Q 815.8 415.9 817.6 415.5 Q 819.6 412.6 826.6 407.8 Q 831.4 405.6 837.9 405.0 Q 844.6 405.8 851.5 405.6 Q 859.8 403.6 862.1 405.0 Q 868.5 405.4 874.0 408.9 Q 878.9 413.5 883.3 415.3 Q 883.7 418.0 888.7 420.9 Q 891.6 421.6 891.9 428.6 Z" fill="none" stroke="#8b7bd8" stroke-width="4.5"/>
+<text x="850.0" y="439" font-size="24" fill="#8b7bd8" font-weight="800" font-style="italic" text-anchor="middle" transform="rotate(0 850.0 439)" opacity="1">php</text>
 </g>
-<text x="860" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 860 512)" opacity="1">PHP</text>
+<text x="850.0" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 850.0 521.0)" opacity="1">PHP</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-0.043964558060899606 1020 430;7.9560354419391 1020 430;-0.043964558060899606 1020 430" dur="2.79s" begin="0.49s" repeatCount="indefinite"/>
-<path d="M 1068.0 430.4 Q 1067.0 434.9 1063.3 446.1 Q 1064.1 447.6 1054.1 458.4 Q 1043.4 466.1 1043.1 469.4 Q 1032.2 467.4 1031.1 475.9 Q 1020.3 479.2 1010.3 479.0 Q 1008.6 477.2 997.4 470.1 Q 986.2 467.6 985.2 461.6 Q 983.8 449.8 974.2 447.2 Q 975.4 435.0 970.5 428.6 Q 971.4 414.9 977.2 413.2 Q 984.5 405.4 985.6 397.2 Q 994.5 391.1 993.8 385.7 Q 999.3 381.0 1013.1 383.1 Q 1016.4 386.9 1025.4 380.0 Q 1032.1 379.3 1045.9 388.4 Q 1050.7 387.3 1059.0 396.4 Q 1061.4 405.3 1065.6 411.3 Q 1069.3 417.1 1069.3 430.7 Z" fill="#4f94c4" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 1065.8 429.9 Q 1064.9 436.0 1066.2 446.1 Q 1056.9 449.5 1057.2 463.3 Q 1052.1 465.7 1041.9 470.2 Q 1039.5 468.6 1028.3 477.5 Q 1018.8 473.7 1014.1 477.6 Q 1010.8 477.8 997.0 471.1 Q 995.7 467.1 984.9 462.9 Q 974.5 452.5 973.7 444.1 Q 968.8 430.9 970.6 429.1 Q 974.7 418.1 977.2 412.2 Q 975.9 406.2 984.0 400.0 Q 996.6 398.4 998.7 386.1 Q 1005.6 379.2 1013.3 381.7 Q 1022.8 378.0 1026.0 383.5 Q 1036.5 381.2 1046.1 388.9 Q 1055.9 396.0 1054.1 402.0 Q 1058.5 405.5 1064.4 414.4 Q 1067.5 427.2 1069.3 428.6 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="1020" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 1020 438)" opacity="1">SQL</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 1025.25 430;3.2 1025.25 430;-3.2 1025.25 430" dur="3.30s" begin="0.60s" repeatCount="indefinite"/>
+<path d="M 988.8 372.5 Q 1010.3 369.7 1022.9 371.0 Q 1041.9 374.1 1059.8 370.4 Q 1067.9 378.9 1083.4 390.5 Q 1083.3 410.8 1083.2 429.7 Q 1081.1 449.0 1085.1 469.2 Q 1068.7 474.9 1061.6 489.2 Q 1042.3 486.5 1026.4 491.3 Q 1013.3 488.9 990.6 491.5 Q 975.6 481.4 965.2 465.3 Q 969.4 444.1 968.5 427.8 Q 970.7 412.3 966.0 394.2 Q 976.0 383.7 988.4 370.4 Z" fill="#f6efe0" opacity="1" filter="url(#crayon)"/>
+<path d="M 986.9 369.8 Q 1002.8 365.7 1027.2 370.7 Q 1045.3 371.5 1064.3 369.3 Q 1077.4 382.3 1082.4 390.7 Q 1079.5 412.0 1085.5 430.3 Q 1087.2 443.5 1081.7 464.6 Q 1075.5 474.3 1063.9 489.0 Q 1043.5 482.6 1027.2 486.6 Q 1010.6 487.0 988.7 487.0 Q 982.2 476.9 967.4 467.6 Q 963.5 445.1 966.8 428.6 Q 965.2 414.4 968.6 391.0 Q 974.2 377.2 986.0 372.0 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<path d="M 996.9 450.9 Q 1002.6 439.3 1007.1 426.3 Q 1017.7 413.7 1023.6 405.2 Q 1033.4 401.7 1040.3 400.0 Q 1046.0 404.6 1055.7 407.9 Q 1051.4 410.9 1043.4 413.1 Q 1034.5 420.7 1030.3 423.4 Q 1035.2 429.5 1041.2 434.1 Q 1049.9 431.9 1056.3 432.1 Q 1055.5 435.1 1055.7 439.8 Q 1044.7 440.1 1038.0 444.9 Q 1031.5 438.5 1022.7 433.0 Q 1018.6 440.0 1010.6 451.6 Q 1003.4 449.8 998.3 451.4 Z" fill="#4f94c4"/>
+<circle cx="1047.25" cy="406" r="2.6" fill="#2b2621"/>
+<text x="1025.25" y="460" font-size="1" fill="#2b2621" font-weight="700" font-style="normal" text-anchor="start" transform="rotate(0 1025.25 460)" opacity="1"></text>
 </g>
-<text x="1020" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 1020 512)" opacity="1">MySQL</text>
+<text x="1025.25" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1025.25 521.0)" opacity="1">MySQL</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-4.865518536643303 1180 430;3.134481463356697 1180 430;-4.865518536643303 1180 430" dur="2.89s" begin="0.72s" repeatCount="indefinite"/>
-<path d="M 1230.5 429.3 Q 1226.5 433.7 1225.9 448.9 Q 1223.5 451.3 1215.7 462.7 Q 1213.1 464.1 1204.2 469.4 Q 1196.0 476.3 1185.7 479.9 Q 1178.4 482.9 1171.5 476.9 Q 1170.0 471.9 1158.5 472.0 Q 1148.9 470.3 1143.2 459.6 Q 1135.4 451.3 1136.4 445.0 Q 1133.1 444.0 1131.8 431.6 Q 1129.2 423.3 1135.5 411.4 Q 1141.6 408.6 1141.4 400.3 Q 1143.4 398.5 1157.4 386.0 Q 1163.8 387.5 1174.6 380.5 Q 1182.4 379.4 1186.3 380.3 Q 1199.1 386.8 1203.7 389.1 Q 1209.4 395.9 1218.9 397.1 Q 1222.7 406.7 1226.3 411.2 Q 1228.8 423.4 1228.5 428.5 Z" fill="#ef6c3b" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 1226.0 430.0 Q 1218.2 442.3 1222.1 448.2 Q 1215.5 455.0 1218.4 462.9 Q 1209.1 471.0 1201.3 471.8 Q 1194.5 473.6 1188.2 475.0 Q 1173.3 481.1 1169.9 480.1 Q 1167.2 476.5 1158.1 470.0 Q 1155.7 467.2 1145.2 461.8 Q 1142.3 458.7 1134.2 447.3 Q 1133.7 432.2 1130.4 428.6 Q 1135.8 427.5 1132.0 414.5 Q 1134.3 402.4 1143.7 400.6 Q 1148.0 389.5 1156.0 388.0 Q 1161.7 381.2 1170.5 384.1 Q 1175.7 377.8 1187.6 383.3 Q 1195.7 383.3 1205.5 388.1 Q 1214.5 391.0 1217.9 396.5 Q 1216.8 411.5 1223.7 415.6 Q 1229.5 423.8 1225.9 427.3 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="1180" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 1180 438)" opacity="1">&lt;&gt;</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 1200.5 430;3.2 1200.5 430;-3.2 1200.5 430" dur="3.75s" begin="1.08s" repeatCount="indefinite"/>
+<path d="M 1151.5 369.4 Q 1197.2 371.8 1249.2 369.9 Q 1241.3 415.9 1239.6 461.3 Q 1216.3 476.2 1199.7 483.4 Q 1179.9 472.6 1159.5 462.7 Q 1154.6 417.2 1153.3 370.9 Z" fill="#ef6c3b" opacity="0.95" filter="url(#crayon)"/>
+<path d="M 1153.4 370.7 Q 1197.3 374.4 1248.3 371.1 Q 1245.5 415.3 1243.2 460.5 Q 1225.4 474.2 1201.0 486.7 Q 1179.9 472.7 1158.8 462.2 Q 1157.2 414.0 1151.6 369.6 Z" fill="none" stroke="#2b2621" stroke-width="2.2"/>
+<text x="1200.5" y="440" font-size="34" fill="#ffffff" font-weight="800" font-style="normal" text-anchor="middle" transform="rotate(0 1200.5 440)" opacity="1">5</text>
 </g>
-<text x="1180" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 1180 512)" opacity="1">HTML</text>
+<text x="1200.5" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1200.5 521.0)" opacity="1">HTML5</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="-7.395671594268694 1340 430;0.6043284057313061 1340 430;-7.395671594268694 1340 430" dur="3.16s" begin="0.63s" repeatCount="indefinite"/>
-<path d="M 1387.5 427.2 Q 1390.2 435.5 1384.8 448.0 Q 1386.5 450.5 1377.9 463.0 Q 1367.3 462.2 1365.1 473.1 Q 1352.5 477.7 1350.6 479.8 Q 1345.1 478.0 1333.4 476.8 Q 1328.8 474.1 1317.0 472.5 Q 1316.3 468.6 1305.5 462.1 Q 1300.5 449.4 1294.6 444.6 Q 1291.9 435.8 1291.0 428.5 Q 1297.3 418.6 1296.0 415.2 Q 1296.2 411.1 1301.4 399.3 Q 1304.6 393.9 1318.0 387.6 Q 1320.3 387.5 1329.2 383.4 Q 1339.5 377.1 1347.5 380.6 Q 1357.9 381.9 1362.7 385.5 Q 1366.5 396.4 1374.7 398.7 Q 1382.0 402.4 1382.7 410.6 Q 1387.7 417.2 1388.3 432.7 Z" fill="#3f8fd1" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 1388.1 427.5 Q 1390.9 438.2 1385.9 448.9 Q 1379.9 453.6 1377.6 458.1 Q 1375.0 465.6 1364.1 471.4 Q 1355.5 475.2 1348.0 475.2 Q 1340.5 474.9 1330.3 477.0 Q 1321.0 470.4 1313.4 472.6 Q 1306.8 470.7 1301.7 459.6 Q 1294.7 450.8 1292.4 445.2 Q 1294.8 438.1 1294.6 428.8 Q 1289.6 420.1 1292.5 412.7 Q 1302.0 399.2 1305.9 396.7 Q 1305.8 394.7 1315.1 386.7 Q 1328.8 379.4 1332.8 382.5 Q 1334.3 385.2 1345.9 384.9 Q 1351.9 389.1 1363.0 389.5 Q 1364.1 394.9 1376.5 401.4 Q 1375.4 404.7 1382.5 412.0 Q 1386.9 420.4 1386.7 428.6 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="1340" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 1340 438)" opacity="1">CSS</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 1375.75 430;3.2 1375.75 430;-3.2 1375.75 430" dur="3.71s" begin="0.73s" repeatCount="indefinite"/>
+<path d="M 1325.3 369.8 Q 1372.7 372.5 1425.5 371.9 Q 1417.2 418.1 1415.2 463.0 Q 1392.7 472.2 1374.3 483.7 Q 1350.1 474.0 1333.1 460.8 Q 1327.1 418.7 1327.2 372.4 Z" fill="#3f8fd1" opacity="0.95" filter="url(#crayon)"/>
+<path d="M 1326.1 371.4 Q 1379.5 368.2 1425.3 371.0 Q 1423.0 418.9 1418.2 462.7 Q 1398.4 469.5 1374.9 484.3 Q 1359.1 470.4 1336.3 459.5 Q 1334.2 416.4 1326.4 370.7 Z" fill="none" stroke="#2b2621" stroke-width="2.2"/>
+<text x="1375.75" y="440" font-size="34" fill="#ffffff" font-weight="800" font-style="normal" text-anchor="middle" transform="rotate(0 1375.75 440)" opacity="1">3</text>
 </g>
-<text x="1340" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 1340 512)" opacity="1">CSS</text>
+<text x="1375.75" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1375.75 521.0)" opacity="1">CSS3</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="0.2409696336412992 1500 430;8.2409696336413 1500 430;0.2409696336412992 1500 430" dur="3.78s" begin="0.87s" repeatCount="indefinite"/>
-<path d="M 1550.1 428.1 Q 1545.2 434.8 1545.0 445.3 Q 1542.6 447.9 1537.5 458.5 Q 1537.1 459.2 1526.3 470.8 Q 1518.2 472.6 1510.0 479.9 Q 1502.5 472.8 1494.3 476.6 Q 1482.9 481.5 1478.1 474.6 Q 1473.0 465.1 1461.0 462.3 Q 1458.1 448.6 1456.3 446.2 Q 1448.9 433.4 1450.7 428.0 Q 1458.3 419.8 1454.4 416.2 Q 1455.5 401.7 1462.6 397.7 Q 1465.0 398.8 1476.7 388.1 Q 1487.4 390.3 1492.3 382.5 Q 1503.7 384.6 1507.1 379.9 Q 1513.5 380.7 1525.9 389.4 Q 1527.8 389.0 1535.2 399.1 Q 1536.5 409.0 1545.6 413.6 Q 1547.9 416.8 1550.4 431.7 Z" fill="#f05a3b" opacity="0.85" filter="url(#crayon)"/>
-<path d="M 1546.8 432.1 Q 1548.0 437.3 1547.2 447.8 Q 1545.5 452.0 1538.2 463.3 Q 1536.3 462.5 1524.3 470.9 Q 1517.7 475.9 1508.8 476.0 Q 1501.6 475.7 1488.9 475.8 Q 1486.8 474.1 1475.7 469.3 Q 1470.5 459.3 1460.7 459.3 Q 1453.6 453.8 1454.1 449.2 Q 1453.6 435.7 1451.9 432.0 Q 1457.0 421.2 1456.4 414.1 Q 1459.0 406.6 1462.2 398.5 Q 1472.6 391.5 1474.9 389.2 Q 1485.1 388.1 1493.8 384.5 Q 1502.3 380.3 1507.1 380.6 Q 1511.4 384.4 1521.1 388.9 Q 1529.3 394.3 1535.1 396.2 Q 1535.1 403.4 1543.9 412.0 Q 1545.8 417.8 1546.2 431.0 Z" fill="none" stroke="#2b2621" stroke-width="2.6"/>
-<text x="1500" y="438" font-size="21" fill="#241f1a" font-weight="800" text-anchor="middle" transform="rotate(0 1500 438)" opacity="1">GIT</text>
+<animateTransform attributeName="transform" type="rotate" values="-3.2 1551.0 430;3.2 1551.0 430;-3.2 1551.0 430" dur="3.81s" begin="0.81s" repeatCount="indefinite"/>
+<path d="M 1513.2 372.2 Q 1527.0 373.8 1551.0 372.1 Q 1570.7 374.9 1588.6 372.5 Q 1598.5 382.1 1608.2 393.0 Q 1605.8 414.7 1607.4 431.5 Q 1608.1 451.1 1611.4 468.8 Q 1601.2 478.4 1585.6 489.2 Q 1570.2 483.5 1550.9 487.0 Q 1529.2 492.8 1512.5 491.5 Q 1499.5 473.9 1493.8 465.6 Q 1488.7 451.0 1493.7 430.8 Q 1488.5 411.8 1491.4 393.8 Q 1501.4 384.9 1512.6 369.8 Z" fill="#f6efe0" opacity="1" filter="url(#crayon)"/>
+<path d="M 1513.9 371.1 Q 1527.7 376.5 1548.5 372.5 Q 1573.1 374.1 1589.4 371.6 Q 1597.6 381.6 1611.7 393.6 Q 1610.9 411.8 1611.1 431.8 Q 1605.9 447.7 1610.6 464.5 Q 1603.1 480.0 1590.0 491.5 Q 1573.5 491.0 1549.4 486.7 Q 1534.0 490.7 1513.2 486.9 Q 1506.6 478.9 1491.3 464.9 Q 1490.1 447.8 1490.5 427.4 Q 1492.7 413.7 1491.6 392.0 Q 1505.6 380.6 1515.2 370.4 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<path d="M 1528.4 405.7 Q 1543.5 418.8 1556.5 434.4 " stroke="#f05033" stroke-width="5" stroke-linecap="round"/>
+<path d="M 1557.1 434.7 Q 1557.3 444.4 1556.7 455.2 " stroke="#f05033" stroke-width="5" stroke-linecap="round"/>
+<path d="M 1528.3 405.6 Q 1527.9 414.9 1528.0 427.3 " stroke="#f05033" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1529.0" cy="406" r="6.5" fill="#fff" stroke="#f05033" stroke-width="3.4"/>
+<circle cx="1529.0" cy="428" r="6.5" fill="#fff" stroke="#f05033" stroke-width="3.4"/>
+<circle cx="1557.0" cy="434" r="6.5" fill="#fff" stroke="#f05033" stroke-width="3.4"/>
+<circle cx="1557.0" cy="456" r="6.5" fill="#fff" stroke="#f05033" stroke-width="3.4"/>
 </g>
-<text x="1500" y="512" font-size="17" fill="#4a433a" font-weight="600" text-anchor="middle" transform="rotate(0 1500 512)" opacity="1">Git</text>
-<path d="M 560 195 Q 490.0 259.5 480 300" fill="none" stroke="#2b2621" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="10 9" opacity="0.75"><animate attributeName="stroke-dashoffset" values="0;-198" dur="2.4s" repeatCount="indefinite"/></path>
-<path d="M 477.8 286.2 L 480 300 L 488.4 288.8" fill="none" stroke="#2b2621" stroke-width="3.2" stroke-linecap="round" opacity="0.85"/>
-<g transform="rotate(-0.6 515.0 710.0)">
-<path d="M 187.9 562.2 Q 349.6 558.6 512.5 560.0 Q 675.5 558.6 838.9 557.6 Q 835.2 634.6 838.8 708.2 Q 841.4 784.9 839.5 862.1 Q 676.5 863.5 512.8 859.2 Q 356.7 861.1 191.0 860.6 Q 184.5 784.7 187.5 708.6 Q 189.9 633.6 188.9 562.1 Z" fill="none" stroke="#2b2621" stroke-width="2.6" opacity="0.85"/>
+<text x="1551.0" y="521.0" font-size="18" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1551.0 521.0)" opacity="1">Git</text>
+<g transform="rotate(-0.4 458.5 729.0)">
+<path d="M 87.4 579.3 Q 270.7 579.2 460.9 580.7 Q 642.9 584.3 826.1 581.2 Q 822.6 652.1 824.8 727.2 Q 827.9 797.5 824.4 876.7 Q 642.1 875.6 459.0 880.3 Q 276.2 881.4 89.9 880.6 Q 85.6 808.3 89.7 731.2 Q 89.2 653.3 90.6 579.2 Z" fill="none" stroke="#2b2621" stroke-width="2.6" opacity="0.9"/>
 </g>
-<text x="220" y="615" font-size="32" fill="#2b2621" font-weight="800" text-anchor="start" transform="rotate(-0.5 220 615)" opacity="1">what i build</text>
-<text x="220" y="660" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 220 660)" opacity="1">- Transactional multi-tenant SaaS (PHP / Laravel / MySQL)</text>
-<text x="220" y="698" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 220 698)" opacity="1">- Secure iOS &amp; macOS apps, Keychain-backed auth</text>
-<text x="220" y="736" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 220 736)" opacity="1">- Claude API tools + my own MCP servers</text>
-<text x="220" y="774" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 220 774)" opacity="1">- Real GTFS transit data, mapping &amp; routing</text>
-<text x="220" y="812" font-size="22" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 220 812)" opacity="1">- Reverse engineering &amp; binaries, as a growing interest</text>
+<text x="120" y="634.0" font-size="32" fill="#2b2621" font-weight="800" font-style="normal" text-anchor="start" transform="rotate(-0.4 120 634.0)" opacity="1">what i build</text>
+<text x="120" y="679.0" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 120 679.0)" opacity="1">- Transactional multi-tenant SaaS (PHP / Laravel / MySQL)</text>
+<text x="120" y="721.0" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 120 721.0)" opacity="1">- Secure iOS &amp; macOS apps, Keychain-backed auth</text>
+<text x="120" y="763.0" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 120 763.0)" opacity="1">- Claude API tools + my own MCP servers</text>
+<text x="120" y="805.0" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 120 805.0)" opacity="1">- Real GTFS transit data, mapping &amp; routing</text>
+<text x="120" y="847.0" font-size="22" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 120 847.0)" opacity="1">- Reverse engineering &amp; binaries, growing interest</text>
 <g>
-<animateTransform attributeName="transform" type="rotate" values="2 1140.0 645.0;-2 1140.0 645.0;2 1140.0 645.0" dur="5s" repeatCount="indefinite"/>
-<path d="M 881.0 559.3 Q 1013.5 559.6 1140.6 560.6 Q 1275.3 560.8 1400.9 562.2 Q 1401.7 609.3 1401.1 646.1 Q 1399.2 689.6 1401.1 728.6 Q 1275.6 725.3 1140.6 730.6 Q 1012.0 732.6 877.7 731.3 Q 878.6 691.2 878.6 645.0 Q 883.1 599.4 880.1 561.2 Z" fill="#ff7a3d" opacity="0.14"/>
-<path d="M 879.9 560.6 Q 1015.4 561.4 1141.0 562.4 Q 1271.2 563.7 1401.6 561.7 Q 1400.3 598.5 1397.7 644.6 Q 1404.7 686.6 1402.1 732.3 Q 1271.7 726.0 1141.3 729.1 Q 1008.1 734.1 881.4 730.2 Q 878.8 685.8 880.9 645.7 Q 884.6 600.7 881.9 561.1 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
-<text x="906" y="606" font-size="26" fill="#2b2621" font-weight="800" text-anchor="start" transform="rotate(0 906 606)" opacity="1">education</text>
-<text x="906" y="642" font-size="21" fill="#4a433a" font-weight="600" text-anchor="start" transform="rotate(0 906 642)" opacity="1">B.Eng. Information Systems - UAM</text>
-<text x="906" y="672" font-size="19" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 906 672)" opacity="1">in progress, since 2022</text>
-<text x="906" y="704" font-size="17" fill="#4a433a" font-weight="500" text-anchor="start" transform="rotate(0 906 704)" opacity="1">CS50x - CS50P - Claude API - Prompt Eng.</text>
-</g>
-<g>
-<animateTransform attributeName="transform" type="rotate" values="-4 1344 684;4 1344 684;-4 1344 684" dur="4.2s" repeatCount="indefinite"/>
-<path d="M 1322.6 678.2 Q 1331.3 678.3 1345.4 677.9 Q 1353.7 675.0 1365.4 677.1 Q 1367.5 682.8 1365.5 694.2 Q 1364.6 705.4 1364.6 712.7 Q 1354.3 716.5 1343.3 715.0 Q 1332.1 717.4 1323.6 713.5 Q 1319.1 707.2 1321.1 695.3 Q 1321.2 683.0 1322.5 677.9 Z" fill="#8b7bd8" opacity="0.35" filter="url(#crayon)"/>
-<path d="M 1321.1 679.8 Q 1331.6 682.5 1344.8 678.9 Q 1355.8 676.2 1367.1 676.2 Q 1368.2 684.2 1365.3 695.9 Q 1365.8 702.8 1367.5 715.5 Q 1353.2 719.2 1342.7 715.8 Q 1333.3 714.7 1322.2 713.3 Q 1322.6 705.8 1320.5 695.7 Q 1321.4 685.8 1322.1 677.8 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
-<path d="M 1331.0 676.7 Q 1329.9 669.2 1330.9 661.7 Q 1341.2 664.1 1354.6 662.5 Q 1355.0 667.5 1355.5 677.3 " fill="none" stroke="#2b2621" stroke-width="3.4" stroke-linecap="round"/>
-</g>
-<path d="M 58.3 861.6 Q 801.0 856.7 1540.3 859.2 " stroke="#2b2621" stroke-width="2" opacity="0.4" stroke-dasharray="2 10" stroke-linecap="round"/>
-<g>
-<animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="3.54s" repeatCount="indefinite"/>
-<path d="M 90.7 870.0 Q 147.0 875.1 203.7 873.5 Q 259.3 876.3 318.4 870.7 Q 316.1 885.6 316.8 893.1 Q 320.4 908.7 318.1 916.6 Q 262.9 914.4 203.8 919.7 Q 145.8 920.2 91.8 918.0 Q 95.1 907.3 91.2 893.4 Q 87.6 882.2 92.0 873.6 Z" fill="#f05a3b" opacity="0.18"/>
-<path d="M 89.3 870.6 Q 145.8 873.3 202.8 872.1 Q 259.5 868.8 317.4 871.0 Q 315.1 880.6 317.6 897.0 Q 313.9 912.0 318.4 919.1 Q 266.1 916.2 205.9 915.9 Q 148.0 914.1 91.7 916.2 Q 92.6 906.1 88.7 896.1 Q 87.0 887.7 91.1 872.5 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
-<text x="108" y="903" font-size="19" fill="#2b2621" font-weight="600" text-anchor="start" transform="rotate(0 108 903)" opacity="1">github.com/kisnner26</text>
+<animateTransform attributeName="transform" type="rotate" values="-1.6 1241.5 729.0;1.6 1241.5 729.0;-1.6 1241.5 729.0" dur="5.00s" begin="0.00s" repeatCount="indefinite"/>
+<path d="M 874.9 580.4 Q 1059.5 577.5 1240.5 579.9 Q 1422.1 575.3 1608.0 579.1 Q 1605.9 658.9 1607.8 729.7 Q 1607.8 800.5 1612.2 879.7 Q 1424.0 884.0 1239.1 879.1 Q 1051.7 877.2 872.8 878.7 Q 869.0 805.2 871.2 727.8 Q 871.6 648.1 872.7 576.8 Z" fill="#ff7a3d" opacity="0.12"/>
+<path d="M 874.9 578.1 Q 1057.7 577.7 1242.5 578.8 Q 1423.4 577.1 1611.9 576.7 Q 1614.2 650.3 1608.6 727.9 Q 1607.3 805.4 1608.8 880.7 Q 1426.1 876.1 1241.5 878.2 Q 1056.7 881.9 873.0 880.8 Q 868.4 800.7 873.4 728.7 Q 876.2 658.4 873.8 579.6 Z" fill="none" stroke="#2b2621" stroke-width="2.4"/>
+<text x="903.0" y="634.0" font-size="32" fill="#2b2621" font-weight="800" font-style="normal" text-anchor="start" transform="rotate(0 903.0 634.0)" opacity="1">education</text>
+<text x="903.0" y="679.0" font-size="23" fill="#4a433a" font-weight="600" font-style="normal" text-anchor="start" transform="rotate(0 903.0 679.0)" opacity="1">B.Eng. Information Systems - UAM</text>
+<text x="903.0" y="717.0" font-size="21" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 903.0 717.0)" opacity="1">in progress, since 2022</text>
+<text x="903.0" y="759.0" font-size="20" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 903.0 759.0)" opacity="1">CS50x - Harvard</text>
+<text x="903.0" y="793.0" font-size="20" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 903.0 793.0)" opacity="1">CS50P - Harvard</text>
+<text x="903.0" y="827.0" font-size="20" fill="#4a433a" font-weight="500" font-style="normal" text-anchor="start" transform="rotate(0 903.0 827.0)" opacity="1">Building with the Claude API - Anthropic</text>
 </g>
 <g>
-<animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="2.65s" repeatCount="indefinite"/>
-<path d="M 343.8 870.8 Q 429.3 868.4 511.1 871.4 Q 592.9 868.2 676.1 871.1 Q 672.6 884.7 677.5 895.0 Q 675.7 904.7 676.9 918.8 Q 589.5 915.2 510.4 920.0 Q 428.6 918.4 343.7 919.3 Q 344.2 909.0 345.9 895.5 Q 348.7 886.2 344.4 873.3 Z" fill="#3b82c4" opacity="0.18"/>
-<path d="M 342.8 874.2 Q 427.3 873.0 509.1 872.4 Q 593.9 873.1 677.6 871.1 Q 676.1 879.5 678.7 895.5 Q 674.9 906.7 677.9 916.4 Q 595.8 920.9 512.0 917.1 Q 429.3 921.2 344.5 919.0 Q 348.2 906.5 343.2 894.0 Q 342.5 883.8 343.3 874.1 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
-<text x="362.0" y="903" font-size="19" fill="#2b2621" font-weight="600" text-anchor="start" transform="rotate(0 362.0 903)" opacity="1">linkedin.com/in/kisnner-obando</text>
+<animateTransform attributeName="transform" type="rotate" values="-4 1550.0 823.0;4 1550.0 823.0;-4 1550.0 823.0" dur="4.20s" begin="0.00s" repeatCount="indefinite"/>
+<path d="M 1526.4 815.5 Q 1539.3 813.1 1550.5 816.2 Q 1564.3 814.8 1572.6 815.3 Q 1574.2 827.7 1571.8 833.8 Q 1574.8 842.9 1571.4 853.7 Q 1563.3 857.6 1550.0 854.3 Q 1537.0 855.6 1529.2 853.4 Q 1530.9 843.3 1529.3 833.8 Q 1527.0 822.7 1527.9 816.4 Z" fill="#8b7bd8" opacity="0.35" filter="url(#crayon)"/>
+<path d="M 1527.7 818.6 Q 1537.3 816.2 1549.6 816.1 Q 1561.8 814.0 1572.4 816.8 Q 1575.5 822.5 1572.4 834.8 Q 1571.8 841.5 1571.2 851.3 Q 1561.4 849.2 1551.1 853.6 Q 1537.1 856.8 1527.1 853.0 Q 1529.8 842.0 1528.3 835.0 Q 1528.6 823.1 1529.4 818.0 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
+<path d="M 1536.9 816.1 Q 1539.5 810.7 1539.4 800.5 Q 1552.2 801.7 1561.3 799.8 Q 1559.7 807.2 1560.9 818.4 " fill="none" stroke="#2b2621" stroke-width="3.4" stroke-linecap="round"/>
+</g>
+<path d="M 39.1 927.3 Q 848.8 924.7 1658.7 929.9 " stroke="#2b2621" stroke-width="2" opacity="0.4" stroke-dasharray="2 10" stroke-linecap="round"/>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="2.90s" repeatCount="indefinite"/>
+<path d="M 265.1 942.5 Q 320.9 940.5 371.6 942.0 Q 422.4 937.3 479.4 941.3 Q 484.0 943.9 487.1 951.3 Q 482.5 955.4 486.6 963.0 Q 484.2 968.3 486.5 978.8 Q 482.7 983.7 475.9 987.2 Q 420.8 989.8 369.5 988.4 Q 315.0 992.4 265.6 988.9 Q 257.0 985.3 255.1 980.1 Q 256.3 974.2 254.0 964.2 Q 253.5 960.5 253.1 950.2 Q 259.8 948.1 264.2 942.6 Z" fill="#f6c89a" opacity="0.55"/>
+<path d="M 261.7 939.6 Q 316.1 938.6 370.4 941.2 Q 419.0 939.6 475.8 942.1 Q 478.4 945.6 486.9 950.9 Q 490.9 955.0 487.7 966.5 Q 485.9 974.6 486.7 979.3 Q 483.5 980.3 478.1 989.7 Q 421.5 986.9 369.8 988.0 Q 320.1 988.2 263.5 989.4 Q 256.7 983.2 254.2 977.4 Q 253.7 968.2 253.4 965.3 Q 254.3 959.2 252.3 949.2 Q 258.7 944.4 265.5 938.9 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
+<text x="370.5999999999999" y="973.0" font-size="19" fill="#2b2621" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 370.5999999999999 973.0)" opacity="1">github.com/kisnner26</text>
 </g>
 <g>
-<animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="3.36s" repeatCount="indefinite"/>
-<path d="M 703.3 870.3 Q 774.0 868.7 840.0 872.1 Q 908.5 873.9 974.1 872.2 Q 971.7 879.4 973.4 895.3 Q 973.1 908.4 971.3 916.4 Q 905.9 921.1 839.0 917.3 Q 767.8 920.4 701.4 919.4 Q 702.2 908.5 704.1 896.2 Q 701.6 880.9 702.5 870.4 Z" fill="#ef6c3b" opacity="0.18"/>
-<path d="M 703.2 872.5 Q 770.0 871.2 839.8 872.5 Q 908.6 874.1 973.0 872.7 Q 972.6 887.1 973.6 894.6 Q 968.6 907.0 972.0 918.8 Q 907.9 920.7 837.5 916.0 Q 766.8 919.4 701.5 917.4 Q 703.0 910.4 703.8 895.7 Q 701.9 886.0 703.0 873.4 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
-<text x="721.0" y="903" font-size="19" fill="#2b2621" font-weight="600" text-anchor="start" transform="rotate(0 721.0 903)" opacity="1">kisnnerobando7@gmail.com</text>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="3.37s" repeatCount="indefinite"/>
+<path d="M 527.6 941.5 Q 610.0 940.8 684.6 941.0 Q 767.0 945.0 848.3 940.3 Q 851.8 947.2 858.4 950.4 Q 862.3 954.3 858.1 965.5 Q 860.7 974.5 858.3 980.9 Q 853.8 987.9 848.5 989.9 Q 771.2 985.8 687.5 987.8 Q 606.7 989.7 526.1 989.5 Q 521.6 988.9 513.7 980.1 Q 516.7 975.4 514.4 965.0 Q 511.2 957.8 515.7 952.0 Q 524.9 950.3 526.8 940.9 Z" fill="#bcd7ea" opacity="0.55"/>
+<path d="M 526.7 940.3 Q 610.7 940.5 687.8 941.1 Q 766.6 939.3 848.3 941.6 Q 852.6 942.4 859.2 951.9 Q 856.1 955.4 859.7 965.0 Q 857.0 974.7 857.6 979.7 Q 856.6 982.1 847.9 987.0 Q 766.0 985.8 688.6 988.2 Q 608.2 987.4 525.6 987.0 Q 516.6 984.1 514.2 980.9 Q 512.4 969.4 514.6 964.1 Q 518.3 953.5 517.0 949.9 Q 521.1 947.9 526.3 941.3 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
+<text x="686.5999999999999" y="973.0" font-size="19" fill="#2b2621" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 686.5999999999999 973.0)" opacity="1">linkedin.com/in/kisnner-obando</text>
 </g>
 <g>
-<animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="3.59s" repeatCount="indefinite"/>
-<path d="M 998.3 871.5 Q 1061.7 870.1 1121.8 872.8 Q 1186.0 876.7 1246.1 873.5 Q 1247.1 881.1 1246.4 893.6 Q 1249.2 909.8 1250.0 918.0 Q 1188.1 914.6 1124.6 917.3 Q 1058.6 918.5 997.9 917.4 Q 995.5 901.1 1001.1 893.6 Q 999.8 881.5 1000.8 873.7 Z" fill="#4b8bbe" opacity="0.18"/>
-<path d="M 999.0 870.1 Q 1062.3 874.6 1123.8 872.8 Q 1187.2 871.5 1247.2 872.4 Q 1244.3 886.6 1248.1 896.3 Q 1250.1 907.2 1248.3 918.6 Q 1184.0 917.8 1123.8 919.4 Q 1064.3 917.5 997.2 916.3 Q 996.4 910.7 1000.6 896.5 Q 1002.9 882.3 996.8 873.7 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
-<text x="1017.0" y="903" font-size="19" fill="#2b2621" font-weight="600" text-anchor="start" transform="rotate(0 1017.0 903)" opacity="1">kisnnerq.neocities.org</text>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="3.14s" repeatCount="indefinite"/>
+<path d="M 897.2 940.2 Q 965.6 939.4 1026.2 939.0 Q 1088.7 942.3 1154.5 940.7 Q 1155.3 944.6 1160.6 949.9 Q 1159.3 955.6 1165.0 966.0 Q 1168.8 974.2 1163.8 980.4 Q 1157.4 985.8 1150.6 988.2 Q 1088.9 989.7 1024.0 990.8 Q 959.5 986.0 897.4 987.5 Q 888.4 980.0 887.7 979.2 Q 885.4 966.9 884.7 963.2 Q 886.5 955.7 885.3 951.1 Q 888.0 944.0 895.4 940.2 Z" fill="#f6c89a" opacity="0.55"/>
+<path d="M 895.6 939.7 Q 960.6 942.8 1025.8 940.9 Q 1085.1 944.0 1150.9 939.2 Q 1160.9 945.1 1164.5 951.3 Q 1166.6 956.9 1161.9 965.9 Q 1165.6 971.8 1160.8 980.7 Q 1161.5 988.2 1154.7 989.7 Q 1092.3 991.2 1022.2 988.7 Q 955.9 987.1 897.1 989.4 Q 892.1 987.2 884.3 977.8 Q 885.6 967.4 883.7 965.1 Q 882.6 956.6 884.2 950.8 Q 887.9 944.3 897.3 942.8 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
+<text x="1024.1999999999998" y="973.0" font-size="19" fill="#2b2621" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1024.1999999999998 973.0)" opacity="1">kisnnerobando7@gmail.com</text>
 </g>
-<text x="1180" y="945" font-size="26" fill="#2b2621" font-style="italic" font-weight="600" opacity="0.8">sketched by kisnner</text>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="3.12s" repeatCount="indefinite"/>
+<path d="M 1200.2 940.0 Q 1261.7 941.4 1318.2 943.0 Q 1374.6 945.9 1436.8 942.1 Q 1446.3 941.5 1448.3 948.9 Q 1447.8 953.6 1448.1 963.2 Q 1447.8 970.4 1445.1 980.1 Q 1439.5 983.0 1437.5 989.5 Q 1378.9 989.8 1318.5 990.0 Q 1259.4 990.4 1200.5 987.7 Q 1194.8 986.4 1189.6 977.3 Q 1188.6 974.7 1188.8 967.0 Q 1194.6 959.7 1192.8 950.3 Q 1197.4 947.7 1200.4 940.0 Z" fill="#bcd7ea" opacity="0.55"/>
+<path d="M 1201.7 939.7 Q 1262.9 937.7 1318.2 939.5 Q 1377.3 942.7 1434.3 941.8 Q 1438.4 943.8 1445.6 949.9 Q 1443.5 960.6 1444.3 962.9 Q 1447.1 970.4 1447.2 978.4 Q 1442.2 985.4 1436.1 989.8 Q 1376.2 986.1 1320.4 989.9 Q 1256.5 991.2 1199.6 991.2 Q 1195.4 989.5 1189.4 979.4 Q 1191.5 974.8 1191.4 964.1 Q 1196.3 957.7 1192.5 951.5 Q 1196.4 945.2 1201.7 939.4 Z" fill="none" stroke="#2b2621" stroke-width="2"/>
+<text x="1318.6" y="973.0" font-size="19" fill="#2b2621" font-weight="600" font-style="normal" text-anchor="middle" transform="rotate(0 1318.6 973.0)" opacity="1">kisnnerq.neocities.org</text>
+</g>
+<text x="1310" y="1080" font-size="26" fill="#2b2621" font-weight="600" font-style="italic" text-anchor="start" transform="rotate(0 1310 1080)" opacity="0.8">sketched by kisnner</text>
 </svg>
