@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 272" role="img" aria-labelledby="t d">
+  <title id="t">Contribuciones</title>
+  <desc id="d">4166 contribuciones en el último año. Racha más larga: 27 días. 15 pull requests mergeados en proyectos ajenos.</desc>
+  <defs>
+    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/><stop offset=".5" stop-color="#2e1065"/><stop offset="1" stop-color="#2e1065"/>
+    </linearGradient>
+    <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3938a"/><stop offset="1" stop-color="#d6341f"/>
+    </linearGradient>
+    <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d47a"/><stop offset="1" stop-color="#c89a2e"/>
+    </linearGradient>
+    <radialGradient id="sigilglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>    <pattern id="editorialgrid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#9c8aad" stroke-width="1" stroke-dasharray="5 6" opacity=".4"/>
+    </pattern>
+    <linearGradient id="editorialblue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#2e1065"/>
+    </linearGradient>
+    <style>
+      .counter-step{opacity:0;transform-box:fill-box;transform-origin:left center}.counter-final{opacity:1}
+      .counter-step-0{animation:count-step-0 8s ease-in-out 1 both}
+      @keyframes count-step-0{0%,6.9%{opacity:0;transform:translateY(18px) scale(.82)}7.0%,18.2%{opacity:1;transform:translateY(0) scale(1)}18.3%,100%{opacity:0;transform:translateY(-18px) scale(1.08)}}
+      .counter-step-1{animation:count-step-1 8s ease-in-out 1 both}
+      @keyframes count-step-1{0%,18.2%{opacity:0;transform:translateY(16px) scale(.86)}18.3%,29.6%{opacity:1;transform:translateY(0) scale(1)}29.7%,100%{opacity:0;transform:translateY(-16px) scale(1.1)}}
+      .counter-step-2{animation:count-step-2 8s ease-in-out 1 both}
+      @keyframes count-step-2{0%,29.6%{opacity:0;transform:translateY(16px) scale(.86)}29.7%,40.9%{opacity:1;transform:translateY(0) scale(1)}41.0%,100%{opacity:0;transform:translateY(-16px) scale(1.1)}}
+      .counter-step-3{animation:count-step-3 8s ease-in-out 1 both}
+      @keyframes count-step-3{0%,40.9%{opacity:0;transform:translateY(16px) scale(.86)}41.0%,52.2%{opacity:1;transform:translateY(0) scale(1)}52.3%,100%{opacity:0;transform:translateY(-16px) scale(1.1)}}
+      .counter-step-4{animation:count-step-4 8s ease-in-out 1 both}
+      @keyframes count-step-4{0%,52.2%{opacity:0;transform:translateY(16px) scale(.86)}52.3%,63.6%{opacity:1;transform:translateY(0) scale(1)}63.7%,100%{opacity:0;transform:translateY(-16px) scale(1.1)}}
+      .counter-step-5{animation:count-step-5 8s ease-in-out 1 both}
+      @keyframes count-step-5{0%,63.6%{opacity:0;transform:translateY(18px) scale(.84)}63.7%,75.0%{opacity:1;transform:translateY(0) scale(1.12)}88%,100%{opacity:1;transform:translateY(0) scale(1)}}
+      .contribution-bar{transform-box:fill-box;transform-origin:center bottom;animation:grow-bar .72s ease-out 1 both}
+      @keyframes grow-bar{from{transform:scaleY(0);opacity:0}70%{transform:scaleY(1.08);opacity:1}to{transform:scaleY(1);opacity:1}}
+      .sync-label{opacity:1;animation:sync-label 8s ease-in-out 1 both}
+      @keyframes sync-label{0%,47%{opacity:1;transform:translateY(0)}56%,100%{opacity:0;transform:translateY(-8px)}}
+      .ready-label{opacity:0;animation:ready-label 8s ease-out 1 both}
+      @keyframes ready-label{0%,53%{opacity:0;transform:translateY(8px)}63%,100%{opacity:1;transform:translateY(0)}}
+      .sync-progress{transform-box:fill-box;transform-origin:left center;animation:sync-progress 8s ease-in-out 1 both}
+      @keyframes sync-progress{0%{transform:scaleX(0);opacity:.3}72%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:.42}}
+      .chart-scan{opacity:0;transform-box:fill-box;transform-origin:center;animation:chart-scan 8s ease-in-out 1 both}
+      @keyframes chart-scan{0%,38%{opacity:0;transform:translateX(0)}45%{opacity:.85}73%{opacity:.85;transform:translateX(570px)}78%,100%{opacity:0;transform:translateX(570px)}}
+      .counter-echo{transform-box:fill-box;transform-origin:left center;animation:counter-echo 8s ease-out 1 both}
+      @keyframes counter-echo{0%,68%{opacity:0;transform:scale(.8)}76%{opacity:.34;transform:scale(1.18)}86%,100%{opacity:0;transform:scale(1.28)}}
+      .final-halo{transform-box:fill-box;transform-origin:center;animation:final-halo 8s ease-out 1 both}
+      @keyframes final-halo{0%,69%{opacity:0;transform:scale(.45)}78%{opacity:1;transform:scale(1)}90%,100%{opacity:.28;transform:scale(1.18)}}
+      .burst{opacity:0;transform-box:fill-box;transform-origin:center;animation-duration:8s;animation-timing-function:ease-out;animation-iteration-count:1;animation-fill-mode:both}
+      .burst-a{animation-name:burst-a}@keyframes burst-a{0%,71%{opacity:0;transform:translate(0,0) scale(.3)}79%{opacity:1}91%,100%{opacity:0;transform:translate(-28px,-34px) scale(1)}}
+      .burst-b{animation-name:burst-b}@keyframes burst-b{0%,72%{opacity:0;transform:translate(0,0) scale(.3)}80%{opacity:1}92%,100%{opacity:0;transform:translate(30px,-22px) scale(.9)}}
+      .burst-c{animation-name:burst-c}@keyframes burst-c{0%,73%{opacity:0;transform:translate(0,0) scale(.3)}81%{opacity:1}93%,100%{opacity:0;transform:translate(-18px,30px) scale(.75)}}
+      @media (prefers-reduced-motion:reduce){.counter-step{display:none}.counter-final{display:inline;transform:none}.sync-label,.chart-scan,.counter-echo,.burst{display:none}.ready-label,.sync-progress,.final-halo{animation:none;opacity:1;transform:none}}
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+<g>
+  <rect width="1200" height="272" rx="9" fill="#efe6d2" stroke="#0a246a" stroke-width="1.5"/>
+  <rect width="1200" height="32" rx="8" fill="url(#tbar)"/>
+  <rect y="24" width="1200" height="8" fill="url(#tbar)"/>
+  <g transform="translate(13,16.0)" stroke="#ffffff" stroke-width="1.3" fill="none" opacity=".9">
+    <path d="M0 -7 L6 5 L-6 5 Z"/>
+    <path d="M0 -3.4 L3 2.6 L-3 2.6 Z" opacity=".7"/>
+  </g>
+  <text x="30" y="21.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="start" letter-spacing="0.2" >KISNNER26 / contributions.exe</text>
+    <g transform="translate(1138,16.0)" stroke="#ffffff" stroke-opacity=".85" fill="none" stroke-width="1.4">
+      <circle cx="0" cy="0" r="5.5"/>
+      <path d="M18 -5.5 L23.5 5.5 L12.5 5.5 Z"/>
+      <rect x="30" y="-5.5" width="11" height="11" transform="rotate(45 35.5 0)"/>
+    </g>
+  <g transform="translate(0,32)">  <rect width="1200" height="240" fill="#101828"/>
+  <rect width="1200" height="240" fill="url(#editorialgrid)" opacity=".14"/>
+  <text x="64" y="40" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="700" fill="#a8bfff" text-anchor="start" letter-spacing="2.2" >CONTRIBUCIONES · ÚLTIMO AÑO</text>
+  <g class="sync-label"><text x="1136" y="40" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#a8bfff" text-anchor="end" letter-spacing="1.4" >SYNCING ACTIVITY...</text></g>
+  <g class="ready-label"><text x="1136" y="40" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="end" letter-spacing="1.4" >SNAPSHOT VERIFICADO</text></g>
+  <rect class="sync-progress" x="64" y="51" width="1072" height="2" fill="#7898ff"/>
+  <text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="none" text-anchor="start" class="counter-echo" stroke="#7898ff" stroke-width="1.2" font-variant-numeric="tabular-nums">4,166</text>
+  <text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-0" font-variant-numeric="tabular-nums">0</text><text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-1" font-variant-numeric="tabular-nums">333</text><text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-2" font-variant-numeric="tabular-nums">958</text><text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-3" font-variant-numeric="tabular-nums">2,000</text><text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-4" font-variant-numeric="tabular-nums">3,041</text><text x="64" y="140" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#ffffff" text-anchor="start" class="counter-step counter-step-5 counter-final" font-variant-numeric="tabular-nums">4,166</text>
+  <text x="66" y="166" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#dfe7ff" text-anchor="start" >commits, pull requests, issues y revisiones</text>
+  <rect x="560.0" y="156.0" width="15.2" height="24.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.10s"/><rect x="584.6" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.19s"/><rect x="609.2" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.27s"/><rect x="633.8" y="152.0" width="15.2" height="28.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.35s"/><rect x="658.3" y="149.5" width="15.2" height="30.5" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.44s"/><rect x="682.9" y="146.1" width="15.2" height="33.9" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.53s"/><rect x="707.5" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.61s"/><rect x="732.1" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.70s"/><rect x="756.7" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.78s"/><rect x="781.2" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.87s"/><rect x="805.8" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:1.95s"/><rect x="830.4" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.04s"/><rect x="855.0" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.12s"/><rect x="879.6" y="176.0" width="15.2" height="4.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.21s"/><rect x="904.2" y="172.0" width="15.2" height="8.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.29s"/><rect x="928.8" y="143.8" width="15.2" height="36.2" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.38s"/><rect x="953.3" y="127.7" width="15.2" height="52.3" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.46s"/><rect x="977.9" y="141.9" width="15.2" height="38.1" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.54s"/><rect x="1002.5" y="63.9" width="15.2" height="116.1" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.63s"/><rect x="1027.1" y="89.3" width="15.2" height="90.7" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.72s"/><rect x="1051.7" y="108.8" width="15.2" height="71.2" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.80s"/><rect x="1076.2" y="63.7" width="15.2" height="116.3" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.89s"/><rect x="1100.8" y="50.0" width="15.2" height="130.0" rx="4.4" class="contribution-bar" fill="#7898ff" fill-opacity="0.58" style="animation-delay:2.97s"/><rect x="1125.4" y="161.2" width="15.2" height="18.8" rx="4.4" class="contribution-bar final-bar" fill="#ffffff" fill-opacity="1" style="animation-delay:3.06s"/>
+  <g transform="translate(560.0,50.0)"><rect class="chart-scan" width="3" height="130.0" fill="#ffffff"/></g>
+  <rect class="final-halo" x="1118.4" y="154.2" width="29.2" height="32.8" rx="8" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <rect class="burst burst-a" x="1128.4" y="169.2" width="7" height="7" fill="#ffffff"/>
+  <rect class="burst burst-b" x="1132.4" y="175.2" width="6" height="6" fill="#7898ff"/>
+  <rect class="burst burst-c" x="1127.4" y="181.2" width="5" height="5" fill="#ffffff"/>
+  <text x="584.5833333333334" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >jun</text><text x="682.9166666666666" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >jul</text><text x="781.25" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >ago</text><text x="904.1666666666666" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >sep</text><text x="1002.5" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >oct</text><text x="1100.8333333333333" y="202" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="11" font-weight="400" fill="#8fb8ff" text-anchor="start" >nov</text>
+  <line x1="64" y1="204" x2="1136" y2="204" stroke="#ffffff" stroke-opacity=".12"/>
+  <text x="64" y="222" font-family="'SF Mono',Menlo,Consolas,monospace" font-size="12.5" font-weight="500" fill="#a8bfff" text-anchor="start" >racha más larga 27 días   ·   15 pull requests mergeados en proyectos ajenos</text></g>
+  </g>
+</svg>

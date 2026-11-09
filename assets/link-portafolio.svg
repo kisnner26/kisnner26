@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 48" role="img" aria-labelledby="t d">
+  <title id="t">Portafolio</title>
+  <desc id="d">enlace: Portafolio</desc>
+  <defs>
+    <linearGradient id="tbar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/><stop offset=".5" stop-color="#2e1065"/><stop offset="1" stop-color="#2e1065"/>
+    </linearGradient>
+    <linearGradient id="closegrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3938a"/><stop offset="1" stop-color="#d6341f"/>
+    </linearGradient>
+    <linearGradient id="startgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d47a"/><stop offset="1" stop-color="#c89a2e"/>
+    </linearGradient>
+    <radialGradient id="sigilglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      
+      @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+    </style>
+  </defs>
+  <rect x="1" y="1" width="170" height="46" rx="7" fill="url(#startgrad)" stroke="#145314" stroke-width="1.5"/>
+  <rect x="3" y="3" width="166" height="21" rx="5" fill="#ffffff" fill-opacity=".25"/>
+  <text x="78.0" y="29.0" font-family="Tahoma,'Segoe UI','SF Pro Display','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" >Portafolio</text>
+  <path d="M136 22h11m-5-5 5 5-5 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
