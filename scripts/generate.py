@@ -96,7 +96,8 @@ def collect():
         streak = streak + 1 if count else 0
         best = max(best, streak)
     return dict(generated=datetime.now(timezone.utc).strftime("%Y-%m-%d"), merged=len(merged), projects=projects, downloads=downloads,
-                total=calendar["totalContributions"], weeks=weeks, first=first, streak=best, best_day=max(days or [0]))
+                total=calendar["totalContributions"], weeks=weeks, first=first, streak=best, best_day=max(days or [0]),
+                last_days=days[-28:])
 
 
 # ---------------------------------------------------------------- piezas
@@ -785,6 +786,186 @@ def contributions(d):
     return svg(1200, 272, "Contribuciones", f"{d['total']} contribuciones en el último año. Racha más larga: {d['streak']} días. {d['merged']} pull requests mergeados en proyectos ajenos.", body, style, XP_DEFS + EDITORIAL_DEFS)
 
 
+# ---------------------------------------------------------------- contador de commits (boceto/crayola, a juego con assets/sketch.svg)
+PAPER = "#f6efe0"
+INK_H = "#2b2621"
+MUTED_H = "#4a433a"
+RULE_H = "#d9cdb0"
+HAND = "font-family=\"'Segoe Print','Comic Sans MS','Bradley Hand',cursive\""
+CRAYONS = ["#f6823a", "#f2d624", "#3178c6", "#5fd068", "#ff6633", "#8b7bd8", "#3f8fd1", "#f05033", "#1c90c0", "#2fa86b"]
+
+
+def _htext(x, y, s, size, fill=INK_H, weight=600, anchor="start", opacity=1, rot=0, extra=""):
+    op = f' opacity="{opacity}"' if opacity != 1 else ""
+    r = f' transform="rotate({rot} {x} {y})"' if rot else ""
+    return f'<text x="{x}" y="{y}" {HAND} font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{op}{r}>{escape(str(s))}</text>'
+
+
+def _wobble_rect(x, y, w, h, r, seed, jitter=3.0):
+    """rectángulo redondeado perturbado a mano, dibujado dos veces (relleno + contorno) como en sketch.svg."""
+    pts = [(x + r, y), (x + w - r, y), (x + w, y + r), (x + w, y + h - r),
+           (x + w - r, y + h), (x + r, y + h), (x, y + h - r), (x, y + r)]
+
+    def jittered(px, py, i, s):
+        dx = (rnd(i, seed + s) - .5) * jitter
+        dy = (rnd(i, seed + s + 50) - .5) * jitter
+        return px + dx, py + dy
+
+    def path(s):
+        j = [jittered(px, py, i, s) for i, (px, py) in enumerate(pts)]
+        d = f"M {j[0][0]:.1f} {j[0][1]:.1f} "
+        for i in range(1, len(j) + 1):
+            a, b = j[i - 1], j[i % len(j)]
+            mx, my = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+            d += f"Q {a[0]:.1f} {a[1]:.1f} {mx:.1f} {my:.1f} "
+        return d + "Z"
+    return path(1), path(2)
+
+
+def _paper_sketch_base(w, h, seed=0):
+    rules = "".join(f'<line x1="36" y1="{y}" x2="{w - 36}" y2="{y}" stroke="{RULE_H}" stroke-width="1" opacity="0.5"/>'
+                     for y in range(70, h - 20, 56))
+    fill_p, stroke_p = _wobble_rect(14, 14, w - 28, h - 28, 10, seed, jitter=4)
+    return f"""<rect x="0" y="0" width="{w}" height="{h}" fill="{PAPER}"/>
+  <rect x="0" y="0" width="{w}" height="{h}" fill="#000" filter="url(#paperTex)" opacity="0.5"/>
+  {rules}
+  <path d="{stroke_p}" fill="none" stroke="{INK_H}" stroke-width="2.2" opacity="0.5"/>"""
+
+
+def _snake_eats_days(x0, x1, y, daily, streak, seed, cycle=10.0):
+    """fila de cuadritos tipo heatmap de los últimos días; una serpiente crayola los recorre y
+    los 'come' en sincronía (misma lógica de reloj que su propio desplazamiento, cero deriva)."""
+    n = max(1, len(daily))
+    pitch = (x1 - x0) / n
+    sq = pitch * .62
+    peak = max(daily) or 1
+    squares = []
+    for i, count in enumerate(daily):
+        sx, sy = x0 + i * pitch, y - sq / 2
+        t = count / peak if count else 0
+        fill = PAPER if count == 0 else "#2f9fe0"
+        op_base = .35 if count == 0 else min(1, .45 + t * .55)
+        fill_p, stroke_p = _wobble_rect(sx, sy, sq, sq, sq * .25, i + 1, jitter=2.0)
+        p = i / max(1, n - 1)
+        pts = [(0.0, 1), (p, 1)]
+        if p < 1:
+            pts.append((min(p + .01, 1.0), 0))
+            if p + .01 < 1:
+                pts.append((1.0, 0))
+        times = ";".join(f"{tm:.4f}" for tm, _ in pts)
+        vals = ";".join(str(v) for _, v in pts)
+        squares.append(f"""<g opacity="1">
+      <animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="{cycle}s" begin="0s" repeatCount="indefinite"/>
+      <path d="{fill_p}" fill="{fill}" opacity="{op_base:.2f}" filter="url(#crayon)"/>
+      <path d="{stroke_p}" fill="none" stroke="{INK_H}" stroke-width="1.6" opacity="0.7"/>
+    </g>""")
+
+    n_seg = max(3, min(streak, 8))
+    body_col = "#ff6633"
+    segs = []
+    seg_gap = sq * 1.5
+    head_r = sq * 1.15
+    for i in range(n_seg):
+        sx = x0 - i * seg_gap
+        sy = y + 9 * math.sin(i * 1.1 + seed)
+        rr = head_r - i * (head_r * .09)
+        segs.append(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="{body_col}" opacity="0.94" filter="url(#crayon)"/>'
+                     f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="none" stroke="{INK_H}" stroke-width="2.4"/>')
+    hx, hy = x0, y
+    face = (f'<circle cx="{hx - head_r*.38:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
+            f'<circle cx="{hx + head_r*.28:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
+            f'<circle cx="{hx - head_r*.34:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.1:.1f}" fill="{INK_H}"/>'
+            f'<circle cx="{hx + head_r*.32:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.1:.1f}" fill="{INK_H}"/>'
+            f'<path d="M {hx + head_r*.05:.1f} {hy + head_r*.45:.1f} q {head_r*.5:.1f} {head_r*.4:.1f} {head_r*.9:.1f} {head_r*.08:.1f}" '
+            f'stroke="#d6341f" stroke-width="3" fill="none" stroke-linecap="round"/>')
+    snake_group = f"""<g>
+    {"".join(segs)}
+    {face}
+  </g>"""
+    span = x1 - x0 - seg_gap * (n_seg - 1)
+    moving = f"""<g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;{span:.1f} 0" keyTimes="0;1" dur="{cycle}s" begin="0s" repeatCount="indefinite"/>
+    {snake_group}
+  </g>"""
+    return f'<g>{"".join(squares)}{moving}</g>'
+
+
+def counter_sketch(d):
+    W, H = 1700, 420
+    daily = d.get("last_days") or [v for w in d["weeks"][-4:] for v in [w // 7] * 7]
+    daily = daily[-28:]
+
+    total = d["total"]
+    steps = sorted(set([0] + [round(total * f) for f in (.1, .3, .6, .85)] + [total]))
+    cx, cy = 300, 230
+    counter_steps = []
+    n = len(steps)
+    TOTAL = 8.0
+    seg = TOTAL / n
+    rise = 0.3
+    for i, val in enumerate(steps):
+        last = i == n - 1
+        t0, t3 = i * seg, (i + 1) * seg
+        t1 = min(t0 + rise, t3)
+        pts = []
+        if t0 > 0:
+            pts.append((0.0, 0))
+        pts.append((t0 / TOTAL, 0))
+        pts.append((t1 / TOTAL, 1))
+        if last:
+            pts.append((1.0, 1))
+        else:
+            t2 = max(t3 - rise, t1)
+            pts.append((t2 / TOTAL, 1))
+            pts.append((t3 / TOTAL, 0))
+            if t3 < TOTAL:
+                pts.append((1.0, 0))
+        dedup = []
+        for tm, val2 in pts:
+            if dedup and abs(dedup[-1][0] - tm) < 1e-9:
+                dedup[-1] = (tm, val2)
+            else:
+                dedup.append((tm, val2))
+        times = ";".join(f"{tm:.4f}" for tm, _ in dedup)
+        vals = ";".join(str(v) for _, v in dedup)
+        counter_steps.append(f'''<text x="{cx}" y="{cy}" {HAND} font-size="86" font-weight="800" fill="{INK_H}" text-anchor="middle" opacity="0">{val:,}
+      <animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="{TOTAL}s" begin="0s" repeatCount="indefinite"/>
+    </text>''')
+
+    counter_group = "".join(counter_steps)
+    snake_row_y = 230
+    snake_x0, snake_x1 = 700, 1610
+    snake_row = _snake_eats_days(snake_x0, snake_x1, snake_row_y, daily, d["streak"], seed=11)
+
+    badge_fill, badge_stroke = _wobble_rect(snake_x0 - 8, snake_row_y - 78, 240, 56, 20, 77, jitter=4)
+    stats = f"longest streak {d['streak']} days   ·   {d['merged']} pull requests merged in other people's repos"
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="100%" {HAND}>
+<defs>
+  <filter id="paperTex" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="9" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+  </filter>
+  <filter id="crayon" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+  </filter>
+</defs>
+{_paper_sketch_base(W, H, seed=12)}
+{_htext(90, 95, "contribution tracker", 36, INK_H, 800, rot=-1)}
+<path d="M 89.9 107 Q 230 104 370 107" stroke="#2fa86b" stroke-width="5" fill="none" opacity="0.85" stroke-linecap="round"/>
+<g>{counter_group}</g>
+{_htext(cx, cy + 36, "commits · pull requests · issues · reviews", 18, MUTED_H, 500, anchor="middle")}
+{_htext(snake_x0 - 8, snake_row_y - 100, "last 28 days", 16, MUTED_H, 500)}
+{snake_row}
+<path d="{badge_fill}" fill="#f6c89a" opacity="0.5" filter="url(#crayon)"/>
+<path d="{badge_stroke}" fill="none" stroke="{INK_H}" stroke-width="2.2"/>
+{_htext(snake_x0 + 112, snake_row_y - 44, f"streak: {d['streak']} days", 19, INK_H, 800, anchor="middle")}
+{_htext(90, 440, stats, 20, MUTED_H, 500)}
+</svg>
+"""
+
+
 def pill(label, width, primary):
     h = 46
     fill = "url(#startgrad)" if primary else "#ece9d8"
@@ -818,6 +999,7 @@ def main():
     write("hero.svg", hero())
     write("stack.svg", stack())
     write("contributions-motion.svg", contributions(data))
+    write("counter.svg", counter_sketch(data))
     for label, width, primary in (("Portafolio", 172, True), ("LinkedIn", 150, False), ("GitHub", 140, False), ("Correo", 134, False)):
         write(f"link-{label.lower()}.svg", pill(label, width, primary))
     print("listo:", len(list(ASSETS.glob("*.svg"))), "svg")
