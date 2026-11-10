@@ -845,7 +845,7 @@ def _snake_eats_days(x0, x1, y, daily, streak, seed, cycle=10.0):
         t = count / peak if count else 0
         fill = PAPER if count == 0 else "#2f9fe0"
         op_base = .35 if count == 0 else min(1, .45 + t * .55)
-        fill_p, stroke_p = _wobble_rect(sx, sy, sq, sq, sq * .25, i + 1, jitter=2.0)
+        fill_p, stroke_p = _wobble_rect(sx, sy, sq, sq, sq * .25, i + 1, jitter=1.1)
         p = i / max(1, n - 1)
         pts = [(0.0, 1), (p, 1)]
         if p < 1:
@@ -856,21 +856,21 @@ def _snake_eats_days(x0, x1, y, daily, streak, seed, cycle=10.0):
         vals = ";".join(str(v) for _, v in pts)
         squares.append(f"""<g opacity="1">
       <animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="{cycle}s" begin="0s" repeatCount="indefinite"/>
-      <path d="{fill_p}" fill="{fill}" opacity="{op_base:.2f}" filter="url(#crayon)"/>
-      <path d="{stroke_p}" fill="none" stroke="{INK_H}" stroke-width="1.6" opacity="0.7"/>
+      <path d="{fill_p}" fill="{fill}" opacity="{op_base:.2f}" filter="url(#crayonSmall)"/>
+      <path d="{stroke_p}" fill="none" stroke="{INK_H}" stroke-width="1.4" opacity="0.7"/>
     </g>""")
 
     n_seg = max(3, min(streak, 8))
     body_col = "#ff6633"
     segs = []
-    seg_gap = sq * 1.5
+    seg_gap = sq * 1.4
     head_r = sq * 1.15
     for i in range(n_seg):
         sx = x0 - i * seg_gap
-        sy = y + 9 * math.sin(i * 1.1 + seed)
-        rr = head_r - i * (head_r * .09)
-        segs.append(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="{body_col}" opacity="0.94" filter="url(#crayon)"/>'
-                     f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="none" stroke="{INK_H}" stroke-width="2.4"/>')
+        sy = y + 6 * math.sin(i * .9)
+        rr = head_r - i * (head_r * .08)
+        segs.append(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="{body_col}" opacity="0.94" filter="url(#crayonSmall)"/>'
+                     f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="none" stroke="{INK_H}" stroke-width="2.2"/>')
     hx, hy = x0, y
     face = (f'<circle cx="{hx - head_r*.38:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
             f'<circle cx="{hx + head_r*.28:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
@@ -891,13 +891,13 @@ def _snake_eats_days(x0, x1, y, daily, streak, seed, cycle=10.0):
 
 
 def counter_sketch(d):
-    W, H = 1700, 420
+    W, H = 1700, 300
     daily = d.get("last_days") or [v for w in d["weeks"][-4:] for v in [w // 7] * 7]
     daily = daily[-28:]
 
     total = d["total"]
     steps = sorted(set([0] + [round(total * f) for f in (.1, .3, .6, .85)] + [total]))
-    cx, cy = 300, 230
+    cx, cy = 260, 190
     counter_steps = []
     n = len(steps)
     TOTAL = 8.0
@@ -928,16 +928,17 @@ def counter_sketch(d):
                 dedup.append((tm, val2))
         times = ";".join(f"{tm:.4f}" for tm, _ in dedup)
         vals = ";".join(str(v) for _, v in dedup)
-        counter_steps.append(f'''<text x="{cx}" y="{cy}" {HAND} font-size="86" font-weight="800" fill="{INK_H}" text-anchor="middle" opacity="0">{val:,}
+        counter_steps.append(f'''<text x="{cx}" y="{cy}" {HAND} font-size="78" font-weight="800" fill="{INK_H}" text-anchor="middle" opacity="0">{val:,}
       <animate attributeName="opacity" values="{vals}" keyTimes="{times}" dur="{TOTAL}s" begin="0s" repeatCount="indefinite"/>
     </text>''')
 
     counter_group = "".join(counter_steps)
-    snake_row_y = 230
-    snake_x0, snake_x1 = 700, 1610
-    snake_row = _snake_eats_days(snake_x0, snake_x1, snake_row_y, daily, d["streak"], seed=11)
+    y_mid = 190
+    badge_x, badge_w, badge_h = 500, 210, 54
+    snake_x0, snake_x1 = 790, 1610
+    snake_row = _snake_eats_days(snake_x0, snake_x1, y_mid, daily, d["streak"], seed=11)
 
-    badge_fill, badge_stroke = _wobble_rect(snake_x0 - 8, snake_row_y - 78, 240, 56, 20, 77, jitter=4)
+    badge_fill, badge_stroke = _wobble_rect(badge_x, y_mid - badge_h / 2, badge_w, badge_h, 20, 77, jitter=3)
     stats = f"longest streak {d['streak']} days   ·   {d['merged']} pull requests merged in other people's repos"
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="100%" {HAND}>
@@ -950,18 +951,21 @@ def counter_sketch(d):
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="n"/>
     <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
   </filter>
+  <filter id="crayonSmall" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2"/>
+  </filter>
 </defs>
 {_paper_sketch_base(W, H, seed=12)}
-{_htext(90, 95, "contribution tracker", 36, INK_H, 800, rot=-1)}
-<path d="M 89.9 107 Q 230 104 370 107" stroke="#2fa86b" stroke-width="5" fill="none" opacity="0.85" stroke-linecap="round"/>
+{_htext(90, 68, "contribution tracker", 32, INK_H, 800, rot=-1)}
+<path d="M 89.9 80 Q 220 77 350 80" stroke="#2fa86b" stroke-width="5" fill="none" opacity="0.85" stroke-linecap="round"/>
 <g>{counter_group}</g>
-{_htext(cx, cy + 36, "commits · pull requests · issues · reviews", 18, MUTED_H, 500, anchor="middle")}
-{_htext(snake_x0 - 8, snake_row_y - 100, "last 28 days", 16, MUTED_H, 500)}
-{snake_row}
-<path d="{badge_fill}" fill="#f6c89a" opacity="0.5" filter="url(#crayon)"/>
+{_htext(cx, cy + 34, "commits · pull requests · issues · reviews", 17, MUTED_H, 500, anchor="middle")}
+<path d="{badge_fill}" fill="#f6c89a" opacity="0.55" filter="url(#crayonSmall)"/>
 <path d="{badge_stroke}" fill="none" stroke="{INK_H}" stroke-width="2.2"/>
-{_htext(snake_x0 + 112, snake_row_y - 44, f"streak: {d['streak']} days", 19, INK_H, 800, anchor="middle")}
-{_htext(90, 440, stats, 20, MUTED_H, 500)}
+{_htext(badge_x + badge_w / 2, y_mid + 6, f"streak: {d['streak']} days", 18, INK_H, 800, anchor="middle")}
+{snake_row}
+{_htext(90, H - 32, stats, 19, MUTED_H, 500)}
 </svg>
 """
 
