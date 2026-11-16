@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-15",
+ "generated": "2026-11-16",
  "merged": 17,
  "projects": [
   "AltSign",
@@ -13,8 +13,8 @@
   "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1389,
- "total": 5735,
+ "downloads": 1390,
+ "total": 6548,
  "weeks": [
   0,
   0,
@@ -68,13 +68,12 @@
   846,
   1057,
   1481,
-  100
+  913
  ],
  "first": "2025-11-16",
  "streak": 27,
- "best_day": 603,
+ "best_day": 666,
  "last_days": [
-  34,
   120,
   6,
   18,
@@ -101,6 +100,7 @@
   483,
   603,
   341,
-  100
+  666,
+  247
  ]
 }
