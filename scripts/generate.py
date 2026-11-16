@@ -860,32 +860,51 @@ def _snake_eats_days(x0, x1, y, daily, streak, seed, cycle=10.0):
       <path d="{stroke_p}" fill="none" stroke="{INK_H}" stroke-width="1.4" opacity="0.7"/>
     </g>""")
 
-    n_seg = max(3, min(streak, 8))
-    body_col = "#ff6633"
-    segs = []
-    seg_gap = sq * 1.4
-    head_r = sq * 1.15
+    # serpiente de crayola sin cara: cuerpo que se afina hacia la cola, contorno continuo,
+    # manchas en rombo y una marca oscura en la cabeza para distinguirla
+    n_seg = 15
+    body_col, dark_col, light_col = "#f4733a", "#d4441c", "#f9a56b"
+    seg_gap = sq * .95
+    head_r = sq * 1.2
+    pos = []
     for i in range(n_seg):
-        sx = x0 - i * seg_gap
-        sy = y + 6 * math.sin(i * .9)
-        rr = head_r - i * (head_r * .08)
-        segs.append(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="{body_col}" opacity="0.94" filter="url(#crayonSmall)"/>'
-                     f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}" fill="none" stroke="{INK_H}" stroke-width="2.2"/>')
-    hx, hy = x0, y
-    face = (f'<circle cx="{hx - head_r*.38:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
-            f'<circle cx="{hx + head_r*.28:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.22:.1f}" fill="{PAPER}" stroke="{INK_H}" stroke-width="1.6"/>'
-            f'<circle cx="{hx - head_r*.34:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.1:.1f}" fill="{INK_H}"/>'
-            f'<circle cx="{hx + head_r*.32:.1f}" cy="{hy - head_r*.3:.1f}" r="{head_r*.1:.1f}" fill="{INK_H}"/>'
-            f'<path d="M {hx + head_r*.05:.1f} {hy + head_r*.45:.1f} q {head_r*.5:.1f} {head_r*.4:.1f} {head_r*.9:.1f} {head_r*.08:.1f}" '
-            f'stroke="#d6341f" stroke-width="3" fill="none" stroke-linecap="round"/>')
+        t = i / (n_seg - 1)
+        rr = head_r * (1 - .62 * t ** 1.4)
+        pos.append((x0 - i * seg_gap, y + 5.5 * math.sin(i * .75), rr))
+    outline = "".join(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr + 2.4:.1f}"/>' for sx, sy, rr in reversed(pos))
+    fills = "".join(f'<circle cx="{sx:.1f}" cy="{sy:.1f}" r="{rr:.1f}"/>' for sx, sy, rr in reversed(pos))
+    marks = []
+    for i in range(2, n_seg - 1, 2):
+        sx, sy, rr = pos[i]
+        d = rr * .62
+        marks.append(f'<path d="M {sx - d:.1f} {sy:.1f} L {sx:.1f} {sy - d * .8:.1f} L {sx + d:.1f} {sy:.1f} L {sx:.1f} {sy + d * .8:.1f} Z" '
+                     f'fill="{dark_col}" opacity=".62"/>')
+    lights = "".join(f'<path d="M {sx - rr * .55:.1f} {sy - rr * .45:.1f} q {rr * .45:.1f} {-rr * .35:.1f} {rr * .95:.1f} {-rr * .05:.1f}" '
+                     f'stroke="{light_col}" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".8"/>'
+                     for sx, sy, rr in pos[1:-2:2])
+    hx, hy, hr = pos[0]
+    head = (f'<ellipse cx="{hx + hr * .18:.1f}" cy="{hy:.1f}" rx="{hr * 1.12:.1f}" ry="{hr * .94:.1f}" fill="{body_col}" '
+            f'stroke="{INK_H}" stroke-width="2.4" filter="url(#crayonSmall)"/>'
+            f'<path d="M {hx - hr * .55:.1f} {hy:.1f} L {hx + hr * .1:.1f} {hy - hr * .5:.1f} L {hx + hr * .78:.1f} {hy:.1f} '
+            f'L {hx + hr * .1:.1f} {hy + hr * .5:.1f} Z" fill="{dark_col}" opacity=".7"/>'
+            f'<path d="M {hx - hr * .3:.1f} {hy - hr * .72:.1f} q {hr * .6:.1f} {-hr * .3:.1f} {hr * 1.1:.1f} {hr * .02:.1f}" '
+            f'stroke="{light_col}" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".85"/>')
     snake_group = f"""<g>
-    {"".join(segs)}
-    {face}
+    <g fill="{INK_H}" opacity=".92">{outline}</g>
+    <g fill="{body_col}" filter="url(#crayonSmall)">{fills}</g>
+    {"".join(marks)}
+    {lights}
+    {head}
   </g>"""
-    span = x1 - x0 - seg_gap * (n_seg - 1)
-    moving = f"""<g>
-    <animateTransform attributeName="transform" type="translate" values="0 0;{span:.1f} 0" keyTimes="0;1" dur="{cycle}s" begin="0s" repeatCount="indefinite"/>
-    {snake_group}
+    # la cabeza recorre toda la fila (llega al último cuadrito) y el cuerpo sale de una "puerta"
+    # a la izquierda de la fila, así no pisa la insignia de la racha
+    span = (n - 1) * pitch
+    moving = f"""<g clip-path="url(#puertaSerpiente)">
+    <clipPath id="puertaSerpiente"><rect x="{x0 - head_r * 1.2 - 3:.1f}" y="{y - 60}" width="{x1 - x0 + head_r * 3:.1f}" height="120"/></clipPath>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0;{span:.1f} 0" keyTimes="0;1" dur="{cycle}s" begin="0s" repeatCount="indefinite"/>
+      {snake_group}
+    </g>
   </g>"""
     return f'<g>{"".join(squares)}{moving}</g>'
 
