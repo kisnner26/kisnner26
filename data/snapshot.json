@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-24",
- "merged": 18,
+ "generated": "2026-11-25",
+ "merged": 19,
  "projects": [
   "AltSign",
   "ClaudeHub",
@@ -13,8 +13,8 @@
   "sistema-evaluaciones",
   "swift-llm-kit"
  ],
- "downloads": 1403,
- "total": 6897,
+ "downloads": 1406,
+ "total": 7023,
  "weeks": [
   0,
   0,
@@ -68,13 +68,12 @@
   1057,
   1481,
   1093,
-  169
+  295
  ],
  "first": "2025-11-23",
  "streak": 27,
  "best_day": 666,
  "last_days": [
-  107,
   31,
   16,
   0,
@@ -101,6 +100,7 @@
   2,
   93,
   40,
-  36
+  68,
+  94
  ]
 }
